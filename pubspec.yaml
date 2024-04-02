@@ -11,12 +11,37 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # ui
+  cupertino_icons: ^1.0.2
+  image_picker: ^1.0.7
+
+  # architecture
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+  freezed: ^2.4.7
+  freezed_annotation: ^2.4.1
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+  get_it: ^7.6.0
+  injectable: ^2.3.2
+  go_router: ^13.2.2
+  formz: ^0.7.0
+
+  # 
+
+  # network & storage
+  http_mock_adapter: ^0.6.1
+  dio: ^5.4.0
+  flutter_secure_storage: ^9.0.0
+  supabase_flutter: ^2.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
+  flutter_lints: ^3.0.2
+  build_runner: ^2.4.7
+  injectable_generator: ^2.1.5
 
 flutter:
   uses-material-design: true
