@@ -46,3 +46,6 @@ app.*.map.json
 # FVM Version Cache
 .fvm/
 /.fvmrc
+
+# Ignore config file where credentials are stored
+configs.json
