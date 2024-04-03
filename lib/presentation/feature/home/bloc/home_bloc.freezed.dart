@@ -19,38 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() error,
+    required TResult Function(XFile photoFile) verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? error,
+    TResult? Function(XFile photoFile)? verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? error,
+    TResult Function(XFile photoFile)? verifyPhoto,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Error value) error,
+    required TResult Function(_VerifyPhoto value) verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_VerifyPhoto value)? verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Error value)? error,
+    TResult Function(_VerifyPhoto value)? verifyPhoto,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,7 +112,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() error,
+    required TResult Function(XFile photoFile) verifyPhoto,
   }) {
     return started();
   }
@@ -121,7 +121,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? error,
+    TResult? Function(XFile photoFile)? verifyPhoto,
   }) {
     return started?.call();
   }
@@ -130,7 +130,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? error,
+    TResult Function(XFile photoFile)? verifyPhoto,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -143,7 +143,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Error value) error,
+    required TResult Function(_VerifyPhoto value) verifyPhoto,
   }) {
     return started(this);
   }
@@ -152,7 +152,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_VerifyPhoto value)? verifyPhoto,
   }) {
     return started?.call(this);
   }
@@ -161,7 +161,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Error value)? error,
+    TResult Function(_VerifyPhoto value)? verifyPhoto,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -176,67 +176,94 @@ abstract class _Started implements HomeEvent {
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$VerifyPhotoImplCopyWith<$Res> {
+  factory _$$VerifyPhotoImplCopyWith(
+          _$VerifyPhotoImpl value, $Res Function(_$VerifyPhotoImpl) then) =
+      __$$VerifyPhotoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({XFile photoFile});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$VerifyPhotoImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$VerifyPhotoImpl>
+    implements _$$VerifyPhotoImplCopyWith<$Res> {
+  __$$VerifyPhotoImplCopyWithImpl(
+      _$VerifyPhotoImpl _value, $Res Function(_$VerifyPhotoImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photoFile = null,
+  }) {
+    return _then(_$VerifyPhotoImpl(
+      null == photoFile
+          ? _value.photoFile
+          : photoFile // ignore: cast_nullable_to_non_nullable
+              as XFile,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
+class _$VerifyPhotoImpl implements _VerifyPhoto {
+  const _$VerifyPhotoImpl(this.photoFile);
+
+  @override
+  final XFile photoFile;
 
   @override
   String toString() {
-    return 'HomeEvent.error()';
+    return 'HomeEvent.verifyPhoto(photoFile: $photoFile)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyPhotoImpl &&
+            (identical(other.photoFile, photoFile) ||
+                other.photoFile == photoFile));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, photoFile);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifyPhotoImplCopyWith<_$VerifyPhotoImpl> get copyWith =>
+      __$$VerifyPhotoImplCopyWithImpl<_$VerifyPhotoImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() error,
+    required TResult Function(XFile photoFile) verifyPhoto,
   }) {
-    return error();
+    return verifyPhoto(photoFile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? error,
+    TResult? Function(XFile photoFile)? verifyPhoto,
   }) {
-    return error?.call();
+    return verifyPhoto?.call(photoFile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? error,
+    TResult Function(XFile photoFile)? verifyPhoto,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error();
+    if (verifyPhoto != null) {
+      return verifyPhoto(photoFile);
     }
     return orElse();
   }
@@ -245,36 +272,41 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Error value) error,
+    required TResult Function(_VerifyPhoto value) verifyPhoto,
   }) {
-    return error(this);
+    return verifyPhoto(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_VerifyPhoto value)? verifyPhoto,
   }) {
-    return error?.call(this);
+    return verifyPhoto?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Error value)? error,
+    TResult Function(_VerifyPhoto value)? verifyPhoto,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (verifyPhoto != null) {
+      return verifyPhoto(this);
     }
     return orElse();
   }
 }
 
-abstract class _Error implements HomeEvent {
-  const factory _Error() = _$ErrorImpl;
+abstract class _VerifyPhoto implements HomeEvent {
+  const factory _VerifyPhoto(final XFile photoFile) = _$VerifyPhotoImpl;
+
+  XFile get photoFile;
+  @JsonKey(ignore: true)
+  _$$VerifyPhotoImplCopyWith<_$VerifyPhotoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -2,7 +2,5 @@ part of 'app_bloc.dart';
 
 @freezed
 class AppEvent with _$AppEvent {
-  const factory AppEvent.started() = _Started;
-
-  const factory AppEvent.error() = _Error;
+  const factory AppEvent.appStarted() = _AppStarted;
 }
