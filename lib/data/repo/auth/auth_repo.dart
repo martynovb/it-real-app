@@ -9,4 +9,9 @@ class AuthRepo extends AuthDataSource {
   AuthRepo({
     required this.supabaseClient,
   });
+
+  @override
+  Future<AuthenticationStatus> getAuthStatus() async {
+    return AuthenticationStatus.authenticated;
+  }
 }

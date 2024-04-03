@@ -18,39 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() error,
+    required TResult Function() appStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? error,
+    TResult? Function()? appStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? error,
+    TResult Function()? appStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Error value) error,
+    required TResult Function(_AppStarted value) appStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_AppStarted value)? appStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Error value)? error,
+    TResult Function(_AppStarted value)? appStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,35 +68,35 @@ class _$AppEventCopyWithImpl<$Res, $Val extends AppEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$AppStartedImplCopyWith<$Res> {
+  factory _$$AppStartedImplCopyWith(
+          _$AppStartedImpl value, $Res Function(_$AppStartedImpl) then) =
+      __$$AppStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$AppStartedImplCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$AppStartedImpl>
+    implements _$$AppStartedImplCopyWith<$Res> {
+  __$$AppStartedImplCopyWithImpl(
+      _$AppStartedImpl _value, $Res Function(_$AppStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$AppStartedImpl implements _AppStarted {
+  const _$AppStartedImpl();
 
   @override
   String toString() {
-    return 'AppEvent.started()';
+    return 'AppEvent.appStarted()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$AppStartedImpl);
   }
 
   @override
@@ -111,30 +105,27 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() error,
+    required TResult Function() appStarted,
   }) {
-    return started();
+    return appStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? error,
+    TResult? Function()? appStarted,
   }) {
-    return started?.call();
+    return appStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? error,
+    TResult Function()? appStarted,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (appStarted != null) {
+      return appStarted();
     }
     return orElse();
   }
@@ -142,145 +133,41 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Error value) error,
+    required TResult Function(_AppStarted value) appStarted,
   }) {
-    return started(this);
+    return appStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_AppStarted value)? appStarted,
   }) {
-    return started?.call(this);
+    return appStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Error value)? error,
+    TResult Function(_AppStarted value)? appStarted,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (appStarted != null) {
+      return appStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements AppEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
-
-  @override
-  String toString() {
-    return 'AppEvent.error()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() error,
-  }) {
-    return error();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? error,
-  }) {
-    return error?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Error implements AppEvent {
-  const factory _Error() = _$ErrorImpl;
+abstract class _AppStarted implements AppEvent {
+  const factory _AppStarted() = _$AppStartedImpl;
 }
 
 /// @nodoc
 mixin _$AppState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   AuthenticationStatus get authStatus => throw _privateConstructorUsedError;
+  ThemeData get themeData => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -296,6 +183,7 @@ abstract class $AppStateCopyWith<$Res> {
   $Res call(
       {FormzSubmissionStatus status,
       AuthenticationStatus authStatus,
+      ThemeData themeData,
       String? errorMessage});
 }
 
@@ -314,6 +202,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   $Res call({
     Object? status = null,
     Object? authStatus = null,
+    Object? themeData = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -325,6 +214,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
+      themeData: null == themeData
+          ? _value.themeData
+          : themeData // ignore: cast_nullable_to_non_nullable
+              as ThemeData,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -344,6 +237,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
   $Res call(
       {FormzSubmissionStatus status,
       AuthenticationStatus authStatus,
+      ThemeData themeData,
       String? errorMessage});
 }
 
@@ -360,6 +254,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? authStatus = null,
+    Object? themeData = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$AppStateImpl(
@@ -371,6 +266,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
+      themeData: null == themeData
+          ? _value.themeData
+          : themeData // ignore: cast_nullable_to_non_nullable
+              as ThemeData,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -385,6 +284,7 @@ class _$AppStateImpl implements _AppState {
   const _$AppStateImpl(
       {required this.status,
       required this.authStatus,
+      required this.themeData,
       required this.errorMessage});
 
   @override
@@ -392,11 +292,13 @@ class _$AppStateImpl implements _AppState {
   @override
   final AuthenticationStatus authStatus;
   @override
+  final ThemeData themeData;
+  @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'AppState(status: $status, authStatus: $authStatus, errorMessage: $errorMessage)';
+    return 'AppState(status: $status, authStatus: $authStatus, themeData: $themeData, errorMessage: $errorMessage)';
   }
 
   @override
@@ -407,13 +309,15 @@ class _$AppStateImpl implements _AppState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.authStatus, authStatus) ||
                 other.authStatus == authStatus) &&
+            (identical(other.themeData, themeData) ||
+                other.themeData == themeData) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, status, authStatus, errorMessage);
+      Object.hash(runtimeType, status, authStatus, themeData, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -426,12 +330,15 @@ abstract class _AppState implements AppState {
   const factory _AppState(
       {required final FormzSubmissionStatus status,
       required final AuthenticationStatus authStatus,
+      required final ThemeData themeData,
       required final String? errorMessage}) = _$AppStateImpl;
 
   @override
   FormzSubmissionStatus get status;
   @override
   AuthenticationStatus get authStatus;
+  @override
+  ThemeData get themeData;
   @override
   String? get errorMessage;
   @override

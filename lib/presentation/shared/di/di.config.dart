@@ -14,22 +14,20 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:it_real_app/data/repo/auth/auth_data_source.dart' as _i7;
 import 'package:it_real_app/data/repo/auth/auth_repo.dart' as _i8;
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart' as _i9;
-import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart'
-    as _i10;
 import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart'
     as _i3;
 import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart'
     as _i4;
 import 'package:it_real_app/presentation/feature/settings/bloc/settings_bloc.dart'
-    as _i11;
+    as _i10;
 import 'package:it_real_app/presentation/feature/sign_in/bloc/sign_in_bloc.dart'
-    as _i12;
+    as _i11;
 import 'package:it_real_app/presentation/feature/sign_up/bloc/sign_up_bloc.dart'
-    as _i13;
+    as _i12;
 import 'package:it_real_app/presentation/feature/tokens/bloc/tokens_bloc.dart'
-    as _i14;
+    as _i13;
 import 'package:it_real_app/presentation/shared/di/modules/data_module.dart'
-    as _i15;
+    as _i14;
 import 'package:supabase_flutter/supabase_flutter.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -52,18 +50,16 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.AuthRepo(supabaseClient: gh<_i6.SupabaseClient>()));
     gh.factory<_i9.AppBloc>(
         () => _i9.AppBloc(authDataSource: gh<_i7.AuthDataSource>()));
-    gh.factory<_i10.AuthBloc>(
-        () => _i10.AuthBloc(authDataSource: gh<_i7.AuthDataSource>()));
-    gh.factory<_i11.SettingsBloc>(
-        () => _i11.SettingsBloc(authDataSource: gh<_i7.AuthDataSource>()));
-    gh.factory<_i12.SignInBloc>(
-        () => _i12.SignInBloc(authDataSource: gh<_i7.AuthDataSource>()));
-    gh.factory<_i13.SignUpBloc>(
-        () => _i13.SignUpBloc(authDataSource: gh<_i7.AuthDataSource>()));
-    gh.factory<_i14.TokensBloc>(
-        () => _i14.TokensBloc(authDataSource: gh<_i7.AuthDataSource>()));
+    gh.factory<_i10.SettingsBloc>(
+        () => _i10.SettingsBloc(authDataSource: gh<_i7.AuthDataSource>()));
+    gh.factory<_i11.SignInBloc>(
+        () => _i11.SignInBloc(authDataSource: gh<_i7.AuthDataSource>()));
+    gh.factory<_i12.SignUpBloc>(
+        () => _i12.SignUpBloc(authDataSource: gh<_i7.AuthDataSource>()));
+    gh.factory<_i13.TokensBloc>(
+        () => _i13.TokensBloc(authDataSource: gh<_i7.AuthDataSource>()));
     return this;
   }
 }
 
-class _$DataModule extends _i15.DataModule {}
+class _$DataModule extends _i14.DataModule {}
