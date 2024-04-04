@@ -20,6 +20,7 @@ lib/targets/target_name/configs.json
 ```
 {
   "supabaseAnonKey": "eyJhbGcxxxxx",
-  "supabaseUrl": "https://xxxxx.supabase.co"
+  "supabaseUrl": "https://xxxxx.supabase.co",
+  "sentryDsn": : ""
 }
 ```

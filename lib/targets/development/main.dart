@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:it_real_app/presentation/feature/app/app_widget.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/targets/run_configurations.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -14,5 +15,11 @@ void main() async {
 
   configureDependencies(environment: development);
 
-  runApp(const AppWidget());
+  // Init crashlytics
+  await SentryFlutter.init(
+    (options) => options.dsn = RunConfigurations.sentryDsn,
+    appRunner: () => runApp(
+      const AppWidget(),
+    ),
+  );
 }
