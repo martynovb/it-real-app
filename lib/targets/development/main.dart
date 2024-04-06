@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:it_real_app/presentation/feature/app/app_widget.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
@@ -6,20 +8,29 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  await runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
 
-  await Supabase.initialize(
-    url: RunConfigurations.supabaseUrl,
-    anonKey: RunConfigurations.supabaseAnonKey,
-  );
+      await Supabase.initialize(
+        url: RunConfigurations.supabaseUrl,
+        anonKey: RunConfigurations.supabaseAnonKey,
+      );
 
-  configureDependencies(environment: development);
+      configureDependencies(environment: development);
 
-  // Init crashlytics
-  await SentryFlutter.init(
-    (options) => options.dsn = RunConfigurations.sentryDsn,
-    appRunner: () => runApp(
-      const AppWidget(),
-    ),
+      // Init crashlytics
+      await SentryFlutter.init(
+        (options) => options.dsn = RunConfigurations.sentryDsn,
+      );
+
+      runApp(const AppWidget());
+    },
+    (error, stackTrace) async {
+      await Sentry.captureException(
+        error,
+        stackTrace: stackTrace,
+      );
+    },
   );
 }
