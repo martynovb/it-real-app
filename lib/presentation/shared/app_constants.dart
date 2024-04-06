@@ -1,3 +1,4 @@
 class AppConstants {
-  static const String appName = 'It-Real';
+  static const String translatesPath = 'assets/translations';
+
 }
