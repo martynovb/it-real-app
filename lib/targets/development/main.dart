@@ -6,11 +6,13 @@ import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 void main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      await EasyLocalization.ensureInitialized();
 
       await Supabase.initialize(
         url: RunConfigurations.supabaseUrl,
