@@ -4,8 +4,13 @@ import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_styles.dart';
 
-Widget btnWithRightArrow(Brightness brightness, String text) => ElevatedButton(
-      onPressed: () {},
+Widget btnWithRightArrow({
+  required Brightness brightness,
+  required String text,
+  void Function()? onPressed,
+}) =>
+    ElevatedButton(
+      onPressed: onPressed,
       style: AppButtonStyle.filledBtnStyle(
         brightness: brightness,
         padding: const EdgeInsets.only(
@@ -47,8 +52,13 @@ Widget btnWithRightArrow(Brightness brightness, String text) => ElevatedButton(
       ),
     );
 
-Widget btnOutlined(Brightness brightness, String text) => ElevatedButton(
-      onPressed: () {},
+Widget btnOutlined({
+  required Brightness brightness,
+  required String text,
+  void Function()? onPressed,
+}) =>
+    ElevatedButton(
+      onPressed: onPressed,
       style: AppButtonStyle.outlinedBtnStyle(
         brightness,
       ),
@@ -58,8 +68,13 @@ Widget btnOutlined(Brightness brightness, String text) => ElevatedButton(
       ),
     );
 
-Widget btnFilled(Brightness brightness, String text) => ElevatedButton(
-      onPressed: () {},
+Widget btnFilled({
+  required Brightness brightness,
+  required String text,
+  void Function()? onPressed,
+}) =>
+    ElevatedButton(
+      onPressed: onPressed,
       style: AppButtonStyle.filledBtnStyle(
         brightness: brightness,
       ),
