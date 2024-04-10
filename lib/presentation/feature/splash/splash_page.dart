@@ -16,8 +16,8 @@ class SplashPage extends StatelessWidget {
       listener: (BuildContext context, AppState state) {
         if (state.authStatus == AuthenticationStatus.authenticated) {
           context.go(RouteConstants.home.path);
-        } else if (state.authStatus == AuthenticationStatus.unauthenticated) {
-          context.go(RouteConstants.signIn.path);
+        } else {
+          context.go(RouteConstants.onboarding.path);
         }
       },
       child: Scaffold(

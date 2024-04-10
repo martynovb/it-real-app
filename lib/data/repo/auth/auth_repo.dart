@@ -13,7 +13,7 @@ class AuthRepo extends AuthDataSource {
 
   @override
   Future<AuthenticationStatus> getAuthStatus() async {
-    return AuthenticationStatus.authenticated;
+    return AuthenticationStatus.unauthenticated;
   }
 
   @override

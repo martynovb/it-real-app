@@ -167,7 +167,7 @@ abstract class _AppStarted implements AppEvent {
 mixin _$AppState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   AuthenticationStatus get authStatus => throw _privateConstructorUsedError;
-  ThemeData get themeData => throw _privateConstructorUsedError;
+  ThemeMode get themeMode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -183,7 +183,7 @@ abstract class $AppStateCopyWith<$Res> {
   $Res call(
       {FormzSubmissionStatus status,
       AuthenticationStatus authStatus,
-      ThemeData themeData,
+      ThemeMode themeMode,
       String? errorMessage});
 }
 
@@ -202,7 +202,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   $Res call({
     Object? status = null,
     Object? authStatus = null,
-    Object? themeData = null,
+    Object? themeMode = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -214,10 +214,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
-      themeData: null == themeData
-          ? _value.themeData
-          : themeData // ignore: cast_nullable_to_non_nullable
-              as ThemeData,
+      themeMode: null == themeMode
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -237,7 +237,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
   $Res call(
       {FormzSubmissionStatus status,
       AuthenticationStatus authStatus,
-      ThemeData themeData,
+      ThemeMode themeMode,
       String? errorMessage});
 }
 
@@ -254,7 +254,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? authStatus = null,
-    Object? themeData = null,
+    Object? themeMode = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$AppStateImpl(
@@ -266,10 +266,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
-      themeData: null == themeData
-          ? _value.themeData
-          : themeData // ignore: cast_nullable_to_non_nullable
-              as ThemeData,
+      themeMode: null == themeMode
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -284,7 +284,7 @@ class _$AppStateImpl implements _AppState {
   const _$AppStateImpl(
       {required this.status,
       required this.authStatus,
-      required this.themeData,
+      required this.themeMode,
       required this.errorMessage});
 
   @override
@@ -292,13 +292,13 @@ class _$AppStateImpl implements _AppState {
   @override
   final AuthenticationStatus authStatus;
   @override
-  final ThemeData themeData;
+  final ThemeMode themeMode;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'AppState(status: $status, authStatus: $authStatus, themeData: $themeData, errorMessage: $errorMessage)';
+    return 'AppState(status: $status, authStatus: $authStatus, themeMode: $themeMode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -309,15 +309,15 @@ class _$AppStateImpl implements _AppState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.authStatus, authStatus) ||
                 other.authStatus == authStatus) &&
-            (identical(other.themeData, themeData) ||
-                other.themeData == themeData) &&
+            (identical(other.themeMode, themeMode) ||
+                other.themeMode == themeMode) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, status, authStatus, themeData, errorMessage);
+      Object.hash(runtimeType, status, authStatus, themeMode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -330,7 +330,7 @@ abstract class _AppState implements AppState {
   const factory _AppState(
       {required final FormzSubmissionStatus status,
       required final AuthenticationStatus authStatus,
-      required final ThemeData themeData,
+      required final ThemeMode themeMode,
       required final String? errorMessage}) = _$AppStateImpl;
 
   @override
@@ -338,7 +338,7 @@ abstract class _AppState implements AppState {
   @override
   AuthenticationStatus get authStatus;
   @override
-  ThemeData get themeData;
+  ThemeMode get themeMode;
   @override
   String? get errorMessage;
   @override

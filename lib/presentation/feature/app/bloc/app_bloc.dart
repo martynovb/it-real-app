@@ -12,18 +12,18 @@ part 'app_event.dart';
 
 part 'app_state.dart';
 
-@Injectable()
+@Singleton()
 class AppBloc extends Bloc<AppEvent, AppState> {
   final AuthDataSource authDataSource;
 
   AppBloc({
     required this.authDataSource,
   }) : super(
-          AppState(
+          const AppState(
             status: FormzSubmissionStatus.initial,
             errorMessage: null,
             authStatus: AuthenticationStatus.none,
-            themeData: AppTheme.lightTheme,
+            themeMode: ThemeMode.light,
           ),
         ) {
     on<_AppStarted>(_onAppStarted);

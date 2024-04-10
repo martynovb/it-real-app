@@ -20,19 +20,19 @@ import 'package:it_real_app/data/repo/verification/verification_data_source.dart
 import 'package:it_real_app/data/repo/verification/verification_repo.dart'
     as _i10;
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart'
-    as _i13;
+    as _i17;
 import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart'
     as _i3;
 import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart'
     as _i4;
 import 'package:it_real_app/presentation/feature/settings/bloc/settings_bloc.dart'
-    as _i14;
+    as _i13;
 import 'package:it_real_app/presentation/feature/sign_in/bloc/sign_in_bloc.dart'
-    as _i15;
+    as _i14;
 import 'package:it_real_app/presentation/feature/sign_up/bloc/sign_up_bloc.dart'
-    as _i16;
+    as _i15;
 import 'package:it_real_app/presentation/feature/tokens/bloc/tokens_bloc.dart'
-    as _i17;
+    as _i16;
 import 'package:it_real_app/presentation/shared/di/modules/data_module.dart'
     as _i18;
 import 'package:supabase_flutter/supabase_flutter.dart' as _i6;
@@ -59,16 +59,16 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i10.VerificationRepo(supabaseClient: gh<_i6.SupabaseClient>()));
     gh.singleton<_i11.AuthDataSource>(
         () => _i12.AuthRepo(supabaseClient: gh<_i6.SupabaseClient>()));
-    gh.factory<_i13.AppBloc>(
-        () => _i13.AppBloc(authDataSource: gh<_i11.AuthDataSource>()));
-    gh.factory<_i14.SettingsBloc>(
-        () => _i14.SettingsBloc(authDataSource: gh<_i11.AuthDataSource>()));
-    gh.factory<_i15.SignInBloc>(
-        () => _i15.SignInBloc(authDataSource: gh<_i11.AuthDataSource>()));
-    gh.factory<_i16.SignUpBloc>(
-        () => _i16.SignUpBloc(authDataSource: gh<_i11.AuthDataSource>()));
-    gh.factory<_i17.TokensBloc>(
-        () => _i17.TokensBloc(authDataSource: gh<_i11.AuthDataSource>()));
+    gh.factory<_i13.SettingsBloc>(
+        () => _i13.SettingsBloc(authDataSource: gh<_i11.AuthDataSource>()));
+    gh.factory<_i14.SignInBloc>(
+        () => _i14.SignInBloc(authDataSource: gh<_i11.AuthDataSource>()));
+    gh.factory<_i15.SignUpBloc>(
+        () => _i15.SignUpBloc(authDataSource: gh<_i11.AuthDataSource>()));
+    gh.factory<_i16.TokensBloc>(
+        () => _i16.TokensBloc(authDataSource: gh<_i11.AuthDataSource>()));
+    gh.singleton<_i17.AppBloc>(
+        () => _i17.AppBloc(authDataSource: gh<_i11.AuthDataSource>()));
     return this;
   }
 }

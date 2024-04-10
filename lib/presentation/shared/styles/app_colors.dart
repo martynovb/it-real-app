@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color black = Color.fromRGBO(0, 0, 0, 1.0);
-  static const Color almostBlack = Color.fromRGBO(40, 40, 40, 1.0);
-  static const Color grey = Color.fromRGBO(194, 194, 194, 1.0);
-  static const Color lightGrey = Color.fromRGBO(232, 232, 232, 1);
-  static const Color darkGrey = Color.fromRGBO(113, 113, 113, 1);
-  static const Color lightPurple = Color.fromRGBO(149, 117, 205, 1.0);
-  static const Color red = Color.fromRGBO(255, 0, 0, 1.0);
-  static const Color white = Color.fromRGBO(255, 255, 255, 1.0);
-  static const Color transparent = Color.fromRGBO(0, 0, 0, 0.0);
+  static const Color transparent = Color(0x00000000);
+  static const Color almostBlack = Color(0xFF030303);
+  static const Color almostBlack2 = Color.fromARGB(255, 22, 23, 32);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color purple = Color(0xFF9397FC);
+  static const Color grey1 = Color(0xFFF7F7F7);
+  static const Color grey2 = Color(0xFFEDEDED);
+  static const Color grey3 = Color(0xFFD2D1D5);
+  static const Color grey4 = Color(0xFFB1AFB7);
+  static const Color red = Color(0xFFB3261E);
+  static const Color green = Color(0xFF0E7D16);
 }
