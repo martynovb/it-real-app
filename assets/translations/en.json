@@ -1,3 +1,11 @@
 {
-    "appName": "It rael"
+    "appName": "It rael",
+    "getStartedNow": "Get Started Now",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "step": "Step",
+    "step1Description": "Analyzing for AI-generated patterns to ensure authenticity",
+    "step2Description": "Scanning our database to locate any matching persons",
+    "step3Description": "Generating the report",
+    "oboardingTitleDescription": "Ensure authenticity prior to engagement by verifying profile photos through our app's swift verification process"
 }

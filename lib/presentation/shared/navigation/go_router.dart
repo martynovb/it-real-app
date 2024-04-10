@@ -16,7 +16,7 @@ final GoRouter router = GoRouter(
   routerNeglect: true,
   navigatorKey: _rootNavigatorKey,
   debugLogDiagnostics: true,
-  initialLocation: RouteConstants.splash.path,
+  initialLocation: RouteConstants.onboarding.path,
   errorBuilder: (context, state) {
     return const ErrorPage();
   },

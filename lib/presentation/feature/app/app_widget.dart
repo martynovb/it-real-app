@@ -5,6 +5,7 @@ import 'package:it_real_app/presentation/shared/app_constants.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/navigation/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:it_real_app/presentation/shared/styles/app_styles.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -28,7 +29,9 @@ class AppWidget extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            theme: state.themeData,
+            theme: AppTheme.lightThemeData,
+            darkTheme: AppTheme.darkThemeData,
+            themeMode: state.themeMode,
             routerConfig: router,
           ),
         ),
