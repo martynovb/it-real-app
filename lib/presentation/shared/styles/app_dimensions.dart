@@ -1,13 +1,32 @@
-class AppDimensions {
-  static const sizeDefBtnH = 50.0;
-  static const paddingDef = 8.0;
-  static const paddingDef0_5 = paddingDef / 2;
-  static const paddingDef2 = paddingDef * 2;
-  static const paddingDef3 = paddingDef * 3;
-  static const paddingDef4 = paddingDef * 4;
+import 'package:flutter/material.dart';
 
-  static const filterHeaderHeight = 40.0;
-  static const bottomNavigationBarHeight = 60.0;
-  static const youtubeWatchLaterVideoHeight = 150.0;
-  static const youTubeVideoCornerRadius = 16.0;
+class AppDimensions {
+  static const double footerHeight = 80.0;
+  static const double deskSidePadding = 40.0;
+  static const double mobSidePadding = 16.0;
+
+  static const SizedBox sBoxDeskHorizontalPadding =
+      SizedBox(width: deskSidePadding);
+  static const SizedBox sBoxDeskVerticalPadding =
+      SizedBox(height: deskSidePadding);
+
+  static const SizedBox sBoxMobHorizontalPadding =
+      SizedBox(width: mobSidePadding);
+  static const SizedBox sBoxMobVerticalPadding =
+      SizedBox(height: mobSidePadding);
+
+  static const SizedBox sBoxH8 = SizedBox(height: 8);
+  static const SizedBox sBoxW8 = SizedBox(width: 8);
+  static const SizedBox sBoxH16 = SizedBox(height: 16);
+  static const SizedBox sBoxW16 = SizedBox(width: 16);
+  static const SizedBox sBoxH24 = SizedBox(height: 24);
+  static const SizedBox sBoxW24 = SizedBox(width: 24);
+  static const SizedBox sBoxH32 = SizedBox(height: 32);
+  static const SizedBox sBoxW32 = SizedBox(width: 32);
+  static const SizedBox sBoxH40 = SizedBox(height: 40);
+  static const SizedBox sBoxW40 = SizedBox(width: 40);
+  static const SizedBox sBoxH48 = SizedBox(height: 48);
+  static const SizedBox sBoxW48 = SizedBox(width: 48);
+  static const SizedBox sBoxH56 = SizedBox(height: 56);
+  static const SizedBox sBoxH60 = SizedBox(height: 60);
 }
