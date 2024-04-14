@@ -10,5 +10,8 @@ abstract class  LocaleKeys {
   static const step2Description = 'step2Description';
   static const step3Description = 'step3Description';
   static const oboardingTitleDescription = 'oboardingTitleDescription';
+  static const privacyPolicy = 'privacyPolicy';
+  static const termsOfService = 'termsOfService';
+  static const allRightsReserved = 'allRightsReserved';
 
 }

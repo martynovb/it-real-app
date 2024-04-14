@@ -4,7 +4,6 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
-import 'package:it_real_app/presentation/shared/styles/app_styles.dart';
 
 part 'app_bloc.freezed.dart';
 

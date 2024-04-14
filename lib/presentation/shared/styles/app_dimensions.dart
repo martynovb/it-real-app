@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
 class AppDimensions {
-  static const sizeDefBtnH = 50.0;
-  static const paddingDef = 8.0;
-  static const paddingDef0_5 = paddingDef / 2;
-  static const paddingDef2 = paddingDef * 2;
-  static const paddingDef3 = paddingDef * 3;
-  static const paddingDef4 = paddingDef * 4;
+  static const double footerHeight = 80.0;
+  static const double deskSidePadding = 40.0;
+  static const double mobSidePadding = 16.0;
+
+  static const SizedBox sBoxDeskHorizontalPadding =
+      SizedBox(width: deskSidePadding);
+  static const SizedBox sBoxDeskVerticalPadding =
+      SizedBox(height: deskSidePadding);
+
+  static const SizedBox sBoxMobHorizontalPadding =
+      SizedBox(width: mobSidePadding);
+  static const SizedBox sBoxMobVerticalPadding =
+      SizedBox(height: mobSidePadding);
 
   static const SizedBox sBoxH8 = SizedBox(height: 8);
   static const SizedBox sBoxW8 = SizedBox(width: 8);
@@ -20,4 +27,6 @@ class AppDimensions {
   static const SizedBox sBoxW40 = SizedBox(width: 40);
   static const SizedBox sBoxH48 = SizedBox(height: 48);
   static const SizedBox sBoxW48 = SizedBox(width: 48);
+  static const SizedBox sBoxH56 = SizedBox(height: 56);
+  static const SizedBox sBoxH60 = SizedBox(height: 60);
 }
