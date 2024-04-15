@@ -2,11 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/app_utils.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
@@ -66,7 +68,7 @@ class OnboardingPage extends StatelessWidget {
             child: btnWithRightArrow(
               context: context,
               text: LocaleKeys.getStartedNow.tr(),
-              onPressed: () {},
+              onPressed: () => context.go(RouteConstants.signIn.path),
             ),
           ),
           const Spacer(),
@@ -120,7 +122,7 @@ class OnboardingPage extends StatelessWidget {
             btnOutlined(
               context: context,
               text: LocaleKeys.signIn.tr(),
-              onPressed: () {},
+              onPressed: () => context.go(RouteConstants.signIn.path),
             ),
           ],
         ),
@@ -160,13 +162,13 @@ class OnboardingPage extends StatelessWidget {
             btnOutlined(
               context: context,
               text: LocaleKeys.signIn.tr(),
-              onPressed: () {},
+              onPressed: () => context.go(RouteConstants.signIn.path),
             ),
             AppDimensions.sBoxW16,
             btnFilled(
               context: context,
               text: LocaleKeys.signUp.tr(),
-              onPressed: () {},
+              onPressed: () => context.go(RouteConstants.signUp.path),
             ),
           ],
         ),
@@ -376,7 +378,6 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 
-
   Widget _stepMobile({
     required BuildContext context,
     required String stepTitle,
@@ -395,11 +396,10 @@ class OnboardingPage extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(27)),
       ),
       child: Container(
-        
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: 18,
-              ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 18,
+        ),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
           borderRadius: const BorderRadius.all(Radius.circular(16)),
@@ -429,22 +429,23 @@ class OnboardingPage extends StatelessWidget {
             AppDimensions.sBoxW16,
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Text(
-                  stepTitle,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                ),
-                AppDimensions.sBoxH8,
-                Text(
-                  stepDescription,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                ),
-              ]),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      stepTitle,
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
+                    ),
+                    AppDimensions.sBoxH8,
+                    Text(
+                      stepDescription,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
+                    ),
+                  ]),
             ),
           ],
         ),

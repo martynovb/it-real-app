@@ -10,5 +10,13 @@
     "oboardingTitleDescription": "Ensure authenticity prior to engagement by verifying profile photos through our app's swift verification process",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
-    "allRightsReserved": "© {} | {} | All Rights Reserved"
+    "allRightsReserved": "© {} | {} | All Rights Reserved",
+    "email": "Email",
+    "enterYourEmailAdress": "Enter your email address",
+    "password": "Password",
+    "enterYourPassword": "Enter your password",
+    "repeatPassword": "Repeat Password",
+    "orSignUpWithGoogle": "Or Sign Up with Google",
+    "continueWithGoogle": "Continue with Google",
+    "haveAnAccount": "Have an account?"
 }

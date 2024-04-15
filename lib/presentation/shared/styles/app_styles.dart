@@ -41,7 +41,7 @@ class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       background: AppColors.grey2,
-      onBackground: AppColors.white,
+      onBackground: AppColors.grey4,
       surface: AppColors.white,
       onSurface: AppColors.almostBlack,
       tertiary: AppColors.grey3,

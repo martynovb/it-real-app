@@ -13,5 +13,13 @@ abstract class  LocaleKeys {
   static const privacyPolicy = 'privacyPolicy';
   static const termsOfService = 'termsOfService';
   static const allRightsReserved = 'allRightsReserved';
+  static const email = 'email';
+  static const enterYourEmailAdress = 'enterYourEmailAdress';
+  static const password = 'password';
+  static const enterYourPassword = 'enterYourPassword';
+  static const repeatPassword = 'repeatPassword';
+  static const orSignUpWithGoogle = 'orSignUpWithGoogle';
+  static const continueWithGoogle = 'continueWithGoogle';
+  static const haveAnAccount = 'haveAnAccount';
 
 }
