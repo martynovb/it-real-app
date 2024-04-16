@@ -67,5 +67,7 @@ class AppTextStyleWeb {
         bodyLarge: _webBody1,
         bodyMedium: _webBody2,
         bodySmall: _webBody3,
+        
+        titleSmall: _webCaption,
       );
 }

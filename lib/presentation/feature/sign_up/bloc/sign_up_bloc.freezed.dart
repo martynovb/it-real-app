@@ -19,32 +19,48 @@ mixin _$SignUpEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(
+            String email, String password, String repeatPassword)
+        signUp,
+    required TResult Function() countinueWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult? Function()? countinueWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult Function()? countinueWithGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_SignUp value) signUp,
+    required TResult Function(_CountinueWithGoogle value) countinueWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_SignUp value)? signUp,
+    TResult? Function(_CountinueWithGoogle value)? countinueWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_SignUp value)? signUp,
+    TResult Function(_CountinueWithGoogle value)? countinueWithGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +123,10 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(
+            String email, String password, String repeatPassword)
+        signUp,
+    required TResult Function() countinueWithGoogle,
   }) {
     return started();
   }
@@ -115,6 +135,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult? Function()? countinueWithGoogle,
   }) {
     return started?.call();
   }
@@ -123,6 +146,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult Function()? countinueWithGoogle,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -135,6 +161,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_SignUp value) signUp,
+    required TResult Function(_CountinueWithGoogle value) countinueWithGoogle,
   }) {
     return started(this);
   }
@@ -143,6 +171,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_SignUp value)? signUp,
+    TResult? Function(_CountinueWithGoogle value)? countinueWithGoogle,
   }) {
     return started?.call(this);
   }
@@ -151,6 +181,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_SignUp value)? signUp,
+    TResult Function(_CountinueWithGoogle value)? countinueWithGoogle,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +194,288 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements SignUpEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$SignUpImplCopyWith<$Res> {
+  factory _$$SignUpImplCopyWith(
+          _$SignUpImpl value, $Res Function(_$SignUpImpl) then) =
+      __$$SignUpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email, String password, String repeatPassword});
+}
+
+/// @nodoc
+class __$$SignUpImplCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$SignUpImpl>
+    implements _$$SignUpImplCopyWith<$Res> {
+  __$$SignUpImplCopyWithImpl(
+      _$SignUpImpl _value, $Res Function(_$SignUpImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? repeatPassword = null,
+  }) {
+    return _then(_$SignUpImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      repeatPassword: null == repeatPassword
+          ? _value.repeatPassword
+          : repeatPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignUpImpl implements _SignUp {
+  const _$SignUpImpl(
+      {required this.email,
+      required this.password,
+      required this.repeatPassword});
+
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String repeatPassword;
+
+  @override
+  String toString() {
+    return 'SignUpEvent.signUp(email: $email, password: $password, repeatPassword: $repeatPassword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignUpImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.repeatPassword, repeatPassword) ||
+                other.repeatPassword == repeatPassword));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, password, repeatPassword);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignUpImplCopyWith<_$SignUpImpl> get copyWith =>
+      __$$SignUpImplCopyWithImpl<_$SignUpImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(
+            String email, String password, String repeatPassword)
+        signUp,
+    required TResult Function() countinueWithGoogle,
+  }) {
+    return signUp(email, password, repeatPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult? Function()? countinueWithGoogle,
+  }) {
+    return signUp?.call(email, password, repeatPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult Function()? countinueWithGoogle,
+    required TResult orElse(),
+  }) {
+    if (signUp != null) {
+      return signUp(email, password, repeatPassword);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SignUp value) signUp,
+    required TResult Function(_CountinueWithGoogle value) countinueWithGoogle,
+  }) {
+    return signUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SignUp value)? signUp,
+    TResult? Function(_CountinueWithGoogle value)? countinueWithGoogle,
+  }) {
+    return signUp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SignUp value)? signUp,
+    TResult Function(_CountinueWithGoogle value)? countinueWithGoogle,
+    required TResult orElse(),
+  }) {
+    if (signUp != null) {
+      return signUp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignUp implements SignUpEvent {
+  const factory _SignUp(
+      {required final String email,
+      required final String password,
+      required final String repeatPassword}) = _$SignUpImpl;
+
+  String get email;
+  String get password;
+  String get repeatPassword;
+  @JsonKey(ignore: true)
+  _$$SignUpImplCopyWith<_$SignUpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CountinueWithGoogleImplCopyWith<$Res> {
+  factory _$$CountinueWithGoogleImplCopyWith(_$CountinueWithGoogleImpl value,
+          $Res Function(_$CountinueWithGoogleImpl) then) =
+      __$$CountinueWithGoogleImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CountinueWithGoogleImplCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$CountinueWithGoogleImpl>
+    implements _$$CountinueWithGoogleImplCopyWith<$Res> {
+  __$$CountinueWithGoogleImplCopyWithImpl(_$CountinueWithGoogleImpl _value,
+      $Res Function(_$CountinueWithGoogleImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CountinueWithGoogleImpl implements _CountinueWithGoogle {
+  const _$CountinueWithGoogleImpl();
+
+  @override
+  String toString() {
+    return 'SignUpEvent.countinueWithGoogle()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CountinueWithGoogleImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(
+            String email, String password, String repeatPassword)
+        signUp,
+    required TResult Function() countinueWithGoogle,
+  }) {
+    return countinueWithGoogle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult? Function()? countinueWithGoogle,
+  }) {
+    return countinueWithGoogle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password, String repeatPassword)?
+        signUp,
+    TResult Function()? countinueWithGoogle,
+    required TResult orElse(),
+  }) {
+    if (countinueWithGoogle != null) {
+      return countinueWithGoogle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SignUp value) signUp,
+    required TResult Function(_CountinueWithGoogle value) countinueWithGoogle,
+  }) {
+    return countinueWithGoogle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SignUp value)? signUp,
+    TResult? Function(_CountinueWithGoogle value)? countinueWithGoogle,
+  }) {
+    return countinueWithGoogle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SignUp value)? signUp,
+    TResult Function(_CountinueWithGoogle value)? countinueWithGoogle,
+    required TResult orElse(),
+  }) {
+    if (countinueWithGoogle != null) {
+      return countinueWithGoogle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CountinueWithGoogle implements SignUpEvent {
+  const factory _CountinueWithGoogle() = _$CountinueWithGoogleImpl;
 }
 
 /// @nodoc

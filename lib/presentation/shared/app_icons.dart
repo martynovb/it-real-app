@@ -3,4 +3,5 @@ class AppIcons {
   static const String iconInsights = 'assets/icons/insights.svg';
   static const String iconReport = 'assets/icons/report.svg';
   static const String iconSearch = 'assets/icons/search.svg';
+  static const String iconGoogle = 'assets/icons/google.svg';
 }

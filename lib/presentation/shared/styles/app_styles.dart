@@ -20,15 +20,18 @@ class AppTheme {
     Color focusColor,
   ) {
     return ThemeData(
-      fontFamily: 'Switzer',
-      colorScheme: colorScheme,
-      canvasColor: colorScheme.background,
-      scaffoldBackgroundColor: colorScheme.background,
-      focusColor: focusColor,
-      useMaterial3: true,
-      textTheme:
-          isMobile ? AppTextStyleMobile.textTheme : AppTextStyleWeb.textTheme,
-    );
+        fontFamily: 'Switzer',
+        colorScheme: colorScheme,
+        canvasColor: colorScheme.background,
+        scaffoldBackgroundColor: colorScheme.background,
+        focusColor: focusColor,
+        useMaterial3: true,
+        textTheme:
+            isMobile ? AppTextStyleMobile.textTheme : AppTextStyleWeb.textTheme,
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: colorScheme.onPrimary,
+          selectionColor: AppColors.purple.withOpacity(0.5),
+        ));
   }
 
   static ColorScheme get _lightColorScheme {
@@ -40,13 +43,12 @@ class AppTheme {
       onSecondary: AppColors.almostBlack,
       error: AppColors.red,
       onError: AppColors.white,
-      background: AppColors.grey2,
+      background: AppColors.white,
       onBackground: AppColors.grey4,
       surface: AppColors.white,
       onSurface: AppColors.almostBlack,
       tertiary: AppColors.grey3,
       onTertiary: AppColors.grey4,
-      
     );
   }
 

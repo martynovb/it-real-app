@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -21,5 +23,36 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             status: FormzSubmissionStatus.initial,
             errorMessage: null,
           ),
-        );
+        ) {
+    on<_SignUp>(_onSignUp);
+    on<_CountinueWithGoogle>(_onCountinueWithGoogle);
+  }
+
+  Future<void> _onCountinueWithGoogle(_CountinueWithGoogle event, Emitter<SignUpState> emit) async {
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+      ),
+    );
+    await Future.delayed(const Duration(seconds: 2));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.success,
+      ),
+    );
+  }
+
+  Future<void> _onSignUp(_SignUp event, Emitter<SignUpState> emit) async {
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+      ),
+    );
+    await Future.delayed(const Duration(seconds: 2));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.success,
+      ),
+    );
+  }
 }

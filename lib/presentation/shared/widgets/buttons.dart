@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/app_utils.dart';
 import 'package:it_real_app/presentation/shared/styles/app_button_style.dart';
+import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
+import 'package:it_real_app/presentation/shared/widgets/app_loading_widget.dart';
 
 Widget btnWithRightArrow({
   required BuildContext context,
@@ -51,6 +53,7 @@ Widget btnWithRightArrow({
 Widget btnOutlined({
   required BuildContext context,
   required String text,
+  bool loading = false,
   void Function()? onPressed,
 }) =>
     ElevatedButton(
@@ -61,19 +64,72 @@ Widget btnOutlined({
             ? Theme.of(context).textTheme.displayMedium
             : Theme.of(context).textTheme.displaySmall,
       ),
-      child: Text(text),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: loading
+            ? Row(
+                children: [
+                  const AppLoadingWidget(),
+                  AppDimensions.sBoxW8,
+                  Text(text),
+                ],
+              )
+            : Text(text),
+      ),
     );
 
 Widget btnFilled({
   required BuildContext context,
   required String text,
+  bool loading = false,
   void Function()? onPressed,
 }) =>
     ElevatedButton(
-      onPressed: onPressed,
+      onPressed: loading ? null : onPressed,
       style: AppButtonStyle.filledBtnStyle(
         context: context,
         textStyle: Theme.of(context).textTheme.displaySmall,
       ),
-      child: Text(text),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: loading
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const AppLoadingWidget(),
+                  AppDimensions.sBoxW8,
+                  Text(text),
+                ],
+              )
+            : Text(text),
+      ),
+    );
+
+Widget btnOutlinedWithIcon({
+  required BuildContext context,
+  required String text,
+  void Function()? onPressed,
+  Widget? icon,
+}) =>
+    ElevatedButton(
+      onPressed: onPressed,
+      style: AppButtonStyle.outlinedBtnWithIconStyle(
+        context: context,
+        textStyle: isMobile
+            ? Theme.of(context).textTheme.displayMedium
+            : Theme.of(context).textTheme.displaySmall,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: icon != null
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  icon,
+                  AppDimensions.sBoxW8,
+                  Text(text),
+                ],
+              )
+            : Text(text),
+      ),
     );

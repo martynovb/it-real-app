@@ -28,7 +28,7 @@ class AppTextStyleMobile {
 
   static const TextStyle _captionMediumMobile = TextStyle(
     fontSize: 12,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.normal,
   );
 
   static TextTheme get textTheme => const TextTheme(
@@ -42,5 +42,6 @@ class AppTextStyleMobile {
         bodyLarge: _mobileBody1,
         bodyMedium: _mobileBody2,
         bodySmall: _mobileBody2,
+        titleSmall: _captionMediumMobile,
       );
 }
