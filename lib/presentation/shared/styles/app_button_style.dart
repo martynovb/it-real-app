@@ -85,6 +85,59 @@ class AppButtonStyle {
           },
         ),
       );
+  static ButtonStyle outlinedBtnWithIconStyle({
+    required BuildContext context,
+    required TextStyle? textStyle,
+  }) =>
+      ButtonStyle(
+        elevation: MaterialStateProperty.all(0),
+        backgroundColor: MaterialStateProperty.all(
+          Theme.of(context).colorScheme.primary,
+        ),
+        shadowColor: MaterialStateProperty.all(AppColors.grey1),
+        foregroundColor: MaterialStateProperty.all(
+          Theme.of(context).colorScheme.onPrimary,
+        ),
+        textStyle: MaterialStateProperty.all(textStyle?.copyWith(
+          color: Theme.of(context).colorScheme.onPrimary,
+        )),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.only(
+            left: 30,
+            right: 30,
+            top: 20,
+            bottom: 20,
+          ),
+        ),
+        shape: MaterialStateProperty.resolveWith(
+          (states) {
+            if (states.contains(MaterialState.hovered)) {
+              return RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+                side: BorderSide(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  width: 1,
+                ),
+              );
+            } else if (states.contains(MaterialState.disabled)) {
+              return RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+                side: const BorderSide(
+                  color: AppColors.grey4,
+                  width: 1.5,
+                ),
+              );
+            }
+            return RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: BorderSide(
+                color: Theme.of(context).colorScheme.onTertiary,
+                width: 1.5,
+              ),
+            );
+          },
+        ),
+      );
 
   static ButtonStyle filledBtnStyle({
     required BuildContext context,

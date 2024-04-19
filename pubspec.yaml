@@ -55,6 +55,7 @@ flutter:
     - assets/translations/
     - assets/fonts/
     - assets/icons/
+    - assets/icons/loading/
 
   fonts:
     - family: Switzer

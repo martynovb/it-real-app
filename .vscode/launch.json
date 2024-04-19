@@ -11,7 +11,9 @@
             "program": "lib/targets/development/main.dart",
             "args": [
                 "--dart-define-from-file",
-                "lib/targets/development/configs.json"
+                "lib/targets/development/configs.json",
+                "--web-port",
+                "8080",
             ]
         },
         {

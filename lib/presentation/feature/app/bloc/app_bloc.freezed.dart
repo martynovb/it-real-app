@@ -166,7 +166,6 @@ abstract class _AppStarted implements AppEvent {
 /// @nodoc
 mixin _$AppState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
-  AuthenticationStatus get authStatus => throw _privateConstructorUsedError;
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -182,7 +181,6 @@ abstract class $AppStateCopyWith<$Res> {
   @useResult
   $Res call(
       {FormzSubmissionStatus status,
-      AuthenticationStatus authStatus,
       ThemeMode themeMode,
       String? errorMessage});
 }
@@ -201,7 +199,6 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @override
   $Res call({
     Object? status = null,
-    Object? authStatus = null,
     Object? themeMode = null,
     Object? errorMessage = freezed,
   }) {
@@ -210,10 +207,6 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
-      authStatus: null == authStatus
-          ? _value.authStatus
-          : authStatus // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
@@ -236,7 +229,6 @@ abstract class _$$AppStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {FormzSubmissionStatus status,
-      AuthenticationStatus authStatus,
       ThemeMode themeMode,
       String? errorMessage});
 }
@@ -253,7 +245,6 @@ class __$$AppStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? authStatus = null,
     Object? themeMode = null,
     Object? errorMessage = freezed,
   }) {
@@ -262,10 +253,6 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
-      authStatus: null == authStatus
-          ? _value.authStatus
-          : authStatus // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
@@ -283,14 +270,11 @@ class __$$AppStateImplCopyWithImpl<$Res>
 class _$AppStateImpl implements _AppState {
   const _$AppStateImpl(
       {required this.status,
-      required this.authStatus,
       required this.themeMode,
       required this.errorMessage});
 
   @override
   final FormzSubmissionStatus status;
-  @override
-  final AuthenticationStatus authStatus;
   @override
   final ThemeMode themeMode;
   @override
@@ -298,7 +282,7 @@ class _$AppStateImpl implements _AppState {
 
   @override
   String toString() {
-    return 'AppState(status: $status, authStatus: $authStatus, themeMode: $themeMode, errorMessage: $errorMessage)';
+    return 'AppState(status: $status, themeMode: $themeMode, errorMessage: $errorMessage)';
   }
 
   @override
@@ -307,8 +291,6 @@ class _$AppStateImpl implements _AppState {
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.authStatus, authStatus) ||
-                other.authStatus == authStatus) &&
             (identical(other.themeMode, themeMode) ||
                 other.themeMode == themeMode) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -316,8 +298,7 @@ class _$AppStateImpl implements _AppState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, authStatus, themeMode, errorMessage);
+  int get hashCode => Object.hash(runtimeType, status, themeMode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -329,14 +310,11 @@ class _$AppStateImpl implements _AppState {
 abstract class _AppState implements AppState {
   const factory _AppState(
       {required final FormzSubmissionStatus status,
-      required final AuthenticationStatus authStatus,
       required final ThemeMode themeMode,
       required final String? errorMessage}) = _$AppStateImpl;
 
   @override
   FormzSubmissionStatus get status;
-  @override
-  AuthenticationStatus get authStatus;
   @override
   ThemeMode get themeMode;
   @override

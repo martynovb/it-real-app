@@ -13,5 +13,21 @@ abstract class  LocaleKeys {
   static const privacyPolicy = 'privacyPolicy';
   static const termsOfService = 'termsOfService';
   static const allRightsReserved = 'allRightsReserved';
+  static const email = 'email';
+  static const enterYourEmailAdress = 'enterYourEmailAdress';
+  static const emailCannotBeEmpty = 'emailCannotBeEmpty';
+  static const emailIsNotValid = 'emailIsNotValid';
+  static const emailLengthIsNotValid = 'emailLengthIsNotValid';
+  static const password = 'password';
+  static const enterYourPassword = 'enterYourPassword';
+  static const passwordCannotBeEmpty = 'passwordCannotBeEmpty';
+  static const passwordLengthIsNotValid = 'passwordLengthIsNotValid';
+  static const passwordIsNotValid = 'passwordIsNotValid';
+  static const repeatPassword = 'repeatPassword';
+  static const repeatPasswordCannotBeEmpty = 'repeatPasswordCannotBeEmpty';
+  static const passwordsDoNotMatch = 'passwordsDoNotMatch';
+  static const orSignUpWithGoogle = 'orSignUpWithGoogle';
+  static const continueWithGoogle = 'continueWithGoogle';
+  static const haveAnAccount = 'haveAnAccount';
 
 }

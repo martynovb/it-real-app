@@ -17,8 +17,8 @@ class AuthRepo extends AuthDataSource {
   }
 
   @override
-  Future<void> logout() {
-    throw UnimplementedError();
+  Future<void> logout() async {
+    await supabaseClient.auth.signOut();
   }
 
   @override
@@ -30,16 +30,29 @@ class AuthRepo extends AuthDataSource {
   }
 
   @override
-  Future<UserModel> signInWithGoogle() {
-    throw UnimplementedError();
+  Future<void> signInWithGoogle() async {
+    await supabaseClient.auth.signInWithOAuth(
+      OAuthProvider.google,
+    );
   }
 
   @override
   Future<UserModel> signUpWithEmailAndPassword({
     required String email,
     required String password,
-    required String username,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final response = await supabaseClient.auth.signUp(
+      email: email,
+      password: password,
+    );
+
+    return UserModel(
+      id: response.user?.id ?? '',
+      email: response.user?.email ?? '',
+      tokens: int.tryParse(
+            response.user?.userMetadata?['tokens'] ?? '0',
+          ) ??
+          0,
+    );
   }
 }
