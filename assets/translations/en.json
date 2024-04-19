@@ -9,7 +9,7 @@
     "step3Description": "Generating the report",
     "oboardingTitleDescription": "Ensure authenticity prior to engagement by verifying profile photos through our app's swift verification process",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
+    "termsOfService": "Terms & Conditions",
     "allRightsReserved": "© {} | {} | All Rights Reserved",
     "email": "Email",
     "enterYourEmailAdress": "Enter your email address",
@@ -25,6 +25,12 @@
     "repeatPasswordCannotBeEmpty": "Repeat password cannot be empty",
     "passwordsDoNotMatch": "Passwords do not match",
     "orSignUpWithGoogle": "Or Sign Up with Google",
+    "orSignInWithGoogle": "Or Sign In with Google",
     "continueWithGoogle": "Continue with Google",
-    "haveAnAccount": "Have an account?"
+    "haveAnAccount": "Have an account?",
+    "forgotPassword": "Forgot your password?",
+    "bySigningInYouAgreeToOur": "By signing in, you agree to our",
+    "bySigningUpYouAgreeToOur": "By signing up, you agree to our",
+    "and": "and",
+    "doNotHaveAnAccount": "Don't have an account?"
 }
