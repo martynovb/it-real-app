@@ -38,7 +38,7 @@ GoRouter router({
           path: RouteConstants.signIn.path,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: const SignInPage(),
+            child: SignInPage(),
           ),
         ),
         GoRoute(

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,12 +16,12 @@ import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/input_field.dart';
 
 class SignUpPage extends StatelessWidget {
-  SignUpPage({super.key});
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _repeatPasswordController =
       TextEditingController();
+
+  SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +148,57 @@ class SignUpPage extends StatelessWidget {
                                     ),
                               ),
                             ),
+                            AppDimensions.sBoxH24,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        color: AppColors.grey4,
+                                      ),
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          '${LocaleKeys.bySigningUpYouAgreeToOur.tr()} ',
+                                    ),
+                                    TextSpan(
+                                      text: LocaleKeys.termsOfService.tr(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
+                                          ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {},
+                                    ),
+                                    TextSpan(
+                                      text: ' ${LocaleKeys.and.tr()} ',
+                                    ),
+                                    TextSpan(
+                                      text: LocaleKeys.privacyPolicy.tr(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
+                                          ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {},
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ],
@@ -166,7 +218,7 @@ class SignUpPage extends StatelessWidget {
                         ),
                         AppDimensions.sBoxW8,
                         InkWell(
-                          onTap: () => Navigator.of(context).pop(),
+                          onTap: () => context.go(RouteConstants.signIn.path),
                           child: Text(
                             LocaleKeys.signIn.tr(),
                             style: Theme.of(context)

@@ -25,8 +25,20 @@ class AuthRepo extends AuthDataSource {
   Future<UserModel> signInWithEmailAndPassword({
     required String email,
     required String password,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final response = await supabaseClient.auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+
+    return UserModel(
+      id: response.user?.id ?? '',
+      email: response.user?.email ?? '',
+      tokens: int.tryParse(
+            response.user?.userMetadata?['tokens'] ?? '0',
+          ) ??
+          0,
+    );
   }
 
   @override

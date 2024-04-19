@@ -27,7 +27,13 @@ abstract class  LocaleKeys {
   static const repeatPasswordCannotBeEmpty = 'repeatPasswordCannotBeEmpty';
   static const passwordsDoNotMatch = 'passwordsDoNotMatch';
   static const orSignUpWithGoogle = 'orSignUpWithGoogle';
+  static const orSignInWithGoogle = 'orSignInWithGoogle';
   static const continueWithGoogle = 'continueWithGoogle';
   static const haveAnAccount = 'haveAnAccount';
+  static const forgotPassword = 'forgotPassword';
+  static const bySigningInYouAgreeToOur = 'bySigningInYouAgreeToOur';
+  static const bySigningUpYouAgreeToOur = 'bySigningUpYouAgreeToOur';
+  static const and = 'and';
+  static const doNotHaveAnAccount = 'doNotHaveAnAccount';
 
 }
