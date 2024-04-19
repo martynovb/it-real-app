@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
+import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,11 +21,18 @@ class HomePage extends StatelessWidget {
             appBar: AppBar(
               title: const Text('Home'),
             ),
-            body: const Center(
+            body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Home Page'),
+                  const Text('Home Page'),
+                  btnFilled(
+                    context: context,
+                    text: 'Logout',
+                    onPressed: () {
+                      context.read<AuthBloc>().add(const AuthEvent.logout());
+                    },
+                  ),
                 ],
               ),
             ),

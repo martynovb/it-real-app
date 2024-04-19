@@ -6,6 +6,13 @@ class RouteItem {
 }
 
 class RouteConstants {
+
+  static Set<String> unauthRoutes = {
+    RouteConstants.signIn.path,
+    RouteConstants.signUp.path,
+    RouteConstants.onboarding.path,
+  };
+
   static const RouteItem splash = RouteItem(
     path: '/splash',
     name: 'Splash',

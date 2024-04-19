@@ -1,16 +1,38 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:formz/formz.dart';
+import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
+import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 
-enum RepeatPasswordValidationError { empty, invalid }
+class RepeatPasswordValidationErrorModel extends FieldValidationErrorModel {
+  RepeatPasswordValidationErrorModel.empty()
+      : super.empty(
+          errorMessage: LocaleKeys.repeatPasswordCannotBeEmpty.tr(),
+        );
 
-class RepeatPassword extends FormzInput<String, RepeatPasswordValidationError> {
+  RepeatPasswordValidationErrorModel.invalid()
+      : super.invalid(
+          errorMessage: LocaleKeys.passwordsDoNotMatch.tr(),
+        );
+}
+
+class RepeatPasswordFieldValidation
+    extends FormzInput<String, FieldValidationErrorModel> {
   final String password;
 
-  const RepeatPassword.pure(this.password) : super.pure('');
-  const RepeatPassword.dirty(this.password, [String value = ''])
+  const RepeatPasswordFieldValidation.pure(this.password) : super.pure('');
+  const RepeatPasswordFieldValidation.dirty(this.password, [String value = ''])
       : super.dirty(value);
 
   @override
-  RepeatPasswordValidationError? validator(String value) {
-    return value == password ? null : RepeatPasswordValidationError.invalid;
+  FieldValidationErrorModel? validator(String value) {
+    if (value.isEmpty) {
+      return RepeatPasswordValidationErrorModel.empty();
+    }
+
+    if (value != password) {
+      return RepeatPasswordValidationErrorModel.invalid();
+    }
+
+    return null;
   }
 }

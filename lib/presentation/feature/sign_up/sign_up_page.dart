@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 import 'package:it_real_app/presentation/feature/sign_up/bloc/sign_up_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
@@ -24,7 +26,12 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt.get<SignUpBloc>(),
-      child: BlocBuilder<SignUpBloc, SignUpState>(
+      child: BlocConsumer<SignUpBloc, SignUpState>(
+        listener: (context, state) {
+          if (state.status == FormzSubmissionStatus.success) {
+            context.go(RouteConstants.home.path);
+          }
+        },
         builder: (context, state) {
           return Scaffold(
               body: SingleChildScrollView(
@@ -46,23 +53,29 @@ class SignUpPage extends StatelessWidget {
                         Column(
                           children: [
                             AppInputField(
+                              key: UniqueKey(),
                               controller: _emailController,
                               lable: LocaleKeys.email.tr(),
                               hintText: LocaleKeys.enterYourEmailAdress.tr(),
+                              errorText: state.emailError?.message,
                             ),
                             AppDimensions.sBoxH24,
                             AppInputField(
+                              key: UniqueKey(),
                               controller: _passwordController,
                               lable: LocaleKeys.password.tr(),
                               hintText: LocaleKeys.enterYourPassword.tr(),
                               showPasswordToggle: true,
+                              errorText: state.passwordError?.message,
                             ),
                             AppDimensions.sBoxH24,
                             AppInputField(
+                              key: UniqueKey(),
                               controller: _repeatPasswordController,
                               lable: LocaleKeys.repeatPassword.tr(),
                               hintText: LocaleKeys.enterYourPassword.tr(),
                               showPasswordToggle: true,
+                              errorText: state.repeatPasswordError?.message,
                             ),
                             AppDimensions.sBoxH24,
                             SizedBox(
@@ -130,12 +143,7 @@ class SignUpPage extends StatelessWidget {
                                 context: context,
                                 text: LocaleKeys.continueWithGoogle.tr(),
                                 onPressed: () => context.read<SignUpBloc>().add(
-                                      SignUpEvent.signUp(
-                                        email: _emailController.text,
-                                        password: _passwordController.text,
-                                        repeatPassword:
-                                            _repeatPasswordController.text,
-                                      ),
+                                      const SignUpEvent.countinueWithGoogle(),
                                     ),
                               ),
                             ),

@@ -29,9 +29,9 @@ class _AppInputFieldState extends State<AppInputField> {
   String? errorText;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     errorText = widget.errorText;
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -134,10 +134,4 @@ class _AppInputFieldState extends State<AppInputField> {
           width: 2,
         ),
       );
-
-  @override
-  void dispose() {
-    widget.controller?.dispose();
-    super.dispose();
-  }
 }

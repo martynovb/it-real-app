@@ -482,6 +482,12 @@ abstract class _CountinueWithGoogle implements SignUpEvent {
 mixin _$SignUpState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  FieldValidationErrorModel? get emailError =>
+      throw _privateConstructorUsedError;
+  FieldValidationErrorModel? get passwordError =>
+      throw _privateConstructorUsedError;
+  FieldValidationErrorModel? get repeatPasswordError =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpStateCopyWith<SignUpState> get copyWith =>
@@ -494,7 +500,12 @@ abstract class $SignUpStateCopyWith<$Res> {
           SignUpState value, $Res Function(SignUpState) then) =
       _$SignUpStateCopyWithImpl<$Res, SignUpState>;
   @useResult
-  $Res call({FormzSubmissionStatus status, String? errorMessage});
+  $Res call(
+      {FormzSubmissionStatus status,
+      String? errorMessage,
+      FieldValidationErrorModel? emailError,
+      FieldValidationErrorModel? passwordError,
+      FieldValidationErrorModel? repeatPasswordError});
 }
 
 /// @nodoc
@@ -512,6 +523,9 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   $Res call({
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? repeatPasswordError = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -522,6 +536,18 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as FieldValidationErrorModel?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as FieldValidationErrorModel?,
+      repeatPasswordError: freezed == repeatPasswordError
+          ? _value.repeatPasswordError
+          : repeatPasswordError // ignore: cast_nullable_to_non_nullable
+              as FieldValidationErrorModel?,
     ) as $Val);
   }
 }
@@ -534,7 +560,12 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
       __$$SignUpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({FormzSubmissionStatus status, String? errorMessage});
+  $Res call(
+      {FormzSubmissionStatus status,
+      String? errorMessage,
+      FieldValidationErrorModel? emailError,
+      FieldValidationErrorModel? passwordError,
+      FieldValidationErrorModel? repeatPasswordError});
 }
 
 /// @nodoc
@@ -550,6 +581,9 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? repeatPasswordError = freezed,
   }) {
     return _then(_$SignUpStateImpl(
       status: null == status
@@ -560,6 +594,18 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as FieldValidationErrorModel?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as FieldValidationErrorModel?,
+      repeatPasswordError: freezed == repeatPasswordError
+          ? _value.repeatPasswordError
+          : repeatPasswordError // ignore: cast_nullable_to_non_nullable
+              as FieldValidationErrorModel?,
     ));
   }
 }
@@ -567,16 +613,27 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SignUpStateImpl implements _SignUpState {
-  const _$SignUpStateImpl({required this.status, required this.errorMessage});
+  const _$SignUpStateImpl(
+      {required this.status,
+      required this.errorMessage,
+      this.emailError,
+      this.passwordError,
+      this.repeatPasswordError});
 
   @override
   final FormzSubmissionStatus status;
   @override
   final String? errorMessage;
+  @override
+  final FieldValidationErrorModel? emailError;
+  @override
+  final FieldValidationErrorModel? passwordError;
+  @override
+  final FieldValidationErrorModel? repeatPasswordError;
 
   @override
   String toString() {
-    return 'SignUpState(status: $status, errorMessage: $errorMessage)';
+    return 'SignUpState(status: $status, errorMessage: $errorMessage, emailError: $emailError, passwordError: $passwordError, repeatPasswordError: $repeatPasswordError)';
   }
 
   @override
@@ -586,11 +643,18 @@ class _$SignUpStateImpl implements _SignUpState {
             other is _$SignUpStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) ||
+                other.passwordError == passwordError) &&
+            (identical(other.repeatPasswordError, repeatPasswordError) ||
+                other.repeatPasswordError == repeatPasswordError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage);
+  int get hashCode => Object.hash(runtimeType, status, errorMessage, emailError,
+      passwordError, repeatPasswordError);
 
   @JsonKey(ignore: true)
   @override
@@ -601,13 +665,23 @@ class _$SignUpStateImpl implements _SignUpState {
 
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
-      {required final FormzSubmissionStatus status,
-      required final String? errorMessage}) = _$SignUpStateImpl;
+          {required final FormzSubmissionStatus status,
+          required final String? errorMessage,
+          final FieldValidationErrorModel? emailError,
+          final FieldValidationErrorModel? passwordError,
+          final FieldValidationErrorModel? repeatPasswordError}) =
+      _$SignUpStateImpl;
 
   @override
   FormzSubmissionStatus get status;
   @override
   String? get errorMessage;
+  @override
+  FieldValidationErrorModel? get emailError;
+  @override
+  FieldValidationErrorModel? get passwordError;
+  @override
+  FieldValidationErrorModel? get repeatPasswordError;
   @override
   @JsonKey(ignore: true)
   _$$SignUpStateImplCopyWith<_$SignUpStateImpl> get copyWith =>

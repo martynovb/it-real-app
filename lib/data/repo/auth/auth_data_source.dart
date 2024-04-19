@@ -13,10 +13,9 @@ abstract class AuthDataSource {
   Future<UserModel> signUpWithEmailAndPassword({
     required String email,
     required String password,
-    required String username,
   });
 
-  Future<UserModel> signInWithGoogle();
+  Future<void> signInWithGoogle();
 
   Future<void> logout();
 }

@@ -1,10 +1,12 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
+import 'package:it_real_app/domain/field_validators/email_field_validation.dart';
+import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
+import 'package:it_real_app/domain/field_validators/password_field_validation.dart';
+import 'package:it_real_app/domain/field_validators/repeat_password_field_validation.dart';
 
 part 'sign_up_bloc.freezed.dart';
 
@@ -28,31 +30,69 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<_CountinueWithGoogle>(_onCountinueWithGoogle);
   }
 
-  Future<void> _onCountinueWithGoogle(_CountinueWithGoogle event, Emitter<SignUpState> emit) async {
+  Future<void> _onSignUp(_SignUp event, Emitter<SignUpState> emit) async {
+    final emailError = EmailFieldValidation.dirty(
+      event.email,
+    ).validator(event.email);
+    final passwordError = PasswordFieldValidation.dirty(
+      event.password,
+    ).validator(event.password);
+    final repeatPasswordError = RepeatPasswordFieldValidation.dirty(
+      event.password,
+      event.repeatPassword,
+    ).validator(event.repeatPassword);
+
+    if (emailError != null ||
+        passwordError != null ||
+        repeatPasswordError != null) {
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          emailError: emailError,
+          passwordError: passwordError,
+          repeatPasswordError: repeatPasswordError,
+        ),
+      );
+      return;
+    }
+
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.inProgress,
+        emailError: null,
+        passwordError: null,
+        repeatPasswordError: null,
       ),
     );
-    await Future.delayed(const Duration(seconds: 2));
+
+    await authDataSource.signUpWithEmailAndPassword(
+      email: event.email,
+      password: event.password,
+    );
+
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.success,
+        emailError: null,
+        passwordError: null,
+        repeatPasswordError: null,
       ),
     );
   }
 
-  Future<void> _onSignUp(_SignUp event, Emitter<SignUpState> emit) async {
+  Future<void> _onCountinueWithGoogle(
+    _CountinueWithGoogle event,
+    Emitter<SignUpState> emit,
+  ) async {
+    if (state.status == FormzSubmissionStatus.inProgress) {
+      return;
+    }
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.inProgress,
       ),
     );
-    await Future.delayed(const Duration(seconds: 2));
-    emit(
-      state.copyWith(
-        status: FormzSubmissionStatus.success,
-      ),
-    );
+
+    await authDataSource.signInWithGoogle();
   }
 }

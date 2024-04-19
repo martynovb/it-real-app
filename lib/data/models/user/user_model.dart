@@ -8,8 +8,6 @@ class UserModel with _$UserModel {
   const factory UserModel({
     required String id,
     required String email,
-    required String username,
-    required String avatarUrl,
     required int tokens,
   }) = _UserModel;
 
@@ -21,8 +19,6 @@ class UserModel with _$UserModel {
   static const empty = UserModel(
     id: '',
     email: '',
-    username: '',
-    avatarUrl: '',
     tokens: 0,
   );
 
