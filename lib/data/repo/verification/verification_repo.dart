@@ -13,7 +13,10 @@ class VerificationRepo extends VerificationDataSource {
   });
 
   @override
-  Future<ReportModel> verifyPhoto({required XFile photoFile}) {
-    throw UnimplementedError();
+  Future<ReportModel> verifyPhoto({required XFile photoFile}) async {
+    return const ReportModel(
+      aiGenerated: false,
+      matchInDb: false,
+    );
   }
 }

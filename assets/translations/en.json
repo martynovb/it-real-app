@@ -32,5 +32,10 @@
     "bySigningInYouAgreeToOur": "By signing in, you agree to our",
     "bySigningUpYouAgreeToOur": "By signing up, you agree to our",
     "and": "and",
-    "doNotHaveAnAccount": "Don't have an account?"
+    "doNotHaveAnAccount": "Don't have an account?",
+    "photoVerification": "Photo Verification",
+    "step1PhotoVerification": "Analyzing for AI-generated patterns",
+    "step2PhotoVerification": "Scanning our database",
+    "step3PhotoVerification": "Generating the report",
+    "viewReport": "View Report"
 }

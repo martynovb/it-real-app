@@ -41,11 +41,13 @@ class AppTextStyleWeb {
     fontWeight: FontWeight.normal,
   );
 
+  // ignore: unused_field
   static const TextStyle _webBody4 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
   );
 
+  // ignore: unused_field
   static const TextStyle _webBody5 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.normal,

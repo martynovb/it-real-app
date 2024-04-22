@@ -13,4 +13,5 @@ class AppColors {
   static const Color red = Color(0xFFB3261E);
   static const Color green = Color(0xFF0E7D16);
   static const Color hyperlink = Color(0xFF1551BF);
+  static const Color yellow = Color(0xFFFFDE2C);
 }

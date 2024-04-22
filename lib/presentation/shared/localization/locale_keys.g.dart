@@ -35,5 +35,10 @@ abstract class  LocaleKeys {
   static const bySigningUpYouAgreeToOur = 'bySigningUpYouAgreeToOur';
   static const and = 'and';
   static const doNotHaveAnAccount = 'doNotHaveAnAccount';
+  static const photoVerification = 'photoVerification';
+  static const step1PhotoVerification = 'step1PhotoVerification';
+  static const step2PhotoVerification = 'step2PhotoVerification';
+  static const step3PhotoVerification = 'step3PhotoVerification';
+  static const viewReport = 'viewReport';
 
 }
