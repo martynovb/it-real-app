@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart';
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
+import 'package:it_real_app/presentation/feature/photo_verification/bloc/photo_verification_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_constants.dart';
 import 'package:it_real_app/presentation/shared/navigation/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -30,7 +31,12 @@ class RealApp extends StatelessWidget {
                 const AppEvent.appStarted(),
               ),
           ),
-          BlocProvider(create: (context) => GetIt.I.get<AuthBloc>()),
+          BlocProvider(
+            create: (context) => GetIt.I.get<PhotoVerificationBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => GetIt.I.get<AuthBloc>(),
+          ),
         ],
         child: const AppWidget(),
       ),
@@ -57,15 +63,23 @@ class AppWidget extends StatelessWidget {
               darkTheme: AppTheme.darkThemeData,
               themeMode: appState.themeMode,
               routerConfig: router(
-                initialLocation:
-                    authState.authStatus == AuthenticationStatus.authenticated
-                        ? RouteConstants.home.path
-                        : RouteConstants.onboarding.path,
+                initialLocation: RouteConstants.home.path,
               ),
             );
           },
         );
       },
     );
+  }
+
+  String _initialRoute(AuthenticationStatus authenticationStatus) {
+    switch (authenticationStatus) {
+      case AuthenticationStatus.authenticated:
+        return RouteConstants.home.path;
+      case AuthenticationStatus.unauthenticated:
+        return RouteConstants.onboarding.path;
+      default:
+        return RouteConstants.splash.path;
+    }
   }
 }

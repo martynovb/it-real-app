@@ -4,6 +4,7 @@
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "step": "Step",
+    "ok": "OK",
     "step1Description": "Analyzing for AI-generated patterns to ensure authenticity",
     "step2Description": "Scanning our database to locate any matching persons",
     "step3Description": "Generating the report",
@@ -32,5 +33,18 @@
     "bySigningInYouAgreeToOur": "By signing in, you agree to our",
     "bySigningUpYouAgreeToOur": "By signing up, you agree to our",
     "and": "and",
-    "doNotHaveAnAccount": "Don't have an account?"
+    "doNotHaveAnAccount": "Don't have an account?",
+    "photoVerification": "Photo Verification",
+    "step1PhotoVerification": "Analyzing for AI-generated patterns",
+    "step2PhotoVerification": "Scanning our database",
+    "step3PhotoVerification": "Generating the report",
+    "viewReport": "View Report",
+    "photoVerificationDialogFailureTitle": "Uh-oh, it seems there might be an issue!",
+    "photoVerificationDialogFailureDescription": "Our system has detected signs of potential AI manipulation or the presence of this face in our database, indicating that the person in the photo might not be authentic. We advise exercising caution and further verification steps.",
+    "photoVerificationDialogSuccessTitle": "Congratulations!",
+    "photoVerificationDialogSuccessDescription": "The person in the photo appears to be genuine based on our analysis. Our servers meticulously searched our database, and no matching records were found. Rest assured, we've employed advanced algorithms to ensure accuracy",
+    "photoVerificationDialogSuccessSubDescription": "However, please note that while our system is highly accurate, there might be rare instances where fraudulent activity goes undetected.\nThank you for trusting us with your verification process.",
+    "networkError": "Network error",
+    "serverError": "Server error",
+    "somethingWentWrong": "Something went wrong"
 }
