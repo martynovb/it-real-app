@@ -9,7 +9,15 @@ enum PhotoVerificationStatus {
 @freezed
 class PhotoVerificationState with _$PhotoVerificationState {
   const factory PhotoVerificationState({
+    required Map<PhotoVerificationStatus, FormzSubmissionStatus> steps,
+    ReportModel? report,
     required FormzSubmissionStatus status,
-    required PhotoVerificationStatus photoVerificationStatus,
+    BaseException? exception,
   }) = _PhotoVerificationState;
+
+  static const initialSteps = {
+    PhotoVerificationStatus.aiCheck: FormzSubmissionStatus.initial,
+    PhotoVerificationStatus.databaseCheck: FormzSubmissionStatus.initial,
+    PhotoVerificationStatus.resultPreparation: FormzSubmissionStatus.initial,
+  };
 }

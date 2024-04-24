@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:go_router/go_router.dart';
 import 'package:it_real_app/presentation/feature/photo_verification/bloc/photo_verification_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_utils.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
@@ -12,7 +11,11 @@ import 'package:it_real_app/presentation/shared/widgets/app_loading_widget.dart'
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 
 class PhotoVerificationView extends StatelessWidget {
-  const PhotoVerificationView({super.key});
+  final void Function() onShowReport;
+  const PhotoVerificationView({
+    super.key,
+    required this.onShowReport,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +24,10 @@ class PhotoVerificationView extends StatelessWidget {
       content: BlocBuilder<PhotoVerificationBloc, PhotoVerificationState>(
         builder: (context, state) {
           return Container(
+            constraints: const BoxConstraints(maxWidth: 450),
             color: Theme.of(context).colorScheme.background,
             child: Padding(
-              padding: const EdgeInsets.all(8
-              ),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 children: [
                   Text(
@@ -34,44 +37,38 @@ class PhotoVerificationView extends StatelessWidget {
                   AppDimensions.sBoxH32,
                   _stepView(
                     context: context,
-                    status: state.photoVerificationStatus ==
-                            PhotoVerificationStatus.aiCheck
-                        ? state.status
-                        : FormzSubmissionStatus.success,
-                    step: 1,
+                    status: state.steps[PhotoVerificationStatus.aiCheck] ??
+                        FormzSubmissionStatus.initial,
+                    step: PhotoVerificationStatus.aiCheck,
                     stepText: LocaleKeys.step1PhotoVerification.tr(),
                   ),
                   AppDimensions.sBoxH16,
                   _stepView(
                     context: context,
-                    status: state.photoVerificationStatus ==
-                            PhotoVerificationStatus.databaseCheck
-                        ? state.status
-                        : FormzSubmissionStatus.success,
-                    step: 2,
+                    status:
+                        state.steps[PhotoVerificationStatus.databaseCheck] ??
+                            FormzSubmissionStatus.initial,
+                    step: PhotoVerificationStatus.databaseCheck,
                     stepText: LocaleKeys.step2PhotoVerification.tr(),
                   ),
                   AppDimensions.sBoxH16,
                   _stepView(
                     context: context,
-                    status: state.photoVerificationStatus ==
-                            PhotoVerificationStatus.resultPreparation
-                        ? state.status
-                        : FormzSubmissionStatus.success,
-                    step: 3,
+                    status: state
+                            .steps[PhotoVerificationStatus.resultPreparation] ??
+                        FormzSubmissionStatus.initial,
+                    step: PhotoVerificationStatus.resultPreparation,
                     stepText: LocaleKeys.step3PhotoVerification.tr(),
                   ),
-                  if (state.status == FormzSubmissionStatus.success ||
-                      state.status == FormzSubmissionStatus.failure) ...[
+                  if (state.steps[PhotoVerificationStatus.resultPreparation] ==
+                      FormzSubmissionStatus.success) ...[
                     AppDimensions.sBoxH32,
                     SizedBox(
                       width: 200,
                       child: btnFilled(
                         context: context,
                         text: LocaleKeys.viewReport.tr(),
-                        onPressed: () {
-                          context.pop();
-                        },
+                        onPressed: onShowReport,
                       ),
                     ),
                   ]
@@ -87,7 +84,7 @@ class PhotoVerificationView extends StatelessWidget {
   Widget _stepView({
     required BuildContext context,
     required FormzSubmissionStatus status,
-    required int step,
+    required PhotoVerificationStatus step,
     required String stepText,
   }) {
     return Row(
@@ -98,7 +95,7 @@ class PhotoVerificationView extends StatelessWidget {
         _checkLoadingStatus(status),
         AppDimensions.sBoxW16,
         Text(
-          '$step ${LocaleKeys.step.tr()}:',
+          '${PhotoVerificationStatus.values.indexOf(step) + 1} ${LocaleKeys.step.tr()}:',
           style: Theme.of(context).textTheme.displaySmall,
         ),
         AppDimensions.sBoxW8,
@@ -135,7 +132,7 @@ class PhotoVerificationView extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Icon(
-          Icons.error,
+          Icons.close,
           color: AppColors.white,
         ),
       );
@@ -149,6 +146,19 @@ class PhotoVerificationView extends StatelessWidget {
         ),
         child: const Icon(
           Icons.check,
+          color: AppColors.white,
+        ),
+      );
+    } else if (status == FormzSubmissionStatus.initial) {
+      return Container(
+        width: isMobile ? 40 : 60,
+        height: isMobile ? 40 : 60,
+        decoration: BoxDecoration(
+          color: AppColors.grey4,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: const Icon(
+          Icons.question_mark,
           color: AppColors.white,
         ),
       );

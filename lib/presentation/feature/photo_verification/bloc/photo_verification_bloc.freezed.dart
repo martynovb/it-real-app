@@ -19,18 +19,21 @@ mixin _$PhotoVerificationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(XFile photoFile) verifyPhoto,
+    required TResult Function() reset,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(XFile photoFile)? verifyPhoto,
+    TResult? Function()? reset,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(XFile photoFile)? verifyPhoto,
+    TResult Function()? reset,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$PhotoVerificationEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_VerifyPhoto value) verifyPhoto,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_VerifyPhoto value)? verifyPhoto,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_VerifyPhoto value)? verifyPhoto,
+    TResult Function(_Reset value)? reset,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -141,6 +147,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(XFile photoFile) verifyPhoto,
+    required TResult Function() reset,
     required TResult Function() error,
   }) {
     return verifyPhoto(photoFile);
@@ -150,6 +157,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(XFile photoFile)? verifyPhoto,
+    TResult? Function()? reset,
     TResult? Function()? error,
   }) {
     return verifyPhoto?.call(photoFile);
@@ -159,6 +167,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(XFile photoFile)? verifyPhoto,
+    TResult Function()? reset,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -172,6 +181,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_VerifyPhoto value) verifyPhoto,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_Error value) error,
   }) {
     return verifyPhoto(this);
@@ -181,6 +191,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_VerifyPhoto value)? verifyPhoto,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_Error value)? error,
   }) {
     return verifyPhoto?.call(this);
@@ -190,6 +201,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_VerifyPhoto value)? verifyPhoto,
+    TResult Function(_Reset value)? reset,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -208,6 +220,114 @@ abstract class _VerifyPhoto implements PhotoVerificationEvent {
   @JsonKey(ignore: true)
   _$$VerifyPhotoImplCopyWith<_$VerifyPhotoImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$PhotoVerificationEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'PhotoVerificationEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(XFile photoFile) verifyPhoto,
+    required TResult Function() reset,
+    required TResult Function() error,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(XFile photoFile)? verifyPhoto,
+    TResult? Function()? reset,
+    TResult? Function()? error,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(XFile photoFile)? verifyPhoto,
+    TResult Function()? reset,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_VerifyPhoto value) verifyPhoto,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Error value) error,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_VerifyPhoto value)? verifyPhoto,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_Error value)? error,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_VerifyPhoto value)? verifyPhoto,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements PhotoVerificationEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -249,6 +369,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(XFile photoFile) verifyPhoto,
+    required TResult Function() reset,
     required TResult Function() error,
   }) {
     return error();
@@ -258,6 +379,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(XFile photoFile)? verifyPhoto,
+    TResult? Function()? reset,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -267,6 +389,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(XFile photoFile)? verifyPhoto,
+    TResult Function()? reset,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -280,6 +403,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_VerifyPhoto value) verifyPhoto,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -289,6 +413,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_VerifyPhoto value)? verifyPhoto,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -298,6 +423,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_VerifyPhoto value)? verifyPhoto,
+    TResult Function(_Reset value)? reset,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -314,9 +440,11 @@ abstract class _Error implements PhotoVerificationEvent {
 
 /// @nodoc
 mixin _$PhotoVerificationState {
-  FormzSubmissionStatus get status => throw _privateConstructorUsedError;
-  PhotoVerificationStatus get photoVerificationStatus =>
+  Map<PhotoVerificationStatus, FormzSubmissionStatus> get steps =>
       throw _privateConstructorUsedError;
+  ReportModel? get report => throw _privateConstructorUsedError;
+  FormzSubmissionStatus get status => throw _privateConstructorUsedError;
+  BaseException? get exception => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PhotoVerificationStateCopyWith<PhotoVerificationState> get copyWith =>
@@ -330,8 +458,12 @@ abstract class $PhotoVerificationStateCopyWith<$Res> {
       _$PhotoVerificationStateCopyWithImpl<$Res, PhotoVerificationState>;
   @useResult
   $Res call(
-      {FormzSubmissionStatus status,
-      PhotoVerificationStatus photoVerificationStatus});
+      {Map<PhotoVerificationStatus, FormzSubmissionStatus> steps,
+      ReportModel? report,
+      FormzSubmissionStatus status,
+      BaseException? exception});
+
+  $ReportModelCopyWith<$Res>? get report;
 }
 
 /// @nodoc
@@ -348,19 +480,41 @@ class _$PhotoVerificationStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? steps = null,
+    Object? report = freezed,
     Object? status = null,
-    Object? photoVerificationStatus = null,
+    Object? exception = freezed,
   }) {
     return _then(_value.copyWith(
+      steps: null == steps
+          ? _value.steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as Map<PhotoVerificationStatus, FormzSubmissionStatus>,
+      report: freezed == report
+          ? _value.report
+          : report // ignore: cast_nullable_to_non_nullable
+              as ReportModel?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
-      photoVerificationStatus: null == photoVerificationStatus
-          ? _value.photoVerificationStatus
-          : photoVerificationStatus // ignore: cast_nullable_to_non_nullable
-              as PhotoVerificationStatus,
+      exception: freezed == exception
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as BaseException?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReportModelCopyWith<$Res>? get report {
+    if (_value.report == null) {
+      return null;
+    }
+
+    return $ReportModelCopyWith<$Res>(_value.report!, (value) {
+      return _then(_value.copyWith(report: value) as $Val);
+    });
   }
 }
 
@@ -374,8 +528,13 @@ abstract class _$$PhotoVerificationStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {FormzSubmissionStatus status,
-      PhotoVerificationStatus photoVerificationStatus});
+      {Map<PhotoVerificationStatus, FormzSubmissionStatus> steps,
+      ReportModel? report,
+      FormzSubmissionStatus status,
+      BaseException? exception});
+
+  @override
+  $ReportModelCopyWith<$Res>? get report;
 }
 
 /// @nodoc
@@ -391,18 +550,28 @@ class __$$PhotoVerificationStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? steps = null,
+    Object? report = freezed,
     Object? status = null,
-    Object? photoVerificationStatus = null,
+    Object? exception = freezed,
   }) {
     return _then(_$PhotoVerificationStateImpl(
+      steps: null == steps
+          ? _value._steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as Map<PhotoVerificationStatus, FormzSubmissionStatus>,
+      report: freezed == report
+          ? _value.report
+          : report // ignore: cast_nullable_to_non_nullable
+              as ReportModel?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
-      photoVerificationStatus: null == photoVerificationStatus
-          ? _value.photoVerificationStatus
-          : photoVerificationStatus // ignore: cast_nullable_to_non_nullable
-              as PhotoVerificationStatus,
+      exception: freezed == exception
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as BaseException?,
     ));
   }
 }
@@ -411,16 +580,30 @@ class __$$PhotoVerificationStateImplCopyWithImpl<$Res>
 
 class _$PhotoVerificationStateImpl implements _PhotoVerificationState {
   const _$PhotoVerificationStateImpl(
-      {required this.status, required this.photoVerificationStatus});
+      {required final Map<PhotoVerificationStatus, FormzSubmissionStatus> steps,
+      this.report,
+      required this.status,
+      this.exception})
+      : _steps = steps;
 
+  final Map<PhotoVerificationStatus, FormzSubmissionStatus> _steps;
+  @override
+  Map<PhotoVerificationStatus, FormzSubmissionStatus> get steps {
+    if (_steps is EqualUnmodifiableMapView) return _steps;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_steps);
+  }
+
+  @override
+  final ReportModel? report;
   @override
   final FormzSubmissionStatus status;
   @override
-  final PhotoVerificationStatus photoVerificationStatus;
+  final BaseException? exception;
 
   @override
   String toString() {
-    return 'PhotoVerificationState(status: $status, photoVerificationStatus: $photoVerificationStatus)';
+    return 'PhotoVerificationState(steps: $steps, report: $report, status: $status, exception: $exception)';
   }
 
   @override
@@ -428,14 +611,16 @@ class _$PhotoVerificationStateImpl implements _PhotoVerificationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PhotoVerificationStateImpl &&
+            const DeepCollectionEquality().equals(other._steps, _steps) &&
+            (identical(other.report, report) || other.report == report) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(
-                    other.photoVerificationStatus, photoVerificationStatus) ||
-                other.photoVerificationStatus == photoVerificationStatus));
+            (identical(other.exception, exception) ||
+                other.exception == exception));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, photoVerificationStatus);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_steps), report, status, exception);
 
   @JsonKey(ignore: true)
   @override
@@ -447,14 +632,19 @@ class _$PhotoVerificationStateImpl implements _PhotoVerificationState {
 
 abstract class _PhotoVerificationState implements PhotoVerificationState {
   const factory _PhotoVerificationState(
-          {required final FormzSubmissionStatus status,
-          required final PhotoVerificationStatus photoVerificationStatus}) =
-      _$PhotoVerificationStateImpl;
+      {required final Map<PhotoVerificationStatus, FormzSubmissionStatus> steps,
+      final ReportModel? report,
+      required final FormzSubmissionStatus status,
+      final BaseException? exception}) = _$PhotoVerificationStateImpl;
 
+  @override
+  Map<PhotoVerificationStatus, FormzSubmissionStatus> get steps;
+  @override
+  ReportModel? get report;
   @override
   FormzSubmissionStatus get status;
   @override
-  PhotoVerificationStatus get photoVerificationStatus;
+  BaseException? get exception;
   @override
   @JsonKey(ignore: true)
   _$$PhotoVerificationStateImplCopyWith<_$PhotoVerificationStateImpl>

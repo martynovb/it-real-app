@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppLoadingWidget extends StatefulWidget {
-  const AppLoadingWidget({super.key});
+  final double size;
+  const AppLoadingWidget({
+    super.key,
+    this.size = 24,
+  });
 
   @override
   State<AppLoadingWidget> createState() => _AppLoadingWidgetState();
@@ -35,8 +39,8 @@ class _AppLoadingWidgetState extends State<AppLoadingWidget> {
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       _imageUrls[_currentIndex],
-      width: 24,
-      height: 24,
+      width: widget.size,
+      height: widget.size,
     );
   }
 

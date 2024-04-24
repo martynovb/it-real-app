@@ -6,6 +6,7 @@ abstract class  LocaleKeys {
   static const signIn = 'signIn';
   static const signUp = 'signUp';
   static const step = 'step';
+  static const ok = 'ok';
   static const step1Description = 'step1Description';
   static const step2Description = 'step2Description';
   static const step3Description = 'step3Description';
@@ -40,5 +41,13 @@ abstract class  LocaleKeys {
   static const step2PhotoVerification = 'step2PhotoVerification';
   static const step3PhotoVerification = 'step3PhotoVerification';
   static const viewReport = 'viewReport';
+  static const photoVerificationDialogFailureTitle = 'photoVerificationDialogFailureTitle';
+  static const photoVerificationDialogFailureDescription = 'photoVerificationDialogFailureDescription';
+  static const photoVerificationDialogSuccessTitle = 'photoVerificationDialogSuccessTitle';
+  static const photoVerificationDialogSuccessDescription = 'photoVerificationDialogSuccessDescription';
+  static const photoVerificationDialogSuccessSubDescription = 'photoVerificationDialogSuccessSubDescription';
+  static const networkError = 'networkError';
+  static const serverError = 'serverError';
+  static const somethingWentWrong = 'somethingWentWrong';
 
 }
