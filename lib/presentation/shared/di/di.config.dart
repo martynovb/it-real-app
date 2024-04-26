@@ -8,7 +8,6 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:it_real_app/data/repo/auth/auth_data_source.dart' as _i12;
@@ -19,13 +18,15 @@ import 'package:it_real_app/data/repo/verification/verification_data_source.dart
     as _i10;
 import 'package:it_real_app/data/repo/verification/verification_repo.dart'
     as _i11;
-import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart' as _i5;
+import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart' as _i6;
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart'
     as _i19;
-import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart'
+import 'package:it_real_app/presentation/feature/drag_and_drop/bloc/drag_and_drop_bloc.dart'
     as _i3;
-import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart'
+import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart'
     as _i4;
+import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart'
+    as _i5;
 import 'package:it_real_app/presentation/feature/photo_verification/bloc/photo_verification_bloc.dart'
     as _i14;
 import 'package:it_real_app/presentation/feature/settings/bloc/settings_bloc.dart'
@@ -52,10 +53,10 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     final dataModule = _$DataModule();
-    gh.factory<_i3.HomeBloc>(() => _i3.HomeBloc());
-    gh.factory<_i4.OnboardingBloc>(() => _i4.OnboardingBloc());
-    gh.singleton<_i5.AppBloc>(() => _i5.AppBloc());
-    gh.singleton<_i6.FlutterSecureStorage>(() => dataModule.secureStorage);
+    gh.factory<_i3.DragAndDropBloc>(() => _i3.DragAndDropBloc());
+    gh.factory<_i4.HomeBloc>(() => _i4.HomeBloc());
+    gh.factory<_i5.OnboardingBloc>(() => _i5.OnboardingBloc());
+    gh.singleton<_i6.AppBloc>(() => _i6.AppBloc());
     gh.singleton<_i7.SupabaseClient>(() => dataModule.supabase);
     gh.singleton<_i8.TokensDataSource>(
         () => _i9.TokensRepo(supabaseClient: gh<_i7.SupabaseClient>()));

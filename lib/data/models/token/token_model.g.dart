@@ -8,8 +8,8 @@ part of 'token_model.dart';
 
 _$TokenModelImpl _$$TokenModelImplFromJson(Map<String, dynamic> json) =>
     _$TokenModelImpl(
-      count: json['count'] as int,
-      price: json['price'] as int,
+      count: (json['count'] as num).toInt(),
+      price: (json['price'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$TokenModelImplToJson(_$TokenModelImpl instance) =>

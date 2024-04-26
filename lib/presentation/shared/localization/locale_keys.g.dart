@@ -49,5 +49,8 @@ abstract class  LocaleKeys {
   static const networkError = 'networkError';
   static const serverError = 'serverError';
   static const somethingWentWrong = 'somethingWentWrong';
+  static const clickToUpload = 'clickToUpload';
+  static const orDragAndDrop = 'orDragAndDrop';
+  static const maxFileSize = 'maxFileSize';
 
 }

@@ -46,5 +46,8 @@
     "photoVerificationDialogSuccessSubDescription": "However, please note that while our system is highly accurate, there might be rare instances where fraudulent activity goes undetected.\nThank you for trusting us with your verification process.",
     "networkError": "Network error",
     "serverError": "Server error",
-    "somethingWentWrong": "Something went wrong"
+    "somethingWentWrong": "Something went wrong",
+    "clickToUpload": "Click to upload",
+    "orDragAndDrop": "or drag and drop",
+    "maxFileSize": "Max. File Size: {}"
 }

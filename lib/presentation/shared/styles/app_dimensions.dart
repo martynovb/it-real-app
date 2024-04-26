@@ -15,6 +15,7 @@ class AppDimensions {
   static const SizedBox sBoxMobVerticalPadding =
       SizedBox(height: mobSidePadding);
 
+  static const SizedBox sBoxH4 = SizedBox(height: 4);
   static const SizedBox sBoxH8 = SizedBox(height: 8);
   static const SizedBox sBoxW8 = SizedBox(width: 8);
   static const SizedBox sBoxH16 = SizedBox(height: 16);
