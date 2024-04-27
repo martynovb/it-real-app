@@ -12,7 +12,9 @@ import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
+import 'package:it_real_app/presentation/shared/utils/bytes_converter.dart';
 import 'package:super_drag_and_drop/super_drag_and_drop.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DragAndDropArea extends StatelessWidget {
   final void Function(XFile? file) onFileDropped;
@@ -37,10 +39,6 @@ class DragAndDropArea extends StatelessWidget {
         }
       }, builder: (context, state) {
         return Container(
-          constraints: const BoxConstraints(
-            maxWidth: double.infinity,
-            maxHeight: double.infinity,
-          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: Theme.of(context).colorScheme.primary,
@@ -48,9 +46,11 @@ class DragAndDropArea extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 _content(context),
-                if (state.progress != null || state.photoFile != null)
+                if (state.status == FormzSubmissionStatus.inProgress ||
+                    state.status == FormzSubmissionStatus.success)
                   _imageFileContainer(context, state),
               ],
             ),
@@ -101,7 +101,11 @@ class DragAndDropArea extends StatelessWidget {
                           decorationColor: AppColors.hyperlink,
                           decorationStyle: TextDecorationStyle.solid,
                         ),
-                    recognizer: TapGestureRecognizer()..onTap = () {},
+                    recognizer: TapGestureRecognizer()..onTap = () {
+                      context.read<DragAndDropBloc>().add(
+                            const DragAndDropEvent.pickImage(),
+                          );
+                    },
                     children: [
                       TextSpan(
                         text: ' ${LocaleKeys.orDragAndDrop.tr()}',
@@ -112,7 +116,12 @@ class DragAndDropArea extends StatelessWidget {
                 ),
                 AppDimensions.sBoxH16,
                 Text(
-                  LocaleKeys.maxFileSize.tr(args: ['10MB']),
+                  LocaleKeys.maxFileSize.tr(args: [
+                    BytesConverter.formatBytes(
+                      DragAndDropBloc.maxFileSizeInBytes,
+                      0,
+                    )
+                  ]),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onTertiary,
                       ),
@@ -126,68 +135,104 @@ class DragAndDropArea extends StatelessWidget {
   }
 
   Widget _imageFileContainer(BuildContext context, DragAndDropState state) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Theme.of(context).colorScheme.onTertiary,
-          width: 1,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Container(
+        constraints: const BoxConstraints(minHeight: 84),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Theme.of(context).colorScheme.onTertiary,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(8),
+          color: Theme.of(context).colorScheme.background,
         ),
-        borderRadius: BorderRadius.circular(8),
-        color: Theme.of(context).colorScheme.background,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    AppIcons.iconUpload,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).colorScheme.onPrimary,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  AppDimensions.sBoxW8,
-                  _fileName(
-                    context: context,
-                    fileName: state.fileName ?? '',
-                    extension: DragAndDropBloc.formats[state.fileFormat] ?? '',
-                  ),
-                ],
+              SvgPicture.asset(
+                AppIcons.iconPhotoInProgress,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.onPrimary,
+                  BlendMode.srcIn,
+                ),
               ),
-              if (state.progress != null) ...[
-                AppDimensions.sBoxH4,
-                LinearProgressIndicator(
-                  value: state.progress?.toDouble(),
-                  backgroundColor: Theme.of(context).colorScheme.onTertiary,
-                  valueColor: const AlwaysStoppedAnimation<Color>(
-                    AppColors.purple,
-                  ),
-                ),
-                AppDimensions.sBoxH4,
-                Text(
-                  '${state.progress}% done',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onTertiary,
+              AppDimensions.sBoxW8,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _fileName(
+                      context: context,
+                      fileName: state.fileName ?? '',
+                      extension:
+                          DragAndDropBloc.formats[state.fileFormat] ?? '',
+                    ),
+                    if (state.status == FormzSubmissionStatus.inProgress &&
+                        state.progress != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppDimensions.sBoxH4,
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              return SizedBox(
+                                width: constraints.maxWidth,
+                                child: LinearProgressIndicator(
+                                  borderRadius: BorderRadius.circular(10),
+                                  minHeight: 4,
+                                  value: state.progress! / 100,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.tertiary,
+                                  valueColor:
+                                      const AlwaysStoppedAnimation<Color>(
+                                    AppColors.purple,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          Text(
+                            '${state.progress}% done',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onTertiary,
+                                ),
+                          ),
+                        ],
                       ),
+                    if (state.status == FormzSubmissionStatus.success)
+                      Text(
+                        state.fileSizeInMb ?? '...',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                              color: Theme.of(context).colorScheme.onTertiary,
+                            ),
+                      ),
+                  ],
                 ),
-              ],
+              ),
+              AppDimensions.sBoxW16,
+              IconButton(
+                icon: Icon(
+                  Icons.highlight_off,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                onPressed: () => context.read<DragAndDropBloc>().add(
+                      const DragAndDropEvent.reset(),
+                    ),
+              )
             ],
           ),
-          const Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.close,
-              color: Theme.of(context).colorScheme.onTertiary,
-            ),
-            onPressed: () => context.read<DragAndDropBloc>().add(
-                  const DragAndDropEvent.reset(),
-                ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -200,12 +245,14 @@ class DragAndDropArea extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: fileName,
-        style: Theme.of(context).textTheme.displaySmall,
+        text: fileName.length <= 30
+            ? fileName
+            : '${fileName.substring(0, 27)}...',
+        style: Theme.of(context).textTheme.bodyMedium,
         children: [
           TextSpan(
             text: extension,
-            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Theme.of(context).colorScheme.onTertiary,
                 ),
           ),

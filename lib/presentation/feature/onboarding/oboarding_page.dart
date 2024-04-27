@@ -348,6 +348,8 @@ class OnboardingPage extends StatelessWidget {
                     child: SizedBox(
                       child: SvgPicture.asset(
                         iconPah,
+                        width: 24,
+                        height: 24,
                         colorFilter: const ColorFilter.mode(
                           AppColors.purple,
                           BlendMode.srcIn,

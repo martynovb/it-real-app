@@ -38,7 +38,7 @@ class HomePageDesk extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          constraints: const BoxConstraints(maxWidth: 500, maxHeight: 300),
+          constraints: const BoxConstraints(maxWidth: 500),
           child: DragAndDropArea(
             onFileDropped: (XFile? file) {},
             onFileDropError: (String error) {},

@@ -9,6 +9,6 @@ class DragAndDropState with _$DragAndDropState {
     int? progress,
     String? fileName,
     FileFormat? fileFormat,
-    int? fileSize,
+    String? fileSizeInMb,
   }) = _DragAndDropState;
 }

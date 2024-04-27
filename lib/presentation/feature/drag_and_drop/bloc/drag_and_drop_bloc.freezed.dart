@@ -19,6 +19,7 @@ mixin _$DragAndDropEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
+    required TResult Function() pickImage,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) =>
@@ -26,6 +27,7 @@ mixin _$DragAndDropEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
+    TResult? Function()? pickImage,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) =>
@@ -33,6 +35,7 @@ mixin _$DragAndDropEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
+    TResult Function()? pickImage,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$DragAndDropEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) =>
@@ -48,6 +52,7 @@ mixin _$DragAndDropEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) =>
@@ -55,6 +60,7 @@ mixin _$DragAndDropEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -145,6 +151,7 @@ class _$PerformDropImpl implements _PerformDrop {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
+    required TResult Function() pickImage,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -155,6 +162,7 @@ class _$PerformDropImpl implements _PerformDrop {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
+    TResult? Function()? pickImage,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -165,6 +173,7 @@ class _$PerformDropImpl implements _PerformDrop {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
+    TResult Function()? pickImage,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -179,6 +188,7 @@ class _$PerformDropImpl implements _PerformDrop {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -189,6 +199,7 @@ class _$PerformDropImpl implements _PerformDrop {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -199,6 +210,7 @@ class _$PerformDropImpl implements _PerformDrop {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -217,6 +229,120 @@ abstract class _PerformDrop implements DragAndDropEvent {
   @JsonKey(ignore: true)
   _$$PerformDropImplCopyWith<_$PerformDropImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PickImageImplCopyWith<$Res> {
+  factory _$$PickImageImplCopyWith(
+          _$PickImageImpl value, $Res Function(_$PickImageImpl) then) =
+      __$$PickImageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PickImageImplCopyWithImpl<$Res>
+    extends _$DragAndDropEventCopyWithImpl<$Res, _$PickImageImpl>
+    implements _$$PickImageImplCopyWith<$Res> {
+  __$$PickImageImplCopyWithImpl(
+      _$PickImageImpl _value, $Res Function(_$PickImageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PickImageImpl implements _PickImage {
+  const _$PickImageImpl();
+
+  @override
+  String toString() {
+    return 'DragAndDropEvent.pickImage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PickImageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PerformDropEvent event) performDrop,
+    required TResult Function() pickImage,
+    required TResult Function(int progress) updateProgress,
+    required TResult Function() reset,
+  }) {
+    return pickImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PerformDropEvent event)? performDrop,
+    TResult? Function()? pickImage,
+    TResult? Function(int progress)? updateProgress,
+    TResult? Function()? reset,
+  }) {
+    return pickImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PerformDropEvent event)? performDrop,
+    TResult Function()? pickImage,
+    TResult Function(int progress)? updateProgress,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (pickImage != null) {
+      return pickImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PerformDrop value) performDrop,
+    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_UpdateProgress value) updateProgress,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return pickImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PerformDrop value)? performDrop,
+    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_UpdateProgress value)? updateProgress,
+    TResult? Function(_Reset value)? reset,
+  }) {
+    return pickImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PerformDrop value)? performDrop,
+    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_UpdateProgress value)? updateProgress,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (pickImage != null) {
+      return pickImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickImage implements DragAndDropEvent {
+  const factory _PickImage() = _$PickImageImpl;
 }
 
 /// @nodoc
@@ -286,6 +412,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
+    required TResult Function() pickImage,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -296,6 +423,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
+    TResult? Function()? pickImage,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -306,6 +434,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
+    TResult Function()? pickImage,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -320,6 +449,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -330,6 +460,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -340,6 +471,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -399,6 +531,7 @@ class _$ResetImpl implements _Reset {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
+    required TResult Function() pickImage,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -409,6 +542,7 @@ class _$ResetImpl implements _Reset {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
+    TResult? Function()? pickImage,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -419,6 +553,7 @@ class _$ResetImpl implements _Reset {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
+    TResult Function()? pickImage,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -433,6 +568,7 @@ class _$ResetImpl implements _Reset {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -443,6 +579,7 @@ class _$ResetImpl implements _Reset {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -453,6 +590,7 @@ class _$ResetImpl implements _Reset {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -476,7 +614,7 @@ mixin _$DragAndDropState {
   int? get progress => throw _privateConstructorUsedError;
   String? get fileName => throw _privateConstructorUsedError;
   FileFormat? get fileFormat => throw _privateConstructorUsedError;
-  int? get fileSize => throw _privateConstructorUsedError;
+  String? get fileSizeInMb => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DragAndDropStateCopyWith<DragAndDropState> get copyWith =>
@@ -496,7 +634,7 @@ abstract class $DragAndDropStateCopyWith<$Res> {
       int? progress,
       String? fileName,
       FileFormat? fileFormat,
-      int? fileSize});
+      String? fileSizeInMb});
 }
 
 /// @nodoc
@@ -518,7 +656,7 @@ class _$DragAndDropStateCopyWithImpl<$Res, $Val extends DragAndDropState>
     Object? progress = freezed,
     Object? fileName = freezed,
     Object? fileFormat = freezed,
-    Object? fileSize = freezed,
+    Object? fileSizeInMb = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -545,10 +683,10 @@ class _$DragAndDropStateCopyWithImpl<$Res, $Val extends DragAndDropState>
           ? _value.fileFormat
           : fileFormat // ignore: cast_nullable_to_non_nullable
               as FileFormat?,
-      fileSize: freezed == fileSize
-          ? _value.fileSize
-          : fileSize // ignore: cast_nullable_to_non_nullable
-              as int?,
+      fileSizeInMb: freezed == fileSizeInMb
+          ? _value.fileSizeInMb
+          : fileSizeInMb // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -568,7 +706,7 @@ abstract class _$$DragAndDropStateImplCopyWith<$Res>
       int? progress,
       String? fileName,
       FileFormat? fileFormat,
-      int? fileSize});
+      String? fileSizeInMb});
 }
 
 /// @nodoc
@@ -588,7 +726,7 @@ class __$$DragAndDropStateImplCopyWithImpl<$Res>
     Object? progress = freezed,
     Object? fileName = freezed,
     Object? fileFormat = freezed,
-    Object? fileSize = freezed,
+    Object? fileSizeInMb = freezed,
   }) {
     return _then(_$DragAndDropStateImpl(
       status: null == status
@@ -615,10 +753,10 @@ class __$$DragAndDropStateImplCopyWithImpl<$Res>
           ? _value.fileFormat
           : fileFormat // ignore: cast_nullable_to_non_nullable
               as FileFormat?,
-      fileSize: freezed == fileSize
-          ? _value.fileSize
-          : fileSize // ignore: cast_nullable_to_non_nullable
-              as int?,
+      fileSizeInMb: freezed == fileSizeInMb
+          ? _value.fileSizeInMb
+          : fileSizeInMb // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -633,7 +771,7 @@ class _$DragAndDropStateImpl implements _DragAndDropState {
       this.progress,
       this.fileName,
       this.fileFormat,
-      this.fileSize});
+      this.fileSizeInMb});
 
   @override
   final FormzSubmissionStatus status;
@@ -648,11 +786,11 @@ class _$DragAndDropStateImpl implements _DragAndDropState {
   @override
   final FileFormat? fileFormat;
   @override
-  final int? fileSize;
+  final String? fileSizeInMb;
 
   @override
   String toString() {
-    return 'DragAndDropState(status: $status, errorMessage: $errorMessage, photoFile: $photoFile, progress: $progress, fileName: $fileName, fileFormat: $fileFormat, fileSize: $fileSize)';
+    return 'DragAndDropState(status: $status, errorMessage: $errorMessage, photoFile: $photoFile, progress: $progress, fileName: $fileName, fileFormat: $fileFormat, fileSizeInMb: $fileSizeInMb)';
   }
 
   @override
@@ -671,13 +809,13 @@ class _$DragAndDropStateImpl implements _DragAndDropState {
                 other.fileName == fileName) &&
             (identical(other.fileFormat, fileFormat) ||
                 other.fileFormat == fileFormat) &&
-            (identical(other.fileSize, fileSize) ||
-                other.fileSize == fileSize));
+            (identical(other.fileSizeInMb, fileSizeInMb) ||
+                other.fileSizeInMb == fileSizeInMb));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, errorMessage, photoFile,
-      progress, fileName, fileFormat, fileSize);
+      progress, fileName, fileFormat, fileSizeInMb);
 
   @JsonKey(ignore: true)
   @override
@@ -695,7 +833,7 @@ abstract class _DragAndDropState implements DragAndDropState {
       final int? progress,
       final String? fileName,
       final FileFormat? fileFormat,
-      final int? fileSize}) = _$DragAndDropStateImpl;
+      final String? fileSizeInMb}) = _$DragAndDropStateImpl;
 
   @override
   FormzSubmissionStatus get status;
@@ -710,7 +848,7 @@ abstract class _DragAndDropState implements DragAndDropState {
   @override
   FileFormat? get fileFormat;
   @override
-  int? get fileSize;
+  String? get fileSizeInMb;
   @override
   @JsonKey(ignore: true)
   _$$DragAndDropStateImplCopyWith<_$DragAndDropStateImpl> get copyWith =>
