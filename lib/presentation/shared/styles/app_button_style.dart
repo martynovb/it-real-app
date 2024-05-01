@@ -50,8 +50,8 @@ class AppButtonStyle {
         ),
         padding: MaterialStateProperty.all(
           const EdgeInsets.only(
-            left: 30,
-            right: 30,
+            left: 20,
+            right: 20,
             top: 20,
             bottom: 20,
           ),
@@ -103,8 +103,8 @@ class AppButtonStyle {
         )),
         padding: MaterialStateProperty.all(
           const EdgeInsets.only(
-            left: 30,
-            right: 30,
+            left: 20,
+            right: 20,
             top: 20,
             bottom: 20,
           ),
@@ -188,8 +188,8 @@ class AppButtonStyle {
         padding: MaterialStateProperty.all(
           padding ??
               const EdgeInsets.only(
-                left: 30,
-                right: 30,
+                left: 20,
+                right: 20,
                 top: 20,
                 bottom: 20,
               ),

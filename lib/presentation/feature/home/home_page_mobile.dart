@@ -7,90 +7,189 @@ class HomePageMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
-        return Column(
-          children: [
-            _header(
-              context: context,
-              homeState: homeState,
-            ),
-            BlocConsumer<PhotoVerificationBloc, PhotoVerificationState>(
-              listener: _handlePhotoVerificationResult,
-              builder: (context, state) {
-                if (state.steps.values.any(
-                  (status) => status == FormzSubmissionStatus.inProgress,
-                )) {
-                  return Expanded(
-                    child: _photoVerificationView(context, state),
-                  );
-                }
-                return _content(
+        return BlocConsumer<PhotoVerificationBloc, PhotoVerificationState>(
+          listener: (context, photoVerificationState) =>
+              PhotoVerificationView.handlePhotoVerificationResult(
+            context,
+            photoVerificationState,
+          ),
+          builder: (context, photoVerificationState) {
+            return Column(
+              children: [
+                _headerMobile(
                   context: context,
                   homeState: homeState,
-                );
-              },
-            )
-          ],
+                ),
+                if (photoVerificationState.steps.values.any(
+                  (status) => status == FormzSubmissionStatus.inProgress,
+                )) ...[
+                  const Spacer(),
+                  _photoVerificationView(context, photoVerificationState),
+                ],
+                if (!photoVerificationState.steps.values.any(
+                  (status) => status == FormzSubmissionStatus.inProgress,
+                ))
+                  _content(
+                    context: context,
+                    homeState: homeState,
+                  ),
+                const Spacer(),
+                footer(context),
+              ],
+            );
+          },
         );
       },
     );
   }
 
-  Widget _header({
+  Widget _headerMobile({
     required BuildContext context,
     required HomeState homeState,
   }) {
-    return Center();
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 16,
+        left: 40,
+        right: 40,
+      ),
+      child: Container(
+        padding: const EdgeInsets.only(
+          bottom: 12,
+          top: 12,
+          right: 12,
+          left: 12,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.almostBlack
+              : AppColors.white,
+        ),
+        child: Row(
+          children: [
+            Text(
+              LocaleKeys.appName.tr(),
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+            ),
+            const Spacer(),
+            btnOutlinedWithIcon(
+              padding: 0,
+              minWidth: 0,
+              minHeight: 54,
+              postfixWidget: SvgPicture.asset(
+                AppIcons.iconWallet,
+                width: 24,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.purple,
+                  BlendMode.srcIn,
+                ),
+              ),
+              context: context,
+              text: homeState.tokens.toString(),
+              onPressed: () => context.go(RouteConstants.tokens.path),
+            ),
+            AppDimensions.sBoxW16,
+            btnOutlinedWithIcon(
+              padding: 0,
+              minWidth: 0,
+              minHeight: 54,
+              postfixWidget: SvgPicture.asset(
+                AppIcons.iconSettings,
+                width: 24,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.purple,
+                  BlendMode.srcIn,
+                ),
+              ),
+              context: context,
+              onPressed: () => context.go(RouteConstants.settings.path),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _content({
     required BuildContext context,
     required HomeState homeState,
   }) {
-    return Center();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          AppDimensions.sBoxH60,
+          Text(
+            LocaleKeys.uploadImage.tr(),
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          AppDimensions.sBoxH32,
+          Container(
+            constraints: const BoxConstraints(
+              maxWidth: 500,
+            ),
+            child: DragAndDropArea(
+              onFileDropped: (XFile? file) {},
+              onFileDropError: (String error) {},
+            ),
+          ),
+          AppDimensions.sBoxH24,
+          _startVerificationBtn(context, homeState),
+        ],
+      ),
+    );
   }
 
-  void _handlePhotoVerificationResult(
-    BuildContext context,
-    PhotoVerificationState state,
-  ) {
-    if (state.status == FormzSubmissionStatus.failure &&
-        state.exception != null) {
-      DialogsManager.showErrorDialog(
-        context: context,
-        title: state.exception?.title,
-        description: state.exception?.message,
-        onTap: () {
-          context.read<PhotoVerificationBloc>().add(
-                const PhotoVerificationEvent.reset(),
-              );
-          Navigator.pop(context);
-        },
-      );
-    } else if (state.steps[PhotoVerificationStatus.resultPreparation] ==
-        FormzSubmissionStatus.success) {
-      final isVerificationFailed = (state.report?.aiGenerated ?? false) ||
-          (state.report?.matchInDb ?? false);
-      if (isVerificationFailed) {
-        DialogsManager.showErrorDialog(
+  Widget _startVerificationBtn(BuildContext context, HomeState homeState) {
+    return BlocBuilder<DragAndDropBloc, DragAndDropState>(
+      builder: (context, state) {
+        return btnFilledWithIcon(
+          onPressed: context.read<DragAndDropBloc>().state.photoFile != null
+              ? () {
+                  final photoFile =
+                      context.read<DragAndDropBloc>().state.photoFile;
+                  if (photoFile == null) {
+                    return;
+                  }
+
+                  if (homeState.tokens < AppConstants.minTokensToVerify) {
+                    DialogsManager.showNotEnoughBalanceDialog(context: context);
+                    return;
+                  }
+
+                  context.read<PhotoVerificationBloc>().add(
+                        PhotoVerificationEvent.verifyPhoto(
+                          photoFile: photoFile,
+                        ),
+                      );
+                }
+              : null,
           context: context,
-          title: LocaleKeys.photoVerificationDialogFailureTitle.tr(),
-          description:
-              LocaleKeys.photoVerificationDialogFailureDescription.tr(),
-          onTap: () {
-            context.read<PhotoVerificationBloc>().add(
-                  const PhotoVerificationEvent.reset(),
-                );
-            context.pop();
-          },
+          text: LocaleKeys.startVerification.tr(),
+          postfixWidget: Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            child: Center(
+              child: SvgPicture.asset(
+                AppIcons.iconArrowRight,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.onPrimary,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+          ),
         );
-      } else {
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) => const PhotoVerificationSuccess(),
-        );
-      }
-    }
+      },
+    );
   }
 
   Widget _photoVerificationView(

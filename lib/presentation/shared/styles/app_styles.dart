@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:it_real_app/presentation/shared/app_utils.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
-import 'package:it_real_app/presentation/shared/styles/mobile/app_text_style_mobile.dart';
 import 'package:it_real_app/presentation/shared/styles/web/app_text_style_web.dart';
 
 class AppTheme {
@@ -26,8 +24,7 @@ class AppTheme {
         scaffoldBackgroundColor: colorScheme.background,
         focusColor: focusColor,
         useMaterial3: true,
-        textTheme:
-            isMobile ? AppTextStyleMobile.textTheme : AppTextStyleWeb.textTheme,
+        textTheme: AppTextStyleWeb.textTheme,
         textSelectionTheme: TextSelectionThemeData(
           cursorColor: colorScheme.onPrimary,
           selectionColor: AppColors.purple.withOpacity(0.5),

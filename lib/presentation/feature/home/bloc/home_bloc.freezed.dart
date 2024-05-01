@@ -312,6 +312,7 @@ abstract class _VerifyPhoto implements HomeEvent {
 /// @nodoc
 mixin _$HomeState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
+  int get tokens => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -324,7 +325,7 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({FormzSubmissionStatus status, String? errorMessage});
+  $Res call({FormzSubmissionStatus status, int tokens, String? errorMessage});
 }
 
 /// @nodoc
@@ -341,6 +342,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? status = null,
+    Object? tokens = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -348,6 +350,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
+      tokens: null == tokens
+          ? _value.tokens
+          : tokens // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -364,7 +370,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({FormzSubmissionStatus status, String? errorMessage});
+  $Res call({FormzSubmissionStatus status, int tokens, String? errorMessage});
 }
 
 /// @nodoc
@@ -379,6 +385,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? tokens = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$HomeStateImpl(
@@ -386,6 +393,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
+      tokens: null == tokens
+          ? _value.tokens
+          : tokens // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -397,16 +408,19 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({required this.status, required this.errorMessage});
+  const _$HomeStateImpl(
+      {required this.status, required this.tokens, required this.errorMessage});
 
   @override
   final FormzSubmissionStatus status;
+  @override
+  final int tokens;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, errorMessage: $errorMessage)';
+    return 'HomeState(status: $status, tokens: $tokens, errorMessage: $errorMessage)';
   }
 
   @override
@@ -415,12 +429,13 @@ class _$HomeStateImpl implements _HomeState {
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.tokens, tokens) || other.tokens == tokens) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage);
+  int get hashCode => Object.hash(runtimeType, status, tokens, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -432,10 +447,13 @@ class _$HomeStateImpl implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final FormzSubmissionStatus status,
+      required final int tokens,
       required final String? errorMessage}) = _$HomeStateImpl;
 
   @override
   FormzSubmissionStatus get status;
+  @override
+  int get tokens;
   @override
   String? get errorMessage;
   @override
