@@ -179,6 +179,7 @@ class PhotoVerificationView extends StatelessWidget {
   }) {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) {
         return PhotoVerificationView(
           onShowReport: onShowReport,
