@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fetch_client/fetch_client.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:it_real_app/presentation/feature/app/app.dart';
@@ -19,6 +20,7 @@ void main() async {
       await Supabase.initialize(
         url: RunConfigurations.supabaseUrl,
         anonKey: RunConfigurations.supabaseAnonKey,
+        httpClient: FetchClient(mode: RequestMode.cors),
       );
 
       configureDependencies(environment: development);

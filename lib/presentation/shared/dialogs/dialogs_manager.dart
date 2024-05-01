@@ -79,10 +79,12 @@ abstract class DialogsManager {
               : null,
           actions: [
             btnFilled(
+              padding: 0,
+              minWidth: 150,
               context: context,
               text: LocaleKeys.ok.tr(),
-              onPressed: onTap ?? () => Navigator.of(context).pop(),
-            )
+              onPressed: onTap ?? () => context.pop(),
+            ),
           ],
         );
       },

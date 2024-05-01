@@ -8,7 +8,16 @@ class HomePageDesk extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, homeState) {
         return BlocListener<PhotoVerificationBloc, PhotoVerificationState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state.status == FormzSubmissionStatus.failure) {
+              context.pop(RouteConstants.home.path);
+              DialogsManager.showErrorDialog(
+                context: context,
+                title: state.exception?.title,
+                description: state.exception?.message,
+              );
+            }
+          },
           child: Column(
             children: [
               _headerDesktop(
