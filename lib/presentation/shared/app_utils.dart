@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
-final isMobile = isMobileBrowser || isMobileOS;
+@Deprecated('Use DeviceLayoutBuilder instead')
+//final isMobile = isMobileBrowser || isMobileOS;
 //final isMobile = true;
 
 final isMobileBrowser = kIsWeb &&

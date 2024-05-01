@@ -137,7 +137,7 @@ class SignUpPage extends StatelessWidget {
                             SizedBox(
                               width: double.infinity,
                               child: btnOutlinedWithIcon(
-                                icon: SvgPicture.asset(
+                                postfixWidget: SvgPicture.asset(
                                   AppIcons.iconGoogle,
                                   width: 24,
                                 ),

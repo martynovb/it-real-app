@@ -17,6 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           const HomeState(
             status: FormzSubmissionStatus.initial,
             errorMessage: null,
+            tokens: 100,
           ),
         ) {
     on<_Started>(_onStarted);

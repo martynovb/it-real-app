@@ -1,52 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:it_real_app/presentation/shared/app_icons.dart';
-import 'package:it_real_app/presentation/shared/app_utils.dart';
 import 'package:it_real_app/presentation/shared/styles/app_button_style.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/app_loading_widget.dart';
 
-Widget btnWithRightArrow({
+Widget btnFilledWithIcon({
   required BuildContext context,
   required String text,
+  required Widget postfixWidget,
   void Function()? onPressed,
+  double? width,
+  bool isMobile = true,
+  double? padding,
 }) =>
-    ElevatedButton(
-      onPressed: onPressed,
-      style: AppButtonStyle.filledBtnStyle(
-        context: context,
-        textStyle: isMobile
-            ? Theme.of(context).textTheme.displayLarge
-            : Theme.of(context).textTheme.displaySmall,
-        padding: const EdgeInsets.only(
-          left: 16,
-          right: 8,
-          top: 16,
-          bottom: 16,
-        ),
+    Container(
+      constraints: BoxConstraints(
+        minHeight: 60,
+        minWidth: AppDimensions.btnWidthDesk,
+        maxWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
       ),
-      child: Row(
-        children: [
-          Text(text),
-          const Spacer(),
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                AppIcons.iconArrowRight,
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.onPrimary,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: AppButtonStyle.filledBtnStyle(
+          context: context,
+          textStyle: Theme.of(context).textTheme.displaySmall,
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 8,
+            top: 16,
+            bottom: 16,
           ),
-        ],
+        ),
+        child: Row(
+          children: [
+            Text(text),
+            const Spacer(),
+            postfixWidget,
+          ],
+        ),
       ),
     );
 
@@ -55,26 +46,37 @@ Widget btnOutlined({
   required String text,
   bool loading = false,
   void Function()? onPressed,
+  double? width,
+  bool isMobile = true,
+  double? padding,
+  double minHeight = 54,
+  double minWidth = AppDimensions.btnWidthDesk,
 }) =>
-    ElevatedButton(
-      onPressed: onPressed,
-      style: AppButtonStyle.outlinedBtnStyle(
-        context: context,
-        textStyle: isMobile
-            ? Theme.of(context).textTheme.displayMedium
-            : Theme.of(context).textTheme.displaySmall,
+    Container(
+      constraints: BoxConstraints(
+        minHeight: minHeight,
+        minWidth: minWidth,
+        maxWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: loading
-            ? Row(
-                children: [
-                  const AppLoadingWidget(),
-                  AppDimensions.sBoxW8,
-                  Text(text),
-                ],
-              )
-            : Text(text),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: AppButtonStyle.outlinedBtnStyle(
+          context: context,
+          textStyle: Theme.of(context).textTheme.displaySmall,
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(padding ?? 8.0),
+          child: loading
+              ? Row(
+                  children: [
+                    const AppLoadingWidget(),
+                    AppDimensions.sBoxW8,
+                    Text(text),
+                  ],
+                )
+              : Text(text),
+        ),
       ),
     );
 
@@ -83,53 +85,81 @@ Widget btnFilled({
   required String text,
   bool loading = false,
   void Function()? onPressed,
+  double? width,
+  bool isMobile = true,
+  double? padding,
+  double minHeight = 54,
+  double minWidth = AppDimensions.btnWidthDesk,
 }) =>
-    ElevatedButton(
-      onPressed: loading ? null : onPressed,
-      style: AppButtonStyle.filledBtnStyle(
-        context: context,
-        textStyle: Theme.of(context).textTheme.displaySmall,
+    Container(
+      constraints: BoxConstraints(
+        minHeight: minHeight,
+        minWidth: minWidth,
+        maxWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: loading
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const AppLoadingWidget(),
-                  AppDimensions.sBoxW8,
-                  Text(text),
-                ],
-              )
-            : Text(text),
+      child: ElevatedButton(
+        onPressed: loading ? null : onPressed,
+        style: AppButtonStyle.filledBtnStyle(
+          context: context,
+          textStyle: Theme.of(context).textTheme.displaySmall,
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(padding ?? 8.0),
+          child: loading
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const AppLoadingWidget(),
+                    AppDimensions.sBoxW8,
+                    Text(text),
+                  ],
+                )
+              : Text(text),
+        ),
       ),
     );
 
 Widget btnOutlinedWithIcon({
   required BuildContext context,
-  required String text,
+  String? text,
+  Widget? textWidget,
   void Function()? onPressed,
-  Widget? icon,
+  Widget? postfixWidget,
+  double? width,
+  bool isMobile = true,
+  double? padding,
+  double minWidth = AppDimensions.btnWidthDesk,
+  double minHeight = 60,
 }) =>
-    ElevatedButton(
-      onPressed: onPressed,
-      style: AppButtonStyle.outlinedBtnWithIconStyle(
-        context: context,
-        textStyle: isMobile
-            ? Theme.of(context).textTheme.displayMedium
-            : Theme.of(context).textTheme.displaySmall,
+    Container(
+      constraints: BoxConstraints(
+        minHeight: minHeight,
+        minWidth: minWidth,
+        maxWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: icon != null
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  icon,
-                  AppDimensions.sBoxW8,
-                  Text(text),
-                ],
-              )
-            : Text(text),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: AppButtonStyle.outlinedBtnWithIconStyle(
+          context: context,
+          textStyle: Theme.of(context).textTheme.displaySmall,
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(padding ?? 8.0),
+          child: postfixWidget != null
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    postfixWidget,
+                    if (textWidget != null || text != null)
+                      AppDimensions.sBoxW8,
+                    textWidget ??
+                        (text != null ? Text(text) : const SizedBox.shrink()),
+                  ],
+                )
+              : textWidget ??
+                  (text != null ? Text(text) : const SizedBox.shrink()),
+        ),
       ),
     );

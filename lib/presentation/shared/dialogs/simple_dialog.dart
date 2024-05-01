@@ -21,7 +21,7 @@ class SimpleDialog extends StatelessWidget {
         constraints: const BoxConstraints(maxWidth: 350),
         color: Theme.of(context).colorScheme.background,
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

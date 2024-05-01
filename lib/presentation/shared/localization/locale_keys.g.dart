@@ -49,5 +49,17 @@ abstract class  LocaleKeys {
   static const networkError = 'networkError';
   static const serverError = 'serverError';
   static const somethingWentWrong = 'somethingWentWrong';
+  static const clickToUpload = 'clickToUpload';
+  static const orDragAndDrop = 'orDragAndDrop';
+  static const maxFileSize = 'maxFileSize';
+  static const uploadingProgress = 'uploadingProgress';
+  static const startVerification = 'startVerification';
+  static const tokenBalance = 'tokenBalance';
+  static const buyTokens = 'buyTokens';
+  static const settings = 'settings';
+  static const uploadImage = 'uploadImage';
+  static const notEnoughTokens = 'notEnoughTokens';
+  static const notEnoughTokensDescription = 'notEnoughTokensDescription';
+  static const cancel = 'cancel';
 
 }
