@@ -19,6 +19,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
         authenticationStatusChanged,
   }) =>
@@ -26,6 +27,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
         authenticationStatusChanged,
   }) =>
@@ -33,6 +35,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
         authenticationStatusChanged,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
         authenticationStatusChanged,
   }) =>
@@ -48,6 +52,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
   }) =>
@@ -55,6 +60,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
     required TResult orElse(),
@@ -118,6 +124,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
         authenticationStatusChanged,
   }) {
@@ -128,6 +135,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
         authenticationStatusChanged,
   }) {
@@ -138,6 +146,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
         authenticationStatusChanged,
     required TResult orElse(),
@@ -152,6 +161,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
         authenticationStatusChanged,
   }) {
@@ -162,6 +172,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
   }) {
@@ -172,6 +183,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
     required TResult orElse(),
@@ -185,6 +197,120 @@ class _$LogoutImpl implements _Logout {
 
 abstract class _Logout implements AuthEvent {
   const factory _Logout() = _$LogoutImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountImplCopyWith<$Res> {
+  factory _$$DeleteAccountImplCopyWith(
+          _$DeleteAccountImpl value, $Res Function(_$DeleteAccountImpl) then) =
+      __$$DeleteAccountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$DeleteAccountImpl>
+    implements _$$DeleteAccountImplCopyWith<$Res> {
+  __$$DeleteAccountImplCopyWithImpl(
+      _$DeleteAccountImpl _value, $Res Function(_$DeleteAccountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountImpl implements _DeleteAccount {
+  const _$DeleteAccountImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.deleteAccount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteAccountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(AuthenticationStatus authenticationStatus)
+        authenticationStatusChanged,
+  }) {
+    return deleteAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(AuthenticationStatus authenticationStatus)?
+        authenticationStatusChanged,
+  }) {
+    return deleteAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(AuthenticationStatus authenticationStatus)?
+        authenticationStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_AuthenticationStatusChanged value)
+        authenticationStatusChanged,
+  }) {
+    return deleteAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+  }) {
+    return deleteAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccount implements AuthEvent {
+  const factory _DeleteAccount() = _$DeleteAccountImpl;
 }
 
 /// @nodoc
@@ -257,6 +383,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
         authenticationStatusChanged,
   }) {
@@ -267,6 +394,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
         authenticationStatusChanged,
   }) {
@@ -277,6 +405,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
         authenticationStatusChanged,
     required TResult orElse(),
@@ -291,6 +420,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
         authenticationStatusChanged,
   }) {
@@ -301,6 +431,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
   }) {
@@ -311,6 +442,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
     required TResult orElse(),
