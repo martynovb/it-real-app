@@ -61,5 +61,11 @@ abstract class  LocaleKeys {
   static const notEnoughTokens = 'notEnoughTokens';
   static const notEnoughTokensDescription = 'notEnoughTokensDescription';
   static const cancel = 'cancel';
+  static const account = 'account';
+  static const logout = 'logout';
+  static const deleteAccount = 'deleteAccount';
+  static const logoutDialogTitle = 'logoutDialogTitle';
+  static const deleteAccountDialogTitle = 'deleteAccountDialogTitle';
+  static const confirm = 'confirm';
 
 }

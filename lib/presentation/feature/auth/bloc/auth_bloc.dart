@@ -29,6 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ) {
     on<_AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<_Logout>(_onLogout);
+    on<_DeleteAccount>(_onDeleteAccount);
 
     _subscribeToAuthStateChanges();
   }
@@ -54,6 +55,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
       },
     );
+  }
+
+  Future<void> _onDeleteAccount(
+    _DeleteAccount event,
+    Emitter<AuthState> emit,
+  ) async {
+    await authDataSource.deleteAccount();
   }
 
   Future<void> _onAuthenticationStatusChanged(

@@ -44,7 +44,9 @@ class HomePageDesk extends StatelessWidget {
   }
 
   Widget _headerDesktop(BuildContext context, HomeState homeState) {
+    final acountBtnGlobalKey = GlobalKey();
     return Padding(
+      key: acountBtnGlobalKey,
       padding: const EdgeInsets.only(
         top: 16,
         left: 40,
@@ -125,17 +127,19 @@ class HomePageDesk extends StatelessWidget {
               padding: 0,
               minWidth: 0,
               minHeight: 54,
-              postfixWidget: SvgPicture.asset(
-                AppIcons.iconSettings,
-                width: 24,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.purple,
-                  BlendMode.srcIn,
-                ),
+              postfixWidget: const Icon(
+                Icons.person,
+                color: AppColors.purple,
+                size: 24,
               ),
               context: context,
-              text: LocaleKeys.settings.tr(),
-              onPressed: () => context.go(RouteConstants.settings.path),
+              text: LocaleKeys.account.tr(),
+              onPressed: () async {
+                await HomePage.showAccountMenu(
+                  menuKey: acountBtnGlobalKey,
+                  context: context,
+                );
+              },
             ),
           ],
         ),

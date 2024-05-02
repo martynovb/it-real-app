@@ -58,5 +58,11 @@
     "uploadImage": "Upload your image",
     "notEnoughTokens": "Not enough tokens",
     "notEnoughTokensDescription": "Gain immediate access to our powerful verification service by purchasing tokens within the app.",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "account": "Account",
+    "logout": "Logout",
+    "deleteAccount": "Delete account",
+    "logoutDialogTitle": "Are you sure you want to log out?",
+    "deleteAccountDialogTitle": "Are you sure you want to delete your account?",
+    "confirm": "Confirm"
 }

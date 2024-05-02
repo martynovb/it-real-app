@@ -56,8 +56,9 @@ abstract class DialogsManager {
     String? title,
     String? description,
     void Function()? onTap,
+    List<Widget>? actions,
   }) {
-    showDialog(
+   showDialog(
       context: context,
       builder: (context) {
         return simple_dialog.SimpleDialog(
@@ -77,7 +78,7 @@ abstract class DialogsManager {
                   textAlign: TextAlign.center,
                 )
               : null,
-          actions: [
+          actions: actions ?? [
             btnFilled(
               padding: 0,
               minWidth: 150,
