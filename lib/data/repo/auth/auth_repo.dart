@@ -31,13 +31,17 @@ class AuthRepo extends AuthDataSource {
       password: password,
     );
 
+    final profile = await supabaseClient
+        .from('profiles')
+        .select('stripe_customer_id, balance')
+        .eq('id', response.user?.id ?? '')
+        .maybeSingle();
+
     return UserModel(
       id: response.user?.id ?? '',
       email: response.user?.email ?? '',
-      tokens: int.tryParse(
-            response.user?.userMetadata?['tokens'] ?? '0',
-          ) ??
-          0,
+      balance: int.tryParse(profile?['balance']) ?? 0,
+      stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
 
@@ -58,18 +62,38 @@ class AuthRepo extends AuthDataSource {
       password: password,
     );
 
+    final profile = await supabaseClient
+        .from('profiles')
+        .select('stripe_customer_id, balance')
+        .eq('id', response.user?.id ?? '')
+        .maybeSingle();
+
     return UserModel(
       id: response.user?.id ?? '',
       email: response.user?.email ?? '',
-      tokens: int.tryParse(
-            response.user?.userMetadata?['tokens'] ?? '0',
-          ) ??
-          0,
+      balance: int.tryParse(profile?['balance']) ?? 0,
+      stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
 
   @override
-  Future<void> deleteAccount() async {
-    
+  Future<void> deleteAccount() async {}
+
+  @override
+  Future<UserModel> getCurrentUser() async {
+    final User? user = supabaseClient.auth.currentUser;
+
+    final profile = await supabaseClient
+        .from('profiles')
+        .select('stripe_customer_id, balance')
+        .eq('id', user?.id ?? '')
+        .maybeSingle();
+
+    return UserModel(
+      id: user?.id ?? '',
+      email: user?.email ?? '',
+      balance: profile?['balance'] ?? 0,
+      stripeCustomerId: profile?['stripe_customer_id'] ?? '',
+    );
   }
 }

@@ -5,5 +5,6 @@ class TokensState with _$TokensState {
   const factory TokensState({
     required FormzSubmissionStatus status,
     required String? errorMessage,
+    required List<ProductModel> products,
   }) = _TokensState;
 }

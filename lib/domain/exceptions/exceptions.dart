@@ -32,13 +32,12 @@ class NetworkException extends BaseException {
 }
 
 class ServerException extends BaseException {
-  ServerException()
+  ServerException({String? message})
       : super(
           title: LocaleKeys.serverError.tr(),
-          message: LocaleKeys.somethingWentWrong.tr(),
+          message: message ?? LocaleKeys.somethingWentWrong.tr(),
         );
 }
-
 
 BaseException handleException(dynamic error) {
   return UnknownException();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
+import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart';
 import 'package:it_real_app/presentation/feature/photo_verification/bloc/photo_verification_bloc.dart';
 import 'package:it_real_app/presentation/feature/photo_verification/photo_verification_success.dart';
 import 'package:it_real_app/presentation/shared/dialogs/dialogs_manager.dart';
@@ -193,6 +194,10 @@ class PhotoVerificationView extends StatelessWidget {
     PhotoVerificationState state,
   ) {
     if (state.status == FormzSubmissionStatus.inProgress) return;
+
+    if (state.status == FormzSubmissionStatus.success) {
+      context.read<HomeBloc>().add(const HomeEvent.started());
+    }
 
     if (state.status == FormzSubmissionStatus.failure &&
         state.exception != null) {

@@ -20,9 +20,11 @@ dart run build_runner build
 
 ```
 {
+  "redirectUrl": "https...."
   "supabaseAnonKey": "eyJhbGcxxxxx",
   "supabaseUrl": "https://xxxxx.supabase.co",
-  "sentryDsn": : ""
+  "sentryDsn": : "",
+  ""stripePublishableKey": ""
 }
 ```
 

@@ -1,3 +1,5 @@
 class SupabaseConstants {
-  static const funcVerifyPhoto = 'verifyPhoto';
+  static const edgeFuncVerifyPhoto = 'verifyPhoto';
+  static const edgeFuncStripeCreatePayment = 'stripeCreatePayment';
+  static const edgeFuncStripeGetAllProducts = 'stripeGetAllProducts';
 }

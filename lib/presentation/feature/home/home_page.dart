@@ -41,7 +41,10 @@ class HomePage extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => getIt.get<HomeBloc>(),
+              create: (context) => getIt.get<HomeBloc>()
+                ..add(
+                  const HomeEvent.started(),
+                ),
             ),
             BlocProvider(
               create: (context) => getIt.get<DragAndDropBloc>(),
@@ -134,29 +137,29 @@ class HomePage extends StatelessWidget {
       );
     } else if (selectedOption == _logoutOption) {
       DialogsManager.showErrorDialog(
-              context: context,
-              title: LocaleKeys.logoutDialogTitle.tr(),
-              actions: [
-                btnOutlined(
-                  padding: 0,
-                  minWidth: 150,
-                  context: context,
-                  text: LocaleKeys.cancel.tr(),
-                  onPressed: () => context.pop(),
-                ),
-                AppDimensions.sBoxW24,
-                btnFilled(
-                  padding: 0,
-                  minWidth: 150,
-                  context: context,
-                  text: LocaleKeys.confirm.tr(),
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const AuthEvent.logout());
-                    context.go(RouteConstants.onboarding.path);
-                  },
-                )
-              ],
-            );
+        context: context,
+        title: LocaleKeys.logoutDialogTitle.tr(),
+        actions: [
+          btnOutlined(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.cancel.tr(),
+            onPressed: () => context.pop(),
+          ),
+          AppDimensions.sBoxW24,
+          btnFilled(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.confirm.tr(),
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthEvent.logout());
+              context.go(RouteConstants.onboarding.path);
+            },
+          )
+        ],
+      );
     }
   }
 

@@ -3,6 +3,9 @@ import 'package:it_real_app/data/models/user/user_model.dart';
 enum AuthenticationStatus { authenticated, unauthenticated, none }
 
 abstract class AuthDataSource {
+
+  Future<UserModel> getCurrentUser();
+
   Future<AuthenticationStatus> getAuthStatus();
 
   Future<UserModel> signInWithEmailAndPassword({

@@ -10,12 +10,14 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
       id: json['id'] as String,
       email: json['email'] as String,
-      tokens: (json['tokens'] as num).toInt(),
+      stripeCustomerId: json['stripeCustomerId'] as String,
+      balance: (json['balance'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
-      'tokens': instance.tokens,
+      'stripeCustomerId': instance.stripeCustomerId,
+      'balance': instance.balance,
     };
