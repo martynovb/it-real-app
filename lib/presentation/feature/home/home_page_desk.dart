@@ -96,7 +96,7 @@ class HomePageDesk extends StatelessWidget {
                           ),
                       children: [
                         TextSpan(
-                          text: homeState.tokens.toString(),
+                          text: homeState.userModel.balance.toString(),
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
@@ -189,7 +189,8 @@ class HomePageDesk extends StatelessWidget {
                     return;
                   }
 
-                  if (homeState.tokens < AppConstants.minTokensToVerify) {
+                  if (homeState.userModel.balance <
+                      AppConstants.minTokensToVerify) {
                     DialogsManager.showNotEnoughBalanceDialog(context: context);
                     return;
                   }

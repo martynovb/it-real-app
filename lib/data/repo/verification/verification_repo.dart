@@ -17,7 +17,7 @@ class VerificationRepo extends VerificationDataSource {
   @override
   Future<ReportModel> verifyPhoto({required XFile photoFile}) async {
     final response = await supabaseClient.functions.invoke(
-      SupabaseConstants.funcVerifyPhoto,
+      SupabaseConstants.edgeFuncVerifyPhoto,
       method: HttpMethod.get,
     );
     if (response.data is Map) {

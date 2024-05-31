@@ -91,7 +91,7 @@ class HomePageMobile extends StatelessWidget {
                 ),
               ),
               context: context,
-              text: homeState.tokens.toString(),
+              text: homeState.userModel.balance.toString(),
               onPressed: () => context.go(RouteConstants.tokens.path),
             ),
             AppDimensions.sBoxW16,
@@ -161,7 +161,7 @@ class HomePageMobile extends StatelessWidget {
                     return;
                   }
 
-                  if (homeState.tokens < AppConstants.minTokensToVerify) {
+                  if (homeState.userModel.balance < AppConstants.minTokensToVerify) {
                     DialogsManager.showNotEnoughBalanceDialog(context: context);
                     return;
                   }
