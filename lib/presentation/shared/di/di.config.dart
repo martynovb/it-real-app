@@ -22,7 +22,7 @@ import 'package:it_real_app/data/repo/verification/verification_repo.dart'
     as _i11;
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart' as _i5;
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart'
-    as _i20;
+    as _i19;
 import 'package:it_real_app/presentation/feature/drag_and_drop/bloc/drag_and_drop_bloc.dart'
     as _i7;
 import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart'
@@ -38,7 +38,7 @@ import 'package:it_real_app/presentation/feature/sign_in/bloc/sign_in_bloc.dart'
 import 'package:it_real_app/presentation/feature/sign_up/bloc/sign_up_bloc.dart'
     as _i18;
 import 'package:it_real_app/presentation/feature/tokens/bloc/tokens_bloc.dart'
-    as _i19;
+    as _i20;
 import 'package:it_real_app/presentation/shared/di/modules/app_module.dart'
     as _i21;
 import 'package:it_real_app/presentation/shared/di/modules/data_module.dart'
@@ -80,11 +80,13 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i17.SignInBloc(authDataSource: gh<_i12.AuthDataSource>()));
     gh.factory<_i18.SignUpBloc>(
         () => _i18.SignUpBloc(authDataSource: gh<_i12.AuthDataSource>()));
-    gh.factory<_i19.TokensBloc>(
-        () => _i19.TokensBloc(tokensDataSource: gh<_i8.ProductsDataSource>()));
-    gh.singleton<_i20.AuthBloc>(() => _i20.AuthBloc(
+    gh.singleton<_i19.AuthBloc>(() => _i19.AuthBloc(
           authDataSource: gh<_i12.AuthDataSource>(),
           supabaseClient: gh<_i6.SupabaseClient>(),
+        ));
+    gh.factory<_i20.TokensBloc>(() => _i20.TokensBloc(
+          tokensDataSource: gh<_i8.ProductsDataSource>(),
+          authDataSource: gh<_i12.AuthDataSource>(),
         ));
     return this;
   }

@@ -451,6 +451,7 @@ abstract class _Error implements TokensEvent {
 mixin _$TokensState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  UserModel get user => throw _privateConstructorUsedError;
   List<ProductModel> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -467,7 +468,10 @@ abstract class $TokensStateCopyWith<$Res> {
   $Res call(
       {FormzSubmissionStatus status,
       String? errorMessage,
+      UserModel user,
       List<ProductModel> products});
+
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -485,6 +489,7 @@ class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
   $Res call({
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? user = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
@@ -496,11 +501,23 @@ class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductModel>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -515,7 +532,11 @@ abstract class _$$TokensStateImplCopyWith<$Res>
   $Res call(
       {FormzSubmissionStatus status,
       String? errorMessage,
+      UserModel user,
       List<ProductModel> products});
+
+  @override
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -531,6 +552,7 @@ class __$$TokensStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? user = null,
     Object? products = null,
   }) {
     return _then(_$TokensStateImpl(
@@ -542,6 +564,10 @@ class __$$TokensStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -556,6 +582,7 @@ class _$TokensStateImpl implements _TokensState {
   const _$TokensStateImpl(
       {required this.status,
       required this.errorMessage,
+      required this.user,
       required final List<ProductModel> products})
       : _products = products;
 
@@ -563,6 +590,8 @@ class _$TokensStateImpl implements _TokensState {
   final FormzSubmissionStatus status;
   @override
   final String? errorMessage;
+  @override
+  final UserModel user;
   final List<ProductModel> _products;
   @override
   List<ProductModel> get products {
@@ -573,7 +602,7 @@ class _$TokensStateImpl implements _TokensState {
 
   @override
   String toString() {
-    return 'TokensState(status: $status, errorMessage: $errorMessage, products: $products)';
+    return 'TokensState(status: $status, errorMessage: $errorMessage, user: $user, products: $products)';
   }
 
   @override
@@ -584,11 +613,12 @@ class _$TokensStateImpl implements _TokensState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.user, user) || other.user == user) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage,
+  int get hashCode => Object.hash(runtimeType, status, errorMessage, user,
       const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
@@ -602,12 +632,15 @@ abstract class _TokensState implements TokensState {
   const factory _TokensState(
       {required final FormzSubmissionStatus status,
       required final String? errorMessage,
+      required final UserModel user,
       required final List<ProductModel> products}) = _$TokensStateImpl;
 
   @override
   FormzSubmissionStatus get status;
   @override
   String? get errorMessage;
+  @override
+  UserModel get user;
   @override
   List<ProductModel> get products;
   @override

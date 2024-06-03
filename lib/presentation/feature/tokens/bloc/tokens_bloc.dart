@@ -4,6 +4,8 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
+import 'package:it_real_app/data/models/user/user_model.dart';
+import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
 import 'package:it_real_app/data/repo/products/products_data_source.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,13 +18,16 @@ part 'tokens_state.dart';
 @Injectable()
 class TokensBloc extends Bloc<TokensEvent, TokensState> {
   final ProductsDataSource tokensDataSource;
+  final AuthDataSource authDataSource;
 
   TokensBloc({
     required this.tokensDataSource,
+    required this.authDataSource,
   }) : super(
           const TokensState(
             status: FormzSubmissionStatus.initial,
             errorMessage: null,
+            user: UserModel.empty,
             products: [],
           ),
         ) {
@@ -39,6 +44,7 @@ class TokensBloc extends Bloc<TokensEvent, TokensState> {
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.success,
+          user: await authDataSource.getCurrentUser(),
           products: await tokensDataSource.getAllProducts(),
         ),
       );

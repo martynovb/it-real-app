@@ -1,12 +1,21 @@
-import 'dart:js';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:it_real_app/presentation/feature/home/home_page.dart';
 import 'package:it_real_app/presentation/feature/tokens/bloc/tokens_bloc.dart';
+import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
-import 'package:it_real_app/presentation/shared/dialogs/dialogs_manager.dart';
+import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
+import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
+import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
+import 'package:it_real_app/presentation/shared/widgets/device_layout_builder.dart';
+
+part 'tokens_page_mobile.dart';
+part 'tokens_page_desk.dart';
 
 class TokensPage extends StatelessWidget {
   const TokensPage({super.key});
@@ -14,51 +23,14 @@ class TokensPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt.get<TokensBloc>()
-        ..add(
-          const TokensEvent.started(),
-        ),
-      child: BlocConsumer<TokensBloc, TokensState>(
-        listener: (context, state) {
-          if (state.status == FormzSubmissionStatus.failure) {
-            DialogsManager.showErrorDialog(
-              context: context,
-              title: 'Error',
-              description: state.errorMessage ?? 'An error occurred.',
-            );
-          }
-        },
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Tokens'),
-            ),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text('Tokens Page'),
-                  btnFilled(
-                    context: context,
-                    text: 'Buy Tokens',
-                    onPressed: () {
-                      context.read<TokensBloc>().add(
-                            TokensEvent.buyProduct(
-                              productModel: context
-                                  .read<TokensBloc>()
-                                  .state
-                                  .products
-                                  .first,
-                            ),
-                          );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
-    );
+        create: (context) => getIt.get<TokensBloc>()
+          ..add(
+            const TokensEvent.started(),
+          ),
+        child: DeviceLayoutBuilder(
+          layoutBuilder: (isMobile) => Scaffold(
+            body: isMobile ? const TokensPageMobile() : const TokensPageDesk(),
+          ),
+        ));
   }
 }
