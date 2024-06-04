@@ -4,7 +4,9 @@ part of 'tokens_bloc.dart';
 class TokensEvent with _$TokensEvent {
   const factory TokensEvent.started() = _Started;
 
-  const factory TokensEvent.buyProduct({required ProductModel productModel}) = _BuyTokens;
+  const factory TokensEvent.selectProduct({required ProductModel productModel}) = _SelectProduct;
+
+  const factory TokensEvent.buyProduct({required ProductModel productModel}) = _BuyProduct;
 
   const factory TokensEvent.error() = _Error;
 }

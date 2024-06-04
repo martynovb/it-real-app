@@ -67,5 +67,8 @@ abstract class  LocaleKeys {
   static const logoutDialogTitle = 'logoutDialogTitle';
   static const deleteAccountDialogTitle = 'deleteAccountDialogTitle';
   static const confirm = 'confirm';
+  static const buyPackage = 'buyPackage';
+  static const check = 'check';
+  static const checks = 'checks';
 
 }

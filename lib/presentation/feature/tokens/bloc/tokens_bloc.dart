@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,7 +31,8 @@ class TokensBloc extends Bloc<TokensEvent, TokensState> {
           ),
         ) {
     on<_Started>(_onStarted);
-    on<_BuyTokens>(_onBuyTokens);
+    on<_BuyProduct>(_onBuyProdcut);
+    on<_SelectProduct>(_onSelectProduct);
   }
 
   Future<void> _onStarted(
@@ -58,8 +58,8 @@ class TokensBloc extends Bloc<TokensEvent, TokensState> {
     }
   }
 
-  Future<void> _onBuyTokens(
-    _BuyTokens event,
+  Future<void> _onBuyProdcut(
+    _BuyProduct event,
     Emitter<TokensState> emit,
   ) async {
     try {
@@ -78,5 +78,16 @@ class TokensBloc extends Bloc<TokensEvent, TokensState> {
         ),
       );
     }
+  }
+
+  Future<void> _onSelectProduct(
+    _SelectProduct event,
+    Emitter<TokensState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        selectedProduct: event.productModel,
+      ),
+    );
   }
 }

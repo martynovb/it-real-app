@@ -11,20 +11,16 @@ class TokensPageDesk extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _headerDesktop(context, state),
+              headerDesktop(context, state.user),
               AppDimensions.sBoxH100,
-              btnFilled(
+              _products(
                 context: context,
-                text: 'Buy Tokens',
-                onPressed: () {
-                  context.read<TokensBloc>().add(
-                        TokensEvent.buyProduct(
-                          productModel:
-                              context.read<TokensBloc>().state.products.first,
-                        ),
-                      );
-                },
+                products: state.products,
+                selectedProduct: state.selectedProduct,
               ),
+              TokensPage.buyPackageBtn(context),
+              const Spacer(),
+              footer(context),
             ],
           ),
         );
@@ -32,105 +28,75 @@ class TokensPageDesk extends StatelessWidget {
     );
   }
 
-  Widget _headerDesktop(BuildContext context, TokensState tokensState) {
-    final acountBtnGlobalKey = GlobalKey();
-    return Padding(
-      key: acountBtnGlobalKey,
-      padding: const EdgeInsets.only(
-        top: 16,
-        left: 40,
-        right: 40,
-      ),
-      child: Container(
+  Widget _products({
+    required BuildContext context,
+    required List<ProductModel> products,
+    ProductModel? selectedProduct,
+  }) {
+    return SizedBox(
+      height: 120,
+      child: Padding(
         padding: const EdgeInsets.only(
-          bottom: 12,
-          top: 12,
-          right: 12,
-          left: 12,
+          top: 16,
+          left: 16,
+          right: 16,
         ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.almostBlack
-              : AppColors.white,
-        ),
-        child: Row(
-          children: [
-            Text(
-              LocaleKeys.appName.tr(),
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
+        child: IntrinsicHeight(
+          child: ListView.separated(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: products.length,
+            separatorBuilder: (context, index) => const SizedBox(width: 24),
+            itemBuilder: (context, index) => _productItem(
+              context: context,
+              product: products[index],
+              isSelected:
+                  selectedProduct?.productId == products[index].productId,
             ),
-            const Spacer(),
-            Container(
-              height: 54,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.onTertiary,
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(8),
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      text: '${LocaleKeys.tokenBalance.tr()}: ',
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onTertiary,
-                          ),
-                      children: [
-                        TextSpan(
-                          text: tokensState.user.balance.toString(),
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _productItem({
+    required BuildContext context,
+    required ProductModel product,
+    required bool isSelected,
+  }) {
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 400),
+      width: (MediaQuery.of(context).size.width -
+              AppDimensions.deskSidePadding * 2 -
+              24 * 4) /
+          3,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.tertiary,
+        border: Border.all(
+          color: Theme.of(context).colorScheme.onTertiary,
+          width: 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(27)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text(
+                '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.check.tr() : LocaleKeys.checks.tr()} = ${product.priceInUnits/100}\$',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
-                  ),
-                ),
               ),
             ),
-            AppDimensions.sBoxW16,
-            btnOutlinedWithIcon(
-              padding: 0,
-              minWidth: 0,
-              minHeight: 54,
-              postfixWidget: SvgPicture.asset(
-                AppIcons.iconWallet,
-                width: 24,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.purple,
-                  BlendMode.srcIn,
-                ),
-              ),
-              context: context,
-              text: LocaleKeys.buyTokens.tr(),
-              onPressed: () => context.go(RouteConstants.tokens.path),
-            ),
-            AppDimensions.sBoxW16,
-            btnOutlinedWithIcon(
-              padding: 0,
-              minWidth: 0,
-              minHeight: 54,
-              postfixWidget: const Icon(
-                Icons.person,
-                color: AppColors.purple,
-                size: 24,
-              ),
-              context: context,
-              text: LocaleKeys.account.tr(),
-              onPressed: () async {
-                await HomePage.showAccountMenu(
-                  menuKey: acountBtnGlobalKey,
-                  context: context,
-                );
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );

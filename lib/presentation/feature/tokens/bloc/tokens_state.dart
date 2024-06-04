@@ -6,6 +6,7 @@ class TokensState with _$TokensState {
     required FormzSubmissionStatus status,
     required String? errorMessage,
     required UserModel user,
+    ProductModel? selectedProduct,
     required List<ProductModel> products,
   }) = _TokensState;
 }
