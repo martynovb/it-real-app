@@ -18,14 +18,14 @@ abstract class DialogsManager {
       builder: (context) {
         return simple_dialog.SimpleDialog(
           title: Text(
-            LocaleKeys.notEnoughTokens.tr(),
+            LocaleKeys.notEnoughVerifications.tr(),
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   color: AppColors.red,
                 ),
             textAlign: TextAlign.center,
           ),
           description: Text(
-            LocaleKeys.notEnoughTokensDescription.tr(),
+            LocaleKeys.notEnoughVerificationsDescription.tr(),
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
@@ -42,8 +42,8 @@ abstract class DialogsManager {
               padding: 0,
               minWidth: 150,
               context: context,
-              text: LocaleKeys.buyTokens.tr(),
-              onPressed: () => context.go(RouteConstants.tokens.path),
+              text: LocaleKeys.buyVerifications.tr(),
+              onPressed: () => context.go(RouteConstants.products.path),
             )
           ],
         );
@@ -58,7 +58,7 @@ abstract class DialogsManager {
     void Function()? onTap,
     List<Widget>? actions,
   }) {
-   showDialog(
+    showDialog(
       context: context,
       builder: (context) {
         return simple_dialog.SimpleDialog(
@@ -78,15 +78,16 @@ abstract class DialogsManager {
                   textAlign: TextAlign.center,
                 )
               : null,
-          actions: actions ?? [
-            btnFilled(
-              padding: 0,
-              minWidth: 150,
-              context: context,
-              text: LocaleKeys.ok.tr(),
-              onPressed: onTap ?? () => context.pop(),
-            ),
-          ],
+          actions: actions ??
+              [
+                btnFilled(
+                  padding: 0,
+                  minWidth: 150,
+                  context: context,
+                  text: LocaleKeys.ok.tr(),
+                  onPressed: onTap ?? () => context.pop(),
+                ),
+              ],
         );
       },
     );

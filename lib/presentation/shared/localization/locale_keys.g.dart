@@ -54,12 +54,12 @@ abstract class  LocaleKeys {
   static const maxFileSize = 'maxFileSize';
   static const uploadingProgress = 'uploadingProgress';
   static const startVerification = 'startVerification';
-  static const tokenBalance = 'tokenBalance';
-  static const buyTokens = 'buyTokens';
+  static const verificationsBalance = 'verificationsBalance';
+  static const buyVerifications = 'buyVerifications';
   static const settings = 'settings';
   static const uploadImage = 'uploadImage';
-  static const notEnoughTokens = 'notEnoughTokens';
-  static const notEnoughTokensDescription = 'notEnoughTokensDescription';
+  static const notEnoughVerifications = 'notEnoughVerifications';
+  static const notEnoughVerificationsDescription = 'notEnoughVerificationsDescription';
   static const cancel = 'cancel';
   static const account = 'account';
   static const logout = 'logout';
@@ -67,5 +67,10 @@ abstract class  LocaleKeys {
   static const logoutDialogTitle = 'logoutDialogTitle';
   static const deleteAccountDialogTitle = 'deleteAccountDialogTitle';
   static const confirm = 'confirm';
+  static const buyPackage = 'buyPackage';
+  static const verification = 'verification';
+  static const verifications = 'verifications';
+  static const productsPageDescription = 'productsPageDescription';
+  static const productsPageDescription2 = 'productsPageDescription2';
 
 }

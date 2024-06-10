@@ -6,7 +6,7 @@ import 'package:it_real_app/presentation/feature/settings/settings_page.dart';
 import 'package:it_real_app/presentation/feature/sign_in/sign_in_page.dart';
 import 'package:it_real_app/presentation/feature/sign_up/sign_up_page.dart';
 import 'package:it_real_app/presentation/feature/splash/splash_page.dart';
-import 'package:it_real_app/presentation/feature/tokens/tokens_page.dart';
+import 'package:it_real_app/presentation/feature/products/products_page.dart';
 import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/widgets/error_page.dart';
 
@@ -70,10 +70,10 @@ GoRouter router({
           ),
         ),
         GoRoute(
-          path: RouteConstants.tokens.path,
+          path: RouteConstants.products.path,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: const TokensPage(),
+            child: const ProdcutsPage(),
           ),
         ),
       ],

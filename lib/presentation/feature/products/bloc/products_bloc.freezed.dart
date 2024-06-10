@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tokens_bloc.dart';
+part of 'products_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,10 +15,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TokensEvent {
+mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(ProductModel productModel) selectProduct,
     required TResult Function(ProductModel productModel) buyProduct,
     required TResult Function() error,
   }) =>
@@ -26,6 +27,7 @@ mixin _$TokensEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(ProductModel productModel)? selectProduct,
     TResult? Function(ProductModel productModel)? buyProduct,
     TResult? Function()? error,
   }) =>
@@ -33,6 +35,7 @@ mixin _$TokensEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(ProductModel productModel)? selectProduct,
     TResult Function(ProductModel productModel)? buyProduct,
     TResult Function()? error,
     required TResult orElse(),
@@ -41,21 +44,24 @@ mixin _$TokensEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_BuyTokens value) buyProduct,
+    required TResult Function(_SelectProduct value) selectProduct,
+    required TResult Function(_BuyProduct value) buyProduct,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_BuyTokens value)? buyProduct,
+    TResult? Function(_SelectProduct value)? selectProduct,
+    TResult? Function(_BuyProduct value)? buyProduct,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_BuyTokens value)? buyProduct,
+    TResult Function(_SelectProduct value)? selectProduct,
+    TResult Function(_BuyProduct value)? buyProduct,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -63,16 +69,16 @@ mixin _$TokensEvent {
 }
 
 /// @nodoc
-abstract class $TokensEventCopyWith<$Res> {
-  factory $TokensEventCopyWith(
-          TokensEvent value, $Res Function(TokensEvent) then) =
-      _$TokensEventCopyWithImpl<$Res, TokensEvent>;
+abstract class $ProductsEventCopyWith<$Res> {
+  factory $ProductsEventCopyWith(
+          ProductsEvent value, $Res Function(ProductsEvent) then) =
+      _$ProductsEventCopyWithImpl<$Res, ProductsEvent>;
 }
 
 /// @nodoc
-class _$TokensEventCopyWithImpl<$Res, $Val extends TokensEvent>
-    implements $TokensEventCopyWith<$Res> {
-  _$TokensEventCopyWithImpl(this._value, this._then);
+class _$ProductsEventCopyWithImpl<$Res, $Val extends ProductsEvent>
+    implements $ProductsEventCopyWith<$Res> {
+  _$ProductsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -89,7 +95,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$ProductsEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -103,7 +109,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'TokensEvent.started()';
+    return 'ProductsEvent.started()';
   }
 
   @override
@@ -119,6 +125,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(ProductModel productModel) selectProduct,
     required TResult Function(ProductModel productModel) buyProduct,
     required TResult Function() error,
   }) {
@@ -129,6 +136,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(ProductModel productModel)? selectProduct,
     TResult? Function(ProductModel productModel)? buyProduct,
     TResult? Function()? error,
   }) {
@@ -139,6 +147,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(ProductModel productModel)? selectProduct,
     TResult Function(ProductModel productModel)? buyProduct,
     TResult Function()? error,
     required TResult orElse(),
@@ -153,7 +162,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_BuyTokens value) buyProduct,
+    required TResult Function(_SelectProduct value) selectProduct,
+    required TResult Function(_BuyProduct value) buyProduct,
     required TResult Function(_Error value) error,
   }) {
     return started(this);
@@ -163,7 +173,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_BuyTokens value)? buyProduct,
+    TResult? Function(_SelectProduct value)? selectProduct,
+    TResult? Function(_BuyProduct value)? buyProduct,
     TResult? Function(_Error value)? error,
   }) {
     return started?.call(this);
@@ -173,7 +184,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_BuyTokens value)? buyProduct,
+    TResult Function(_SelectProduct value)? selectProduct,
+    TResult Function(_BuyProduct value)? buyProduct,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -184,15 +196,15 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements TokensEvent {
+abstract class _Started implements ProductsEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$BuyTokensImplCopyWith<$Res> {
-  factory _$$BuyTokensImplCopyWith(
-          _$BuyTokensImpl value, $Res Function(_$BuyTokensImpl) then) =
-      __$$BuyTokensImplCopyWithImpl<$Res>;
+abstract class _$$SelectProductImplCopyWith<$Res> {
+  factory _$$SelectProductImplCopyWith(
+          _$SelectProductImpl value, $Res Function(_$SelectProductImpl) then) =
+      __$$SelectProductImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProductModel productModel});
 
@@ -200,11 +212,11 @@ abstract class _$$BuyTokensImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$BuyTokensImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$BuyTokensImpl>
-    implements _$$BuyTokensImplCopyWith<$Res> {
-  __$$BuyTokensImplCopyWithImpl(
-      _$BuyTokensImpl _value, $Res Function(_$BuyTokensImpl) _then)
+class __$$SelectProductImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$SelectProductImpl>
+    implements _$$SelectProductImplCopyWith<$Res> {
+  __$$SelectProductImplCopyWithImpl(
+      _$SelectProductImpl _value, $Res Function(_$SelectProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -212,7 +224,7 @@ class __$$BuyTokensImplCopyWithImpl<$Res>
   $Res call({
     Object? productModel = null,
   }) {
-    return _then(_$BuyTokensImpl(
+    return _then(_$SelectProductImpl(
       productModel: null == productModel
           ? _value.productModel
           : productModel // ignore: cast_nullable_to_non_nullable
@@ -231,22 +243,22 @@ class __$$BuyTokensImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BuyTokensImpl implements _BuyTokens {
-  const _$BuyTokensImpl({required this.productModel});
+class _$SelectProductImpl implements _SelectProduct {
+  const _$SelectProductImpl({required this.productModel});
 
   @override
   final ProductModel productModel;
 
   @override
   String toString() {
-    return 'TokensEvent.buyProduct(productModel: $productModel)';
+    return 'ProductsEvent.selectProduct(productModel: $productModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BuyTokensImpl &&
+            other is _$SelectProductImpl &&
             (identical(other.productModel, productModel) ||
                 other.productModel == productModel));
   }
@@ -257,13 +269,171 @@ class _$BuyTokensImpl implements _BuyTokens {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BuyTokensImplCopyWith<_$BuyTokensImpl> get copyWith =>
-      __$$BuyTokensImplCopyWithImpl<_$BuyTokensImpl>(this, _$identity);
+  _$$SelectProductImplCopyWith<_$SelectProductImpl> get copyWith =>
+      __$$SelectProductImplCopyWithImpl<_$SelectProductImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(ProductModel productModel) selectProduct,
+    required TResult Function(ProductModel productModel) buyProduct,
+    required TResult Function() error,
+  }) {
+    return selectProduct(productModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(ProductModel productModel)? selectProduct,
+    TResult? Function(ProductModel productModel)? buyProduct,
+    TResult? Function()? error,
+  }) {
+    return selectProduct?.call(productModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ProductModel productModel)? selectProduct,
+    TResult Function(ProductModel productModel)? buyProduct,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (selectProduct != null) {
+      return selectProduct(productModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SelectProduct value) selectProduct,
+    required TResult Function(_BuyProduct value) buyProduct,
+    required TResult Function(_Error value) error,
+  }) {
+    return selectProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SelectProduct value)? selectProduct,
+    TResult? Function(_BuyProduct value)? buyProduct,
+    TResult? Function(_Error value)? error,
+  }) {
+    return selectProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SelectProduct value)? selectProduct,
+    TResult Function(_BuyProduct value)? buyProduct,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (selectProduct != null) {
+      return selectProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectProduct implements ProductsEvent {
+  const factory _SelectProduct({required final ProductModel productModel}) =
+      _$SelectProductImpl;
+
+  ProductModel get productModel;
+  @JsonKey(ignore: true)
+  _$$SelectProductImplCopyWith<_$SelectProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BuyProductImplCopyWith<$Res> {
+  factory _$$BuyProductImplCopyWith(
+          _$BuyProductImpl value, $Res Function(_$BuyProductImpl) then) =
+      __$$BuyProductImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProductModel productModel});
+
+  $ProductModelCopyWith<$Res> get productModel;
+}
+
+/// @nodoc
+class __$$BuyProductImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$BuyProductImpl>
+    implements _$$BuyProductImplCopyWith<$Res> {
+  __$$BuyProductImplCopyWithImpl(
+      _$BuyProductImpl _value, $Res Function(_$BuyProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productModel = null,
+  }) {
+    return _then(_$BuyProductImpl(
+      productModel: null == productModel
+          ? _value.productModel
+          : productModel // ignore: cast_nullable_to_non_nullable
+              as ProductModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductModelCopyWith<$Res> get productModel {
+    return $ProductModelCopyWith<$Res>(_value.productModel, (value) {
+      return _then(_value.copyWith(productModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$BuyProductImpl implements _BuyProduct {
+  const _$BuyProductImpl({required this.productModel});
+
+  @override
+  final ProductModel productModel;
+
+  @override
+  String toString() {
+    return 'ProductsEvent.buyProduct(productModel: $productModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BuyProductImpl &&
+            (identical(other.productModel, productModel) ||
+                other.productModel == productModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BuyProductImplCopyWith<_$BuyProductImpl> get copyWith =>
+      __$$BuyProductImplCopyWithImpl<_$BuyProductImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(ProductModel productModel) selectProduct,
     required TResult Function(ProductModel productModel) buyProduct,
     required TResult Function() error,
   }) {
@@ -274,6 +444,7 @@ class _$BuyTokensImpl implements _BuyTokens {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(ProductModel productModel)? selectProduct,
     TResult? Function(ProductModel productModel)? buyProduct,
     TResult? Function()? error,
   }) {
@@ -284,6 +455,7 @@ class _$BuyTokensImpl implements _BuyTokens {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(ProductModel productModel)? selectProduct,
     TResult Function(ProductModel productModel)? buyProduct,
     TResult Function()? error,
     required TResult orElse(),
@@ -298,7 +470,8 @@ class _$BuyTokensImpl implements _BuyTokens {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_BuyTokens value) buyProduct,
+    required TResult Function(_SelectProduct value) selectProduct,
+    required TResult Function(_BuyProduct value) buyProduct,
     required TResult Function(_Error value) error,
   }) {
     return buyProduct(this);
@@ -308,7 +481,8 @@ class _$BuyTokensImpl implements _BuyTokens {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_BuyTokens value)? buyProduct,
+    TResult? Function(_SelectProduct value)? selectProduct,
+    TResult? Function(_BuyProduct value)? buyProduct,
     TResult? Function(_Error value)? error,
   }) {
     return buyProduct?.call(this);
@@ -318,7 +492,8 @@ class _$BuyTokensImpl implements _BuyTokens {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_BuyTokens value)? buyProduct,
+    TResult Function(_SelectProduct value)? selectProduct,
+    TResult Function(_BuyProduct value)? buyProduct,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -329,13 +504,13 @@ class _$BuyTokensImpl implements _BuyTokens {
   }
 }
 
-abstract class _BuyTokens implements TokensEvent {
-  const factory _BuyTokens({required final ProductModel productModel}) =
-      _$BuyTokensImpl;
+abstract class _BuyProduct implements ProductsEvent {
+  const factory _BuyProduct({required final ProductModel productModel}) =
+      _$BuyProductImpl;
 
   ProductModel get productModel;
   @JsonKey(ignore: true)
-  _$$BuyTokensImplCopyWith<_$BuyTokensImpl> get copyWith =>
+  _$$BuyProductImplCopyWith<_$BuyProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -348,7 +523,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ProductsEventCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -362,7 +537,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'TokensEvent.error()';
+    return 'ProductsEvent.error()';
   }
 
   @override
@@ -378,6 +553,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(ProductModel productModel) selectProduct,
     required TResult Function(ProductModel productModel) buyProduct,
     required TResult Function() error,
   }) {
@@ -388,6 +564,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(ProductModel productModel)? selectProduct,
     TResult? Function(ProductModel productModel)? buyProduct,
     TResult? Function()? error,
   }) {
@@ -398,6 +575,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(ProductModel productModel)? selectProduct,
     TResult Function(ProductModel productModel)? buyProduct,
     TResult Function()? error,
     required TResult orElse(),
@@ -412,7 +590,8 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_BuyTokens value) buyProduct,
+    required TResult Function(_SelectProduct value) selectProduct,
+    required TResult Function(_BuyProduct value) buyProduct,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -422,7 +601,8 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_BuyTokens value)? buyProduct,
+    TResult? Function(_SelectProduct value)? selectProduct,
+    TResult? Function(_BuyProduct value)? buyProduct,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -432,7 +612,8 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_BuyTokens value)? buyProduct,
+    TResult Function(_SelectProduct value)? selectProduct,
+    TResult Function(_BuyProduct value)? buyProduct,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -443,37 +624,44 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements TokensEvent {
+abstract class _Error implements ProductsEvent {
   const factory _Error() = _$ErrorImpl;
 }
 
 /// @nodoc
-mixin _$TokensState {
+mixin _$ProductsState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  UserModel get user => throw _privateConstructorUsedError;
+  ProductModel? get selectedProduct => throw _privateConstructorUsedError;
   List<ProductModel> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TokensStateCopyWith<TokensState> get copyWith =>
+  $ProductsStateCopyWith<ProductsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TokensStateCopyWith<$Res> {
-  factory $TokensStateCopyWith(
-          TokensState value, $Res Function(TokensState) then) =
-      _$TokensStateCopyWithImpl<$Res, TokensState>;
+abstract class $ProductsStateCopyWith<$Res> {
+  factory $ProductsStateCopyWith(
+          ProductsState value, $Res Function(ProductsState) then) =
+      _$ProductsStateCopyWithImpl<$Res, ProductsState>;
   @useResult
   $Res call(
       {FormzSubmissionStatus status,
       String? errorMessage,
+      UserModel user,
+      ProductModel? selectedProduct,
       List<ProductModel> products});
+
+  $UserModelCopyWith<$Res> get user;
+  $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
-class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
-    implements $TokensStateCopyWith<$Res> {
-  _$TokensStateCopyWithImpl(this._value, this._then);
+class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
+    implements $ProductsStateCopyWith<$Res> {
+  _$ProductsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -485,6 +673,8 @@ class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
   $Res call({
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? user = null,
+    Object? selectedProduct = freezed,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
@@ -496,34 +686,69 @@ class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
+              as ProductModel?,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductModel>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductModelCopyWith<$Res>? get selectedProduct {
+    if (_value.selectedProduct == null) {
+      return null;
+    }
+
+    return $ProductModelCopyWith<$Res>(_value.selectedProduct!, (value) {
+      return _then(_value.copyWith(selectedProduct: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$TokensStateImplCopyWith<$Res>
-    implements $TokensStateCopyWith<$Res> {
-  factory _$$TokensStateImplCopyWith(
-          _$TokensStateImpl value, $Res Function(_$TokensStateImpl) then) =
-      __$$TokensStateImplCopyWithImpl<$Res>;
+abstract class _$$ProductsStateImplCopyWith<$Res>
+    implements $ProductsStateCopyWith<$Res> {
+  factory _$$ProductsStateImplCopyWith(
+          _$ProductsStateImpl value, $Res Function(_$ProductsStateImpl) then) =
+      __$$ProductsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {FormzSubmissionStatus status,
       String? errorMessage,
+      UserModel user,
+      ProductModel? selectedProduct,
       List<ProductModel> products});
+
+  @override
+  $UserModelCopyWith<$Res> get user;
+  @override
+  $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
-class __$$TokensStateImplCopyWithImpl<$Res>
-    extends _$TokensStateCopyWithImpl<$Res, _$TokensStateImpl>
-    implements _$$TokensStateImplCopyWith<$Res> {
-  __$$TokensStateImplCopyWithImpl(
-      _$TokensStateImpl _value, $Res Function(_$TokensStateImpl) _then)
+class __$$ProductsStateImplCopyWithImpl<$Res>
+    extends _$ProductsStateCopyWithImpl<$Res, _$ProductsStateImpl>
+    implements _$$ProductsStateImplCopyWith<$Res> {
+  __$$ProductsStateImplCopyWithImpl(
+      _$ProductsStateImpl _value, $Res Function(_$ProductsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -531,9 +756,11 @@ class __$$TokensStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? user = null,
+    Object? selectedProduct = freezed,
     Object? products = null,
   }) {
-    return _then(_$TokensStateImpl(
+    return _then(_$ProductsStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -542,6 +769,14 @@ class __$$TokensStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
+              as ProductModel?,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -552,10 +787,12 @@ class __$$TokensStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TokensStateImpl implements _TokensState {
-  const _$TokensStateImpl(
+class _$ProductsStateImpl implements _ProductsState {
+  const _$ProductsStateImpl(
       {required this.status,
       required this.errorMessage,
+      required this.user,
+      this.selectedProduct,
       required final List<ProductModel> products})
       : _products = products;
 
@@ -563,6 +800,10 @@ class _$TokensStateImpl implements _TokensState {
   final FormzSubmissionStatus status;
   @override
   final String? errorMessage;
+  @override
+  final UserModel user;
+  @override
+  final ProductModel? selectedProduct;
   final List<ProductModel> _products;
   @override
   List<ProductModel> get products {
@@ -573,45 +814,54 @@ class _$TokensStateImpl implements _TokensState {
 
   @override
   String toString() {
-    return 'TokensState(status: $status, errorMessage: $errorMessage, products: $products)';
+    return 'ProductsState(status: $status, errorMessage: $errorMessage, user: $user, selectedProduct: $selectedProduct, products: $products)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokensStateImpl &&
+            other is _$ProductsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.selectedProduct, selectedProduct) ||
+                other.selectedProduct == selectedProduct) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage,
-      const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, status, errorMessage, user,
+      selectedProduct, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TokensStateImplCopyWith<_$TokensStateImpl> get copyWith =>
-      __$$TokensStateImplCopyWithImpl<_$TokensStateImpl>(this, _$identity);
+  _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
+      __$$ProductsStateImplCopyWithImpl<_$ProductsStateImpl>(this, _$identity);
 }
 
-abstract class _TokensState implements TokensState {
-  const factory _TokensState(
+abstract class _ProductsState implements ProductsState {
+  const factory _ProductsState(
       {required final FormzSubmissionStatus status,
       required final String? errorMessage,
-      required final List<ProductModel> products}) = _$TokensStateImpl;
+      required final UserModel user,
+      final ProductModel? selectedProduct,
+      required final List<ProductModel> products}) = _$ProductsStateImpl;
 
   @override
   FormzSubmissionStatus get status;
   @override
   String? get errorMessage;
   @override
+  UserModel get user;
+  @override
+  ProductModel? get selectedProduct;
+  @override
   List<ProductModel> get products;
   @override
   @JsonKey(ignore: true)
-  _$$TokensStateImplCopyWith<_$TokensStateImpl> get copyWith =>
+  _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
