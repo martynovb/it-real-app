@@ -43,7 +43,7 @@ abstract class DialogsManager {
               minWidth: 150,
               context: context,
               text: LocaleKeys.buyTokens.tr(),
-              onPressed: () => context.go(RouteConstants.tokens.path),
+              onPressed: () => context.go(RouteConstants.products.path),
             )
           ],
         );
@@ -58,7 +58,7 @@ abstract class DialogsManager {
     void Function()? onTap,
     List<Widget>? actions,
   }) {
-   showDialog(
+    showDialog(
       context: context,
       builder: (context) {
         return simple_dialog.SimpleDialog(
@@ -78,15 +78,16 @@ abstract class DialogsManager {
                   textAlign: TextAlign.center,
                 )
               : null,
-          actions: actions ?? [
-            btnFilled(
-              padding: 0,
-              minWidth: 150,
-              context: context,
-              text: LocaleKeys.ok.tr(),
-              onPressed: onTap ?? () => context.pop(),
-            ),
-          ],
+          actions: actions ??
+              [
+                btnFilled(
+                  padding: 0,
+                  minWidth: 150,
+                  context: context,
+                  text: LocaleKeys.ok.tr(),
+                  onPressed: onTap ?? () => context.pop(),
+                ),
+              ],
         );
       },
     );

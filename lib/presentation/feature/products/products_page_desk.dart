@@ -1,11 +1,11 @@
-part of 'tokens_page.dart';
+part of 'products_page.dart';
 
-class TokensPageDesk extends StatelessWidget {
-  const TokensPageDesk({super.key});
+class ProductssPageDesk extends StatelessWidget {
+  const ProductssPageDesk({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TokensBloc, TokensState>(
+    return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
         return Center(
           child: Column(
@@ -18,7 +18,7 @@ class TokensPageDesk extends StatelessWidget {
                 products: state.products,
                 selectedProduct: state.selectedProduct,
               ),
-              TokensPage.buyPackageBtn(context),
+              ProdcutsPage.buyPackageBtn(context),
               const Spacer(),
               footer(context),
             ],
@@ -90,7 +90,7 @@ class TokensPageDesk extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.check.tr() : LocaleKeys.checks.tr()} = ${product.priceInUnits/100}\$',
+                '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.check.tr() : LocaleKeys.checks.tr()} = ${product.priceInUnits / 100}\$',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tokens_bloc.dart';
+part of 'products_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$TokensEvent {
+mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -69,16 +69,16 @@ mixin _$TokensEvent {
 }
 
 /// @nodoc
-abstract class $TokensEventCopyWith<$Res> {
-  factory $TokensEventCopyWith(
-          TokensEvent value, $Res Function(TokensEvent) then) =
-      _$TokensEventCopyWithImpl<$Res, TokensEvent>;
+abstract class $ProductsEventCopyWith<$Res> {
+  factory $ProductsEventCopyWith(
+          ProductsEvent value, $Res Function(ProductsEvent) then) =
+      _$ProductsEventCopyWithImpl<$Res, ProductsEvent>;
 }
 
 /// @nodoc
-class _$TokensEventCopyWithImpl<$Res, $Val extends TokensEvent>
-    implements $TokensEventCopyWith<$Res> {
-  _$TokensEventCopyWithImpl(this._value, this._then);
+class _$ProductsEventCopyWithImpl<$Res, $Val extends ProductsEvent>
+    implements $ProductsEventCopyWith<$Res> {
+  _$ProductsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$ProductsEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -109,7 +109,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'TokensEvent.started()';
+    return 'ProductsEvent.started()';
   }
 
   @override
@@ -196,7 +196,7 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements TokensEvent {
+abstract class _Started implements ProductsEvent {
   const factory _Started() = _$StartedImpl;
 }
 
@@ -213,7 +213,7 @@ abstract class _$$SelectProductImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SelectProductImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$SelectProductImpl>
+    extends _$ProductsEventCopyWithImpl<$Res, _$SelectProductImpl>
     implements _$$SelectProductImplCopyWith<$Res> {
   __$$SelectProductImplCopyWithImpl(
       _$SelectProductImpl _value, $Res Function(_$SelectProductImpl) _then)
@@ -251,7 +251,7 @@ class _$SelectProductImpl implements _SelectProduct {
 
   @override
   String toString() {
-    return 'TokensEvent.selectProduct(productModel: $productModel)';
+    return 'ProductsEvent.selectProduct(productModel: $productModel)';
   }
 
   @override
@@ -347,7 +347,7 @@ class _$SelectProductImpl implements _SelectProduct {
   }
 }
 
-abstract class _SelectProduct implements TokensEvent {
+abstract class _SelectProduct implements ProductsEvent {
   const factory _SelectProduct({required final ProductModel productModel}) =
       _$SelectProductImpl;
 
@@ -370,7 +370,7 @@ abstract class _$$BuyProductImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$BuyProductImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$BuyProductImpl>
+    extends _$ProductsEventCopyWithImpl<$Res, _$BuyProductImpl>
     implements _$$BuyProductImplCopyWith<$Res> {
   __$$BuyProductImplCopyWithImpl(
       _$BuyProductImpl _value, $Res Function(_$BuyProductImpl) _then)
@@ -408,7 +408,7 @@ class _$BuyProductImpl implements _BuyProduct {
 
   @override
   String toString() {
-    return 'TokensEvent.buyProduct(productModel: $productModel)';
+    return 'ProductsEvent.buyProduct(productModel: $productModel)';
   }
 
   @override
@@ -504,7 +504,7 @@ class _$BuyProductImpl implements _BuyProduct {
   }
 }
 
-abstract class _BuyProduct implements TokensEvent {
+abstract class _BuyProduct implements ProductsEvent {
   const factory _BuyProduct({required final ProductModel productModel}) =
       _$BuyProductImpl;
 
@@ -523,7 +523,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$TokensEventCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ProductsEventCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -537,7 +537,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'TokensEvent.error()';
+    return 'ProductsEvent.error()';
   }
 
   @override
@@ -624,12 +624,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements TokensEvent {
+abstract class _Error implements ProductsEvent {
   const factory _Error() = _$ErrorImpl;
 }
 
 /// @nodoc
-mixin _$TokensState {
+mixin _$ProductsState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   UserModel get user => throw _privateConstructorUsedError;
@@ -637,15 +637,15 @@ mixin _$TokensState {
   List<ProductModel> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TokensStateCopyWith<TokensState> get copyWith =>
+  $ProductsStateCopyWith<ProductsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TokensStateCopyWith<$Res> {
-  factory $TokensStateCopyWith(
-          TokensState value, $Res Function(TokensState) then) =
-      _$TokensStateCopyWithImpl<$Res, TokensState>;
+abstract class $ProductsStateCopyWith<$Res> {
+  factory $ProductsStateCopyWith(
+          ProductsState value, $Res Function(ProductsState) then) =
+      _$ProductsStateCopyWithImpl<$Res, ProductsState>;
   @useResult
   $Res call(
       {FormzSubmissionStatus status,
@@ -659,9 +659,9 @@ abstract class $TokensStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
-    implements $TokensStateCopyWith<$Res> {
-  _$TokensStateCopyWithImpl(this._value, this._then);
+class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
+    implements $ProductsStateCopyWith<$Res> {
+  _$ProductsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -723,11 +723,11 @@ class _$TokensStateCopyWithImpl<$Res, $Val extends TokensState>
 }
 
 /// @nodoc
-abstract class _$$TokensStateImplCopyWith<$Res>
-    implements $TokensStateCopyWith<$Res> {
-  factory _$$TokensStateImplCopyWith(
-          _$TokensStateImpl value, $Res Function(_$TokensStateImpl) then) =
-      __$$TokensStateImplCopyWithImpl<$Res>;
+abstract class _$$ProductsStateImplCopyWith<$Res>
+    implements $ProductsStateCopyWith<$Res> {
+  factory _$$ProductsStateImplCopyWith(
+          _$ProductsStateImpl value, $Res Function(_$ProductsStateImpl) then) =
+      __$$ProductsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -744,11 +744,11 @@ abstract class _$$TokensStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TokensStateImplCopyWithImpl<$Res>
-    extends _$TokensStateCopyWithImpl<$Res, _$TokensStateImpl>
-    implements _$$TokensStateImplCopyWith<$Res> {
-  __$$TokensStateImplCopyWithImpl(
-      _$TokensStateImpl _value, $Res Function(_$TokensStateImpl) _then)
+class __$$ProductsStateImplCopyWithImpl<$Res>
+    extends _$ProductsStateCopyWithImpl<$Res, _$ProductsStateImpl>
+    implements _$$ProductsStateImplCopyWith<$Res> {
+  __$$ProductsStateImplCopyWithImpl(
+      _$ProductsStateImpl _value, $Res Function(_$ProductsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -760,7 +760,7 @@ class __$$TokensStateImplCopyWithImpl<$Res>
     Object? selectedProduct = freezed,
     Object? products = null,
   }) {
-    return _then(_$TokensStateImpl(
+    return _then(_$ProductsStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -787,8 +787,8 @@ class __$$TokensStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TokensStateImpl implements _TokensState {
-  const _$TokensStateImpl(
+class _$ProductsStateImpl implements _ProductsState {
+  const _$ProductsStateImpl(
       {required this.status,
       required this.errorMessage,
       required this.user,
@@ -814,14 +814,14 @@ class _$TokensStateImpl implements _TokensState {
 
   @override
   String toString() {
-    return 'TokensState(status: $status, errorMessage: $errorMessage, user: $user, selectedProduct: $selectedProduct, products: $products)';
+    return 'ProductsState(status: $status, errorMessage: $errorMessage, user: $user, selectedProduct: $selectedProduct, products: $products)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokensStateImpl &&
+            other is _$ProductsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
@@ -838,17 +838,17 @@ class _$TokensStateImpl implements _TokensState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TokensStateImplCopyWith<_$TokensStateImpl> get copyWith =>
-      __$$TokensStateImplCopyWithImpl<_$TokensStateImpl>(this, _$identity);
+  _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
+      __$$ProductsStateImplCopyWithImpl<_$ProductsStateImpl>(this, _$identity);
 }
 
-abstract class _TokensState implements TokensState {
-  const factory _TokensState(
+abstract class _ProductsState implements ProductsState {
+  const factory _ProductsState(
       {required final FormzSubmissionStatus status,
       required final String? errorMessage,
       required final UserModel user,
       final ProductModel? selectedProduct,
-      required final List<ProductModel> products}) = _$TokensStateImpl;
+      required final List<ProductModel> products}) = _$ProductsStateImpl;
 
   @override
   FormzSubmissionStatus get status;
@@ -862,6 +862,6 @@ abstract class _TokensState implements TokensState {
   List<ProductModel> get products;
   @override
   @JsonKey(ignore: true)
-  _$$TokensStateImplCopyWith<_$TokensStateImpl> get copyWith =>
+  _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

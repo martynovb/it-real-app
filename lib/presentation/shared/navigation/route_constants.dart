@@ -6,7 +6,6 @@ class RouteItem {
 }
 
 class RouteConstants {
-
   static Set<String> unauthRoutes = {
     RouteConstants.signIn.path,
     RouteConstants.signUp.path,
@@ -40,8 +39,8 @@ class RouteConstants {
     name: 'Settings',
   );
 
-  static const RouteItem tokens = RouteItem(
-    path: '/tokens',
-    name: 'Tokens',
+  static const RouteItem products = RouteItem(
+    path: '/products',
+    name: 'Products',
   );
 }

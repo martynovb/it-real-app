@@ -2,50 +2,47 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
-import 'package:it_real_app/presentation/feature/home/home_page.dart';
-import 'package:it_real_app/presentation/feature/tokens/bloc/tokens_bloc.dart';
+import 'package:it_real_app/presentation/feature/products/bloc/products_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
-import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
-import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/device_layout_builder.dart';
 import 'package:it_real_app/presentation/shared/widgets/footer.dart';
 import 'package:it_real_app/presentation/shared/widgets/header.dart';
 
-part 'tokens_page_mobile.dart';
-part 'tokens_page_desk.dart';
+part 'products_page_mobile.dart';
+part 'products_page_desk.dart';
 
-class TokensPage extends StatelessWidget {
-  const TokensPage({super.key});
+class ProdcutsPage extends StatelessWidget {
+  const ProdcutsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => getIt.get<TokensBloc>()
+        create: (context) => getIt.get<ProductsBloc>()
           ..add(
-            const TokensEvent.started(),
+            const ProductsEvent.started(),
           ),
         child: DeviceLayoutBuilder(
           layoutBuilder: (isMobile) => Scaffold(
-            body: isMobile ? const TokensPageMobile() : const TokensPageDesk(),
+            body: isMobile
+                ? const ProductsPageMobile()
+                : const ProductssPageDesk(),
           ),
         ));
   }
 
   static Widget buyPackageBtn(BuildContext context, {bool isMobile = false}) {
-    final selectedProduct = context.read<TokensBloc>().state.selectedProduct;
+    final selectedProduct = context.read<ProductsBloc>().state.selectedProduct;
     return btnFilledWithIcon(
       isMobile: isMobile,
       onPressed: selectedProduct != null
           ? () {
-              context.read<TokensBloc>().add(
-                    TokensEvent.buyProduct(
+              context.read<ProductsBloc>().add(
+                    ProductsEvent.buyProduct(
                       productModel: selectedProduct,
                     ),
                   );

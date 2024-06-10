@@ -1,11 +1,11 @@
-part of 'tokens_page.dart';
+part of 'products_page.dart';
 
-class TokensPageMobile extends StatelessWidget {
-  const TokensPageMobile({super.key});
+class ProductsPageMobile extends StatelessWidget {
+  const ProductsPageMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TokensBloc, TokensState>(
+    return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
         return Center(
           child: Column(
@@ -16,7 +16,7 @@ class TokensPageMobile extends StatelessWidget {
                 user: state.user,
               ),
               const Spacer(),
-              TokensPage.buyPackageBtn(
+              ProdcutsPage.buyPackageBtn(
                 context,
                 isMobile: true,
               ),
