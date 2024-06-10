@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +18,13 @@ import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 const String _logoutOption = 'logoutOption';
 const String _deleteAccountOption = 'deleteAccountOption';
 
-Widget headerDesktop(BuildContext context, UserModel user) {
+enum HeaderOption { buy, account, none }
+
+Widget headerDesktop({
+  required BuildContext context,
+  required UserModel user,
+  HeaderOption currentOption = HeaderOption.none,
+}) {
   final acountBtnGlobalKey = GlobalKey();
   return Padding(
     key: acountBtnGlobalKey,
@@ -37,14 +45,24 @@ Widget headerDesktop(BuildContext context, UserModel user) {
         color: Theme.of(context).brightness == Brightness.dark
             ? AppColors.almostBlack
             : AppColors.white,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.almostBlack.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         children: [
-          Text(
-            LocaleKeys.appName.tr(),
-            style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
+          GestureDetector(
+            onTap: () => context.go(RouteConstants.home.path),
+            child: Text(
+              LocaleKeys.appName.tr(),
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+            ),
           ),
           const Spacer(),
           Container(
@@ -63,15 +81,16 @@ Widget headerDesktop(BuildContext context, UserModel user) {
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    text: '${LocaleKeys.tokenBalance.tr()}: ',
+                    text: '${LocaleKeys.verificationsBalance.tr()}: ',
                     style: Theme.of(context).textTheme.displaySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onTertiary,
                         ),
                     children: [
-                      TextSpan(
-                        text: user.balance.toString(),
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
+                      if (user.id.isNotEmpty)
+                        TextSpan(
+                          text: user.balance.toString(),
+                          style: Theme.of(context).textTheme.displaySmall,
+                        ),
                     ],
                   ),
                 ),
@@ -83,16 +102,19 @@ Widget headerDesktop(BuildContext context, UserModel user) {
             padding: 0,
             minWidth: 0,
             minHeight: 54,
+            isSelected: currentOption == HeaderOption.buy,
             postfixWidget: SvgPicture.asset(
               AppIcons.iconWallet,
               width: 24,
-              colorFilter: const ColorFilter.mode(
-                AppColors.purple,
+              colorFilter: ColorFilter.mode(
+                currentOption == HeaderOption.buy
+                    ? AppColors.white
+                    : AppColors.purple,
                 BlendMode.srcIn,
               ),
             ),
             context: context,
-            text: LocaleKeys.buyTokens.tr(),
+            text: LocaleKeys.buyVerifications.tr(),
             onPressed: () => context.go(RouteConstants.products.path),
           ),
           AppDimensions.sBoxW16,
@@ -123,6 +145,7 @@ Widget headerDesktop(BuildContext context, UserModel user) {
 Widget headerMobile({
   required BuildContext context,
   required UserModel user,
+  HeaderOption currentOption = HeaderOption.none,
 }) {
   final acountBtnGlobalKey = GlobalKey();
 
@@ -130,8 +153,8 @@ Widget headerMobile({
     key: acountBtnGlobalKey,
     padding: const EdgeInsets.only(
       top: 16,
-      left: 40,
-      right: 40,
+      left: 16,
+      right: 16,
     ),
     child: Container(
       padding: const EdgeInsets.only(
@@ -145,25 +168,38 @@ Widget headerMobile({
         color: Theme.of(context).brightness == Brightness.dark
             ? AppColors.almostBlack
             : AppColors.white,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.almostBlack.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         children: [
-          Text(
-            LocaleKeys.appName.tr(),
-            style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
+          GestureDetector(
+            onTap: () => context.go(RouteConstants.home.path),
+            child: Text(
+              LocaleKeys.appName.tr(),
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+            ),
           ),
           const Spacer(),
           btnOutlinedWithIcon(
             padding: 0,
             minWidth: 0,
             minHeight: 54,
+            isSelected: currentOption == HeaderOption.buy,
             postfixWidget: SvgPicture.asset(
               AppIcons.iconWallet,
               width: 24,
-              colorFilter: const ColorFilter.mode(
-                AppColors.purple,
+              colorFilter: ColorFilter.mode(
+                currentOption == HeaderOption.buy
+                    ? AppColors.white
+                    : AppColors.purple,
                 BlendMode.srcIn,
               ),
             ),

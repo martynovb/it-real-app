@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
@@ -7,6 +11,7 @@ import 'package:it_real_app/presentation/feature/products/bloc/products_bloc.dar
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/device_layout_builder.dart';

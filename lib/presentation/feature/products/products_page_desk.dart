@@ -11,15 +11,53 @@ class ProductssPageDesk extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              headerDesktop(context, state.user),
-              AppDimensions.sBoxH100,
-              _products(
+              headerDesktop(
                 context: context,
-                products: state.products,
-                selectedProduct: state.selectedProduct,
+                user: state.user,
+                currentOption: HeaderOption.buy,
               ),
-              ProdcutsPage.buyPackageBtn(context),
               const Spacer(),
+              SizedBox(
+                width: AppDimensions.maxDescWidth,
+                child: Text(
+                  LocaleKeys.productsPageDescription.tr(),
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              AppDimensions.sBoxH32,
+              SizedBox(
+                height: AppDimensions.productsHeight,
+                child: state.products.isEmpty
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.purple,
+                        ),
+                      )
+                    : _products(
+                        context: context,
+                        products: state.products,
+                        selectedProduct: state.selectedProduct,
+                      ),
+              ),
+              AppDimensions.sBoxH48,
+              ProdcutsPage.buyPackageBtn(context),
+              AppDimensions.sBoxH48,
+              SizedBox(
+                width: AppDimensions.maxDescWidth,
+                child: Text(
+                  LocaleKeys.productsPageDescription2.tr(),
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onTertiary,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const Spacer(
+                flex: 2,
+              ),
               footer(context),
             ],
           ),
@@ -50,8 +88,7 @@ class ProductssPageDesk extends StatelessWidget {
             itemBuilder: (context, index) => _productItem(
               context: context,
               product: products[index],
-              isSelected:
-                  selectedProduct?.productId == products[index].productId,
+              selectedProduct: selectedProduct,
             ),
           ),
         ),
@@ -62,42 +99,110 @@ class ProductssPageDesk extends StatelessWidget {
   Widget _productItem({
     required BuildContext context,
     required ProductModel product,
-    required bool isSelected,
+    required ProductModel? selectedProduct,
   }) {
-    return Container(
-      constraints: const BoxConstraints(maxWidth: 400),
-      width: (MediaQuery.of(context).size.width -
-              AppDimensions.deskSidePadding * 2 -
-              24 * 4) /
-          3,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiary,
-        border: Border.all(
-          color: Theme.of(context).colorScheme.onTertiary,
-          width: 1,
+    bool isSelected = selectedProduct?.productId == product.productId;
+
+    return GestureDetector(
+      onTap: () {
+        context.read<ProductsBloc>().add(
+              ProductsEvent.selectProduct(
+                productModel: product,
+              ),
+            );
+      },
+      child: Container(
+        constraints: const BoxConstraints(
+          maxWidth: 400,
+          minWidth: 310,
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(27)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
+        width: (MediaQuery.of(context).size.width -
+                AppDimensions.deskSidePadding * 2 -
+                24 * 4) /
+            3,
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.tertiary,
+          border: Border.all(
+            color: isSelected
+                ? AppColors.purple
+                : Theme.of(context).colorScheme.onTertiary,
+            width: 1,
           ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text(
-                '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.check.tr() : LocaleKeys.checks.tr()} = ${product.priceInUnits / 100}\$',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
+          borderRadius: const BorderRadius.all(Radius.circular(27)),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: AppColors.purple.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
+              : [],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Radio<ProductModel?>(
+                      value: selectedProduct,
+                      groupValue: product,
+                      onChanged: (value) {
+                        context.read<ProductsBloc>().add(
+                              ProductsEvent.selectProduct(
+                                productModel: product,
+                              ),
+                            );
+                      },
+                      activeColor: AppColors.purple,
                     ),
+                    const Spacer(),
+                    _productTitle(
+                      context: context,
+                      product: product,
+                    ),
+                    const Spacer(),
+                  ],
+                ),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _productTitle({
+    required BuildContext context,
+    required ProductModel product,
+  }) {
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        text:
+            '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.verification.tr() : LocaleKeys.verifications.tr()}',
+        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+              color: AppColors.grey5,
+              decorationStyle: TextDecorationStyle.solid,
+            ),
+        children: [
+          TextSpan(
+            text: ' = ${product.priceInUnits / 100}\$',
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+          ),
+        ],
       ),
     );
   }

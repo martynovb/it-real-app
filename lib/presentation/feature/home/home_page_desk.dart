@@ -21,8 +21,8 @@ class HomePageDesk extends StatelessWidget {
           child: Column(
             children: [
               headerDesktop(
-                context,
-                homeState.userModel,
+                context: context,
+                user: homeState.userModel,
               ),
               AppDimensions.sBoxH100,
               Text(

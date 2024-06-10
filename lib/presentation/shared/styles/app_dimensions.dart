@@ -6,6 +6,10 @@ class AppDimensions {
   static const double footerHeight = 80.0;
   static const double deskSidePadding = 40.0;
   static const double mobSidePadding = 16.0;
+  static const double horizontalDeskPadding = 88;
+  static const double maxDescWidth = 1000;
+  static const double productsHeight = 130;
+
 
   static const SizedBox sBoxDeskHorizontalPadding =
       SizedBox(width: deskSidePadding);

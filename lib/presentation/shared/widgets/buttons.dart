@@ -122,6 +122,7 @@ Widget btnFilled({
 
 Widget btnOutlinedWithIcon({
   required BuildContext context,
+  bool isSelected = false,
   String? text,
   Widget? textWidget,
   void Function()? onPressed,
@@ -141,10 +142,15 @@ Widget btnOutlinedWithIcon({
       ),
       child: ElevatedButton(
         onPressed: onPressed,
-        style: AppButtonStyle.outlinedBtnWithIconStyle(
-          context: context,
-          textStyle: Theme.of(context).textTheme.displaySmall,
-        ),
+        style: isSelected
+            ? AppButtonStyle.outlinedBtnWithIconStyleSelected(
+                context: context,
+                textStyle: Theme.of(context).textTheme.displaySmall,
+              )
+            : AppButtonStyle.outlinedBtnWithIconStyle(
+                context: context,
+                textStyle: Theme.of(context).textTheme.displaySmall,
+              ),
         child: Padding(
           padding: EdgeInsets.all(padding ?? 8.0),
           child: postfixWidget != null

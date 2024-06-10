@@ -52,12 +52,12 @@
   "maxFileSize": "Max. File Size: {}",
   "uploadingProgress": "{}% done",
   "startVerification": "Start verification",
-  "tokenBalance": "Token balance",
-  "buyTokens": "Buy Tokens",
+  "verificationsBalance": "Verifications balance",
+  "buyVerifications": "Buy Verifications",
   "settings": "Settings",
   "uploadImage": "Upload your image",
-  "notEnoughTokens": "Not enough tokens",
-  "notEnoughTokensDescription": "Gain immediate access to our powerful verification service by purchasing tokens within the app.",
+  "notEnoughVerifications": "Not enough verifications",
+  "notEnoughVerificationsDescription": "Gain immediate access to our powerful verification service by purchasing verifications within the app.",
   "cancel": "Cancel",
   "account": "Account",
   "logout": "Logout",
@@ -66,6 +66,8 @@
   "deleteAccountDialogTitle": "Are you sure you want to delete your account?",
   "confirm": "Confirm",
   "buyPackage": "Buy package",
-  "check": "check",
-  "checks": "checks"
+  "verification": "verification",
+  "verifications": "verifications",
+  "productsPageDescription": "Gain instant access to our powerful verification service by purchasing verifications within the app.\nInvest in your peace.",
+  "productsPageDescription2": "With verifications in hand, you unlock the ability to swiftly and securely verify photos, ensuring your online interactions remain authentic and reliable."
 }

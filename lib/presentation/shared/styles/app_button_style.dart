@@ -139,6 +139,43 @@ class AppButtonStyle {
         ),
       );
 
+  static ButtonStyle outlinedBtnWithIconStyleSelected({
+    required BuildContext context,
+    required TextStyle? textStyle,
+  }) =>
+      ButtonStyle(
+        elevation: MaterialStateProperty.all(0),
+        backgroundColor: MaterialStateProperty.all(
+          AppColors.purple,
+        ),
+        shadowColor: MaterialStateProperty.all(AppColors.grey1),
+        foregroundColor: MaterialStateProperty.all(
+          Theme.of(context).colorScheme.primary,
+        ),
+        textStyle: MaterialStateProperty.all(textStyle?.copyWith(
+          color: Theme.of(context).colorScheme.onPrimary,
+        )),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 20,
+          ),
+        ),
+        shape: MaterialStateProperty.resolveWith(
+          (states) {
+            return RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: const BorderSide(
+                color: AppColors.purple,
+                width: 1,
+              ),
+            );
+          },
+        ),
+      );
+
   static ButtonStyle filledBtnStyle({
     required BuildContext context,
     required TextStyle? textStyle,
