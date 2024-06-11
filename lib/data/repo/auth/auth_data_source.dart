@@ -23,4 +23,8 @@ abstract class AuthDataSource {
   Future<void> logout();
 
   Future<void> deleteAccount();
+
+  Future<void> sendPasswordResetEmail({
+    required String email,
+  });
 }

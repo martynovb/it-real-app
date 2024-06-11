@@ -96,4 +96,9 @@ class AuthRepo extends AuthDataSource {
       stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
+  
+  @override
+  Future<void> sendPasswordResetEmail({required String email}) {
+    return supabaseClient.auth.resetPasswordForEmail(email);
+  }
 }

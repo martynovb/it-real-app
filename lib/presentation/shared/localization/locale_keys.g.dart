@@ -32,6 +32,8 @@ abstract class  LocaleKeys {
   static const continueWithGoogle = 'continueWithGoogle';
   static const haveAnAccount = 'haveAnAccount';
   static const forgotPassword = 'forgotPassword';
+  static const remeberYourPassword = 'remeberYourPassword';
+  static const resetPassword = 'resetPassword';
   static const bySigningInYouAgreeToOur = 'bySigningInYouAgreeToOur';
   static const bySigningUpYouAgreeToOur = 'bySigningUpYouAgreeToOur';
   static const and = 'and';
@@ -72,5 +74,7 @@ abstract class  LocaleKeys {
   static const verifications = 'verifications';
   static const productsPageDescription = 'productsPageDescription';
   static const productsPageDescription2 = 'productsPageDescription2';
+  static const success = 'success';
+  static const resetPasswordSuccess = 'resetPasswordSuccess';
 
 }

@@ -43,4 +43,9 @@ class RouteConstants {
     path: '/products',
     name: 'Products',
   );
+  
+  static const RouteItem forgotPassword = RouteItem(
+    path: '/forgot-password',
+    name: 'Forgot Password',
+  );
 }

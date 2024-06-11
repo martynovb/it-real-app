@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:it_real_app/presentation/feature/forgot_password/forgot_password_page.dart';
 import 'package:it_real_app/presentation/feature/home/home_page.dart';
 import 'package:it_real_app/presentation/feature/onboarding/oboarding_page.dart';
 import 'package:it_real_app/presentation/feature/settings/settings_page.dart';
@@ -53,6 +54,13 @@ GoRouter router({
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
             child: SignUpPage(),
+          ),
+        ),
+        GoRoute(
+          path: RouteConstants.forgotPassword.path,
+          pageBuilder: (context, state) => NoTransitionPage(
+            key: state.pageKey,
+            child: ForgotPasswordPage(),
           ),
         ),
         GoRoute(

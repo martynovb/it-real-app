@@ -22,9 +22,11 @@ import 'package:it_real_app/data/repo/verification/verification_repo.dart'
     as _i11;
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart' as _i5;
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart'
-    as _i20;
+    as _i21;
 import 'package:it_real_app/presentation/feature/drag_and_drop/bloc/drag_and_drop_bloc.dart'
     as _i7;
+import 'package:it_real_app/presentation/feature/forgot_password/bloc/forgot_password_bloc.dart'
+    as _i20;
 import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart'
     as _i16;
 import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart'
@@ -40,9 +42,9 @@ import 'package:it_real_app/presentation/feature/sign_in/bloc/sign_in_bloc.dart'
 import 'package:it_real_app/presentation/feature/sign_up/bloc/sign_up_bloc.dart'
     as _i19;
 import 'package:it_real_app/presentation/shared/di/modules/app_module.dart'
-    as _i21;
-import 'package:it_real_app/presentation/shared/di/modules/data_module.dart'
     as _i22;
+import 'package:it_real_app/presentation/shared/di/modules/data_module.dart'
+    as _i23;
 import 'package:supabase_flutter/supabase_flutter.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -84,7 +86,9 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i18.SignInBloc(authDataSource: gh<_i12.AuthDataSource>()));
     gh.factory<_i19.SignUpBloc>(
         () => _i19.SignUpBloc(authDataSource: gh<_i12.AuthDataSource>()));
-    gh.singleton<_i20.AuthBloc>(() => _i20.AuthBloc(
+    gh.factory<_i20.ForgotPasswordBloc>(() =>
+        _i20.ForgotPasswordBloc(authDataSource: gh<_i12.AuthDataSource>()));
+    gh.singleton<_i21.AuthBloc>(() => _i21.AuthBloc(
           authDataSource: gh<_i12.AuthDataSource>(),
           supabaseClient: gh<_i6.SupabaseClient>(),
         ));
@@ -92,6 +96,6 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i21.AppModule {}
+class _$AppModule extends _i22.AppModule {}
 
-class _$DataModule extends _i22.DataModule {}
+class _$DataModule extends _i23.DataModule {}

@@ -30,6 +30,8 @@
   "continueWithGoogle": "Continue with Google",
   "haveAnAccount": "Have an account?",
   "forgotPassword": "Forgot your password?",
+  "remeberYourPassword": "Remember your password?",
+  "resetPassword": "Reset password",
   "bySigningInYouAgreeToOur": "By signing in, you agree to our",
   "bySigningUpYouAgreeToOur": "By signing up, you agree to our",
   "and": "and",
@@ -69,5 +71,7 @@
   "verification": "verification",
   "verifications": "verifications",
   "productsPageDescription": "Gain instant access to our powerful verification service by purchasing verifications within the app.\nInvest in your peace.",
-  "productsPageDescription2": "With verifications in hand, you unlock the ability to swiftly and securely verify photos, ensuring your online interactions remain authentic and reliable."
+  "productsPageDescription2": "With verifications in hand, you unlock the ability to swiftly and securely verify photos, ensuring your online interactions remain authentic and reliable.",
+  "success": "Success",
+  "resetPasswordSuccess": "Password reset link has been sent to your email"
 }

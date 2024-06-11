@@ -74,7 +74,7 @@ class SignInPage extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerRight,
                               child: InkWell(
-                                onTap: () => Navigator.of(context).pop(),
+                                onTap: () => context.push(RouteConstants.forgotPassword.path),
                                 child: Text(
                                   LocaleKeys.forgotPassword.tr(),
                                   style: Theme.of(context)
