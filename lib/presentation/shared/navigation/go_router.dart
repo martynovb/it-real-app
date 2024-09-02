@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:it_real_app/presentation/feature/forgot_password/forgot_password_page.dart';
 import 'package:it_real_app/presentation/feature/home/home_page.dart';
 import 'package:it_real_app/presentation/feature/onboarding/oboarding_page.dart';
+import 'package:it_real_app/presentation/feature/reset_password/reset_password_page.dart';
 import 'package:it_real_app/presentation/feature/settings/settings_page.dart';
 import 'package:it_real_app/presentation/feature/sign_in/sign_in_page.dart';
 import 'package:it_real_app/presentation/feature/sign_up/sign_up_page.dart';
@@ -61,6 +62,16 @@ GoRouter router({
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
             child: ForgotPasswordPage(),
+          ),
+        ),
+        GoRoute(
+          path: RouteConstants.resetPassword.path,
+          pageBuilder: (context, state) => NoTransitionPage(
+            key: state.pageKey,
+            child: ResetPasswordPage(
+              resetPasswordUri: state.uri,
+              error: state.uri.queryParameters['error'] ?? '',
+            ),
           ),
         ),
         GoRoute(

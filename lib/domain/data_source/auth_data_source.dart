@@ -27,4 +27,12 @@ abstract class AuthDataSource {
   Future<void> sendPasswordResetEmail({
     required String email,
   });
+  
+
+  Future<void> setSessionFromUri(Uri uri);
+
+  Future<void> resetPassword({
+    required String password,
+    required String confirmPassword,
+  });
 }

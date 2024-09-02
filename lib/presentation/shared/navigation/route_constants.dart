@@ -48,4 +48,9 @@ class RouteConstants {
     path: '/forgot-password',
     name: 'Forgot Password',
   );
+  
+  static const RouteItem resetPassword = RouteItem(
+    path: '/reset-password',
+    name: 'Reset Password',
+  );
 }

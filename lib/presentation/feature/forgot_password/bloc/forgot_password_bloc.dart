@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
+import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/domain/field_validators/email_field_validation.dart';
 import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
 

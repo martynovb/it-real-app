@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/report/report_model.dart';
-import 'package:it_real_app/data/repo/verification/verification_data_source.dart';
+import 'package:it_real_app/domain/data_source/verification_data_source.dart';
 import 'package:it_real_app/domain/exceptions/exceptions.dart';
 
 part 'photo_verification_bloc.freezed.dart';

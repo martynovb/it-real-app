@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/payment_metadata/payment_metadata_model.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/data/network/network_constants.dart';
-import 'package:it_real_app/data/repo/products/products_data_source.dart';
+import 'package:it_real_app/domain/data_source/products_data_source.dart';
 import 'package:it_real_app/domain/exceptions/exceptions.dart';
 import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

@@ -1,6 +1,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
-import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
+import 'package:it_real_app/domain/data_source/auth_data_source.dart';
+import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
+import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 @Singleton(as: AuthDataSource)
@@ -96,9 +98,28 @@ class AuthRepo extends AuthDataSource {
       stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
-  
+
   @override
   Future<void> sendPasswordResetEmail({required String email}) {
-    return supabaseClient.auth.resetPasswordForEmail(email);
+    return supabaseClient.auth.resetPasswordForEmail(
+      email,
+      redirectTo:
+          RunConfigurations.redirectUrl + RouteConstants.resetPassword.path,
+    );
+  }
+
+  @override
+  Future<void> resetPassword({
+    required String password,
+    required String confirmPassword,
+  }) async {
+    await supabaseClient.auth.updateUser(
+      UserAttributes(password: password),
+    );
+  }
+
+  @override
+  Future<void> setSessionFromUri(Uri uri) async {
+    await supabaseClient.auth.getSessionFromUrl(uri);
   }
 }

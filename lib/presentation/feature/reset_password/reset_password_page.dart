@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
-import 'package:it_real_app/presentation/feature/forgot_password/bloc/forgot_password_bloc.dart';
+import 'package:it_real_app/presentation/feature/reset_password/bloc/reset_password_bloc.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/dialogs/dialogs_manager.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
@@ -13,25 +13,50 @@ import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/input_field.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  final TextEditingController _emailController = TextEditingController();
+class ResetPasswordPage extends StatelessWidget {
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _repeatPasswordController =
+      TextEditingController();
+  final Uri _resetPasswordUri;
+  final String _error;
 
-  ForgotPasswordPage({
+  ResetPasswordPage({
     super.key,
-  });
+    required Uri resetPasswordUri,
+    required String error,
+  })  : _resetPasswordUri = resetPasswordUri,
+        _error = error;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt.get<ForgotPasswordBloc>(),
-      child: BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
+      create: (context) => getIt.get<ResetPasswordBloc>()
+        ..add(ResetPasswordEvent.init(
+          resetPasswordUri: _resetPasswordUri,
+          error: _error,
+        )),
+      child: BlocConsumer<ResetPasswordBloc, ResetPasswordState>(
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
             DialogsManager.showInfoDialog(
               context: context,
               title: LocaleKeys.success.tr(),
-              description: LocaleKeys.resetPasswordLinkSent.tr(),
+              description: LocaleKeys.resetPasswordSuccess.tr(),
               onTap: () => context.go(RouteConstants.signIn.path),
+            );
+          } else if (state.status == FormzSubmissionStatus.failure &&
+              state.isExpired == true) {
+            DialogsManager.showErrorDialog(
+              context: context,
+              title: LocaleKeys.resetPasswordLinkExpiredTitle.tr(),
+              description: LocaleKeys.resetPasswordLinkExpiredDescription.tr(),
+              onTap: () => context.go(RouteConstants.forgotPassword.path),
+            );
+          } else if (state.status == FormzSubmissionStatus.failure) {
+            DialogsManager.showErrorDialog(
+              context: context,
+              title: LocaleKeys.errorOccurred.tr(),
+              description: state.errorMessage,
             );
           }
         },
@@ -58,10 +83,20 @@ class ForgotPasswordPage extends StatelessWidget {
                           children: [
                             AppInputField(
                               key: UniqueKey(),
-                              controller: _emailController,
-                              lable: LocaleKeys.email.tr(),
-                              hintText: LocaleKeys.enterYourEmailAdress.tr(),
-                              errorText: state.emailError?.message,
+                              controller: _passwordController,
+                              lable: LocaleKeys.password.tr(),
+                              hintText: LocaleKeys.enterYourPassword.tr(),
+                              errorText: state.passwordError?.message,
+                              showPasswordToggle: true,
+                            ),
+                            AppDimensions.sBoxH24,
+                            AppInputField(
+                              key: UniqueKey(),
+                              controller: _repeatPasswordController,
+                              lable: LocaleKeys.repeatPassword.tr(),
+                              hintText: LocaleKeys.enterYourPassword.tr(),
+                              errorText: state.repeatPasswordError?.message,
+                              showPasswordToggle: true,
                             ),
                             AppDimensions.sBoxH24,
                             SizedBox(
@@ -71,13 +106,14 @@ class ForgotPasswordPage extends StatelessWidget {
                                     FormzSubmissionStatus.inProgress,
                                 context: context,
                                 text: LocaleKeys.resetPassword.tr(),
-                                onPressed: () => context
-                                    .read<ForgotPasswordBloc>()
-                                    .add(
-                                      ForgotPasswordEvent.sendResetPasswordLink(
-                                        email: _emailController.text,
-                                      ),
-                                    ),
+                                onPressed: () =>
+                                    context.read<ResetPasswordBloc>().add(
+                                          ResetPasswordEvent.resetPassword(
+                                            password: _passwordController.text,
+                                            repeatPassword:
+                                                _repeatPasswordController.text,
+                                          ),
+                                        ),
                               ),
                             ),
                             AppDimensions.sBoxH24,

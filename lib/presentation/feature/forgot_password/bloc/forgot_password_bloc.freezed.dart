@@ -19,33 +19,33 @@ mixin _$ForgotPasswordEvent {
   String get email => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email) resetPassword,
+    required TResult Function(String email) sendResetPasswordLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email)? resetPassword,
+    TResult? Function(String email)? sendResetPasswordLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email)? resetPassword,
+    TResult Function(String email)? sendResetPasswordLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ResetPassword value) resetPassword,
+    required TResult Function(_ResetPassword value) sendResetPasswordLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ResetPassword value)? resetPassword,
+    TResult? Function(_ResetPassword value)? sendResetPasswordLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ResetPassword value)? resetPassword,
+    TResult Function(_ResetPassword value)? sendResetPasswordLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,7 +131,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
 
   @override
   String toString() {
-    return 'ForgotPasswordEvent.resetPassword(email: $email)';
+    return 'ForgotPasswordEvent.sendResetPasswordLink(email: $email)';
   }
 
   @override
@@ -154,27 +154,27 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email) resetPassword,
+    required TResult Function(String email) sendResetPasswordLink,
   }) {
-    return resetPassword(email);
+    return sendResetPasswordLink(email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email)? resetPassword,
+    TResult? Function(String email)? sendResetPasswordLink,
   }) {
-    return resetPassword?.call(email);
+    return sendResetPasswordLink?.call(email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email)? resetPassword,
+    TResult Function(String email)? sendResetPasswordLink,
     required TResult orElse(),
   }) {
-    if (resetPassword != null) {
-      return resetPassword(email);
+    if (sendResetPasswordLink != null) {
+      return sendResetPasswordLink(email);
     }
     return orElse();
   }
@@ -182,27 +182,27 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ResetPassword value) resetPassword,
+    required TResult Function(_ResetPassword value) sendResetPasswordLink,
   }) {
-    return resetPassword(this);
+    return sendResetPasswordLink(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ResetPassword value)? resetPassword,
+    TResult? Function(_ResetPassword value)? sendResetPasswordLink,
   }) {
-    return resetPassword?.call(this);
+    return sendResetPasswordLink?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ResetPassword value)? resetPassword,
+    TResult Function(_ResetPassword value)? sendResetPasswordLink,
     required TResult orElse(),
   }) {
-    if (resetPassword != null) {
-      return resetPassword(this);
+    if (sendResetPasswordLink != null) {
+      return sendResetPasswordLink(this);
     }
     return orElse();
   }
