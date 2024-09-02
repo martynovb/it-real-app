@@ -92,4 +92,46 @@ abstract class DialogsManager {
       },
     );
   }
+
+  static void showInfoDialog({
+    required BuildContext context,
+    String? title,
+    String? description,
+    void Function()? onTap,
+    List<Widget>? actions,
+  }) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return simple_dialog.SimpleDialog(
+          title: title != null
+              ? Text(
+                  title,
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: AppColors.green,
+                      ),
+                  textAlign: TextAlign.center,
+                )
+              : null,
+          description: description != null
+              ? Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                )
+              : null,
+          actions: actions ??
+              [
+                btnFilled(
+                  padding: 0,
+                  minWidth: 150,
+                  context: context,
+                  text: LocaleKeys.ok.tr(),
+                  onPressed: onTap ?? () => context.pop(),
+                ),
+              ],
+        );
+      },
+    );
+  }
 }

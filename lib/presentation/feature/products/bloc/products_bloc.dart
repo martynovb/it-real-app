@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
-import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
-import 'package:it_real_app/data/repo/products/products_data_source.dart';
+import 'package:it_real_app/domain/data_source/auth_data_source.dart';
+import 'package:it_real_app/domain/data_source/products_data_source.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'products_bloc.freezed.dart';

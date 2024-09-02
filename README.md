@@ -9,7 +9,7 @@
 - generate **json** files
 
 ```
-dart run build_runner build
+fvm dart run build_runner build --delete-conflicting-outputs
 ```
 ***********
 
@@ -32,5 +32,5 @@ dart run build_runner build
 ## Generate loclization keys file
 
 ```
-dart run easy_localization:generate -S ./assets/translations --output-dir ./lib/presentation/shared/localization --output-file locale_keys.g.dart -f keys
+fvm dart run easy_localization:generate -S ./assets/translations --output-dir ./lib/presentation/shared/localization --output-file locale_keys.g.dart -f keys
 ```

@@ -5,44 +5,42 @@ import 'package:injectable/injectable.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/domain/field_validators/email_field_validation.dart';
 import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
-import 'package:it_real_app/domain/field_validators/password_field_validation.dart';
 
-part 'sign_in_bloc.freezed.dart';
+part 'forgot_password_bloc.freezed.dart';
 
-part 'sign_in_event.dart';
+part 'forgot_password_event.dart';
 
-part 'sign_in_state.dart';
+part 'forgot_password_state.dart';
 
 @Injectable()
-class SignInBloc extends Bloc<SignInEvent, SignInState> {
+class ForgotPasswordBloc
+    extends Bloc<ForgotPasswordEvent, ForgotPasswordState> {
   final AuthDataSource authDataSource;
 
-  SignInBloc({
+  ForgotPasswordBloc({
     required this.authDataSource,
   }) : super(
-          const SignInState(
+          const ForgotPasswordState(
             status: FormzSubmissionStatus.initial,
             errorMessage: null,
           ),
         ) {
-    on<_SignIn>(_onSignIn);
-    on<_CountinueWithGoogle>(_onCountinueWithGoogle);
+    on<_ResetPassword>(_onResetPassword);
   }
 
-  Future<void> _onSignIn(_SignIn event, Emitter<SignInState> emit) async {
+  Future<void> _onResetPassword(
+    _ResetPassword event,
+    Emitter<ForgotPasswordState> emit,
+  ) async {
     final emailError = EmailFieldValidation.dirty(
       event.email,
     ).validator(event.email);
-    final passwordError = PasswordFieldValidation.dirty(
-      event.password,
-    ).validator(event.password);
 
-    if (emailError != null || passwordError != null) {
+    if (emailError != null) {
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.failure,
           emailError: emailError,
-          passwordError: passwordError,
         ),
       );
       return;
@@ -52,37 +50,18 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       state.copyWith(
         status: FormzSubmissionStatus.inProgress,
         emailError: null,
-        passwordError: null,
       ),
     );
 
-    await authDataSource.signInWithEmailAndPassword(
+    await authDataSource.sendPasswordResetEmail(
       email: event.email,
-      password: event.password,
     );
 
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.success,
         emailError: null,
-        passwordError: null,
       ),
     );
-  }
-
-  Future<void> _onCountinueWithGoogle(
-    _CountinueWithGoogle event,
-    Emitter<SignInState> emit,
-  ) async {
-    if (state.status == FormzSubmissionStatus.inProgress) {
-      return;
-    }
-    emit(
-      state.copyWith(
-        status: FormzSubmissionStatus.inProgress,
-      ),
-    );
-
-    await authDataSource.signInWithGoogle();
   }
 }

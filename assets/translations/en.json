@@ -30,6 +30,8 @@
   "continueWithGoogle": "Continue with Google",
   "haveAnAccount": "Have an account?",
   "forgotPassword": "Forgot your password?",
+  "remeberYourPassword": "Remember your password?",
+  "resetPassword": "Reset password",
   "bySigningInYouAgreeToOur": "By signing in, you agree to our",
   "bySigningUpYouAgreeToOur": "By signing up, you agree to our",
   "and": "and",
@@ -44,6 +46,7 @@
   "photoVerificationDialogSuccessTitle": "Congratulations!",
   "photoVerificationDialogSuccessDescription": "The person in the photo appears to be genuine based on our analysis. Our servers meticulously searched our database, and no matching records were found. Rest assured, we've employed advanced algorithms to ensure accuracy",
   "photoVerificationDialogSuccessSubDescription": "However, please note that while our system is highly accurate, there might be rare instances where fraudulent activity goes undetected.\nThank you for trusting us with your verification process.",
+  "errorOccurred": "An error occurred",
   "networkError": "Network error",
   "serverError": "Server error",
   "somethingWentWrong": "Something went wrong",
@@ -69,5 +72,11 @@
   "verification": "verification",
   "verifications": "verifications",
   "productsPageDescription": "Gain instant access to our powerful verification service by purchasing verifications within the app.\nInvest in your peace.",
-  "productsPageDescription2": "With verifications in hand, you unlock the ability to swiftly and securely verify photos, ensuring your online interactions remain authentic and reliable."
+  "productsPageDescription2": "With verifications in hand, you unlock the ability to swiftly and securely verify photos, ensuring your online interactions remain authentic and reliable.",
+  "success": "Success",
+  "resetPasswordLinkSent": "Reset password link has been sent to your email",
+  "resetPasswordSuccess": "Your password has been successfully reset",
+  "resetPasswordLinkExpiredTitle": "Reset password link has expired",
+  "resetPasswordLinkExpiredDescription": "Please request a new password reset link",
+  "resetPasswordErrorSamePassword": "New password cannot be the same as the old password"
 }

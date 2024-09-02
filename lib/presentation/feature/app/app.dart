@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:it_real_app/data/repo/auth/auth_data_source.dart';
+import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart';
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/feature/photo_verification/bloc/photo_verification_bloc.dart';
@@ -63,7 +63,10 @@ class AppWidget extends StatelessWidget {
               darkTheme: AppTheme.darkThemeData,
               themeMode: appState.themeMode,
               routerConfig: router(
-                initialLocation: RouteConstants.home.path,
+                initialLocation:
+                    authState.authStatus == AuthenticationStatus.authenticated
+                        ? RouteConstants.home.path
+                        : RouteConstants.onboarding.path,
               ),
             );
           },

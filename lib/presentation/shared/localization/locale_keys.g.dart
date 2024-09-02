@@ -32,6 +32,8 @@ abstract class  LocaleKeys {
   static const continueWithGoogle = 'continueWithGoogle';
   static const haveAnAccount = 'haveAnAccount';
   static const forgotPassword = 'forgotPassword';
+  static const remeberYourPassword = 'remeberYourPassword';
+  static const resetPassword = 'resetPassword';
   static const bySigningInYouAgreeToOur = 'bySigningInYouAgreeToOur';
   static const bySigningUpYouAgreeToOur = 'bySigningUpYouAgreeToOur';
   static const and = 'and';
@@ -46,6 +48,7 @@ abstract class  LocaleKeys {
   static const photoVerificationDialogSuccessTitle = 'photoVerificationDialogSuccessTitle';
   static const photoVerificationDialogSuccessDescription = 'photoVerificationDialogSuccessDescription';
   static const photoVerificationDialogSuccessSubDescription = 'photoVerificationDialogSuccessSubDescription';
+  static const errorOccurred = 'errorOccurred';
   static const networkError = 'networkError';
   static const serverError = 'serverError';
   static const somethingWentWrong = 'somethingWentWrong';
@@ -72,5 +75,11 @@ abstract class  LocaleKeys {
   static const verifications = 'verifications';
   static const productsPageDescription = 'productsPageDescription';
   static const productsPageDescription2 = 'productsPageDescription2';
+  static const success = 'success';
+  static const resetPasswordLinkSent = 'resetPasswordLinkSent';
+  static const resetPasswordSuccess = 'resetPasswordSuccess';
+  static const resetPasswordLinkExpiredTitle = 'resetPasswordLinkExpiredTitle';
+  static const resetPasswordLinkExpiredDescription = 'resetPasswordLinkExpiredDescription';
+  static const resetPasswordErrorSamePassword = 'resetPasswordErrorSamePassword';
 
 }

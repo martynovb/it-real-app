@@ -42,7 +42,7 @@ dependencies:
   easy_localization: ^3.0.6
 
   # network & storage
-  supabase_flutter: ^2.5.1
+  supabase_flutter: ^2.6.0
   fetch_client: ^1.0.2
 
 dev_dependencies:
