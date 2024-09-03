@@ -14,6 +14,7 @@ import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/input_field.dart';
+import 'package:it_real_app/presentation/shared/widgets/snack_bar.dart';
 
 class SignInPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
@@ -31,6 +32,12 @@ class SignInPage extends StatelessWidget {
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
             context.go(RouteConstants.home.path);
+          } else if (state.status == FormzSubmissionStatus.failure && state.errorMessage != null) {
+            showTopSnackBar(
+              context: context,
+              message: state.errorMessage ?? LocaleKeys.somethingWentWrong.tr(),
+              snackBarType: SnackBarType.error,
+            );
           }
         },
         builder: (context, state) {

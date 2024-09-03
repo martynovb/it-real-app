@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -6,6 +7,7 @@ import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/domain/data_source/products_data_source.dart';
+import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'products_bloc.freezed.dart';
@@ -46,13 +48,14 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
           status: FormzSubmissionStatus.success,
           user: await authDataSource.getCurrentUser(),
           products: await productsDataSource.getAllProducts(),
+          errorMessage: null,
         ),
       );
     } catch (e) {
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.failure,
-          errorMessage: 'Failed to load products',
+          errorMessage: LocaleKeys.somethingWentWrong.tr(),
         ),
       );
     }
@@ -72,9 +75,11 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       );
     } catch (e) {
       emit(
-        state.copyWith(
+        ProductsState(
           status: FormzSubmissionStatus.failure,
-          errorMessage: 'Failed to buy checks',
+          errorMessage: LocaleKeys.somethingWentWrong.tr(),
+          user: state.user,
+          products: state.products,
         ),
       );
     }
@@ -87,6 +92,8 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     emit(
       state.copyWith(
         selectedProduct: event.productModel,
+        status: FormzSubmissionStatus.success,
+        errorMessage: null,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/payment_metadata/payment_metadata_model.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
@@ -46,7 +47,10 @@ class ProductsRepo extends ProductsDataSource {
     if (response.data is Map && response.data['products'] != null) {
       return (response.data['products'] as List)
           .map((entityMap) => ProductModel.fromJson(entityMap))
-          .toList();
+          .toList()
+          .sorted(
+            (a, b) => a.quantity.compareTo(b.quantity),
+          );
     }
 
     throw ServerException(message: 'Failed to generate payment metadata');
