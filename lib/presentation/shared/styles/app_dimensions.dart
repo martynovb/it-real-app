@@ -9,6 +9,7 @@ class AppDimensions {
   static const double horizontalDeskPadding = 88;
   static const double maxDescWidth = 1000;
   static const double productsHeight = 130;
+  static const double snackBarH = 52;
 
 
   static const SizedBox sBoxDeskHorizontalPadding =

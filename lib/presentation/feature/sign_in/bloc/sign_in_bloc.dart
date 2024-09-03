@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -6,6 +7,8 @@ import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/domain/field_validators/email_field_validation.dart';
 import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
 import 'package:it_real_app/domain/field_validators/password_field_validation.dart';
+import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sign_in_bloc.freezed.dart';
 
@@ -43,6 +46,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           status: FormzSubmissionStatus.failure,
           emailError: emailError,
           passwordError: passwordError,
+          errorMessage: null,
         ),
       );
       return;
@@ -53,21 +57,40 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         status: FormzSubmissionStatus.inProgress,
         emailError: null,
         passwordError: null,
+        errorMessage: null,
       ),
     );
 
-    await authDataSource.signInWithEmailAndPassword(
-      email: event.email,
-      password: event.password,
-    );
+    try {
 
-    emit(
-      state.copyWith(
-        status: FormzSubmissionStatus.success,
-        emailError: null,
-        passwordError: null,
-      ),
-    );
+      await authDataSource.signInWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
+
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.success,
+          emailError: null,
+          passwordError: null,
+        ),
+      );
+
+    } catch (e) {
+
+      var errorMessages = LocaleKeys.somethingWentWrong.tr();
+
+      if (e is AuthApiException) {
+          errorMessages = LocaleKeys.loginErrorInvalidCredentials.tr();
+      }
+
+      emit(
+        SignInState(
+          status: FormzSubmissionStatus.failure,
+          errorMessage: errorMessages,
+        ),
+      );
+    }
   }
 
   Future<void> _onCountinueWithGoogle(

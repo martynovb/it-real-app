@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -7,6 +8,9 @@ import 'package:it_real_app/domain/field_validators/email_field_validation.dart'
 import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
 import 'package:it_real_app/domain/field_validators/password_field_validation.dart';
 import 'package:it_real_app/domain/field_validators/repeat_password_field_validation.dart';
+import 'package:it_real_app/presentation/shared/error_handling/supabase_auth_error_codes.dart';
+import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sign_up_bloc.freezed.dart';
 
@@ -51,6 +55,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           emailError: emailError,
           passwordError: passwordError,
           repeatPasswordError: repeatPasswordError,
+          errorMessage: null,
         ),
       );
       return;
@@ -62,22 +67,40 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         emailError: null,
         passwordError: null,
         repeatPasswordError: null,
+        errorMessage: null,
       ),
     );
 
-    await authDataSource.signUpWithEmailAndPassword(
-      email: event.email,
-      password: event.password,
-    );
+    try {
+      await authDataSource.signUpWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
 
-    emit(
-      state.copyWith(
-        status: FormzSubmissionStatus.success,
-        emailError: null,
-        passwordError: null,
-        repeatPasswordError: null,
-      ),
-    );
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.success,
+          emailError: null,
+          passwordError: null,
+          repeatPasswordError: null,
+          errorMessage: null,
+        ),
+      );
+    } catch (e) {
+      var errorMessage = LocaleKeys.somethingWentWrong.tr();
+
+      if (e is AuthApiException &&
+          e.code == SupabaseAuthErrorCodes.userAlreadyExists) {
+        errorMessage = LocaleKeys.signUpErrorEmailExists.tr();
+      }
+
+      emit(
+        SignUpState(
+          status: FormzSubmissionStatus.failure,
+          errorMessage: errorMessage,
+        ),
+      );
+    }
   }
 
   Future<void> _onCountinueWithGoogle(

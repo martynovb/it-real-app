@@ -5,7 +5,15 @@ class ProductssPageDesk extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductsBloc, ProductsState>(
+    return BlocConsumer<ProductsBloc, ProductsState>(
+      listener: (context, state) {
+        if (state.status == FormzSubmissionStatus.failure) {
+          DialogsManager.showErrorDialog(
+            context: context,
+            title: state.errorMessage ?? LocaleKeys.somethingWentWrong.tr(),
+          );
+        }
+      },
       builder: (context, state) {
         return Center(
           child: Column(

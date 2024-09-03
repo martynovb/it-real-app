@@ -78,5 +78,7 @@
   "resetPasswordSuccess": "Your password has been successfully reset",
   "resetPasswordLinkExpiredTitle": "Reset password link has expired",
   "resetPasswordLinkExpiredDescription": "Please request a new password reset link",
-  "resetPasswordErrorSamePassword": "New password cannot be the same as the old password"
+  "resetPasswordErrorSamePassword": "New password cannot be the same as the old password",
+  "loginErrorInvalidCredentials": "Invalid login credentials",
+  "signUpErrorEmailExists": "Email already exists"
 }
