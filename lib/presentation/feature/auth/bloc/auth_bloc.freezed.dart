@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() isSessionExist,
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
@@ -26,6 +27,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? isSessionExist,
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
@@ -34,6 +36,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? isSessionExist,
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
@@ -43,6 +46,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_IsSessionExist value) isSessionExist,
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
@@ -51,6 +55,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_IsSessionExist value)? isSessionExist,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
@@ -59,6 +64,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_IsSessionExist value)? isSessionExist,
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?
@@ -83,6 +89,126 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$IsSessionExistImplCopyWith<$Res> {
+  factory _$$IsSessionExistImplCopyWith(_$IsSessionExistImpl value,
+          $Res Function(_$IsSessionExistImpl) then) =
+      __$$IsSessionExistImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$IsSessionExistImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$IsSessionExistImpl>
+    implements _$$IsSessionExistImplCopyWith<$Res> {
+  __$$IsSessionExistImplCopyWithImpl(
+      _$IsSessionExistImpl _value, $Res Function(_$IsSessionExistImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$IsSessionExistImpl implements _IsSessionExist {
+  const _$IsSessionExistImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.isSessionExist()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$IsSessionExistImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() isSessionExist,
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(AuthenticationStatus authenticationStatus)
+        authenticationStatusChanged,
+  }) {
+    return isSessionExist();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? isSessionExist,
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(AuthenticationStatus authenticationStatus)?
+        authenticationStatusChanged,
+  }) {
+    return isSessionExist?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? isSessionExist,
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(AuthenticationStatus authenticationStatus)?
+        authenticationStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (isSessionExist != null) {
+      return isSessionExist();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_IsSessionExist value) isSessionExist,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_AuthenticationStatusChanged value)
+        authenticationStatusChanged,
+  }) {
+    return isSessionExist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_IsSessionExist value)? isSessionExist,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+  }) {
+    return isSessionExist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_IsSessionExist value)? isSessionExist,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (isSessionExist != null) {
+      return isSessionExist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsSessionExist implements AuthEvent {
+  const factory _IsSessionExist() = _$IsSessionExistImpl;
 }
 
 /// @nodoc
@@ -123,6 +249,7 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() isSessionExist,
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
@@ -134,6 +261,7 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? isSessionExist,
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
@@ -145,6 +273,7 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? isSessionExist,
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
@@ -160,6 +289,7 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_IsSessionExist value) isSessionExist,
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
@@ -171,6 +301,7 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_IsSessionExist value)? isSessionExist,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
@@ -182,6 +313,7 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_IsSessionExist value)? isSessionExist,
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?
@@ -237,6 +369,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() isSessionExist,
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
@@ -248,6 +381,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? isSessionExist,
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
@@ -259,6 +393,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? isSessionExist,
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
@@ -274,6 +409,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_IsSessionExist value) isSessionExist,
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
@@ -285,6 +421,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_IsSessionExist value)? isSessionExist,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
@@ -296,6 +433,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_IsSessionExist value)? isSessionExist,
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?
@@ -382,6 +520,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() isSessionExist,
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(AuthenticationStatus authenticationStatus)
@@ -393,6 +532,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? isSessionExist,
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(AuthenticationStatus authenticationStatus)?
@@ -404,6 +544,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? isSessionExist,
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(AuthenticationStatus authenticationStatus)?
@@ -419,6 +560,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_IsSessionExist value) isSessionExist,
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_AuthenticationStatusChanged value)
@@ -430,6 +572,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_IsSessionExist value)? isSessionExist,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_AuthenticationStatusChanged value)?
@@ -441,6 +584,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_IsSessionExist value)? isSessionExist,
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_AuthenticationStatusChanged value)?

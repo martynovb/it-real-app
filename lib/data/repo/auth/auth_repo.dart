@@ -15,7 +15,9 @@ class AuthRepo extends AuthDataSource {
 
   @override
   Future<AuthenticationStatus> getAuthStatus() async {
-    return AuthenticationStatus.unauthenticated;
+    return supabaseClient.auth.currentSession == null
+        ? AuthenticationStatus.unauthenticated
+        : AuthenticationStatus.authenticated;
   }
 
   @override
