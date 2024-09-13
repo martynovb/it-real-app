@@ -14,7 +14,7 @@ Widget btnFilledWithIcon({
 }) =>
     Container(
       constraints: BoxConstraints(
-        minHeight: 60,
+        maxHeight: 60,
         minWidth: AppDimensions.btnWidthDesk,
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
@@ -33,8 +33,11 @@ Widget btnFilledWithIcon({
         ),
         child: Row(
           children: [
-            Text(text),
-            const Spacer(),
+            Expanded(
+              child: Center(
+                child: Text(text),
+              ),
+            ),
             postfixWidget,
           ],
         ),
@@ -49,12 +52,12 @@ Widget btnOutlined({
   double? width,
   bool isMobile = true,
   double? padding,
-  double minHeight = 54,
+  double maxHeight = 60,
   double minWidth = AppDimensions.btnWidthDesk,
 }) =>
     Container(
       constraints: BoxConstraints(
-        minHeight: minHeight,
+        maxHeight: maxHeight,
         minWidth: minWidth,
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
@@ -65,8 +68,7 @@ Widget btnOutlined({
           context: context,
           textStyle: Theme.of(context).textTheme.displaySmall,
         ),
-        child: Padding(
-          padding: EdgeInsets.all(padding ?? 8.0),
+        child: Center(
           child: loading
               ? Row(
                   children: [
@@ -88,12 +90,12 @@ Widget btnFilled({
   double? width,
   bool isMobile = true,
   double? padding,
-  double minHeight = 54,
+  double maxHeight = 60,
   double minWidth = AppDimensions.btnWidthDesk,
 }) =>
     Container(
       constraints: BoxConstraints(
-        minHeight: minHeight,
+        maxHeight: maxHeight,
         minWidth: minWidth,
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
@@ -104,8 +106,7 @@ Widget btnFilled({
           context: context,
           textStyle: Theme.of(context).textTheme.displaySmall,
         ),
-        child: Padding(
-          padding: EdgeInsets.all(padding ?? 8.0),
+        child: Center(
           child: loading
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -62,98 +62,101 @@ class ResetPasswordPage extends StatelessWidget {
         },
         builder: (context, state) {
           return Scaffold(
+              backgroundColor: Theme.of(context).colorScheme.primary,
               body: SingleChildScrollView(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppDimensions.deskSidePadding,
-                    ),
-                    child: Column(
-                      children: [
-                        AppDimensions.sBoxH32,
-                        Text(
-                          LocaleKeys.resetPassword.tr(),
-                          style: Theme.of(context).textTheme.displayLarge,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppDimensions.deskSidePadding,
                         ),
-                        AppDimensions.sBoxH32,
-                        Column(
+                        child: Column(
                           children: [
-                            AppInputField(
-                              key: UniqueKey(),
-                              controller: _passwordController,
-                              lable: LocaleKeys.password.tr(),
-                              hintText: LocaleKeys.enterYourPassword.tr(),
-                              errorText: state.passwordError?.message,
-                              showPasswordToggle: true,
+                            AppDimensions.sBoxH32,
+                            Text(
+                              LocaleKeys.resetPassword.tr(),
+                              style: Theme.of(context).textTheme.displayLarge,
                             ),
-                            AppDimensions.sBoxH24,
-                            AppInputField(
-                              key: UniqueKey(),
-                              controller: _repeatPasswordController,
-                              lable: LocaleKeys.repeatPassword.tr(),
-                              hintText: LocaleKeys.enterYourPassword.tr(),
-                              errorText: state.repeatPasswordError?.message,
-                              showPasswordToggle: true,
-                            ),
-                            AppDimensions.sBoxH24,
-                            SizedBox(
-                              width: double.infinity,
-                              child: btnFilled(
-                                loading: state.status ==
-                                    FormzSubmissionStatus.inProgress,
-                                context: context,
-                                text: LocaleKeys.resetPassword.tr(),
-                                onPressed: () =>
-                                    context.read<ResetPasswordBloc>().add(
+                            AppDimensions.sBoxH32,
+                            Column(
+                              children: [
+                                AppInputField(
+                                  key: UniqueKey(),
+                                  controller: _passwordController,
+                                  lable: LocaleKeys.password.tr(),
+                                  hintText: LocaleKeys.enterYourPassword.tr(),
+                                  errorText: state.passwordError?.message,
+                                  showPasswordToggle: true,
+                                ),
+                                AppDimensions.sBoxH24,
+                                AppInputField(
+                                  key: UniqueKey(),
+                                  controller: _repeatPasswordController,
+                                  lable: LocaleKeys.repeatPassword.tr(),
+                                  hintText: LocaleKeys.enterYourPassword.tr(),
+                                  errorText: state.repeatPasswordError?.message,
+                                  showPasswordToggle: true,
+                                ),
+                                AppDimensions.sBoxH24,
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: btnFilled(
+                                    loading: state.status ==
+                                        FormzSubmissionStatus.inProgress,
+                                    context: context,
+                                    text: LocaleKeys.resetPassword.tr(),
+                                    onPressed: () => context
+                                        .read<ResetPasswordBloc>()
+                                        .add(
                                           ResetPasswordEvent.resetPassword(
                                             password: _passwordController.text,
                                             repeatPassword:
                                                 _repeatPasswordController.text,
                                           ),
                                         ),
-                              ),
+                                  ),
+                                ),
+                                AppDimensions.sBoxH24,
+                              ],
                             ),
-                            AppDimensions.sBoxH24,
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      const Spacer(),
+                      Container(
+                        height: 70,
+                        width: double.infinity,
+                        color: AppColors.grey2,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              LocaleKeys.remeberYourPassword.tr(),
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            AppDimensions.sBoxW8,
+                            InkWell(
+                              onTap: () =>
+                                  context.go(RouteConstants.onboarding.path),
+                              child: Text(
+                                LocaleKeys.signIn.tr(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      color: AppColors.hyperlink,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  const Spacer(),
-                  Container(
-                    height: 70,
-                    width: double.infinity,
-                    color: AppColors.grey2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          LocaleKeys.remeberYourPassword.tr(),
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        AppDimensions.sBoxW8,
-                        InkWell(
-                          onTap: () => context.go(RouteConstants.signIn.path),
-                          child: Text(
-                            LocaleKeys.signIn.tr(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                  color: AppColors.hyperlink,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ));
+                ),
+              ));
         },
       ),
     );

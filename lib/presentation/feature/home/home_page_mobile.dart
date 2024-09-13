@@ -14,27 +14,40 @@ class HomePageMobile extends StatelessWidget {
             photoVerificationState,
           ),
           builder: (context, photoVerificationState) {
-            return Column(
-              children: [
-                headerMobile(
-                  context: context,
-                  user: homeState.userModel,
-                ),
-                if (photoVerificationState.steps.values.any(
-                  (status) => status == FormzSubmissionStatus.inProgress,
-                )) ...[
-                  const Spacer(),
-                  _photoVerificationView(context, photoVerificationState),
-                ],
-                if (!photoVerificationState.steps.values.any(
-                  (status) => status == FormzSubmissionStatus.inProgress,
-                ))
-                  _content(
+            return CustomScrollView(
+              shrinkWrap: true,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: headerMobile(
                     context: context,
-                    homeState: homeState,
+                    user: homeState.userModel,
                   ),
-                const Spacer(),
-                footer(context),
+                ),
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(
+                    children: [
+                      if (photoVerificationState.steps.values.any(
+                        (status) => status == FormzSubmissionStatus.inProgress,
+                      )) ...[
+                        const Spacer(),
+                        _photoVerificationView(context, photoVerificationState),
+                      ],
+                      if (!photoVerificationState.steps.values.any(
+                        (status) => status == FormzSubmissionStatus.inProgress,
+                      ))
+                        _content(
+                          context: context,
+                          homeState: homeState,
+                        ),
+                      const Spacer(),
+                      AppDimensions.sBoxH32,
+                    ],
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: footer(context),
+                ),
               ],
             );
           },

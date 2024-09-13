@@ -10,44 +10,44 @@ import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 
 abstract class DialogsManager {
+  static BuildContext? _lastDialogContext;
+
   static void showNotEnoughBalanceDialog({
     required BuildContext context,
   }) {
-    showDialog(
+    showCustomDialog(
       context: context,
-      builder: (context) {
-        return simple_dialog.SimpleDialog(
-          title: Text(
-            LocaleKeys.notEnoughVerifications.tr(),
-            style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  color: AppColors.red,
-                ),
-            textAlign: TextAlign.center,
+      child: simple_dialog.SimpleDialog(
+        title: Text(
+          LocaleKeys.notEnoughVerifications.tr(),
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                color: AppColors.red,
+              ),
+          textAlign: TextAlign.center,
+        ),
+        description: Text(
+          LocaleKeys.notEnoughVerificationsDescription.tr(),
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+        actions: [
+          btnOutlined(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.cancel.tr(),
+            onPressed: () => context.pop(),
           ),
-          description: Text(
-            LocaleKeys.notEnoughVerificationsDescription.tr(),
-            style: Theme.of(context).textTheme.bodyMedium,
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            btnOutlined(
-              padding: 0,
-              minWidth: 150,
-              context: context,
-              text: LocaleKeys.cancel.tr(),
-              onPressed: () => context.pop(),
-            ),
-            AppDimensions.sBoxW24,
-            btnFilled(
-              padding: 0,
-              minWidth: 150,
-              context: context,
-              text: LocaleKeys.buyVerifications.tr(),
-              onPressed: () => context.go(RouteConstants.products.path),
-            )
-          ],
-        );
-      },
+          AppDimensions.sBoxW24,
+          btnFilled(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.buyVerifications.tr(),
+            onPressed: () => context.go(RouteConstants.products.path),
+          )
+        ],
+      ),
     );
   }
 
@@ -58,38 +58,36 @@ abstract class DialogsManager {
     void Function()? onTap,
     List<Widget>? actions,
   }) {
-    showDialog(
+    showCustomDialog(
       context: context,
-      builder: (context) {
-        return simple_dialog.SimpleDialog(
-          title: title != null
-              ? Text(
-                  title,
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        color: AppColors.red,
-                      ),
-                  textAlign: TextAlign.center,
-                )
-              : null,
-          description: description != null
-              ? Text(
-                  description,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
-                )
-              : null,
-          actions: actions ??
-              [
-                btnFilled(
-                  padding: 0,
-                  minWidth: 150,
-                  context: context,
-                  text: LocaleKeys.ok.tr(),
-                  onPressed: onTap ?? () => context.pop(),
-                ),
-              ],
-        );
-      },
+      child: simple_dialog.SimpleDialog(
+        title: title != null
+            ? Text(
+                title,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: AppColors.red,
+                    ),
+                textAlign: TextAlign.center,
+              )
+            : null,
+        description: description != null
+            ? Text(
+                description,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              )
+            : null,
+        actions: actions ??
+            [
+              btnFilled(
+                padding: 0,
+                minWidth: 150,
+                context: context,
+                text: LocaleKeys.ok.tr(),
+                onPressed: onTap ?? () => context.pop(),
+              ),
+            ],
+      ),
     );
   }
 
@@ -100,38 +98,88 @@ abstract class DialogsManager {
     void Function()? onTap,
     List<Widget>? actions,
   }) {
+    showCustomDialog(
+      context: context,
+      child: simple_dialog.SimpleDialog(
+        title: title != null
+            ? Text(
+                title,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: AppColors.green,
+                    ),
+                textAlign: TextAlign.center,
+              )
+            : null,
+        description: description != null
+            ? Text(
+                description,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              )
+            : null,
+        actions: actions ??
+            [
+              btnFilled(
+                padding: 0,
+                minWidth: 150,
+                context: context,
+                text: LocaleKeys.ok.tr(),
+                onPressed: onTap ?? () => context.pop(),
+              ),
+            ],
+      ),
+    );
+  }
+
+  static void showCustomDialog({
+    required BuildContext context,
+    required Widget child,
+    bool asPage = false,
+  }) {
+    if (_lastDialogContext != null && _lastDialogContext!.mounted) {
+      Navigator.pop(_lastDialogContext!);
+      _lastDialogContext = null;
+    }
+
     showDialog(
       context: context,
       builder: (context) {
-        return simple_dialog.SimpleDialog(
-          title: title != null
-              ? Text(
-                  title,
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        color: AppColors.green,
-                      ),
-                  textAlign: TextAlign.center,
-                )
-              : null,
-          description: description != null
-              ? Text(
-                  description,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
-                )
-              : null,
-          actions: actions ??
-              [
-                btnFilled(
-                  padding: 0,
-                  minWidth: 150,
-                  context: context,
-                  text: LocaleKeys.ok.tr(),
-                  onPressed: onTap ?? () => context.pop(),
-                ),
-              ],
-        );
+        _lastDialogContext = context;
+        return asPage
+            ? _getPageDialog(
+                context: context,
+                page: child,
+              )
+            : child;
       },
     );
+  }
+
+  static Widget _getPageDialog({
+    required BuildContext context,
+    required Widget page,
+  }) {
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => Navigator.of(context).pop(),
+            child: GestureDetector(
+                onTap: () {},
+                child: AlertDialog(
+                  contentPadding: EdgeInsets.zero,
+                  content: ClipRRect(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(AppDimensions.borderRadius),
+                    ),
+                    child: Container(
+                      constraints: const BoxConstraints(
+                        maxWidth: AppDimensions.maxMobileWidth,
+                        minWidth: AppDimensions.minPageDialogWidth,
+                      ),
+                      child: page,
+                    ),
+                  ),
+                ))));
   }
 }

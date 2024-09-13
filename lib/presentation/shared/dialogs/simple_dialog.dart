@@ -16,10 +16,10 @@ class SimpleDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       scrollable: true,
       content: Container(
-        constraints: const BoxConstraints(maxWidth: 350),
-        color: Theme.of(context).colorScheme.background,
+        constraints: const BoxConstraints(maxWidth: 450),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
@@ -30,6 +30,7 @@ class SimpleDialog extends StatelessWidget {
               description ?? const SizedBox.shrink(),
               AppDimensions.sBoxH24,
               Row(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: actions,
               )

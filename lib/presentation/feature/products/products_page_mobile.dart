@@ -15,57 +15,71 @@ class ProductsPageMobile extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              headerMobile(
+        return CustomScrollView(
+          shrinkWrap: true,
+          slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: headerMobile(
                 context: context,
                 user: state.user,
                 currentOption: HeaderOption.buy,
               ),
-              AppDimensions.sBoxH32,
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.mobSidePadding),
-                child: Text(
-                  LocaleKeys.productsPageDescription.tr(),
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              AppDimensions.sBoxH32,
-              state.products.isEmpty
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.purple,
-                      ),
-                    )
-                  : _products(
-                      context: context,
-                      products: state.products,
-                      selectedProduct: state.selectedProduct,
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  AppDimensions.sBoxH32,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppDimensions.mobSidePadding),
+                    child: Text(
+                      LocaleKeys.productsPageDescription.tr(),
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
+                      textAlign: TextAlign.center,
                     ),
-              AppDimensions.sBoxH24,
-              ProdcutsPage.buyPackageBtn(context),
-              AppDimensions.sBoxH24,
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.mobSidePadding),
-                child: Text(
-                  LocaleKeys.productsPageDescription2.tr(),
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onTertiary,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
+                  ),
+                  AppDimensions.sBoxH32,
+                  state.products.isEmpty
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.purple,
+                          ),
+                        )
+                      : _products(
+                          context: context,
+                          products: state.products,
+                          selectedProduct: state.selectedProduct,
+                        ),
+                  AppDimensions.sBoxH24,
+                  ProdcutsPage.buyPackageBtn(context),
+                  AppDimensions.sBoxH24,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppDimensions.mobSidePadding),
+                    child: Text(
+                      LocaleKeys.productsPageDescription2.tr(),
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.onTertiary,
+                          ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
-              const Spacer(),
-              footer(context),
-            ],
-          ),
+            ),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  AppDimensions.sBoxH32,
+                  const Spacer(),
+                  footer(context),
+                ],
+              ),
+            ),
+          ],
         );
       },
     );
@@ -112,6 +126,9 @@ class ProductsPageMobile extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
+        constraints: const BoxConstraints(
+          minHeight: 88,
+        ),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.tertiary,

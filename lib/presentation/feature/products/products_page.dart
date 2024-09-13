@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,6 +42,7 @@ class ProdcutsPage extends StatelessWidget {
     final selectedProduct = context.read<ProductsBloc>().state.selectedProduct;
     return btnFilledWithIcon(
       isMobile: isMobile,
+      width: AppDimensions.buyPackagetDesktopBtnWidth,
       onPressed: selectedProduct != null
           ? () {
               context.read<ProductsBloc>().add(

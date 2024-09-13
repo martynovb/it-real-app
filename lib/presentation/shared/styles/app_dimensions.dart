@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppDimensions {
   static const maxMobileWidth = 767.0;
-  static const double btnWidthDesk = 215.0;
+  static const minPageDialogWidth = 450.0;
+  static const double btnWidthDesk = 116.0;
   static const double footerHeight = 80.0;
   static const double deskSidePadding = 40.0;
   static const double mobSidePadding = 16.0;
@@ -10,7 +11,11 @@ class AppDimensions {
   static const double maxDescWidth = 1000;
   static const double productsHeight = 130;
   static const double snackBarH = 52;
-
+  static const double borderRadius = 16;
+  static const double getStartedDesktopBtnWidth = 250;
+  static const double startVerificationDesktopBtnWidth = 250;
+  static const double viewReportDesktopBtnWidth = 250;
+  static const double buyPackagetDesktopBtnWidth = 250;
 
   static const SizedBox sBoxDeskHorizontalPadding =
       SizedBox(width: deskSidePadding);
