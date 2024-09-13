@@ -80,5 +80,6 @@
   "resetPasswordLinkExpiredDescription": "Please request a new password reset link",
   "resetPasswordErrorSamePassword": "New password cannot be the same as the old password",
   "loginErrorInvalidCredentials": "Invalid login credentials",
-  "signUpErrorEmailExists": "Email already exists"
+  "signUpErrorEmailExists": "Email already exists",
+  "contactUs": "Contact us"
 }

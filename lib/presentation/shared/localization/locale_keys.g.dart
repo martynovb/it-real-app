@@ -83,5 +83,6 @@ abstract class  LocaleKeys {
   static const resetPasswordErrorSamePassword = 'resetPasswordErrorSamePassword';
   static const loginErrorInvalidCredentials = 'loginErrorInvalidCredentials';
   static const signUpErrorEmailExists = 'signUpErrorEmailExists';
+  static const contactUs = 'contactUs';
 
 }
