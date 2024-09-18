@@ -19,4 +19,12 @@ class RunConfigurations {
   static String stripePublishableKey = const String.fromEnvironment(
     'stripePublishableKey',
   );
+
+  static String privacyPolicyUrl = const String.fromEnvironment(
+    'privacyPolicyUrl',
+  );
+
+  static String termsOfServiceUrl = const String.fromEnvironment(
+    'termsOfServiceUrl',
+  );
 }
