@@ -43,3 +43,5 @@ fvm dart run easy_localization:generate -S ./assets/translations --output-dir ./
 ```
 fvm dart run flutter_launcher_icons
 ```
+
+after generation update web/favicon.png to a correct size
