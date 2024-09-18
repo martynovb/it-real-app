@@ -15,60 +15,71 @@ class ProductssPageDesk extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              headerDesktop(
+        return CustomScrollView(
+          shrinkWrap: true,
+          slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: headerDesktop(
                 context: context,
                 user: state.user,
                 currentOption: HeaderOption.buy,
               ),
-              const Spacer(),
-              SizedBox(
-                width: AppDimensions.maxDescWidth,
-                child: Text(
-                  LocaleKeys.productsPageDescription.tr(),
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              AppDimensions.sBoxH32,
-              SizedBox(
-                height: AppDimensions.productsHeight,
-                child: state.products.isEmpty
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.purple,
+            ),
+            SliverToBoxAdapter(
+                child: Column(
+              children: [
+                AppDimensions.sBoxH40,
+                SizedBox(
+                  width: AppDimensions.maxDescWidth,
+                  child: Text(
+                    LocaleKeys.productsPageDescription.tr(),
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
                         ),
-                      )
-                    : _products(
-                        context: context,
-                        products: state.products,
-                        selectedProduct: state.selectedProduct,
-                      ),
-              ),
-              AppDimensions.sBoxH48,
-              ProdcutsPage.buyPackageBtn(context),
-              AppDimensions.sBoxH48,
-              SizedBox(
-                width: AppDimensions.maxDescWidth,
-                child: Text(
-                  LocaleKeys.productsPageDescription2.tr(),
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onTertiary,
-                      ),
-                  textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
+                AppDimensions.sBoxH32,
+                SizedBox(
+                  height: AppDimensions.productsHeight,
+                  child: state.products.isEmpty
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.purple,
+                          ),
+                        )
+                      : _products(
+                          context: context,
+                          products: state.products,
+                          selectedProduct: state.selectedProduct,
+                        ),
+                ),
+                AppDimensions.sBoxH48,
+                ProdcutsPage.buyPackageBtn(context),
+                AppDimensions.sBoxH48,
+                SizedBox(
+                  width: AppDimensions.maxDescWidth,
+                  child: Text(
+                    LocaleKeys.productsPageDescription2.tr(),
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          color: Theme.of(context).colorScheme.onTertiary,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            )),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  AppDimensions.sBoxH32,
+                  const Spacer(),
+                  footer(context),
+                ],
               ),
-              const Spacer(
-                flex: 2,
-              ),
-              footer(context),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );

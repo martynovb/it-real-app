@@ -36,14 +36,6 @@ class PhotoVerificationSuccess extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
-              AppDimensions.sBoxH16,
-              Text(
-                LocaleKeys.photoVerificationDialogSuccessSubDescription.tr(),
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onTertiary,
-                    ),
-                textAlign: TextAlign.center,
-              ),
               AppDimensions.sBoxH24,
               btnFilled(
                 context: context,

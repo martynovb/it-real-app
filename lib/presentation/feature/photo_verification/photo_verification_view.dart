@@ -73,6 +73,7 @@ class PhotoVerificationView extends StatelessWidget {
                         text: LocaleKeys.viewReport.tr(),
                         onPressed: onShowReport,
                         isMobile: false,
+                        width: AppDimensions.viewReportDesktopBtnWidth,
                       ),
                     ]
                   ],

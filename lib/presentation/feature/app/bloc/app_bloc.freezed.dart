@@ -19,32 +19,38 @@ mixin _$AppEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
+    required TResult Function() contactSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appStarted,
+    TResult? Function()? contactSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
+    TResult Function()? contactSupport,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AppStarted value) appStarted,
+    required TResult Function(_ContactSupport value) contactSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AppStarted value)? appStarted,
+    TResult? Function(_ContactSupport value)? contactSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AppStarted value)? appStarted,
+    TResult Function(_ContactSupport value)? contactSupport,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$AppStartedImpl implements _AppStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
+    required TResult Function() contactSupport,
   }) {
     return appStarted();
   }
@@ -114,6 +121,7 @@ class _$AppStartedImpl implements _AppStarted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appStarted,
+    TResult? Function()? contactSupport,
   }) {
     return appStarted?.call();
   }
@@ -122,6 +130,7 @@ class _$AppStartedImpl implements _AppStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
+    TResult Function()? contactSupport,
     required TResult orElse(),
   }) {
     if (appStarted != null) {
@@ -134,6 +143,7 @@ class _$AppStartedImpl implements _AppStarted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AppStarted value) appStarted,
+    required TResult Function(_ContactSupport value) contactSupport,
   }) {
     return appStarted(this);
   }
@@ -142,6 +152,7 @@ class _$AppStartedImpl implements _AppStarted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AppStarted value)? appStarted,
+    TResult? Function(_ContactSupport value)? contactSupport,
   }) {
     return appStarted?.call(this);
   }
@@ -150,6 +161,7 @@ class _$AppStartedImpl implements _AppStarted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AppStarted value)? appStarted,
+    TResult Function(_ContactSupport value)? contactSupport,
     required TResult orElse(),
   }) {
     if (appStarted != null) {
@@ -161,6 +173,108 @@ class _$AppStartedImpl implements _AppStarted {
 
 abstract class _AppStarted implements AppEvent {
   const factory _AppStarted() = _$AppStartedImpl;
+}
+
+/// @nodoc
+abstract class _$$ContactSupportImplCopyWith<$Res> {
+  factory _$$ContactSupportImplCopyWith(_$ContactSupportImpl value,
+          $Res Function(_$ContactSupportImpl) then) =
+      __$$ContactSupportImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ContactSupportImplCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$ContactSupportImpl>
+    implements _$$ContactSupportImplCopyWith<$Res> {
+  __$$ContactSupportImplCopyWithImpl(
+      _$ContactSupportImpl _value, $Res Function(_$ContactSupportImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ContactSupportImpl implements _ContactSupport {
+  const _$ContactSupportImpl();
+
+  @override
+  String toString() {
+    return 'AppEvent.contactSupport()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ContactSupportImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() appStarted,
+    required TResult Function() contactSupport,
+  }) {
+    return contactSupport();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? appStarted,
+    TResult? Function()? contactSupport,
+  }) {
+    return contactSupport?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? appStarted,
+    TResult Function()? contactSupport,
+    required TResult orElse(),
+  }) {
+    if (contactSupport != null) {
+      return contactSupport();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AppStarted value) appStarted,
+    required TResult Function(_ContactSupport value) contactSupport,
+  }) {
+    return contactSupport(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AppStarted value)? appStarted,
+    TResult? Function(_ContactSupport value)? contactSupport,
+  }) {
+    return contactSupport?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AppStarted value)? appStarted,
+    TResult Function(_ContactSupport value)? contactSupport,
+    required TResult orElse(),
+  }) {
+    if (contactSupport != null) {
+      return contactSupport(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ContactSupport implements AppEvent {
+  const factory _ContactSupport() = _$ContactSupportImpl;
 }
 
 /// @nodoc

@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
+import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart';
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/dialogs/dialogs_manager.dart';
@@ -17,6 +16,7 @@ import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 
 const String _logoutOption = 'logoutOption';
 const String _deleteAccountOption = 'deleteAccountOption';
+const String _contactSupportOption = 'constctSupportOption';
 
 enum HeaderOption { buy, account, none }
 
@@ -45,16 +45,14 @@ Widget headerDesktop({
         color: Theme.of(context).brightness == Brightness.dark
             ? AppColors.almostBlack
             : AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.almostBlack.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
       ),
       child: Row(
         children: [
+          SvgPicture.asset(
+            AppIcons.faceRecognition,
+            width: 48,
+          ),
+          AppDimensions.sBoxW8,
           GestureDetector(
             onTap: () => context.go(RouteConstants.home.path),
             child: Text(
@@ -168,16 +166,14 @@ Widget headerMobile({
         color: Theme.of(context).brightness == Brightness.dark
             ? AppColors.almostBlack
             : AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.almostBlack.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
       ),
       child: Row(
         children: [
+          SvgPicture.asset(
+            AppIcons.faceRecognition,
+            width: 48,
+          ),
+          AppDimensions.sBoxW8,
           GestureDetector(
             onTap: () => context.go(RouteConstants.home.path),
             child: Text(
@@ -256,6 +252,18 @@ Future<void> _showAccountMenu({
     position: position,
     items: [
       PopupMenuItem<String>(
+        value: _contactSupportOption,
+        child: _menuOptionItem(
+          context: context,
+          text: LocaleKeys.contactUs.tr(),
+          icon: Icon(
+            Icons.message,
+            size: 24,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
+      PopupMenuItem<String>(
         value: _logoutOption,
         child: _menuOptionItem(
           context: context,
@@ -333,6 +341,8 @@ Future<void> _showAccountMenu({
         )
       ],
     );
+  } else if (selectedOption == _contactSupportOption) {
+    context.read<AppBloc>().add(const AppEvent.contactSupport());
   }
 }
 

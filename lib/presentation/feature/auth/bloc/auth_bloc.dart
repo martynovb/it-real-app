@@ -30,6 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<_Logout>(_onLogout);
     on<_DeleteAccount>(_onDeleteAccount);
+    on<_IsSessionExist>(_onIsSessionExist);
 
     _subscribeToAuthStateChanges();
   }
@@ -54,6 +55,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           );
         }
       },
+    );
+  }
+
+  Future<void> _onIsSessionExist(
+    _IsSessionExist event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        authStatus: await authDataSource.getAuthStatus(),
+      ),
     );
   }
 

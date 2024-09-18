@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:it_real_app/presentation/shared/app_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'app_bloc.freezed.dart';
 
@@ -23,7 +25,19 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           ),
         ) {
     on<_AppStarted>(_onAppStarted);
+    on<_ContactSupport>(_onContactSupport);
   }
 
   Future<void> _onAppStarted(event, emit) async {}
+
+  Future<void> _onContactSupport(event, emit) async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: AppConstants.emailSupport,
+    );
+
+    if (await canLaunchUrl(emailLaunchUri)) {
+      await launchUrl(emailLaunchUri);
+    }
+  }
 }

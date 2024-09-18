@@ -18,24 +18,30 @@ class HomePageDesk extends StatelessWidget {
               );
             }
           },
-          child: Column(
-            children: [
-              headerDesktop(
-                context: context,
-                user: homeState.userModel,
+          child: CustomScrollView(
+            shrinkWrap: true,
+            slivers: [
+              SliverToBoxAdapter(
+                child: headerDesktop(
+                  context: context,
+                  user: homeState.userModel,
+                ),
               ),
-              AppDimensions.sBoxH100,
-              Text(
-                LocaleKeys.uploadImage.tr(),
-                style: Theme.of(context).textTheme.displayLarge,
+              SliverToBoxAdapter(
+                child: _content(
+                  context: context,
+                  homeState: homeState,
+                ),
               ),
-              AppDimensions.sBoxH32,
-              _content(
-                context: context,
-                homeState: homeState,
-              ),
-              const Spacer(),
-              footer(context),
+              SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(
+                    children: [
+                      const Spacer(),
+                      AppDimensions.sBoxH32,
+                      footer(context),
+                    ],
+                  )),
             ],
           ),
         );
@@ -52,6 +58,12 @@ class HomePageDesk extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          AppDimensions.sBoxH40,
+          Text(
+            LocaleKeys.uploadImage.tr(),
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          AppDimensions.sBoxH32,
           Container(
             constraints: const BoxConstraints(
               maxWidth: 500,
@@ -76,6 +88,7 @@ class HomePageDesk extends StatelessWidget {
       builder: (context, state) {
         return btnFilledWithIcon(
           isMobile: false,
+          width: AppDimensions.startVerificationDesktopBtnWidth,
           onPressed: context.read<DragAndDropBloc>().state.photoFile != null
               ? () {
                   final photoFile =

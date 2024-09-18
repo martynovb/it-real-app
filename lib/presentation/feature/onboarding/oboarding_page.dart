@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:it_real_app/presentation/feature/onboarding/bloc/onboarding_bloc.dart';
+import 'package:it_real_app/presentation/feature/sign_in/sign_in_page.dart';
+import 'package:it_real_app/presentation/feature/sign_up/sign_up_page.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
+import 'package:it_real_app/presentation/shared/dialogs/dialogs_manager.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
@@ -23,16 +26,26 @@ class OnboardingPage extends StatelessWidget {
       create: (context) => getIt.get<OnboardingBloc>(),
       child: BlocBuilder<OnboardingBloc, OnboardingState>(
         builder: (context, state) {
-          return Scaffold(
-            body: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  _header(context),
-                  Expanded(
-                    child: _content(context),
+          return DeviceLayoutBuilder(
+            layoutBuilder: (isMobile) => Scaffold(
+              body: CustomScrollView(
+                shrinkWrap: true,
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: _header(context, isMobile),
                   ),
-                  footer(context),
+                  SliverToBoxAdapter(
+                    child: _content(context, isMobile),
+                  ),
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Column(
+                      children: [
+                        const Spacer(),
+                        footer(context),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -42,63 +55,68 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 
-  Widget _content(BuildContext context) {
-    return DeviceLayoutBuilder(layoutBuilder: (isMobile) {
-      return Padding(
-        padding: EdgeInsets.only(
-          top: isMobile ? 32 : 94,
-          right: isMobile ? 16 : 44,
-          left: isMobile ? 16 : 44,
-        ),
-        child: Column(
-          children: [
-            Container(
-              constraints: const BoxConstraints(maxWidth: 1000),
-              child: Text(
-                '${LocaleKeys.oboardingTitleDescription.tr()}:',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-              ),
+  Widget _content(BuildContext context, bool isMobile) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: isMobile ? 24 : 44,
+        right: isMobile ? 16 : 44,
+        left: isMobile ? 16 : 44,
+      ),
+      child: Column(
+        children: [
+          Container(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: Text(
+              '${LocaleKeys.oboardingTitleDescription.tr()}:',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
             ),
-            isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH60,
-            _steps(context),
-            isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH56,
-            btnFilledWithIcon(
-              context: context,
-              text: LocaleKeys.getStartedNow.tr(),
-              postfixWidget: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                child: Center(
-                  child: SvgPicture.asset(
-                    AppIcons.iconArrowRight,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).colorScheme.onPrimary,
-                      BlendMode.srcIn,
-                    ),
+          ),
+          isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH60,
+          _steps(context),
+          isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH56,
+          btnFilledWithIcon(
+            isMobile: isMobile,
+            context: context,
+            width: AppDimensions.getStartedDesktopBtnWidth,
+            text: LocaleKeys.getStartedNow.tr(),
+            postfixWidget: Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  AppIcons.iconArrowRight,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.onPrimary,
+                    BlendMode.srcIn,
                   ),
                 ),
               ),
-              onPressed: () => context.go(RouteConstants.signIn.path),
             ),
-            const Spacer(),
-          ],
-        ),
-      );
-    });
+            onPressed: () => isMobile
+                ? context.go(RouteConstants.signUp.path)
+                : DialogsManager.showCustomDialog(
+                    context: context,
+                    child: SignUpPage(
+                      isDialog: true,
+                    ),
+                    asPage: true,
+                  ),
+          ),
+          AppDimensions.sBoxH24
+        ],
+      ),
+    );
   }
 
-  Widget _header(BuildContext context) {
-    return DeviceLayoutBuilder(
-      layoutBuilder: (isMobile) =>
-          isMobile ? _headerWebMobile(context) : _headerDesktop(context),
-    );
+  Widget _header(BuildContext context, bool isMobile) {
+    return isMobile ? _headerWebMobile(context) : _headerDesktop(context);
   }
 
   Widget _headerWebMobile(BuildContext context) {
@@ -123,6 +141,11 @@ class OnboardingPage extends StatelessWidget {
         ),
         child: Row(
           children: [
+            SvgPicture.asset(
+              AppIcons.faceRecognition,
+              width: 48,
+            ),
+            AppDimensions.sBoxW8,
             Text(
               LocaleKeys.appName.tr(),
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
@@ -163,6 +186,11 @@ class OnboardingPage extends StatelessWidget {
         ),
         child: Row(
           children: [
+            SvgPicture.asset(
+              AppIcons.faceRecognition,
+              width: 48,
+            ),
+            AppDimensions.sBoxW8,
             Text(
               LocaleKeys.appName.tr(),
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
@@ -173,13 +201,25 @@ class OnboardingPage extends StatelessWidget {
             btnOutlined(
               context: context,
               text: LocaleKeys.signIn.tr(),
-              onPressed: () => context.go(RouteConstants.signIn.path),
+              onPressed: () => DialogsManager.showCustomDialog(
+                context: context,
+                child: SignInPage(
+                  isDialog: true,
+                ),
+                asPage: true,
+              ),
             ),
             AppDimensions.sBoxW16,
             btnFilled(
               context: context,
               text: LocaleKeys.signUp.tr(),
-              onPressed: () => context.go(RouteConstants.signUp.path),
+              onPressed: () => DialogsManager.showCustomDialog(
+                context: context,
+                child: SignUpPage(
+                  isDialog: true,
+                ),
+                asPage: true,
+              ),
             ),
           ],
         ),

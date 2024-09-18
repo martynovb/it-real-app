@@ -35,7 +35,10 @@ class RealApp extends StatelessWidget {
             create: (context) => GetIt.I.get<PhotoVerificationBloc>(),
           ),
           BlocProvider(
-            create: (context) => GetIt.I.get<AuthBloc>(),
+            create: (context) => GetIt.I.get<AuthBloc>()
+              ..add(
+                const AuthEvent.isSessionExist(),
+              ),
           ),
         ],
         child: const AppWidget(),
@@ -63,10 +66,9 @@ class AppWidget extends StatelessWidget {
               darkTheme: AppTheme.darkThemeData,
               themeMode: appState.themeMode,
               routerConfig: router(
-                initialLocation:
-                    authState.authStatus == AuthenticationStatus.authenticated
-                        ? RouteConstants.home.path
-                        : RouteConstants.onboarding.path,
+                initialLocation: _initialRoute(
+                  authState.authStatus,
+                ),
               ),
             );
           },
