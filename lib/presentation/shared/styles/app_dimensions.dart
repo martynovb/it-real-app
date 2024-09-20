@@ -4,6 +4,12 @@ class AppDimensions {
   static const maxMobileWidth = 767.0;
   static const minPageDialogWidth = 450.0;
   static const double btnWidthDesk = 116.0;
+  static const double btnHDesk = 54;
+  static const double btnHMobile = 48;
+  static const double headerHMobile = 68;
+  static const double headerHDesktop = 80;
+  static const double inputFieldH = 54;
+
   static const double footerHeight = 80.0;
   static const double deskSidePadding = 40.0;
   static const double mobSidePadding = 16.0;
@@ -13,6 +19,7 @@ class AppDimensions {
   static const double snackBarH = 52;
   static const double borderRadius = 16;
   static const double getStartedDesktopBtnWidth = 250;
+  static const double getStartedBtnH = 60;
   static const double startVerificationDesktopBtnWidth = 250;
   static const double viewReportDesktopBtnWidth = 250;
   static const double buyPackagetDesktopBtnWidth = 250;
@@ -29,6 +36,7 @@ class AppDimensions {
 
   static const SizedBox sBoxH4 = SizedBox(height: 4);
   static const SizedBox sBoxH8 = SizedBox(height: 8);
+  static const SizedBox sBoxH12 = SizedBox(height: 12);
   static const SizedBox sBoxW8 = SizedBox(width: 8);
   static const SizedBox sBoxH16 = SizedBox(height: 16);
   static const SizedBox sBoxW16 = SizedBox(width: 16);

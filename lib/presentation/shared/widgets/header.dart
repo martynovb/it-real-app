@@ -98,8 +98,7 @@ Widget headerDesktop({
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
             padding: 0,
-            minWidth: 0,
-            minHeight: 54,
+            width: 0,
             isSelected: currentOption == HeaderOption.buy,
             postfixWidget: SvgPicture.asset(
               AppIcons.iconWallet,
@@ -118,8 +117,7 @@ Widget headerDesktop({
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
             padding: 0,
-            minWidth: 0,
-            minHeight: 54,
+            width: 0,
             postfixWidget: const Icon(
               Icons.person,
               color: AppColors.purple,
@@ -155,6 +153,7 @@ Widget headerMobile({
       right: 16,
     ),
     child: Container(
+      height: AppDimensions.headerHMobile,
       padding: const EdgeInsets.only(
         bottom: 12,
         top: 12,
@@ -186,8 +185,6 @@ Widget headerMobile({
           const Spacer(),
           btnOutlinedWithIcon(
             padding: 0,
-            minWidth: 0,
-            minHeight: 54,
             isSelected: currentOption == HeaderOption.buy,
             postfixWidget: SvgPicture.asset(
               AppIcons.iconWallet,
@@ -206,8 +203,6 @@ Widget headerMobile({
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
             padding: 0,
-            minWidth: 0,
-            minHeight: 54,
             postfixWidget: const Icon(
               Icons.person,
               color: AppColors.purple,
@@ -306,7 +301,7 @@ Future<void> _showAccountMenu({
         AppDimensions.sBoxW24,
         btnFilled(
           padding: 0,
-          minWidth: 150,
+          width: 150,
           context: context,
           text: LocaleKeys.confirm.tr(),
           onPressed: () {
@@ -331,7 +326,7 @@ Future<void> _showAccountMenu({
         AppDimensions.sBoxW24,
         btnFilled(
           padding: 0,
-          minWidth: 150,
+          width: 150,
           context: context,
           text: LocaleKeys.confirm.tr(),
           onPressed: () {

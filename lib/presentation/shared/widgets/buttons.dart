@@ -9,35 +9,32 @@ Widget btnFilledWithIcon({
   required Widget postfixWidget,
   void Function()? onPressed,
   double? width,
+  double? height,
   bool isMobile = true,
-  double? padding,
+  EdgeInsets? padding,
 }) =>
     Container(
       constraints: BoxConstraints(
-        maxHeight: 60,
-        minWidth: AppDimensions.btnWidthDesk,
+        minWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
+        minHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
+        maxHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
       ),
       child: ElevatedButton(
         onPressed: onPressed,
         style: AppButtonStyle.filledBtnStyle(
+          padding: padding,
           context: context,
           textStyle: Theme.of(context).textTheme.displaySmall,
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 8,
-            top: 16,
-            bottom: 16,
-          ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Center(
-                child: Text(text),
-              ),
-            ),
+            Text(text),
             postfixWidget,
           ],
         ),
@@ -50,17 +47,21 @@ Widget btnOutlined({
   bool loading = false,
   void Function()? onPressed,
   double? width,
+  double? height,
   bool isMobile = true,
   double? padding,
-  double maxHeight = 60,
   double minWidth = AppDimensions.btnWidthDesk,
 }) =>
     Container(
       constraints: BoxConstraints(
-        maxHeight: maxHeight,
-        minWidth: minWidth,
+        minWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
+        minHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
+        maxHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
       ),
       child: ElevatedButton(
         onPressed: onPressed,
@@ -88,17 +89,20 @@ Widget btnFilled({
   bool loading = false,
   void Function()? onPressed,
   double? width,
+  double? height,
   bool isMobile = true,
   double? padding,
-  double maxHeight = 60,
-  double minWidth = AppDimensions.btnWidthDesk,
 }) =>
     Container(
       constraints: BoxConstraints(
-        maxHeight: maxHeight,
-        minWidth: minWidth,
+        minWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
+        minHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
+        maxHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
       ),
       child: ElevatedButton(
         onPressed: loading ? null : onPressed,
@@ -128,18 +132,23 @@ Widget btnOutlinedWithIcon({
   Widget? textWidget,
   void Function()? onPressed,
   Widget? postfixWidget,
+  Widget? prefixWidget,
   double? width,
+  double? height,
   bool isMobile = true,
   double? padding,
-  double minWidth = AppDimensions.btnWidthDesk,
-  double minHeight = 60,
+  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.spaceBetween,
 }) =>
     Container(
       constraints: BoxConstraints(
-        minHeight: minHeight,
-        minWidth: minWidth,
+        minWidth:
+            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
         maxWidth:
             width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
+        minHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
+        maxHeight: height ??
+            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
       ),
       child: ElevatedButton(
         onPressed: onPressed,
@@ -147,26 +156,20 @@ Widget btnOutlinedWithIcon({
             ? AppButtonStyle.outlinedBtnWithIconStyleSelected(
                 context: context,
                 textStyle: Theme.of(context).textTheme.displaySmall,
+                padding: EdgeInsets.all(padding ?? 0),
               )
             : AppButtonStyle.outlinedBtnWithIconStyle(
                 context: context,
                 textStyle: Theme.of(context).textTheme.displaySmall,
+                padding: EdgeInsets.all(padding ?? 0),
               ),
-        child: Padding(
-          padding: EdgeInsets.all(padding ?? 8.0),
-          child: postfixWidget != null
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    postfixWidget,
-                    if (textWidget != null || text != null)
-                      AppDimensions.sBoxW8,
-                    textWidget ??
-                        (text != null ? Text(text) : const SizedBox.shrink()),
-                  ],
-                )
-              : textWidget ??
-                  (text != null ? Text(text) : const SizedBox.shrink()),
+        child: Row(
+          mainAxisAlignment: mainAxisAlignment,
+          children: [
+            if (prefixWidget != null) prefixWidget,
+            textWidget ?? Text(text ?? ''),
+            if (postfixWidget != null) postfixWidget,
+          ],
         ),
       ),
     );

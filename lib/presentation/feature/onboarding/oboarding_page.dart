@@ -80,7 +80,11 @@ class OnboardingPage extends StatelessWidget {
           btnFilledWithIcon(
             isMobile: isMobile,
             context: context,
-            width: AppDimensions.getStartedDesktopBtnWidth,
+            padding: const EdgeInsets.only(left: 24, right: 8),
+            height: AppDimensions.getStartedBtnH,
+            width: isMobile
+                ? double.infinity
+                : AppDimensions.getStartedDesktopBtnWidth,
             text: LocaleKeys.getStartedNow.tr(),
             postfixWidget: Container(
               width: 44,
@@ -143,7 +147,7 @@ class OnboardingPage extends StatelessWidget {
           children: [
             SvgPicture.asset(
               AppIcons.faceRecognition,
-              width: 48,
+              width: 40,
             ),
             AppDimensions.sBoxW8,
             Text(
@@ -153,10 +157,12 @@ class OnboardingPage extends StatelessWidget {
                   ),
             ),
             const Spacer(),
-            btnOutlined(
-              context: context,
-              text: LocaleKeys.signIn.tr(),
-              onPressed: () => context.go(RouteConstants.signIn.path),
+            Expanded(
+              child: btnOutlined(
+                context: context,
+                text: LocaleKeys.signIn.tr(),
+                onPressed: () => context.go(RouteConstants.signIn.path),
+              ),
             ),
           ],
         ),
@@ -201,6 +207,7 @@ class OnboardingPage extends StatelessWidget {
             btnOutlined(
               context: context,
               text: LocaleKeys.signIn.tr(),
+              isMobile: false,
               onPressed: () => DialogsManager.showCustomDialog(
                 context: context,
                 child: SignInPage(
@@ -213,6 +220,7 @@ class OnboardingPage extends StatelessWidget {
             btnFilled(
               context: context,
               text: LocaleKeys.signUp.tr(),
+              isMobile: false,
               onPressed: () => DialogsManager.showCustomDialog(
                 context: context,
                 child: SignUpPage(
@@ -280,14 +288,14 @@ class OnboardingPage extends StatelessWidget {
           stepDescription: LocaleKeys.step1Description.tr(),
           iconPah: AppIcons.iconInsights,
         ),
-        AppDimensions.sBoxH24,
+        AppDimensions.sBoxH12,
         _stepMobile(
           context: context,
           stepTitle: '2 ${LocaleKeys.step.tr()}:',
           stepDescription: LocaleKeys.step2Description.tr(),
           iconPah: AppIcons.iconSearch,
         ),
-        AppDimensions.sBoxH24,
+        AppDimensions.sBoxH12,
         _stepMobile(
           context: context,
           stepTitle: '3 ${LocaleKeys.step.tr()}:',
@@ -431,7 +439,7 @@ class OnboardingPage extends StatelessWidget {
                     Text(
                       stepTitle,
                       style:
-                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          Theme.of(context).textTheme.displayMedium?.copyWith(
                                 color: Theme.of(context).colorScheme.onPrimary,
                               ),
                     ),

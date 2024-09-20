@@ -54,6 +54,7 @@ class AuthRepo extends AuthDataSource {
   Future<void> signInWithGoogle() async {
     await supabaseClient.auth.signInWithOAuth(
       OAuthProvider.google,
+      redirectTo: RunConfigurations.redirectUrl,
     );
   }
 

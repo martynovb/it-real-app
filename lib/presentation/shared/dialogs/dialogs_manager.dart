@@ -41,7 +41,7 @@ abstract class DialogsManager {
           AppDimensions.sBoxW24,
           btnFilled(
             padding: 0,
-            minWidth: 150,
+            width: 150,
             context: context,
             text: LocaleKeys.buyVerifications.tr(),
             onPressed: () => context.go(RouteConstants.products.path),
@@ -81,7 +81,7 @@ abstract class DialogsManager {
             [
               btnFilled(
                 padding: 0,
-                minWidth: 150,
+                width: 150,
                 context: context,
                 text: LocaleKeys.ok.tr(),
                 onPressed: onTap ?? () => context.pop(),
@@ -121,7 +121,7 @@ abstract class DialogsManager {
             [
               btnFilled(
                 padding: 0,
-                minWidth: 150,
+                width: 150,
                 context: context,
                 text: LocaleKeys.ok.tr(),
                 onPressed: onTap ?? () => context.pop(),
