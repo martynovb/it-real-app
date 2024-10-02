@@ -8,22 +8,17 @@ Widget btnFilledWithIcon({
   required String text,
   required Widget postfixWidget,
   void Function()? onPressed,
-  double? width,
-  double? height,
+  double? minWidth,
+  double? minHeight,
+  double? maxWidth,
   bool isMobile = true,
   EdgeInsets? padding,
 }) =>
-    Container(
-      constraints: BoxConstraints(
-        minWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        maxWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        minHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-        maxHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-      ),
+    _resize(
+      isMobile: isMobile,
+      minWidth: minWidth,
+      minHeight: minHeight,
+      maxWidth: maxWidth,
       child: ElevatedButton(
         onPressed: onPressed,
         style: AppButtonStyle.filledBtnStyle(
@@ -46,23 +41,15 @@ Widget btnOutlined({
   required String text,
   bool loading = false,
   void Function()? onPressed,
-  double? width,
-  double? height,
+  double? minWidth,
+  double? minHeight,
   bool isMobile = true,
   double? padding,
-  double minWidth = AppDimensions.btnWidthDesk,
 }) =>
-    Container(
-      constraints: BoxConstraints(
-        minWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        maxWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        minHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-        maxHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-      ),
+    _resize(
+      isMobile: isMobile,
+      minWidth: minWidth,
+      minHeight: minHeight,
       child: ElevatedButton(
         onPressed: onPressed,
         style: AppButtonStyle.outlinedBtnStyle(
@@ -88,22 +75,15 @@ Widget btnFilled({
   required String text,
   bool loading = false,
   void Function()? onPressed,
-  double? width,
-  double? height,
+  double? minWidth,
+  double? minHeight,
   bool isMobile = true,
   double? padding,
 }) =>
-    Container(
-      constraints: BoxConstraints(
-        minWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        maxWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        minHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-        maxHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-      ),
+    _resize(
+      isMobile: isMobile,
+      minWidth: minWidth,
+      minHeight: minHeight,
       child: ElevatedButton(
         onPressed: loading ? null : onPressed,
         style: AppButtonStyle.filledBtnStyle(
@@ -133,43 +113,59 @@ Widget btnOutlinedWithIcon({
   void Function()? onPressed,
   Widget? postfixWidget,
   Widget? prefixWidget,
-  double? width,
-  double? height,
+  double? minWidth,
+  double? minHeight,
   bool isMobile = true,
-  double? padding,
+  EdgeInsets? padding,
   MainAxisAlignment mainAxisAlignment = MainAxisAlignment.spaceBetween,
-}) =>
-    Container(
-      constraints: BoxConstraints(
-        minWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        maxWidth:
-            width ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk),
-        minHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
-        maxHeight: height ??
-            (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk),
+}) {
+  return _resize(
+    isMobile: isMobile,
+    minWidth: minWidth,
+    minHeight: minHeight,
+    child: ElevatedButton(
+      onPressed: onPressed,
+      style: isSelected
+          ? AppButtonStyle.outlinedBtnWithIconStyleSelected(
+              context: context,
+              textStyle: Theme.of(context).textTheme.displaySmall,
+              padding: padding ?? EdgeInsets.zero,
+            )
+          : AppButtonStyle.outlinedBtnWithIconStyle(
+              context: context,
+              textStyle: Theme.of(context).textTheme.displaySmall,
+              padding: padding ?? EdgeInsets.zero,
+            ),
+      child: Row(
+        mainAxisAlignment: mainAxisAlignment,
+        children: [
+          if (prefixWidget != null) prefixWidget,
+          textWidget ?? Text(text ?? ''),
+          if (postfixWidget != null) postfixWidget,
+        ],
       ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: isSelected
-            ? AppButtonStyle.outlinedBtnWithIconStyleSelected(
-                context: context,
-                textStyle: Theme.of(context).textTheme.displaySmall,
-                padding: EdgeInsets.all(padding ?? 0),
-              )
-            : AppButtonStyle.outlinedBtnWithIconStyle(
-                context: context,
-                textStyle: Theme.of(context).textTheme.displaySmall,
-                padding: EdgeInsets.all(padding ?? 0),
-              ),
-        child: Row(
-          mainAxisAlignment: mainAxisAlignment,
-          children: [
-            if (prefixWidget != null) prefixWidget,
-            textWidget ?? Text(text ?? ''),
-            if (postfixWidget != null) postfixWidget,
-          ],
-        ),
-      ),
-    );
+    ),
+  );
+}
+
+Widget _resize({
+  required bool isMobile,
+  double? minWidth,
+  double? minHeight,
+  double? maxWidth,
+  required Widget child,
+}) {
+  final widgetMinWidth =
+      minWidth ?? (isMobile ? double.infinity : AppDimensions.btnWidthDesk);
+  final widgetMinHeight = minHeight ??
+      (isMobile ? AppDimensions.btnHMobile : AppDimensions.btnHDesk);
+
+  return Container(
+    constraints: BoxConstraints(
+      minWidth: widgetMinWidth,
+      minHeight: widgetMinHeight,
+      maxWidth: maxWidth ?? double.infinity,
+    ),
+    child: child,
+  );
+}

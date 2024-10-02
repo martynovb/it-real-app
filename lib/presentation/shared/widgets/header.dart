@@ -97,17 +97,24 @@ Widget headerDesktop({
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
-            padding: 0,
-            width: 0,
+            minWidth: 150,
+            padding: const EdgeInsets.only(
+              left: AppDimensions.btnOutlinedWithIconSidePaddings,
+              right: AppDimensions.btnOutlinedWithIconSidePaddings,
+            ),
+            isMobile: false,
             isSelected: currentOption == HeaderOption.buy,
-            postfixWidget: SvgPicture.asset(
-              AppIcons.iconWallet,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                currentOption == HeaderOption.buy
-                    ? AppColors.white
-                    : AppColors.purple,
-                BlendMode.srcIn,
+            prefixWidget: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: SvgPicture.asset(
+                AppIcons.iconWallet,
+                width: 24,
+                colorFilter: ColorFilter.mode(
+                  currentOption == HeaderOption.buy
+                      ? AppColors.white
+                      : AppColors.purple,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             context: context,
@@ -116,15 +123,22 @@ Widget headerDesktop({
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
-            padding: 0,
-            width: 0,
-            postfixWidget: const Icon(
-              Icons.person,
-              color: AppColors.purple,
-              size: 24,
+            minWidth: 150,
+            padding: const EdgeInsets.only(
+              left: AppDimensions.btnOutlinedWithIconSidePaddings,
+              right: AppDimensions.btnOutlinedWithIconSidePaddings,
+            ),
+            isMobile: false,
+            prefixWidget: const Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(
+                Icons.settings,
+                color: AppColors.purple,
+                size: 24,
+              ),
             ),
             context: context,
-            text: LocaleKeys.account.tr(),
+            text: LocaleKeys.settings.tr(),
             onPressed: () async {
               await _showAccountMenu(
                 menuKey: acountBtnGlobalKey,
@@ -184,16 +198,19 @@ Widget headerMobile({
           ),
           const Spacer(),
           btnOutlinedWithIcon(
-            padding: 0,
+            minWidth: AppDimensions.balanceWBtnMobile,
             isSelected: currentOption == HeaderOption.buy,
-            postfixWidget: SvgPicture.asset(
-              AppIcons.iconWallet,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                currentOption == HeaderOption.buy
-                    ? AppColors.white
-                    : AppColors.purple,
-                BlendMode.srcIn,
+            prefixWidget: Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: SvgPicture.asset(
+                AppIcons.iconWallet,
+                width: 24,
+                colorFilter: ColorFilter.mode(
+                  currentOption == HeaderOption.buy
+                      ? AppColors.white
+                      : AppColors.purple,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             context: context,
@@ -202,9 +219,9 @@ Widget headerMobile({
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
-            padding: 0,
+            minWidth: AppDimensions.settingsWBtnMobile,
             postfixWidget: const Icon(
-              Icons.person,
+              Icons.settings,
               color: AppColors.purple,
               size: 24,
             ),
@@ -301,7 +318,7 @@ Future<void> _showAccountMenu({
         AppDimensions.sBoxW24,
         btnFilled(
           padding: 0,
-          width: 150,
+          minWidth: 150,
           context: context,
           text: LocaleKeys.confirm.tr(),
           onPressed: () {
@@ -326,7 +343,7 @@ Future<void> _showAccountMenu({
         AppDimensions.sBoxW24,
         btnFilled(
           padding: 0,
-          width: 150,
+          minWidth: 150,
           context: context,
           text: LocaleKeys.confirm.tr(),
           onPressed: () {

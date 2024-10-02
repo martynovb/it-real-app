@@ -23,8 +23,7 @@ class HomePageMobile extends StatelessWidget {
                     user: homeState.userModel,
                   ),
                 ),
-                SliverFillRemaining(
-                  hasScrollBody: false,
+                SliverToBoxAdapter(
                   child: Column(
                     children: [
                       if (photoVerificationState.steps.values.any(
@@ -32,21 +31,23 @@ class HomePageMobile extends StatelessWidget {
                       )) ...[
                         const Spacer(),
                         _photoVerificationView(context, photoVerificationState),
-                      ],
-                      if (!photoVerificationState.steps.values.any(
-                        (status) => status == FormzSubmissionStatus.inProgress,
-                      ))
+                      ] else
                         _content(
                           context: context,
                           homeState: homeState,
                         ),
-                      const Spacer(),
                       AppDimensions.sBoxH32,
                     ],
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: footer(context),
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(
+                    children: [
+                      const Spacer(),
+                      footer(context),
+                    ],
+                  ),
                 ),
               ],
             );
@@ -91,6 +92,8 @@ class HomePageMobile extends StatelessWidget {
     return BlocBuilder<DragAndDropBloc, DragAndDropState>(
       builder: (context, state) {
         return btnFilledWithIcon(
+          padding: const EdgeInsets.only(left: 24, right: 8),
+          minHeight: AppDimensions.btnHDesk,
           onPressed: context.read<DragAndDropBloc>().state.photoFile != null
               ? () {
                   final photoFile =

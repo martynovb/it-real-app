@@ -26,49 +26,11 @@ class ProductssPageDesk extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-                child: Column(
-              children: [
-                AppDimensions.sBoxH40,
-                SizedBox(
-                  width: AppDimensions.maxDescWidth,
-                  child: Text(
-                    LocaleKeys.productsPageDescription.tr(),
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                AppDimensions.sBoxH32,
-                SizedBox(
-                  height: AppDimensions.productsHeight,
-                  child: state.products.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.purple,
-                          ),
-                        )
-                      : _products(
-                          context: context,
-                          products: state.products,
-                          selectedProduct: state.selectedProduct,
-                        ),
-                ),
-                AppDimensions.sBoxH48,
-                ProdcutsPage.buyPackageBtn(context),
-                AppDimensions.sBoxH48,
-                SizedBox(
-                  width: AppDimensions.maxDescWidth,
-                  child: Text(
-                    LocaleKeys.productsPageDescription2.tr(),
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          color: Theme.of(context).colorScheme.onTertiary,
-                        ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            )),
+              child: _content(
+                context: context,
+                state: state,
+              ),
+            ),
             SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
@@ -84,6 +46,62 @@ class ProductssPageDesk extends StatelessWidget {
       },
     );
   }
+
+  Widget _content({
+    required BuildContext context,
+    required ProductsState state,
+  }) =>
+      Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * AppDimensions.topPaddingRatioDesk,
+          ),
+          SizedBox(
+            width: AppDimensions.maxDescWidth,
+            child: Text(
+              LocaleKeys.productsPageDescription.tr(),
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          AppDimensions.sBoxH32,
+          SizedBox(
+            height: AppDimensions.productsHeight,
+            child: state.products.isEmpty
+                ? const SizedBox(
+                  height: 120,
+                  child: Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.purple,
+                      ),
+                    ),
+                )
+                : _products(
+                    context: context,
+                    products: state.products,
+                    selectedProduct: state.selectedProduct,
+                  ),
+          ),
+          AppDimensions.sBoxH48,
+          ProdcutsPage.buyPackageBtn(
+            context,
+            isMobile: false,
+          ),
+          AppDimensions.sBoxH48,
+          SizedBox(
+            width: AppDimensions.maxDescWidth,
+            child: Text(
+              LocaleKeys.productsPageDescription2.tr(),
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onTertiary,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      );
 
   Widget _products({
     required BuildContext context,
@@ -133,7 +151,7 @@ class ProductssPageDesk extends StatelessWidget {
       child: Container(
         constraints: const BoxConstraints(
           maxWidth: 400,
-          minWidth: 310,
+          minWidth: 200,
         ),
         width: (MediaQuery.of(context).size.width -
                 AppDimensions.deskSidePadding * 2 -

@@ -111,7 +111,7 @@ class SignUpPage extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: btnFilled(
-                          height: AppDimensions.btnHDesk,
+                          minHeight: AppDimensions.btnHDesk,
                           loading:
                               state.status == FormzSubmissionStatus.inProgress,
                           context: context,
@@ -163,7 +163,7 @@ class SignUpPage extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: btnOutlinedWithIcon(
-                          height: AppDimensions.btnHDesk,
+                          minHeight: AppDimensions.btnHDesk,
                           mainAxisAlignment: MainAxisAlignment.center,
                           prefixWidget: Padding(
                             padding: const EdgeInsets.only(right: 12),
@@ -297,7 +297,7 @@ class SignUpPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: btnFilled(
-                            height: AppDimensions.btnHDesk,
+                            minHeight: AppDimensions.btnHDesk,
                             loading: state.status ==
                                 FormzSubmissionStatus.inProgress,
                             context: context,
@@ -349,7 +349,7 @@ class SignUpPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: btnOutlinedWithIcon(
-                            height: AppDimensions.btnHDesk,
+                            minHeight: AppDimensions.btnHDesk,
                             mainAxisAlignment: MainAxisAlignment.center,
                             prefixWidget: Padding(
                               padding: const EdgeInsets.only(right: 12),

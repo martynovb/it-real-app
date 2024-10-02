@@ -58,7 +58,7 @@ class OnboardingPage extends StatelessWidget {
   Widget _content(BuildContext context, bool isMobile) {
     return Padding(
       padding: EdgeInsets.only(
-        top: isMobile ? 24 : 44,
+        top: isMobile ? 24 : MediaQuery.of(context).size.height * 0.1,
         right: isMobile ? 16 : 44,
         left: isMobile ? 16 : 44,
       ),
@@ -81,8 +81,8 @@ class OnboardingPage extends StatelessWidget {
             isMobile: isMobile,
             context: context,
             padding: const EdgeInsets.only(left: 24, right: 8),
-            height: AppDimensions.getStartedBtnH,
-            width: isMobile
+            minHeight: AppDimensions.getStartedBtnH,
+            maxWidth: isMobile
                 ? double.infinity
                 : AppDimensions.getStartedDesktopBtnWidth,
             text: LocaleKeys.getStartedNow.tr(),

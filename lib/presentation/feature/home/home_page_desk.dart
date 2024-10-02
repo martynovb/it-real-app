@@ -58,7 +58,10 @@ class HomePageDesk extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          AppDimensions.sBoxH40,
+          SizedBox(
+            height: MediaQuery.of(context).size.height *
+                AppDimensions.topPaddingRatioDesk,
+          ),
           Text(
             LocaleKeys.uploadImage.tr(),
             style: Theme.of(context).textTheme.displayLarge,
@@ -88,7 +91,8 @@ class HomePageDesk extends StatelessWidget {
       builder: (context, state) {
         return btnFilledWithIcon(
           isMobile: false,
-          width: AppDimensions.startVerificationDesktopBtnWidth,
+          maxWidth: AppDimensions.startVerificationDesktopBtnWidth,
+          padding: const EdgeInsets.only(left: 24, right: 8),
           onPressed: context.read<DragAndDropBloc>().state.photoFile != null
               ? () {
                   final photoFile =

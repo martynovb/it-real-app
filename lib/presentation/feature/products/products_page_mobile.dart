@@ -26,47 +26,9 @@ class ProductsPageMobile extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  AppDimensions.sBoxH32,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: AppDimensions.mobSidePadding),
-                    child: Text(
-                      LocaleKeys.productsPageDescription.tr(),
-                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  AppDimensions.sBoxH32,
-                  state.products.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.purple,
-                          ),
-                        )
-                      : _products(
-                          context: context,
-                          products: state.products,
-                          selectedProduct: state.selectedProduct,
-                        ),
-                  AppDimensions.sBoxH24,
-                  ProdcutsPage.buyPackageBtn(context),
-                  AppDimensions.sBoxH24,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: AppDimensions.mobSidePadding),
-                    child: Text(
-                      LocaleKeys.productsPageDescription2.tr(),
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onTertiary,
-                          ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+              child: _content(
+                context: context,
+                state: state,
               ),
             ),
             SliverFillRemaining(
@@ -85,26 +47,69 @@ class ProductsPageMobile extends StatelessWidget {
     );
   }
 
+  Widget _content({
+    required BuildContext context,
+    required ProductsState state,
+  }) =>
+      Padding(
+        padding: const EdgeInsets.only(
+          top: 16,
+          left: 16,
+          right: 16,
+        ),
+        child: Column(
+          children: [
+            AppDimensions.sBoxH32,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimensions.mobSidePadding),
+              child: Text(
+                LocaleKeys.productsPageDescription.tr(),
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            AppDimensions.sBoxH32,
+            state.products.isEmpty
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.purple,
+                    ),
+                  )
+                : _products(
+                    context: context,
+                    products: state.products,
+                    selectedProduct: state.selectedProduct,
+                  ),
+            AppDimensions.sBoxH24,
+            ProdcutsPage.buyPackageBtn(context),
+            AppDimensions.sBoxH24,
+            Text(
+              LocaleKeys.productsPageDescription2.tr(),
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onTertiary,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+
   Widget _products({
     required BuildContext context,
     required List<ProductModel> products,
     ProductModel? selectedProduct,
   }) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 16,
-        left: 16,
-        right: 16,
-      ),
-      child: ListView.separated(
-        shrinkWrap: true,
-        itemCount: products.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 24),
-        itemBuilder: (context, index) => _productItem(
-          context: context,
-          product: products[index],
-          selectedProduct: selectedProduct,
-        ),
+    return ListView.separated(
+      shrinkWrap: true,
+      itemCount: products.length,
+      separatorBuilder: (context, index) => const SizedBox(height: 24),
+      itemBuilder: (context, index) => _productItem(
+        context: context,
+        product: products[index],
+        selectedProduct: selectedProduct,
       ),
     );
   }

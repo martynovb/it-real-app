@@ -140,7 +140,7 @@ class ForgotPasswordPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: btnFilled(
-                            height: AppDimensions.btnHDesk,
+                            minHeight: AppDimensions.btnHDesk,
                             loading: state.status ==
                                 FormzSubmissionStatus.inProgress,
                             context: context,

@@ -122,7 +122,7 @@ class SignInPage extends StatelessWidget {
                       loading: state.status == FormzSubmissionStatus.inProgress,
                       context: context,
                       text: LocaleKeys.signIn.tr(),
-                      height: AppDimensions.btnHDesk,
+                      minHeight: AppDimensions.btnHDesk,
                       onPressed: () => context.read<SignInBloc>().add(
                             SignInEvent.signIn(
                               email: _emailController.text,
@@ -166,7 +166,7 @@ class SignInPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: btnOutlinedWithIcon(
-                      height: AppDimensions.btnHDesk,
+                      minHeight: AppDimensions.btnHDesk,
                       mainAxisAlignment: MainAxisAlignment.center,
                       prefixWidget: Padding(
                         padding: const EdgeInsets.only(right: 12),
@@ -300,7 +300,7 @@ class SignInPage extends StatelessWidget {
                     loading: state.status == FormzSubmissionStatus.inProgress,
                     context: context,
                     text: LocaleKeys.signIn.tr(),
-                    height: AppDimensions.btnHDesk,
+                    minHeight: AppDimensions.btnHDesk,
                     onPressed: () => context.read<SignInBloc>().add(
                           SignInEvent.signIn(
                             email: _emailController.text,
@@ -343,7 +343,7 @@ class SignInPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: btnOutlinedWithIcon(
-                      height: AppDimensions.btnHDesk,
+                      minHeight: AppDimensions.btnHDesk,
                       mainAxisAlignment: MainAxisAlignment.center,
                       prefixWidget: Padding(
                         padding: const EdgeInsets.only(right: 12),
@@ -383,7 +383,7 @@ class SignInPage extends StatelessWidget {
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () =>  context.read<AppBloc>().add(
+                              ..onTap = () => context.read<AppBloc>().add(
                                     const AppEvent.openTermsOfService(),
                                   ),
                           ),

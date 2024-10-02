@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppDimensions {
-  static const maxMobileWidth = 767.0;
+
+  static const maxMobileWidth = 900.0;
   static const minPageDialogWidth = 450.0;
   static const double btnWidthDesk = 116.0;
   static const double btnHDesk = 54;
@@ -9,6 +10,13 @@ class AppDimensions {
   static const double headerHMobile = 68;
   static const double headerHDesktop = 80;
   static const double inputFieldH = 54;
+  static const double btnOutlinedWithIconSidePaddings = 24;
+
+    static const double topPaddingRatioDesk = 0.15;
+
+
+  static const double balanceWBtnMobile = 100;
+  static const double settingsWBtnMobile = 48;
 
   static const double footerHeight = 80.0;
   static const double deskSidePadding = 40.0;
