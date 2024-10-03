@@ -6,6 +6,8 @@ class DragAndDropEvent with _$DragAndDropEvent {
 
   const factory DragAndDropEvent.pickImage() = _PickImage;
 
+  const factory DragAndDropEvent.pickImageIosWeb(XFile? image) = _PickImageIosWeb;
+
   const factory DragAndDropEvent.updateProgress(int progress) = _UpdateProgress;
 
   const factory DragAndDropEvent.reset() = _Reset;

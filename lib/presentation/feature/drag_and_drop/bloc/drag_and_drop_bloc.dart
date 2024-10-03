@@ -8,7 +8,6 @@ import 'package:injectable/injectable.dart';
 import 'package:it_real_app/presentation/shared/utils/bytes_converter.dart';
 import 'package:super_drag_and_drop/super_drag_and_drop.dart';
 import 'package:image_picker/image_picker.dart';
-
 part 'drag_and_drop_bloc.freezed.dart';
 
 part 'drag_and_drop_event.dart';
@@ -37,9 +36,56 @@ class DragAndDropBloc extends Bloc<DragAndDropEvent, DragAndDropState> {
           ),
         ) {
     on<_PickImage>(_onPickImage);
+    on<_PickImageIosWeb>(_onPickImageIosWeb);
     on<_PerformDrop>(_onPerformDrop);
     on<_UpdateProgress>(_onUpdateProgress);
     on<_Reset>(_onReset);
+  }
+
+  Future<void> _onPickImageIosWeb(
+    _PickImageIosWeb event,
+    Emitter<DragAndDropState> emit,
+  ) async {
+    if (state.status == FormzSubmissionStatus.inProgress) {
+      return;
+    }
+
+    final imageFile = event.image;
+
+    emit(
+      const DragAndDropState(
+        status: FormzSubmissionStatus.inProgress,
+        errorMessage: null,
+        photoFile: null,
+        progress: null,
+        fileName: null,
+        fileFormat: null,
+      ),
+    );
+
+    if (imageFile == null) {
+      add(const _Reset());
+      return;
+    }
+
+    final fileName = imageFile.name.split('.').first;
+    final fileFormat = formats.entries
+        .firstWhere(
+          (entry) => imageFile.name.endsWith(entry.value),
+          orElse: () => formats.entries.first,
+        )
+        .key;
+    final bytes = await imageFile.readAsBytes();
+
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.success,
+        photoFile: imageFile,
+        fileName: fileName,
+        fileFormat: fileFormat,
+        fileSizeInMb: BytesConverter.formatBytes(bytes.length, 2),
+      ),
+    );
   }
 
   Future<void> _onPickImage(

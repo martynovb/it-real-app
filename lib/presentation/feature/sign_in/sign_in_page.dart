@@ -19,8 +19,6 @@ import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/input_field.dart';
 import 'package:it_real_app/presentation/shared/widgets/snack_bar.dart';
-import 'package:it_real_app/targets/run_configurations.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SignInPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();

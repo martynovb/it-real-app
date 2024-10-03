@@ -66,10 +66,10 @@ class HomePageMobile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          AppDimensions.sBoxH60,
+          AppDimensions.sBoxH32,
           Text(
             LocaleKeys.uploadImage.tr(),
-            style: Theme.of(context).textTheme.displayLarge,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           AppDimensions.sBoxH32,
           Container(
@@ -104,7 +104,10 @@ class HomePageMobile extends StatelessWidget {
 
                   if (homeState.userModel.balance <
                       AppConstants.minTokensToVerify) {
-                    DialogsManager.showNotEnoughBalanceDialog(context: context);
+                    DialogsManager.showNotEnoughBalanceDialog(
+                      context: context,
+                      isMobile: true,
+                    );
                     return;
                   }
 

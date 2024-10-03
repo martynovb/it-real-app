@@ -104,7 +104,10 @@ class HomePageDesk extends StatelessWidget {
 
                   if (homeState.userModel.balance <
                       AppConstants.minTokensToVerify) {
-                    DialogsManager.showNotEnoughBalanceDialog(context: context);
+                    DialogsManager.showNotEnoughBalanceDialog(
+                      context: context,
+                      isMobile: false,
+                    );
                     return;
                   }
 

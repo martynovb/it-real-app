@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyleWeb {
+
+  static const TextStyle _titleMedium = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle _webH1 = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.w600,
@@ -74,5 +80,6 @@ class AppTextStyleWeb {
         labelSmall: _webBody4,
 
         titleSmall: _webCaption,
+        titleMedium: _titleMedium,
       );
 }

@@ -14,20 +14,17 @@ abstract class DialogsManager {
 
   static void showNotEnoughBalanceDialog({
     required BuildContext context,
+    required bool isMobile,
   }) {
     showCustomDialog(
       context: context,
       child: simple_dialog.SimpleDialog(
+        isMobile: isMobile,
         title: Text(
           LocaleKeys.notEnoughVerifications.tr(),
-          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: AppColors.red,
               ),
-          textAlign: TextAlign.center,
-        ),
-        description: Text(
-          LocaleKeys.notEnoughVerificationsDescription.tr(),
-          style: Theme.of(context).textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
         actions: [
@@ -61,6 +58,7 @@ abstract class DialogsManager {
     showCustomDialog(
       context: context,
       child: simple_dialog.SimpleDialog(
+        isMobile: false,
         title: title != null
             ? Text(
                 title,
@@ -101,6 +99,7 @@ abstract class DialogsManager {
     showCustomDialog(
       context: context,
       child: simple_dialog.SimpleDialog(
+        isMobile: false,
         title: title != null
             ? Text(
                 title,
