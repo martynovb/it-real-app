@@ -249,7 +249,7 @@ class DragAndDropArea extends StatelessWidget {
                         state.fileSizeInMb ?? '...',
                         style: Theme.of(context)
                             .textTheme
-                            .titleMedium
+                            .labelSmall
                             ?.copyWith(
                               color: Theme.of(context).colorScheme.onTertiary,
                             ),

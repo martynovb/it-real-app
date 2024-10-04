@@ -230,6 +230,7 @@ Widget headerMobile({
               await _showAccountMenu(
                 menuKey: acountBtnGlobalKey,
                 context: context,
+                isMobile: true,
               );
             },
           ),
@@ -242,6 +243,7 @@ Widget headerMobile({
 Future<void> _showAccountMenu({
   required GlobalKey menuKey,
   required BuildContext context,
+  bool isMobile = false,
 }) async {
   final RenderBox button =
       menuKey.currentContext!.findRenderObject() as RenderBox;
@@ -305,6 +307,7 @@ Future<void> _showAccountMenu({
 
   if (selectedOption == _deleteAccountOption) {
     DialogsManager.showErrorDialog(
+      isMobile: isMobile,
       context: context,
       title: LocaleKeys.deleteAccountDialogTitle.tr(),
       actions: [
@@ -330,6 +333,7 @@ Future<void> _showAccountMenu({
     );
   } else if (selectedOption == _logoutOption) {
     DialogsManager.showErrorDialog(
+      isMobile: isMobile,
       context: context,
       title: LocaleKeys.logoutDialogTitle.tr(),
       actions: [

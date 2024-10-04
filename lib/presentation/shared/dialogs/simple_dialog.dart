@@ -18,7 +18,11 @@ class SimpleDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: isMobile ? EdgeInsets.zero : null,
+      insetPadding: isMobile
+          ? const EdgeInsets.symmetric(
+              horizontal: 8,
+            )
+          : null,
       backgroundColor: Theme.of(context).colorScheme.primary,
       scrollable: true,
       content: Container(

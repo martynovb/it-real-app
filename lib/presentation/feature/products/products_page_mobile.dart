@@ -59,17 +59,13 @@ class ProductsPageMobile extends StatelessWidget {
         ),
         child: Column(
           children: [
-            AppDimensions.sBoxH32,
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.mobSidePadding),
-              child: Text(
-                LocaleKeys.productsPageDescription.tr(),
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                textAlign: TextAlign.center,
-              ),
+            AppDimensions.sBoxH24,
+            Text(
+              LocaleKeys.productsPageDescription.tr(),
+              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+              textAlign: TextAlign.center,
             ),
             AppDimensions.sBoxH32,
             state.products.isEmpty
@@ -103,6 +99,7 @@ class ProductsPageMobile extends StatelessWidget {
     ProductModel? selectedProduct,
   }) {
     return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: products.length,
       separatorBuilder: (context, index) => const SizedBox(height: 24),
@@ -134,7 +131,7 @@ class ProductsPageMobile extends StatelessWidget {
         constraints: const BoxConstraints(
           minHeight: 88,
         ),
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.tertiary,
           border: Border.all(
@@ -160,11 +157,11 @@ class ProductsPageMobile extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -180,12 +177,12 @@ class ProductsPageMobile extends StatelessWidget {
                       },
                       activeColor: AppColors.purple,
                     ),
-                    const Spacer(),
+                    const Spacer(flex: 1,),
                     _productTitle(
                       context: context,
                       product: product,
                     ),
-                    const Spacer(),
+                    const Spacer(flex: 2,),
                   ],
                 ),
               ),

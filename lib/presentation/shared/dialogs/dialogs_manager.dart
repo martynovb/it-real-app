@@ -22,7 +22,7 @@ abstract class DialogsManager {
         isMobile: isMobile,
         title: Text(
           LocaleKeys.notEnoughVerifications.tr(),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                 color: AppColors.red,
               ),
           textAlign: TextAlign.center,
@@ -54,11 +54,12 @@ abstract class DialogsManager {
     String? description,
     void Function()? onTap,
     List<Widget>? actions,
+    bool isMobile = false,
   }) {
     showCustomDialog(
       context: context,
       child: simple_dialog.SimpleDialog(
-        isMobile: false,
+        isMobile: isMobile,
         title: title != null
             ? Text(
                 title,
