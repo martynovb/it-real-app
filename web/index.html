@@ -22,11 +22,10 @@
 </head>
 <body>
   <script>
-    window.addEventListener('load', function(ev) {
-      {{flutter_js}}
-      {{flutter_build_config}}
+    {{flutter_js}}
+    {{flutter_build_config}}
       
-      _flutter.loader.load({
+  _flutter.loader.load({
         serviceWorker: {
           serviceWorkerVersion: '{{flutter_service_worker_version}}',
         },
@@ -36,7 +35,6 @@
           });
         }
       });
-    });
   </script> 
 </body>
 </html>

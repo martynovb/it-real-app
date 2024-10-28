@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:it_real_app/domain/data_source/auth_data_source.dart';
+import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/feature/forgot_password/forgot_password_page.dart';
 import 'package:it_real_app/presentation/feature/home/home_page.dart';
 import 'package:it_real_app/presentation/feature/onboarding/oboarding_page.dart';
@@ -23,6 +26,12 @@ GoRouter router({
       debugLogDiagnostics: true,
       initialLocation: initialLocation,
       redirect: ((context, GoRouterState state) {
+        final isAuthenticated = context.read<AuthBloc>().state.authStatus ==
+            AuthenticationStatus.authenticated;
+        if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
+            isAuthenticated) {
+          return '/';
+        }
         return null;
       }),
       errorBuilder: (context, state) {
