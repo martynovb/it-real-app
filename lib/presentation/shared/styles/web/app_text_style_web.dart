@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyleWeb {
+
+  static const TextStyle _titleMedium = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle _webH1 = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.w600,
@@ -41,7 +47,6 @@ class AppTextStyleWeb {
     fontWeight: FontWeight.normal,
   );
 
-  // ignore: unused_field
   static const TextStyle _webBody4 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
@@ -69,7 +74,12 @@ class AppTextStyleWeb {
         bodyLarge: _webBody1,
         bodyMedium: _webBody2,
         bodySmall: _webBody3,
-        
+
+        labelLarge: _webBody2,
+        labelMedium: _webBody3,
+        labelSmall: _webBody4,
+
         titleSmall: _webCaption,
+        titleMedium: _titleMedium,
       );
 }

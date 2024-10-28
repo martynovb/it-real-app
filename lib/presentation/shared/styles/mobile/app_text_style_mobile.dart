@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyleMobile {
+  static const TextStyle _titleLarge = TextStyle(
+    fontSize: 36,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle _titleMedium = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle _mobileH1 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
@@ -35,13 +45,18 @@ class AppTextStyleMobile {
         //H
         displayLarge: _mobileH1,
         displayMedium: _mobileH2,
-        displaySmall: _mobileH3,
+        displaySmall: _mobileH2,
         headlineMedium: _mobileH3,
         headlineSmall: _mobileH3,
         // Body
         bodyLarge: _mobileBody1,
         bodyMedium: _mobileBody2,
         bodySmall: _mobileBody2,
+        // lable
+        labelSmall: _mobileBody2,
+        // title
         titleSmall: _captionMediumMobile,
+        titleLarge: _titleLarge,
+        titleMedium: _titleMedium,
       );
 }

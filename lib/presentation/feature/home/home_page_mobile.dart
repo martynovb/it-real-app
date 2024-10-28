@@ -23,30 +23,28 @@ class HomePageMobile extends StatelessWidget {
                     user: homeState.userModel,
                   ),
                 ),
+                photoVerificationState.steps.values.any(
+                        (status) => status == FormzSubmissionStatus.inProgress)
+                    ? SliverFillRemaining(
+                        child: _photoVerificationView(
+                          context,
+                          photoVerificationState,
+                        ),
+                      )
+                    : SliverToBoxAdapter(
+                        child: _content(
+                          context: context,
+                          homeState: homeState,
+                        ),
+                      ),
                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(
                     children: [
-                      if (photoVerificationState.steps.values.any(
-                        (status) => status == FormzSubmissionStatus.inProgress,
-                      )) ...[
-                        const Spacer(),
-                        _photoVerificationView(context, photoVerificationState),
-                      ],
-                      if (!photoVerificationState.steps.values.any(
-                        (status) => status == FormzSubmissionStatus.inProgress,
-                      ))
-                        _content(
-                          context: context,
-                          homeState: homeState,
-                        ),
                       const Spacer(),
-                      AppDimensions.sBoxH32,
+                      footer(context),
                     ],
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: footer(context),
                 ),
               ],
             );
@@ -63,12 +61,11 @@ class HomePageMobile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          AppDimensions.sBoxH60,
+          AppDimensions.sBoxH32,
           Text(
             LocaleKeys.uploadImage.tr(),
-            style: Theme.of(context).textTheme.displayLarge,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           AppDimensions.sBoxH32,
           Container(
@@ -82,6 +79,7 @@ class HomePageMobile extends StatelessWidget {
           ),
           AppDimensions.sBoxH24,
           _startVerificationBtn(context, homeState),
+          AppDimensions.sBoxH32,
         ],
       ),
     );
@@ -91,6 +89,8 @@ class HomePageMobile extends StatelessWidget {
     return BlocBuilder<DragAndDropBloc, DragAndDropState>(
       builder: (context, state) {
         return btnFilledWithIcon(
+          padding: const EdgeInsets.only(left: 24, right: 8),
+          minHeight: AppDimensions.btnHDesk,
           onPressed: context.read<DragAndDropBloc>().state.photoFile != null
               ? () {
                   final photoFile =
@@ -101,7 +101,10 @@ class HomePageMobile extends StatelessWidget {
 
                   if (homeState.userModel.balance <
                       AppConstants.minTokensToVerify) {
-                    DialogsManager.showNotEnoughBalanceDialog(context: context);
+                    DialogsManager.showNotEnoughBalanceDialog(
+                      context: context,
+                      isMobile: true,
+                    );
                     return;
                   }
 
@@ -160,27 +163,25 @@ class HomePageMobile extends StatelessWidget {
           Text(
             '${PhotoVerificationStatus.values.indexOf(currentStep) + 1} ${LocaleKeys.step.tr()}:',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onTertiary,
+                  color: AppColors.grey5,
                 ),
             textAlign: TextAlign.center,
           ),
           AppDimensions.sBoxH16,
-          SizedBox(
-            height: 100,
-            child: Center(
-              child: Text(
-                _stepText(context, currentStep),
-                style: Theme.of(context).textTheme.displayLarge,
-                textAlign: TextAlign.center,
-              ),
-            ),
+          Text(
+            _stepText(context, currentStep),
+            style: Theme.of(context).textTheme.displayLarge,
+            textAlign: TextAlign.center,
           ),
+          AppDimensions.sBoxH16,
+          const AppLoadingWidget(size: 40),
           AppDimensions.sBoxH16,
           _indicatorContainer(
             context,
             state.steps.length,
             PhotoVerificationStatus.values.indexOf(currentStep),
           ),
+          AppDimensions.sBoxH32,
         ],
       ),
     );
@@ -216,28 +217,19 @@ class HomePageMobile extends StatelessWidget {
         color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
-      child: Stack(
-        children: [
-          const Center(
-            child: AppLoadingWidget(
-              size: 64,
-            ),
-          ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                child: SvgPicture.asset(
-                  iconPah,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.purple,
-                    BlendMode.srcIn,
-                  ),
-                ),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            child: SvgPicture.asset(
+              iconPah,
+              colorFilter: const ColorFilter.mode(
+                AppColors.purple,
+                BlendMode.srcIn,
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:it_real_app/presentation/shared/app_utils.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 
@@ -41,12 +42,14 @@ class _AppInputFieldState extends State<AppInputField> {
       children: [
         Text(
           widget.lable,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
         ),
         AppDimensions.sBoxH8,
         TextFormField(
           controller: widget.controller,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: Theme.of(context).textTheme.labelSmall,
           maxLines: widget.maxLines,
           obscureText: widget.showPasswordToggle ? !_passwordVisible : false,
           onChanged: (value) => setState(
@@ -55,9 +58,9 @@ class _AppInputFieldState extends State<AppInputField> {
             },
           ),
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(
-              top: 24,
-              bottom: 24,
+            contentPadding: EdgeInsets.only(
+              top: AppUtils.isMobile ? 18 : 22,
+              bottom: AppUtils.isMobile ? 18 : 22,
               right: 16,
               left: 16,
             ),
@@ -77,7 +80,7 @@ class _AppInputFieldState extends State<AppInputField> {
               color: Theme.of(context).colorScheme.error,
             ),
             hintText: widget.hintText,
-            hintStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+            hintStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: Theme.of(context).colorScheme.onTertiary,
                 ),
           ),
@@ -111,6 +114,7 @@ class _AppInputFieldState extends State<AppInputField> {
           child: IconButton(
             icon: Icon(
               _passwordVisible ? Icons.visibility : Icons.visibility_off,
+              size: 20,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
             onPressed: () {

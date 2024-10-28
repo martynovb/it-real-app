@@ -117,14 +117,14 @@ class ForgotPasswordPage extends StatelessWidget {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.deskSidePadding,
+                  horizontal: AppDimensions.mobSidePadding,
                 ),
                 child: Column(
                   children: [
                     AppDimensions.sBoxH32,
                     Text(
                       LocaleKeys.resetPassword.tr(),
-                      style: Theme.of(context).textTheme.displayLarge,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     AppDimensions.sBoxH32,
                     Column(
@@ -140,6 +140,7 @@ class ForgotPasswordPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: btnFilled(
+                            minHeight: AppDimensions.btnHDesk,
                             loading: state.status ==
                                 FormzSubmissionStatus.inProgress,
                             context: context,

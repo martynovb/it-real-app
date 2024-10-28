@@ -5,32 +5,37 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "development",
+            "name": "development_localhost",
             "request": "launch",
             "type": "dart",
-            "program": "lib/targets/development/main.dart",
+            "program": "lib/targets/development_localhost/main.dart",
             "args": [
                 "--dart-define-from-file",
-                "lib/targets/development/configs.json",
+                "lib/targets/development_localhost/configs.json",
                 "--web-port",
                 "8080",
             ]
         },
         {
-            "name": "developmentWebMoile",
-            "request": "launch",
+            "name": "development_web_mobile",
             "type": "dart",
-            "program": "lib/targets/development/main.dart",
+            "request": "launch",
+            "program": "lib/targets/development_web_mobile/main.dart",
             "args": [
                 "-d",
                 "web-server",
                 "--web-port",
-                "5011",
+                "8080",
                 "--web-hostname",
                 "0.0.0.0",
                 "--dart-define-from-file",
-                "lib/targets/development/configs.json"
+                "lib/targets/development_web_mobile/configs.json",
+            ],
+            "toolArgs": [
+                "fvm",
+                "flutter",
+                "run"
             ]
-        },
+        }
     ]
 }

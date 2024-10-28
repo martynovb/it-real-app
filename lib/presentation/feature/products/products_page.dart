@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
@@ -38,11 +39,18 @@ class ProdcutsPage extends StatelessWidget {
         ));
   }
 
-  static Widget buyPackageBtn(BuildContext context, {bool isMobile = false}) {
+  static Widget buyPackageBtn(
+    BuildContext context, {
+    bool isMobile = true,
+  }) {
     final selectedProduct = context.read<ProductsBloc>().state.selectedProduct;
     return btnFilledWithIcon(
+      padding: const EdgeInsets.only(left: 24, right: 8),
       isMobile: isMobile,
-      width: AppDimensions.buyPackagetDesktopBtnWidth,
+      minHeight: AppDimensions.btnHDesk,
+      minWidth: isMobile ? double.infinity : null,
+      maxWidth:
+          isMobile ? double.infinity : AppDimensions.buyPackagetDesktopBtnWidth,
       onPressed: selectedProduct != null
           ? () {
               context.read<ProductsBloc>().add(

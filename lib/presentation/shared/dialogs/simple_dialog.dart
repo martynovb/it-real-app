@@ -5,9 +5,11 @@ class SimpleDialog extends StatelessWidget {
   final Widget? title;
   final Widget? description;
   final List<Widget> actions;
+  final bool isMobile;
 
   const SimpleDialog({
     super.key,
+    required this.isMobile,
     this.title,
     this.description,
     this.actions = const [],
@@ -16,6 +18,11 @@ class SimpleDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      insetPadding: isMobile
+          ? const EdgeInsets.symmetric(
+              horizontal: 8,
+            )
+          : null,
       backgroundColor: Theme.of(context).colorScheme.primary,
       scrollable: true,
       content: Container(

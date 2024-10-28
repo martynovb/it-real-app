@@ -17,7 +17,7 @@ class PhotoVerificationSuccess extends StatelessWidget {
       scrollable: true,
       content: Container(
         constraints: const BoxConstraints(maxWidth: 350),
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.primary,
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(

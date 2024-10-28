@@ -7,38 +7,38 @@ class AppButtonStyle {
     required TextStyle? textStyle,
   }) =>
       ButtonStyle(
-        elevation: MaterialStateProperty.all(0),
-        backgroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) {
+        elevation: WidgetStateProperty.all(0),
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.hovered)) {
               return AppColors.purple;
-            } else if (states.contains(MaterialState.disabled)) {
+            } else if (states.contains(WidgetState.disabled)) {
               return AppColors.grey4;
             } else {
               return Theme.of(context).colorScheme.primary;
             }
           },
         ),
-        shadowColor: MaterialStateProperty.all(AppColors.grey1),
-        foregroundColor: MaterialStateProperty.resolveWith(
+        shadowColor: WidgetStateProperty.all(AppColors.grey1),
+        foregroundColor: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.disabled)) {
+            if (states.contains(WidgetState.disabled)) {
               return AppColors.white;
             }
-            if (states.contains(MaterialState.hovered)) {
+            if (states.contains(WidgetState.hovered)) {
               return AppColors.white;
             }
             return Theme.of(context).colorScheme.onPrimary;
           },
         ),
-        textStyle: MaterialStateProperty.resolveWith(
+        textStyle: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.disabled)) {
+            if (states.contains(WidgetState.disabled)) {
               return textStyle?.copyWith(
                 color: AppColors.white,
               );
             }
-            if (states.contains(MaterialState.hovered)) {
+            if (states.contains(WidgetState.hovered)) {
               return textStyle?.copyWith(
                 color: AppColors.white,
               );
@@ -48,17 +48,9 @@ class AppButtonStyle {
             );
           },
         ),
-        padding: MaterialStateProperty.all(
-          const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: 20,
-          ),
-        ),
-        shape: MaterialStateProperty.resolveWith(
+        shape: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.hovered)) {
+            if (states.contains(WidgetState.hovered)) {
               return RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
                 side: const BorderSide(
@@ -66,7 +58,7 @@ class AppButtonStyle {
                   width: 1.5,
                 ),
               );
-            } else if (states.contains(MaterialState.disabled)) {
+            } else if (states.contains(WidgetState.disabled)) {
               return RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
                 side: const BorderSide(
@@ -88,30 +80,33 @@ class AppButtonStyle {
   static ButtonStyle outlinedBtnWithIconStyle({
     required BuildContext context,
     required TextStyle? textStyle,
+    EdgeInsets? padding,
   }) =>
       ButtonStyle(
-        elevation: MaterialStateProperty.all(0),
-        backgroundColor: MaterialStateProperty.all(
+        elevation: WidgetStateProperty.all(0),
+        backgroundColor: WidgetStateProperty.all(
           Theme.of(context).colorScheme.primary,
         ),
-        shadowColor: MaterialStateProperty.all(AppColors.grey1),
-        foregroundColor: MaterialStateProperty.all(
+        shadowColor: WidgetStateProperty.all(AppColors.grey1),
+        foregroundColor: WidgetStateProperty.all(
           Theme.of(context).colorScheme.onPrimary,
         ),
-        textStyle: MaterialStateProperty.all(textStyle?.copyWith(
+        textStyle: WidgetStateProperty.all(textStyle?.copyWith(
           color: Theme.of(context).colorScheme.onPrimary,
         )),
-        padding: MaterialStateProperty.all(
-          const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: 20,
-          ),
-        ),
-        shape: MaterialStateProperty.resolveWith(
+        padding: padding != null
+            ? WidgetStateProperty.all(padding)
+            : WidgetStateProperty.all(
+                const EdgeInsets.only(
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                ),
+              ),
+        shape: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.hovered)) {
+            if (states.contains(WidgetState.hovered)) {
               return RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
                 side: BorderSide(
@@ -119,7 +114,7 @@ class AppButtonStyle {
                   width: 1,
                 ),
               );
-            } else if (states.contains(MaterialState.disabled)) {
+            } else if (states.contains(WidgetState.disabled)) {
               return RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
                 side: const BorderSide(
@@ -142,28 +137,30 @@ class AppButtonStyle {
   static ButtonStyle outlinedBtnWithIconStyleSelected({
     required BuildContext context,
     required TextStyle? textStyle,
+    EdgeInsets? padding,
   }) =>
       ButtonStyle(
-        elevation: MaterialStateProperty.all(0),
-        backgroundColor: MaterialStateProperty.all(
+        elevation: WidgetStateProperty.all(0),
+        padding: WidgetStateProperty.all(
+          padding ??
+              const EdgeInsets.only(
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+              ),
+        ),
+        backgroundColor: WidgetStateProperty.all(
           AppColors.purple,
         ),
-        shadowColor: MaterialStateProperty.all(AppColors.grey1),
-        foregroundColor: MaterialStateProperty.all(
+        shadowColor: WidgetStateProperty.all(AppColors.grey1),
+        foregroundColor: WidgetStateProperty.all(
           Theme.of(context).colorScheme.primary,
         ),
-        textStyle: MaterialStateProperty.all(textStyle?.copyWith(
+        textStyle: WidgetStateProperty.all(textStyle?.copyWith(
           color: Theme.of(context).colorScheme.onPrimary,
         )),
-        padding: MaterialStateProperty.all(
-          const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: 20,
-          ),
-        ),
-        shape: MaterialStateProperty.resolveWith(
+        shape: WidgetStateProperty.resolveWith(
           (states) {
             return RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
@@ -182,37 +179,46 @@ class AppButtonStyle {
     EdgeInsets? padding,
   }) =>
       ButtonStyle(
-        elevation: MaterialStateProperty.all(0),
-        backgroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) {
+        elevation: WidgetStateProperty.all(0),
+        padding: WidgetStateProperty.all(
+          padding ??
+              const EdgeInsets.only(
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+              ),
+        ),
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.hovered)) {
               return AppColors.purple;
-            } else if (states.contains(MaterialState.disabled)) {
+            } else if (states.contains(WidgetState.disabled)) {
               return AppColors.grey4;
             }
             return Theme.of(context).colorScheme.onPrimary;
           },
         ),
-        shadowColor: MaterialStateProperty.all(AppColors.grey1),
-        foregroundColor: MaterialStateProperty.resolveWith(
+        shadowColor: WidgetStateProperty.all(AppColors.grey1),
+        foregroundColor: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.disabled)) {
+            if (states.contains(WidgetState.disabled)) {
               return AppColors.white;
             }
-            if (states.contains(MaterialState.hovered)) {
+            if (states.contains(WidgetState.hovered)) {
               return AppColors.white;
             }
             return Theme.of(context).colorScheme.primary;
           },
         ),
-        textStyle: MaterialStateProperty.resolveWith(
+        textStyle: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.disabled)) {
+            if (states.contains(WidgetState.disabled)) {
               return textStyle?.copyWith(
                 color: AppColors.white,
               );
             }
-            if (states.contains(MaterialState.hovered)) {
+            if (states.contains(WidgetState.hovered)) {
               return textStyle?.copyWith(
                 color: AppColors.white,
               );
@@ -222,16 +228,7 @@ class AppButtonStyle {
             );
           },
         ),
-        padding: MaterialStateProperty.all(
-          padding ??
-              const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: 20,
-              ),
-        ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

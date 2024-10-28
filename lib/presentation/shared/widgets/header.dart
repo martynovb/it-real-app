@@ -97,18 +97,24 @@ Widget headerDesktop({
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
-            padding: 0,
-            minWidth: 0,
-            minHeight: 54,
+            minWidth: 150,
+            padding: const EdgeInsets.only(
+              left: AppDimensions.btnOutlinedWithIconSidePaddings,
+              right: AppDimensions.btnOutlinedWithIconSidePaddings,
+            ),
+            isMobile: false,
             isSelected: currentOption == HeaderOption.buy,
-            postfixWidget: SvgPicture.asset(
-              AppIcons.iconWallet,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                currentOption == HeaderOption.buy
-                    ? AppColors.white
-                    : AppColors.purple,
-                BlendMode.srcIn,
+            prefixWidget: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: SvgPicture.asset(
+                AppIcons.iconWallet,
+                width: 24,
+                colorFilter: ColorFilter.mode(
+                  currentOption == HeaderOption.buy
+                      ? AppColors.white
+                      : AppColors.purple,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             context: context,
@@ -117,16 +123,22 @@ Widget headerDesktop({
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
-            padding: 0,
-            minWidth: 0,
-            minHeight: 54,
-            postfixWidget: const Icon(
-              Icons.person,
-              color: AppColors.purple,
-              size: 24,
+            minWidth: 150,
+            padding: const EdgeInsets.only(
+              left: AppDimensions.btnOutlinedWithIconSidePaddings,
+              right: AppDimensions.btnOutlinedWithIconSidePaddings,
+            ),
+            isMobile: false,
+            prefixWidget: const Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(
+                Icons.settings,
+                color: AppColors.purple,
+                size: 24,
+              ),
             ),
             context: context,
-            text: LocaleKeys.account.tr(),
+            text: LocaleKeys.settings.tr(),
             onPressed: () async {
               await _showAccountMenu(
                 menuKey: acountBtnGlobalKey,
@@ -155,6 +167,7 @@ Widget headerMobile({
       right: 16,
     ),
     child: Container(
+      height: AppDimensions.headerHMobile,
       padding: const EdgeInsets.only(
         bottom: 12,
         top: 12,
@@ -185,18 +198,19 @@ Widget headerMobile({
           ),
           const Spacer(),
           btnOutlinedWithIcon(
-            padding: 0,
-            minWidth: 0,
-            minHeight: 54,
+            minWidth: AppDimensions.balanceWBtnMobile,
             isSelected: currentOption == HeaderOption.buy,
-            postfixWidget: SvgPicture.asset(
-              AppIcons.iconWallet,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                currentOption == HeaderOption.buy
-                    ? AppColors.white
-                    : AppColors.purple,
-                BlendMode.srcIn,
+            prefixWidget: Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: SvgPicture.asset(
+                AppIcons.iconWallet,
+                width: 24,
+                colorFilter: ColorFilter.mode(
+                  currentOption == HeaderOption.buy
+                      ? AppColors.white
+                      : AppColors.purple,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             context: context,
@@ -205,11 +219,9 @@ Widget headerMobile({
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(
-            padding: 0,
-            minWidth: 0,
-            minHeight: 54,
+            minWidth: AppDimensions.settingsWBtnMobile,
             postfixWidget: const Icon(
-              Icons.person,
+              Icons.settings,
               color: AppColors.purple,
               size: 24,
             ),
@@ -218,6 +230,7 @@ Widget headerMobile({
               await _showAccountMenu(
                 menuKey: acountBtnGlobalKey,
                 context: context,
+                isMobile: true,
               );
             },
           ),
@@ -230,6 +243,7 @@ Widget headerMobile({
 Future<void> _showAccountMenu({
   required GlobalKey menuKey,
   required BuildContext context,
+  bool isMobile = false,
 }) async {
   final RenderBox button =
       menuKey.currentContext!.findRenderObject() as RenderBox;
@@ -293,6 +307,7 @@ Future<void> _showAccountMenu({
 
   if (selectedOption == _deleteAccountOption) {
     DialogsManager.showErrorDialog(
+      isMobile: isMobile,
       context: context,
       title: LocaleKeys.deleteAccountDialogTitle.tr(),
       actions: [
@@ -318,6 +333,7 @@ Future<void> _showAccountMenu({
     );
   } else if (selectedOption == _logoutOption) {
     DialogsManager.showErrorDialog(
+      isMobile: isMobile,
       context: context,
       title: LocaleKeys.logoutDialogTitle.tr(),
       actions: [

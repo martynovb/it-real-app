@@ -20,6 +20,7 @@ mixin _$DragAndDropEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
     required TResult Function() pickImage,
+    required TResult Function(XFile? image) pickImageIosWeb,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) =>
@@ -28,6 +29,7 @@ mixin _$DragAndDropEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
     TResult? Function()? pickImage,
+    TResult? Function(XFile? image)? pickImageIosWeb,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) =>
@@ -36,6 +38,7 @@ mixin _$DragAndDropEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
     TResult Function()? pickImage,
+    TResult Function(XFile? image)? pickImageIosWeb,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$DragAndDropEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
     required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickImageIosWeb value) pickImageIosWeb,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) =>
@@ -53,6 +57,7 @@ mixin _$DragAndDropEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
     TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) =>
@@ -61,6 +66,7 @@ mixin _$DragAndDropEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
     TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -152,6 +158,7 @@ class _$PerformDropImpl implements _PerformDrop {
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
     required TResult Function() pickImage,
+    required TResult Function(XFile? image) pickImageIosWeb,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -163,6 +170,7 @@ class _$PerformDropImpl implements _PerformDrop {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
     TResult? Function()? pickImage,
+    TResult? Function(XFile? image)? pickImageIosWeb,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -174,6 +182,7 @@ class _$PerformDropImpl implements _PerformDrop {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
     TResult Function()? pickImage,
+    TResult Function(XFile? image)? pickImageIosWeb,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -189,6 +198,7 @@ class _$PerformDropImpl implements _PerformDrop {
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
     required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickImageIosWeb value) pickImageIosWeb,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -200,6 +210,7 @@ class _$PerformDropImpl implements _PerformDrop {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
     TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -211,6 +222,7 @@ class _$PerformDropImpl implements _PerformDrop {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
     TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -271,6 +283,7 @@ class _$PickImageImpl implements _PickImage {
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
     required TResult Function() pickImage,
+    required TResult Function(XFile? image) pickImageIosWeb,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -282,6 +295,7 @@ class _$PickImageImpl implements _PickImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
     TResult? Function()? pickImage,
+    TResult? Function(XFile? image)? pickImageIosWeb,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -293,6 +307,7 @@ class _$PickImageImpl implements _PickImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
     TResult Function()? pickImage,
+    TResult Function(XFile? image)? pickImageIosWeb,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -308,6 +323,7 @@ class _$PickImageImpl implements _PickImage {
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
     required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickImageIosWeb value) pickImageIosWeb,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -319,6 +335,7 @@ class _$PickImageImpl implements _PickImage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
     TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -330,6 +347,7 @@ class _$PickImageImpl implements _PickImage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
     TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -343,6 +361,158 @@ class _$PickImageImpl implements _PickImage {
 
 abstract class _PickImage implements DragAndDropEvent {
   const factory _PickImage() = _$PickImageImpl;
+}
+
+/// @nodoc
+abstract class _$$PickImageIosWebImplCopyWith<$Res> {
+  factory _$$PickImageIosWebImplCopyWith(_$PickImageIosWebImpl value,
+          $Res Function(_$PickImageIosWebImpl) then) =
+      __$$PickImageIosWebImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({XFile? image});
+}
+
+/// @nodoc
+class __$$PickImageIosWebImplCopyWithImpl<$Res>
+    extends _$DragAndDropEventCopyWithImpl<$Res, _$PickImageIosWebImpl>
+    implements _$$PickImageIosWebImplCopyWith<$Res> {
+  __$$PickImageIosWebImplCopyWithImpl(
+      _$PickImageIosWebImpl _value, $Res Function(_$PickImageIosWebImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = freezed,
+  }) {
+    return _then(_$PickImageIosWebImpl(
+      freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PickImageIosWebImpl implements _PickImageIosWeb {
+  const _$PickImageIosWebImpl(this.image);
+
+  @override
+  final XFile? image;
+
+  @override
+  String toString() {
+    return 'DragAndDropEvent.pickImageIosWeb(image: $image)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PickImageIosWebImpl &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PickImageIosWebImplCopyWith<_$PickImageIosWebImpl> get copyWith =>
+      __$$PickImageIosWebImplCopyWithImpl<_$PickImageIosWebImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PerformDropEvent event) performDrop,
+    required TResult Function() pickImage,
+    required TResult Function(XFile? image) pickImageIosWeb,
+    required TResult Function(int progress) updateProgress,
+    required TResult Function() reset,
+  }) {
+    return pickImageIosWeb(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PerformDropEvent event)? performDrop,
+    TResult? Function()? pickImage,
+    TResult? Function(XFile? image)? pickImageIosWeb,
+    TResult? Function(int progress)? updateProgress,
+    TResult? Function()? reset,
+  }) {
+    return pickImageIosWeb?.call(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PerformDropEvent event)? performDrop,
+    TResult Function()? pickImage,
+    TResult Function(XFile? image)? pickImageIosWeb,
+    TResult Function(int progress)? updateProgress,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (pickImageIosWeb != null) {
+      return pickImageIosWeb(image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PerformDrop value) performDrop,
+    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickImageIosWeb value) pickImageIosWeb,
+    required TResult Function(_UpdateProgress value) updateProgress,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return pickImageIosWeb(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PerformDrop value)? performDrop,
+    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickImageIosWeb value)? pickImageIosWeb,
+    TResult? Function(_UpdateProgress value)? updateProgress,
+    TResult? Function(_Reset value)? reset,
+  }) {
+    return pickImageIosWeb?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PerformDrop value)? performDrop,
+    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickImageIosWeb value)? pickImageIosWeb,
+    TResult Function(_UpdateProgress value)? updateProgress,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (pickImageIosWeb != null) {
+      return pickImageIosWeb(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickImageIosWeb implements DragAndDropEvent {
+  const factory _PickImageIosWeb(final XFile? image) = _$PickImageIosWebImpl;
+
+  XFile? get image;
+  @JsonKey(ignore: true)
+  _$$PickImageIosWebImplCopyWith<_$PickImageIosWebImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -413,6 +583,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
     required TResult Function() pickImage,
+    required TResult Function(XFile? image) pickImageIosWeb,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -424,6 +595,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
     TResult? Function()? pickImage,
+    TResult? Function(XFile? image)? pickImageIosWeb,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -435,6 +607,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
     TResult Function()? pickImage,
+    TResult Function(XFile? image)? pickImageIosWeb,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -450,6 +623,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
     required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickImageIosWeb value) pickImageIosWeb,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -461,6 +635,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
     TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -472,6 +647,7 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
     TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),
@@ -532,6 +708,7 @@ class _$ResetImpl implements _Reset {
   TResult when<TResult extends Object?>({
     required TResult Function(PerformDropEvent event) performDrop,
     required TResult Function() pickImage,
+    required TResult Function(XFile? image) pickImageIosWeb,
     required TResult Function(int progress) updateProgress,
     required TResult Function() reset,
   }) {
@@ -543,6 +720,7 @@ class _$ResetImpl implements _Reset {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PerformDropEvent event)? performDrop,
     TResult? Function()? pickImage,
+    TResult? Function(XFile? image)? pickImageIosWeb,
     TResult? Function(int progress)? updateProgress,
     TResult? Function()? reset,
   }) {
@@ -554,6 +732,7 @@ class _$ResetImpl implements _Reset {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PerformDropEvent event)? performDrop,
     TResult Function()? pickImage,
+    TResult Function(XFile? image)? pickImageIosWeb,
     TResult Function(int progress)? updateProgress,
     TResult Function()? reset,
     required TResult orElse(),
@@ -569,6 +748,7 @@ class _$ResetImpl implements _Reset {
   TResult map<TResult extends Object?>({
     required TResult Function(_PerformDrop value) performDrop,
     required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickImageIosWeb value) pickImageIosWeb,
     required TResult Function(_UpdateProgress value) updateProgress,
     required TResult Function(_Reset value) reset,
   }) {
@@ -580,6 +760,7 @@ class _$ResetImpl implements _Reset {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PerformDrop value)? performDrop,
     TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult? Function(_UpdateProgress value)? updateProgress,
     TResult? Function(_Reset value)? reset,
   }) {
@@ -591,6 +772,7 @@ class _$ResetImpl implements _Reset {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PerformDrop value)? performDrop,
     TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickImageIosWeb value)? pickImageIosWeb,
     TResult Function(_UpdateProgress value)? updateProgress,
     TResult Function(_Reset value)? reset,
     required TResult orElse(),

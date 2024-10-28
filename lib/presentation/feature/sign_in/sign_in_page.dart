@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
+import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart';
 import 'package:it_real_app/presentation/feature/forgot_password/forgot_password_page.dart';
 import 'package:it_real_app/presentation/feature/sign_in/bloc/sign_in_bloc.dart';
 import 'package:it_real_app/presentation/feature/sign_up/sign_up_page.dart';
@@ -84,7 +85,7 @@ class SignInPage extends StatelessWidget {
                     hintText: LocaleKeys.enterYourEmailAdress.tr(),
                     errorText: state.emailError?.message,
                   ),
-                  AppDimensions.sBoxH24,
+                  AppDimensions.sBoxH16,
                   AppInputField(
                     key: UniqueKey(),
                     controller: _passwordController,
@@ -93,7 +94,7 @@ class SignInPage extends StatelessWidget {
                     showPasswordToggle: true,
                     errorText: state.passwordError?.message,
                   ),
-                  AppDimensions.sBoxH24,
+                  AppDimensions.sBoxH16,
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
@@ -106,7 +107,7 @@ class SignInPage extends StatelessWidget {
                       ),
                       child: Text(
                         LocaleKeys.forgotPassword.tr(),
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
                               color: AppColors.hyperlink,
                             ),
                       ),
@@ -119,6 +120,7 @@ class SignInPage extends StatelessWidget {
                       loading: state.status == FormzSubmissionStatus.inProgress,
                       context: context,
                       text: LocaleKeys.signIn.tr(),
+                      minHeight: AppDimensions.btnHDesk,
                       onPressed: () => context.read<SignInBloc>().add(
                             SignInEvent.signIn(
                               email: _emailController.text,
@@ -143,7 +145,7 @@ class SignInPage extends StatelessWidget {
                           LocaleKeys.orSignInWithGoogle.tr(),
                           style: Theme.of(context)
                               .textTheme
-                              .bodySmall
+                              .labelSmall
                               ?.copyWith(
                                 color: Theme.of(context).colorScheme.tertiary,
                               ),
@@ -162,9 +164,14 @@ class SignInPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: btnOutlinedWithIcon(
-                      postfixWidget: SvgPicture.asset(
-                        AppIcons.iconGoogle,
-                        width: 24,
+                      minHeight: AppDimensions.btnHDesk,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      prefixWidget: Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(
+                          AppIcons.iconGoogle,
+                          width: 24,
+                        ),
                       ),
                       context: context,
                       text: LocaleKeys.continueWithGoogle.tr(),
@@ -196,7 +203,10 @@ class SignInPage extends StatelessWidget {
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => context.read<AppBloc>().add(
+                                    const AppEvent.openTermsOfService(),
+                                  ),
                           ),
                           TextSpan(
                             text: ' ${LocaleKeys.and.tr()} ',
@@ -210,7 +220,10 @@ class SignInPage extends StatelessWidget {
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => context.read<AppBloc>().add(
+                                    const AppEvent.openPrivacyPolicy(),
+                                  ),
                           ),
                         ],
                       ),
@@ -239,14 +252,14 @@ class SignInPage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: AppDimensions.deskSidePadding,
+                horizontal: AppDimensions.mobSidePadding,
               ),
               child: Column(
                 children: [
                   AppDimensions.sBoxH32,
                   Text(
                     LocaleKeys.signIn.tr(),
-                    style: Theme.of(context).textTheme.displayLarge,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   AppDimensions.sBoxH32,
                   AppInputField(
@@ -256,7 +269,7 @@ class SignInPage extends StatelessWidget {
                     hintText: LocaleKeys.enterYourEmailAdress.tr(),
                     errorText: state.emailError?.message,
                   ),
-                  AppDimensions.sBoxH24,
+                  AppDimensions.sBoxH16,
                   AppInputField(
                     key: UniqueKey(),
                     controller: _passwordController,
@@ -265,7 +278,7 @@ class SignInPage extends StatelessWidget {
                     showPasswordToggle: true,
                     errorText: state.passwordError?.message,
                   ),
-                  AppDimensions.sBoxH24,
+                  AppDimensions.sBoxH16,
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
@@ -274,26 +287,24 @@ class SignInPage extends StatelessWidget {
                       ),
                       child: Text(
                         LocaleKeys.forgotPassword.tr(),
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
                               color: AppColors.hyperlink,
                             ),
                       ),
                     ),
                   ),
                   AppDimensions.sBoxH24,
-                  SizedBox(
-                    width: double.infinity,
-                    child: btnFilled(
-                      loading: state.status == FormzSubmissionStatus.inProgress,
-                      context: context,
-                      text: LocaleKeys.signIn.tr(),
-                      onPressed: () => context.read<SignInBloc>().add(
-                            SignInEvent.signIn(
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                            ),
+                  btnFilled(
+                    loading: state.status == FormzSubmissionStatus.inProgress,
+                    context: context,
+                    text: LocaleKeys.signIn.tr(),
+                    minHeight: AppDimensions.btnHDesk,
+                    onPressed: () => context.read<SignInBloc>().add(
+                          SignInEvent.signIn(
+                            email: _emailController.text,
+                            password: _passwordController.text,
                           ),
-                    ),
+                        ),
                   ),
                   AppDimensions.sBoxH24,
                   SizedBox(
@@ -311,16 +322,16 @@ class SignInPage extends StatelessWidget {
                           LocaleKeys.orSignInWithGoogle.tr(),
                           style: Theme.of(context)
                               .textTheme
-                              .bodySmall
+                              .labelSmall
                               ?.copyWith(
-                                color: Theme.of(context).colorScheme.tertiary,
+                                color: Theme.of(context).colorScheme.onTertiary,
                               ),
                         ),
                         AppDimensions.sBoxW8,
                         Expanded(
                           child: Divider(
                             height: 1,
-                            color: Theme.of(context).colorScheme.tertiary,
+                            color: Theme.of(context).colorScheme.onTertiary,
                           ),
                         ),
                       ],
@@ -330,9 +341,14 @@ class SignInPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: btnOutlinedWithIcon(
-                      postfixWidget: SvgPicture.asset(
-                        AppIcons.iconGoogle,
-                        width: 24,
+                      minHeight: AppDimensions.btnHDesk,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      prefixWidget: Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(
+                          AppIcons.iconGoogle,
+                          width: 24,
+                        ),
                       ),
                       context: context,
                       text: LocaleKeys.continueWithGoogle.tr(),
@@ -364,7 +380,10 @@ class SignInPage extends StatelessWidget {
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => context.read<AppBloc>().add(
+                                    const AppEvent.openTermsOfService(),
+                                  ),
                           ),
                           TextSpan(
                             text: ' ${LocaleKeys.and.tr()} ',
@@ -378,7 +397,10 @@ class SignInPage extends StatelessWidget {
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => context.read<AppBloc>().add(
+                                    const AppEvent.openPrivacyPolicy(),
+                                  ),
                           ),
                         ],
                       ),

@@ -1,4 +1,4 @@
-import 'package:cross_file/cross_file.dart';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
@@ -14,7 +14,7 @@ import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/utils/bytes_converter.dart';
 import 'package:it_real_app/presentation/shared/widgets/device_layout_builder.dart';
 import 'package:super_drag_and_drop/super_drag_and_drop.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_web_file_selector/flutter_web_file_selector.dart';
 
 class DragAndDropArea extends StatelessWidget {
   final void Function(XFile? file) onFileDropped;
@@ -58,84 +58,114 @@ class DragAndDropArea extends StatelessWidget {
   }
 
   Widget _content(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        minHeight: 250,
-      ),
-      child: DropRegion(
-        formats: DragAndDropBloc.formats.keys.toList(),
-        hitTestBehavior: HitTestBehavior.opaque,
-        onDropOver: (event) => DropOperation.copy,
-        onPerformDrop: (event) async => context.read<DragAndDropBloc>().add(
-              DragAndDropEvent.performDrop(event),
-            ),
-        child: DottedBorder(
-          color: AppColors.purple,
-          dashPattern: const [16, 10],
-          strokeCap: StrokeCap.round,
-          strokeWidth: 1.5,
-          radius: const Radius.circular(24),
-          child: Padding(
-            padding: const EdgeInsets.all(34.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    AppIcons.iconUpload,
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.purple,
-                      BlendMode.srcIn,
-                    ),
+    return DropRegion(
+      formats: DragAndDropBloc.formats.keys.toList(),
+      hitTestBehavior: HitTestBehavior.opaque,
+      onDropOver: (event) => DropOperation.copy,
+      onPerformDrop: (event) async => context.read<DragAndDropBloc>().add(
+            DragAndDropEvent.performDrop(event),
+          ),
+      child: DottedBorder(
+        color: AppColors.purple,
+        dashPattern: const [16, 10],
+        strokeCap: StrokeCap.round,
+        strokeWidth: 1.5,
+        radius: const Radius.circular(24),
+        child: Padding(
+          padding: const EdgeInsets.all(34.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  AppIcons.iconUpload,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.purple,
+                    BlendMode.srcIn,
                   ),
-                  AppDimensions.sBoxH16,
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      text: LocaleKeys.clickToUpload.tr(),
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            color: AppColors.hyperlink,
-                            decoration: TextDecoration.combine([
-                              TextDecoration.underline,
-                            ]),
-                            decorationColor: AppColors.hyperlink,
-                            decorationStyle: TextDecorationStyle.solid,
-                          ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          context.read<DragAndDropBloc>().add(
-                                const DragAndDropEvent.pickImage(),
-                              );
-                        },
-                      children: [
-                        TextSpan(
-                          text: ' ${LocaleKeys.orDragAndDrop.tr()}',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                  ),
-                  AppDimensions.sBoxH16,
-                  Text(
-                    LocaleKeys.maxFileSize.tr(args: [
-                      BytesConverter.formatBytes(
-                        DragAndDropBloc.maxFileSizeInBytes,
-                        0,
-                      )
-                    ]),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(context).colorScheme.onTertiary,
-                        ),
-                  ),
-                ],
-              ),
+                ),
+                AppDimensions.sBoxH16,
+                if (WebFileSelector.isIOSWeb)
+                  _clickToUploadIosWeb(context)
+                else
+                  _clickToUpload(context),
+                AppDimensions.sBoxH16,
+                Text(
+                  LocaleKeys.maxFileSize.tr(args: [
+                    BytesConverter.formatBytes(
+                      DragAndDropBloc.maxFileSizeInBytes,
+                      0,
+                    )
+                  ]),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onTertiary,
+                      ),
+                ),
+              ],
             ),
           ),
         ),
       ),
     );
   }
+
+  Widget _clickToUpload(BuildContext context) => RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          text: LocaleKeys.clickToUpload.tr(),
+          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                color: AppColors.hyperlink,
+                decoration: TextDecoration.combine([
+                  TextDecoration.underline,
+                ]),
+                decorationColor: AppColors.hyperlink,
+                decorationStyle: TextDecorationStyle.solid,
+              ),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              context.read<DragAndDropBloc>().add(
+                    const DragAndDropEvent.pickImage(),
+                  );
+            },
+          children: [
+            TextSpan(
+              text: ' ${LocaleKeys.orDragAndDrop.tr()}',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
+        ),
+      );
+
+  Widget _clickToUploadIosWeb(BuildContext context) => WebFileSelector(
+        onData: (file) async {
+          context.read<DragAndDropBloc>().add(
+                DragAndDropEvent.pickImageIosWeb(file.firstOrNull),
+              );
+        },
+        accept: '.pdf, .png, .jpg, .jpeg, .tif, .tiff, .heic',
+        multiple: false,
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text: LocaleKeys.clickToUpload.tr(),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  color: AppColors.hyperlink,
+                  decoration: TextDecoration.combine([
+                    TextDecoration.underline,
+                  ]),
+                  decorationColor: AppColors.hyperlink,
+                  decorationStyle: TextDecorationStyle.solid,
+                ),
+            children: [
+              TextSpan(
+                text: ' ${LocaleKeys.orDragAndDrop.tr()}',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
+        ),
+      );
 
   Widget _imageFileContainer(BuildContext context, DragAndDropState state) {
     return Padding(
@@ -219,7 +249,7 @@ class DragAndDropArea extends StatelessWidget {
                         state.fileSizeInMb ?? '...',
                         style: Theme.of(context)
                             .textTheme
-                            .titleMedium
+                            .labelSmall
                             ?.copyWith(
                               color: Theme.of(context).colorScheme.onTertiary,
                             ),
