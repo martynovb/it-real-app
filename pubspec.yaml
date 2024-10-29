@@ -75,9 +75,9 @@ flutter:
   fonts:
     - family: Switzer
       fonts:
-        - asset: assets/fonts/Switzer-Regular.otf
+        - asset: assets/fonts/Switzer_Regular.otf
           style: normal
-        - asset: assets/fonts/Switzer-SemiBold.otf
+        - asset: assets/fonts/Switzer_SemiBold.otf
           weight: 600
-        - asset: assets/fonts/Switzer-Medium.otf
+        - asset: assets/fonts/Switzer_Medium.otf
           weight: 500
