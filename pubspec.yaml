@@ -21,6 +21,7 @@ dependencies:
   dotted_border: ^2.1.0
   super_drag_and_drop: ^0.8.12
   url_launcher: ^6.2.6
+  google_fonts: ^6.2.1
   
   # workaround https://github.com/flutter/flutter/issues/110638
   flutter_web_file_selector: ^0.3.1
@@ -71,13 +72,3 @@ flutter:
     - assets/fonts/
     - assets/icons/
     - assets/icons/loading/
-
-  fonts:
-    - family: Switzer
-      fonts:
-        - asset: assets/fonts/Switzer_Regular.otf
-          style: normal
-        - asset: assets/fonts/Switzer_SemiBold.otf
-          weight: 600
-        - asset: assets/fonts/Switzer_Medium.otf
-          weight: 500

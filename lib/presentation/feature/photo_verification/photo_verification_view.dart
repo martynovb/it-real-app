@@ -29,7 +29,7 @@ class PhotoVerificationView extends StatelessWidget {
           builder: (context, state) {
             return Container(
               constraints: const BoxConstraints(maxWidth: 450),
-              color: Theme.of(context).colorScheme.background,
+              color: Theme.of(context).colorScheme.primary,
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Column(
