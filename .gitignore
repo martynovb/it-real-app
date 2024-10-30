@@ -50,3 +50,6 @@ app.*.map.json
 # Ignore config file where credentials are stored
 configs.json
 .vscode/settings.json
+
+# Ignore all local .env files
+.env/*

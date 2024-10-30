@@ -11,7 +11,7 @@
             "program": "lib/targets/development_localhost/main.dart",
             "args": [
                 "--dart-define-from-file",
-                "lib/targets/development_localhost/configs.json",
+                ".env/local.env",
                 "--web-port",
                 "8080",
             ]
@@ -29,7 +29,7 @@
                 "--web-hostname",
                 "0.0.0.0",
                 "--dart-define-from-file",
-                "lib/targets/development_web_mobile/configs.json",
+                ".env/local.env",
             ],
             "toolArgs": [
                 "fvm",

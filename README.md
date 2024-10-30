@@ -13,21 +13,18 @@ fvm dart run build_runner build --delete-conflicting-outputs
 ```
 ***********
 
-## Config file structure
+## env file structure
 
-
-*lib/targets/[target_name]/configs.json*
+Add .env/[target_name].env file 
 
 ```
-{
-  "redirectUrl": "https...."
-  "supabaseAnonKey": "eyJhbGcxxxxx",
-  "supabaseUrl": "https://xxxxx.supabase.co",
-  "sentryDsn": : "",
-  ""stripePublishableKey": "",
-  "privacyPolicyUrl": "https://....",
-  "termsOfServiceUrl": "https://...."
-}
+redirectUrl=https....
+supabaseAnonKey=eyJhbGcxxxxx
+supabaseUrl=https://xxxxx.supabase.co
+sentryDsn=
+stripePublishableKey=
+privacyPolicyUrl=
+termsOfServiceUrl=
 ```
 
 ***********
