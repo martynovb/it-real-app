@@ -2,12 +2,11 @@
 
 # Check if flavor and flutter version are provided
 if [ -z "$1" ] || [ -z "$2" ]; then
-  echo "Usage: ./build.sh <flavor> <flutter_version>"
+  echo "Usage: ./build.sh <flutter_version>"
   exit 1
 fi
 
-FLAVOR=$1
-FLUTTER_VERSION=$2
+FLUTTER_VERSION=$1
 
 if cd flutter; then 
   git pull && cd .. 
@@ -19,4 +18,3 @@ ls
 flutter/bin/flutter doctor
 flutter/bin/flutter clean
 flutter/bin/flutter config --enable-web
-sh devops/setup_vercel_variables.sh $FLAVOR
