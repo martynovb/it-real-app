@@ -19,4 +19,4 @@ ls
 flutter/bin/flutter doctor
 flutter/bin/flutter clean
 flutter/bin/flutter config --enable-web
-sh .setup_vercel_variables.sh $FLAVOR
+sh devops/setup_vercel_variables.sh $FLAVOR
