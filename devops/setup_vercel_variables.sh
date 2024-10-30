@@ -8,9 +8,12 @@
 if [ -z "$1" ]; then
   echo "No flavor name provided. Usage: ./setup_vercel_variables.sh <flavor>"
   exit 1
+else
+     echo "Creating environment file for flavor: $1"
 fi
 
 FLAVOR=$1
+
 
 # Create the .env folder if it doesn't exist
 if [ ! -d ".env" ]; then

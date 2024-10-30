@@ -1,9 +1,11 @@
 #!/bin/sh
 
 # Check if flavor and flutter version are provided
-if [ -z "$1" ] || [ -z "$2" ]; then
+if [ -z "$1" ]; then
   echo "Usage: ./build.sh <flutter_version>"
   exit 1
+else
+  echo "Building with Flutter version: $1"
 fi
 
 FLUTTER_VERSION=$1
