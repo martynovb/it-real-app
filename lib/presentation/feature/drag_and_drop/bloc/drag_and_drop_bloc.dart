@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/presentation/shared/utils/bytes_converter.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:super_drag_and_drop/super_drag_and_drop.dart';
 import 'package:image_picker/image_picker.dart';
 part 'drag_and_drop_bloc.freezed.dart';
@@ -263,6 +264,7 @@ class DragAndDropBloc extends Bloc<DragAndDropEvent, DragAndDropState> {
             );
             imageUploadingCompleter?.complete();
           } catch (e) {
+            await Sentry.captureException(e);
             imageUploadingCompleter?.completeError(e);
             emit(
               state.copyWith(

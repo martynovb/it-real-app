@@ -9,6 +9,7 @@ import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/domain/data_source/products_data_source.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 part 'products_bloc.freezed.dart';
 
@@ -52,6 +53,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         ),
       );
     } catch (e) {
+      await Sentry.captureException(e);
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.failure,
@@ -74,6 +76,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         webOnlyWindowName: '_self',
       );
     } catch (e) {
+      await Sentry.captureException(e);
       emit(
         ProductsState(
           status: FormzSubmissionStatus.failure,

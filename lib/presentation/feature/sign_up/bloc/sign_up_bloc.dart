@@ -10,6 +10,7 @@ import 'package:it_real_app/domain/field_validators/password_field_validation.da
 import 'package:it_real_app/domain/field_validators/repeat_password_field_validation.dart';
 import 'package:it_real_app/presentation/shared/error_handling/supabase_auth_error_codes.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sign_up_bloc.freezed.dart';
@@ -87,6 +88,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         ),
       );
     } catch (e) {
+      await Sentry.captureException(e);
       var errorMessage = LocaleKeys.somethingWentWrong.tr();
 
       if (e is AuthApiException &&

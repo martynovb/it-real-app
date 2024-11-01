@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/report/report_model.dart';
 import 'package:it_real_app/domain/data_source/verification_data_source.dart';
 import 'package:it_real_app/domain/exceptions/exceptions.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 part 'photo_verification_bloc.freezed.dart';
 
@@ -126,6 +127,7 @@ class PhotoVerificationBloc
         ),
       );
     } catch (e) {
+      await Sentry.captureException(e);
       emit(
         PhotoVerificationState(
           status: FormzSubmissionStatus.failure,

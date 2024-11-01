@@ -8,6 +8,7 @@ import 'package:it_real_app/domain/field_validators/email_field_validation.dart'
 import 'package:it_real_app/domain/field_validators/field_validation_error.dart';
 import 'package:it_real_app/domain/field_validators/password_field_validation.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sign_in_bloc.freezed.dart';
@@ -62,7 +63,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     );
 
     try {
-
       await authDataSource.signInWithEmailAndPassword(
         email: event.email,
         password: event.password,
@@ -75,13 +75,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           passwordError: null,
         ),
       );
-
     } catch (e) {
-
+      await Sentry.captureException(e);
       var errorMessages = LocaleKeys.somethingWentWrong.tr();
 
       if (e is AuthApiException) {
-          errorMessages = LocaleKeys.loginErrorInvalidCredentials.tr();
+        errorMessages = LocaleKeys.loginErrorInvalidCredentials.tr();
       }
 
       emit(
