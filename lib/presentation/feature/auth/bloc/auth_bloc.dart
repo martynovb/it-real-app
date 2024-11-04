@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
 
 part 'auth_bloc.freezed.dart';
@@ -69,11 +70,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> _onDeleteAccount(
-    _DeleteAccount event,
-    Emitter<AuthState> emit,
-  ) async {
-    await authDataSource.deleteAccount();
+  Future<void> _onDeleteAccount(event, emit) async {
+    try {
+       await authDataSource.logout();
+      await authDataSource.deleteAccount();
+    } catch (e) {
+      Sentry.captureException(e);
+    }
   }
 
   Future<void> _onAuthenticationStatusChanged(
@@ -88,7 +91,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _onLogout(event, emit) async {
-    await authDataSource.logout();
+    try {
+      await authDataSource.logout();
+    } catch (e) {
+      Sentry.captureException(e);
+    }
   }
 
   @override

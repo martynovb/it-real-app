@@ -143,6 +143,31 @@ Widget headerDesktop({
               await _showAccountMenu(
                 menuKey: acountBtnGlobalKey,
                 context: context,
+                onContactSupport: () {
+                  context.read<AppBloc>().add(const AppEvent.contactSupport());
+                },
+                onDeleteAccount: () {
+                  DialogsManager.showDeleteAccountDialog(
+                    context: context,
+                    isMobile: false,
+                    onConfirm: () {
+                      context.go(RouteConstants.onboarding.path);
+                      context.read<AuthBloc>().add(
+                            const AuthEvent.deleteAccount(),
+                          );
+                    },
+                  );
+                },
+                onLogout: () {
+                  DialogsManager.showLogoutDialog(
+                    context: context,
+                    isMobile: false,
+                    onConfirm: () {
+                      context.go(RouteConstants.onboarding.path);
+                      context.read<AuthBloc>().add(const AuthEvent.logout());
+                    },
+                  );
+                },
               );
             },
           ),
@@ -230,7 +255,31 @@ Widget headerMobile({
               await _showAccountMenu(
                 menuKey: acountBtnGlobalKey,
                 context: context,
-                isMobile: true,
+                onContactSupport: () {
+                  context.read<AppBloc>().add(const AppEvent.contactSupport());
+                },
+                onDeleteAccount: () {
+                  DialogsManager.showDeleteAccountDialog(
+                    context: context,
+                    isMobile: true,
+                    onConfirm: () {
+                      context.go(RouteConstants.onboarding.path);
+                      context
+                          .read<AuthBloc>()
+                          .add(const AuthEvent.deleteAccount());
+                    },
+                  );
+                },
+                onLogout: () {
+                  DialogsManager.showLogoutDialog(
+                    context: context,
+                    isMobile: true,
+                    onConfirm: () {
+                      context.go(RouteConstants.onboarding.path);
+                      context.read<AuthBloc>().add(const AuthEvent.logout());
+                    },
+                  );
+                },
               );
             },
           ),
@@ -243,7 +292,9 @@ Widget headerMobile({
 Future<void> _showAccountMenu({
   required GlobalKey menuKey,
   required BuildContext context,
-  bool isMobile = false,
+  required void Function() onContactSupport,
+  required void Function() onDeleteAccount,
+  required void Function() onLogout,
 }) async {
   final RenderBox button =
       menuKey.currentContext!.findRenderObject() as RenderBox;
@@ -306,59 +357,11 @@ Future<void> _showAccountMenu({
   );
 
   if (selectedOption == _deleteAccountOption) {
-    DialogsManager.showErrorDialog(
-      isMobile: isMobile,
-      context: context,
-      title: LocaleKeys.deleteAccountDialogTitle.tr(),
-      actions: [
-        btnOutlined(
-          padding: 0,
-          minWidth: 150,
-          context: context,
-          text: LocaleKeys.cancel.tr(),
-          onPressed: () => context.pop(),
-        ),
-        AppDimensions.sBoxW24,
-        btnFilled(
-          padding: 0,
-          minWidth: 150,
-          context: context,
-          text: LocaleKeys.confirm.tr(),
-          onPressed: () {
-            context.read<AuthBloc>().add(const AuthEvent.deleteAccount());
-            context.go(RouteConstants.onboarding.path);
-          },
-        )
-      ],
-    );
+    onDeleteAccount();
   } else if (selectedOption == _logoutOption) {
-    DialogsManager.showErrorDialog(
-      isMobile: isMobile,
-      context: context,
-      title: LocaleKeys.logoutDialogTitle.tr(),
-      actions: [
-        btnOutlined(
-          padding: 0,
-          minWidth: 150,
-          context: context,
-          text: LocaleKeys.cancel.tr(),
-          onPressed: () => context.pop(),
-        ),
-        AppDimensions.sBoxW24,
-        btnFilled(
-          padding: 0,
-          minWidth: 150,
-          context: context,
-          text: LocaleKeys.confirm.tr(),
-          onPressed: () {
-            context.read<AuthBloc>().add(const AuthEvent.logout());
-            context.go(RouteConstants.onboarding.path);
-          },
-        )
-      ],
-    );
+    onLogout();
   } else if (selectedOption == _contactSupportOption) {
-    context.read<AppBloc>().add(const AppEvent.contactSupport());
+    onContactSupport();
   }
 }
 

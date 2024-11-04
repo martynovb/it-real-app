@@ -182,4 +182,59 @@ abstract class DialogsManager {
                   ),
                 ))));
   }
+
+  static void showDeleteAccountDialog({
+    required BuildContext context,
+    required bool isMobile,
+    required void Function() onConfirm,
+  }) =>
+      DialogsManager.showErrorDialog(
+        context: context,
+        title: LocaleKeys.deleteAccountDialogTitle.tr(),
+        actions: [
+          btnOutlined(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.cancel.tr(),
+            onPressed: context.pop,
+          ),
+          AppDimensions.sBoxW24,
+          btnFilled(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.confirm.tr(),
+            onPressed: onConfirm,
+          )
+        ],
+      );
+
+  static void showLogoutDialog({
+    required BuildContext context,
+    required bool isMobile,
+    required void Function() onConfirm,
+  }) =>
+      DialogsManager.showErrorDialog(
+        isMobile: isMobile,
+        context: context,
+        title: LocaleKeys.logoutDialogTitle.tr(),
+        actions: [
+          btnOutlined(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.cancel.tr(),
+            onPressed: () => context.pop(),
+          ),
+          AppDimensions.sBoxW24,
+          btnFilled(
+            padding: 0,
+            minWidth: 150,
+            context: context,
+            text: LocaleKeys.confirm.tr(),
+            onPressed: onConfirm,
+          )
+        ],
+      );
 }

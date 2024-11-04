@@ -83,9 +83,9 @@ class AuthRepo extends AuthDataSource {
   }
 
   @override
-  Future<void> deleteAccount() => supabaseClient.functions.invoke(
-        SupabaseConstants.edgeFuncDeleteUser,
-      );
+  Future<void> deleteAccount() async {
+    await supabaseClient.functions.invoke(SupabaseConstants.edgeFuncDeleteUser);
+  }
 
   @override
   Future<UserModel> getCurrentUser() async {
