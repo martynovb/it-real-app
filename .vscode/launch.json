@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "development_localhost",
+            "name": "development",
             "request": "launch",
             "type": "dart",
-            "program": "lib/targets/development_localhost/main.dart",
+            "program": "lib/targets/development/main.dart",
             "args": [
                 "--dart-define-from-file",
                 ".env/local.env",
@@ -20,7 +20,7 @@
             "name": "development_web_mobile",
             "type": "dart",
             "request": "launch",
-            "program": "lib/targets/development_web_mobile/main.dart",
+            "program": "lib/targets/development/main.dart",
             "args": [
                 "-d",
                 "web-server",
