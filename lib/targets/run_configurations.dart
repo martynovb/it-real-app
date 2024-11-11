@@ -15,10 +15,6 @@ class RunConfigurations {
   static String sentryDsn = const String.fromEnvironment(
     'sentryDsn',
   );
-  
-  static String stripePublishableKey = const String.fromEnvironment(
-    'stripePublishableKey',
-  );
 
   static String privacyPolicyUrl = const String.fromEnvironment(
     'privacyPolicyUrl',

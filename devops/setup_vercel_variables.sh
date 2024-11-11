@@ -28,7 +28,6 @@ echo "redirectUrl=$redirectUrl" >> .env/${FLAVOR}.env
 echo "supabaseAnonKey=$supabaseAnonKey" >> .env/${FLAVOR}.env
 echo "supabaseUrl=$supabaseUrl" >> .env/${FLAVOR}.env
 echo "sentryDsn=$sentryDsn" >> .env/${FLAVOR}.env
-echo "stripePublishableKey=$stripePublishableKey" >> .env/${FLAVOR}.env
 echo "privacyPolicyUrl=$privacyPolicyUrl" >> .env/${FLAVOR}.env
 echo "termsOfServiceUrl=$termsOfServiceUrl" >> .env/${FLAVOR}.env
 

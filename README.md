@@ -22,7 +22,6 @@ redirectUrl=https....
 supabaseAnonKey=eyJhbGcxxxxx
 supabaseUrl=https://xxxxx.supabase.co
 sentryDsn=
-stripePublishableKey=
 privacyPolicyUrl=
 termsOfServiceUrl=
 ```
