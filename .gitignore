@@ -53,3 +53,4 @@ configs.json
 
 # Ignore all local .env files
 .env/*
+.vscode/settings.json

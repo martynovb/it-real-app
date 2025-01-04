@@ -17,6 +17,18 @@
             ]
         },
         {
+            "name": "release",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/targets/release/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                ".env/release.env",
+                "--web-port",
+                "8080",
+            ]
+        },
+        {
             "name": "development_web_mobile",
             "type": "dart",
             "request": "launch",
