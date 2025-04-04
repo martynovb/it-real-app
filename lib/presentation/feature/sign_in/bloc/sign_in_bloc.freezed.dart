@@ -78,6 +78,9 @@ class _$SignInEventCopyWithImpl<$Res, $Val extends SignInEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -205,6 +211,8 @@ class __$$SignInImplCopyWithImpl<$Res>
       _$SignInImpl _value, $Res Function(_$SignInImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -252,7 +260,9 @@ class _$SignInImpl implements _SignIn {
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignInImplCopyWith<_$SignInImpl> get copyWith =>
@@ -334,7 +344,10 @@ abstract class _SignIn implements SignInEvent {
 
   String get email;
   String get password;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignInImplCopyWith<_$SignInImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -353,6 +366,9 @@ class __$$CountinueWithGoogleImplCopyWithImpl<$Res>
   __$$CountinueWithGoogleImplCopyWithImpl(_$CountinueWithGoogleImpl _value,
       $Res Function(_$CountinueWithGoogleImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -457,7 +473,9 @@ mixin _$SignInState {
   FieldValidationErrorModel? get passwordError =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignInStateCopyWith<SignInState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -485,6 +503,8 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -537,6 +557,8 @@ class __$$SignInStateImplCopyWithImpl<$Res>
       _$SignInStateImpl _value, $Res Function(_$SignInStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -607,7 +629,9 @@ class _$SignInStateImpl implements _SignInState {
   int get hashCode =>
       Object.hash(runtimeType, status, errorMessage, emailError, passwordError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignInStateImplCopyWith<_$SignInStateImpl> get copyWith =>
@@ -629,8 +653,11 @@ abstract class _SignInState implements SignInState {
   FieldValidationErrorModel? get emailError;
   @override
   FieldValidationErrorModel? get passwordError;
+
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignInStateImplCopyWith<_$SignInStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

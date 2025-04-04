@@ -227,14 +227,14 @@ class ProductssPageDesk extends StatelessWidget {
       textAlign: TextAlign.center,
       text: TextSpan(
         text:
-            '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.verification.tr() : LocaleKeys.verifications.tr()}',
+            '${product.quantity} ${product.quantity <= 1 ? LocaleKeys.token.tr() : LocaleKeys.tokens.tr()}',
         style: Theme.of(context).textTheme.displayMedium?.copyWith(
               color: AppColors.grey5,
               decorationStyle: TextDecorationStyle.solid,
             ),
         children: [
           TextSpan(
-            text: ' = ${product.priceInUnits / 100}\$',
+            text: ' = \$${product.price}',
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),

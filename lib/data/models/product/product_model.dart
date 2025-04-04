@@ -10,8 +10,7 @@ class ProductModel with _$ProductModel {
     required String priceId,
     required String name,
     required int quantity,
-    @JsonKey(name: 'price')
-    required int priceInUnits,
+    required double price,
   }) = _ProductModel;
 
   const ProductModel._();
@@ -19,11 +18,20 @@ class ProductModel with _$ProductModel {
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
 
+  factory ProductModel.fromSupabase(Map<String, dynamic> json) => 
+      ProductModel(
+        productId: (json['id'] as int).toString(),
+        priceId: '',
+        name: json['name'] as String,
+        quantity: json['quantity'] as int,
+        price: (json['price'] as num).toDouble(),
+      );
+
   static const empty = ProductModel(
     productId: '',
     priceId: '',
     name: '',
     quantity: 0,
-    priceInUnits: 0,
+    price: 0,
   );
 }

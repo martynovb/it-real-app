@@ -84,6 +84,9 @@ class _$ProductsEventCopyWithImpl<$Res, $Val extends ProductsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -219,6 +225,8 @@ class __$$SelectProductImplCopyWithImpl<$Res>
       _$SelectProductImpl _value, $Res Function(_$SelectProductImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,6 +240,8 @@ class __$$SelectProductImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductModelCopyWith<$Res> get productModel {
@@ -266,7 +276,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   int get hashCode => Object.hash(runtimeType, productModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectProductImplCopyWith<_$SelectProductImpl> get copyWith =>
@@ -352,7 +364,10 @@ abstract class _SelectProduct implements ProductsEvent {
       _$SelectProductImpl;
 
   ProductModel get productModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectProductImplCopyWith<_$SelectProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -376,6 +391,8 @@ class __$$BuyProductImplCopyWithImpl<$Res>
       _$BuyProductImpl _value, $Res Function(_$BuyProductImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -389,6 +406,8 @@ class __$$BuyProductImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductModelCopyWith<$Res> get productModel {
@@ -423,7 +442,9 @@ class _$BuyProductImpl implements _BuyProduct {
   @override
   int get hashCode => Object.hash(runtimeType, productModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BuyProductImplCopyWith<_$BuyProductImpl> get copyWith =>
@@ -509,7 +530,10 @@ abstract class _BuyProduct implements ProductsEvent {
       _$BuyProductImpl;
 
   ProductModel get productModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BuyProductImplCopyWith<_$BuyProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -528,6 +552,9 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -636,7 +663,9 @@ mixin _$ProductsState {
   ProductModel? get selectedProduct => throw _privateConstructorUsedError;
   List<ProductModel> get products => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductsStateCopyWith<ProductsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -668,6 +697,8 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -701,6 +732,8 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
     ) as $Val);
   }
 
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserModelCopyWith<$Res> get user {
@@ -709,6 +742,8 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
     });
   }
 
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductModelCopyWith<$Res>? get selectedProduct {
@@ -751,6 +786,8 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
       _$ProductsStateImpl _value, $Res Function(_$ProductsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -835,7 +872,9 @@ class _$ProductsStateImpl implements _ProductsState {
   int get hashCode => Object.hash(runtimeType, status, errorMessage, user,
       selectedProduct, const DeepCollectionEquality().hash(_products));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
@@ -860,8 +899,11 @@ abstract class _ProductsState implements ProductsState {
   ProductModel? get selectedProduct;
   @override
   List<ProductModel> get products;
+
+  /// Create a copy of ProductsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

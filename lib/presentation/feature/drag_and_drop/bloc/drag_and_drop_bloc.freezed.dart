@@ -90,6 +90,9 @@ class _$DragAndDropEventCopyWithImpl<$Res, $Val extends DragAndDropEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +112,8 @@ class __$$PerformDropImplCopyWithImpl<$Res>
       _$PerformDropImpl _value, $Res Function(_$PerformDropImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$PerformDropImpl implements _PerformDrop {
   @override
   int get hashCode => Object.hash(runtimeType, event);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PerformDropImplCopyWith<_$PerformDropImpl> get copyWith =>
@@ -238,7 +245,10 @@ abstract class _PerformDrop implements DragAndDropEvent {
   const factory _PerformDrop(final PerformDropEvent event) = _$PerformDropImpl;
 
   PerformDropEvent get event;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PerformDropImplCopyWith<_$PerformDropImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -257,6 +267,9 @@ class __$$PickImageImplCopyWithImpl<$Res>
   __$$PickImageImplCopyWithImpl(
       _$PickImageImpl _value, $Res Function(_$PickImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -380,6 +393,8 @@ class __$$PickImageIosWebImplCopyWithImpl<$Res>
       _$PickImageIosWebImpl _value, $Res Function(_$PickImageIosWebImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -418,7 +433,9 @@ class _$PickImageIosWebImpl implements _PickImageIosWeb {
   @override
   int get hashCode => Object.hash(runtimeType, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PickImageIosWebImplCopyWith<_$PickImageIosWebImpl> get copyWith =>
@@ -510,7 +527,10 @@ abstract class _PickImageIosWeb implements DragAndDropEvent {
   const factory _PickImageIosWeb(final XFile? image) = _$PickImageIosWebImpl;
 
   XFile? get image;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PickImageIosWebImplCopyWith<_$PickImageIosWebImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -532,6 +552,8 @@ class __$$UpdateProgressImplCopyWithImpl<$Res>
       _$UpdateProgressImpl _value, $Res Function(_$UpdateProgressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -571,7 +593,9 @@ class _$UpdateProgressImpl implements _UpdateProgress {
   @override
   int get hashCode => Object.hash(runtimeType, progress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateProgressImplCopyWith<_$UpdateProgressImpl> get copyWith =>
@@ -663,7 +687,10 @@ abstract class _UpdateProgress implements DragAndDropEvent {
   const factory _UpdateProgress(final int progress) = _$UpdateProgressImpl;
 
   int get progress;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateProgressImplCopyWith<_$UpdateProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -682,6 +709,9 @@ class __$$ResetImplCopyWithImpl<$Res>
   __$$ResetImplCopyWithImpl(
       _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DragAndDropEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -798,7 +828,9 @@ mixin _$DragAndDropState {
   FileFormat? get fileFormat => throw _privateConstructorUsedError;
   String? get fileSizeInMb => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DragAndDropState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DragAndDropStateCopyWith<DragAndDropState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -829,6 +861,8 @@ class _$DragAndDropStateCopyWithImpl<$Res, $Val extends DragAndDropState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DragAndDropState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -899,6 +933,8 @@ class __$$DragAndDropStateImplCopyWithImpl<$Res>
       $Res Function(_$DragAndDropStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DragAndDropState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -999,7 +1035,9 @@ class _$DragAndDropStateImpl implements _DragAndDropState {
   int get hashCode => Object.hash(runtimeType, status, errorMessage, photoFile,
       progress, fileName, fileFormat, fileSizeInMb);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DragAndDropState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DragAndDropStateImplCopyWith<_$DragAndDropStateImpl> get copyWith =>
@@ -1031,8 +1069,11 @@ abstract class _DragAndDropState implements DragAndDropState {
   FileFormat? get fileFormat;
   @override
   String? get fileSizeInMb;
+
+  /// Create a copy of DragAndDropState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DragAndDropStateImplCopyWith<_$DragAndDropStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

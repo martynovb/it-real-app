@@ -66,6 +66,9 @@ class _$OnboardingEventCopyWithImpl<$Res, $Val extends OnboardingEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OnboardingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -82,6 +85,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OnboardingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -169,7 +175,9 @@ mixin _$OnboardingState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OnboardingStateCopyWith<OnboardingState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -193,6 +201,8 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,6 +241,8 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
       _$OnboardingStateImpl _value, $Res Function(_$OnboardingStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -279,7 +291,9 @@ class _$OnboardingStateImpl implements _OnboardingState {
   @override
   int get hashCode => Object.hash(runtimeType, status, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
@@ -296,8 +310,11 @@ abstract class _OnboardingState implements OnboardingState {
   FormzSubmissionStatus get status;
   @override
   String? get errorMessage;
+
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

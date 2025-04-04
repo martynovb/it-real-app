@@ -22,8 +22,12 @@ PaymentMetadaModel _$PaymentMetadaModelFromJson(Map<String, dynamic> json) {
 mixin _$PaymentMetadaModel {
   String get paymentLink => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentMetadaModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentMetadaModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentMetadaModelCopyWith<PaymentMetadaModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$PaymentMetadaModelCopyWithImpl<$Res, $Val extends PaymentMetadaModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentMetadaModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$PaymentMetadaModelImplCopyWithImpl<$Res>
       $Res Function(_$PaymentMetadaModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentMetadaModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,11 +127,13 @@ class _$PaymentMetadaModelImpl extends _PaymentMetadaModel {
                 other.paymentLink == paymentLink));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentLink);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentMetadaModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentMetadaModelImplCopyWith<_$PaymentMetadaModelImpl> get copyWith =>
@@ -148,8 +158,11 @@ abstract class _PaymentMetadaModel extends PaymentMetadaModel {
 
   @override
   String get paymentLink;
+
+  /// Create a copy of PaymentMetadaModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentMetadaModelImplCopyWith<_$PaymentMetadaModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

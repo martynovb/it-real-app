@@ -23,8 +23,12 @@ mixin _$ReportModel {
   bool get aiGenerated => throw _privateConstructorUsedError;
   bool get matchInDb => throw _privateConstructorUsedError;
 
+  /// Serializes this ReportModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportModelCopyWith<ReportModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$ReportModelImplCopyWithImpl<$Res>
       _$ReportModelImpl _value, $Res Function(_$ReportModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,11 +143,13 @@ class _$ReportModelImpl extends _ReportModel {
                 other.matchInDb == matchInDb));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, aiGenerated, matchInDb);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportModelImplCopyWith<_$ReportModelImpl> get copyWith =>
@@ -166,8 +176,11 @@ abstract class _ReportModel extends ReportModel {
   bool get aiGenerated;
   @override
   bool get matchInDb;
+
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportModelImplCopyWith<_$ReportModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

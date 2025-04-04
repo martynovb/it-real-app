@@ -8,6 +8,7 @@ import 'package:it_real_app/domain/exceptions/exceptions.dart';
 import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+@Named("stripe")
 @Singleton(as: ProductsDataSource)
 class ProductsRepo extends ProductsDataSource {
   final SupabaseClient supabaseClient;

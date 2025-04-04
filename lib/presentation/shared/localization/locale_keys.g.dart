@@ -71,8 +71,8 @@ abstract class  LocaleKeys {
   static const deleteAccountDialogTitle = 'deleteAccountDialogTitle';
   static const confirm = 'confirm';
   static const buyPackage = 'buyPackage';
-  static const verification = 'verification';
-  static const verifications = 'verifications';
+  static const token = 'token';
+  static const tokens = 'tokens';
   static const productsPageDescription = 'productsPageDescription';
   static const productsPageDescription2 = 'productsPageDescription2';
   static const success = 'success';

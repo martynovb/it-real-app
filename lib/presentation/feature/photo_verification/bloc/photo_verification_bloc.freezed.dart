@@ -79,6 +79,9 @@ class _$PhotoVerificationEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PhotoVerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$VerifyPhotoImplCopyWithImpl<$Res>
       _$VerifyPhotoImpl _value, $Res Function(_$VerifyPhotoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PhotoVerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +142,9 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @override
   int get hashCode => Object.hash(runtimeType, photoFile);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PhotoVerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VerifyPhotoImplCopyWith<_$VerifyPhotoImpl> get copyWith =>
@@ -217,7 +224,10 @@ abstract class _VerifyPhoto implements PhotoVerificationEvent {
       _$VerifyPhotoImpl;
 
   XFile get photoFile;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PhotoVerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VerifyPhotoImplCopyWith<_$VerifyPhotoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -236,6 +246,9 @@ class __$$ResetImplCopyWithImpl<$Res>
   __$$ResetImplCopyWithImpl(
       _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PhotoVerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -344,6 +357,9 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PhotoVerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -446,7 +462,9 @@ mixin _$PhotoVerificationState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   BaseException? get exception => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PhotoVerificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PhotoVerificationStateCopyWith<PhotoVerificationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -477,6 +495,8 @@ class _$PhotoVerificationStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PhotoVerificationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -505,6 +525,8 @@ class _$PhotoVerificationStateCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PhotoVerificationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReportModelCopyWith<$Res>? get report {
@@ -547,6 +569,8 @@ class __$$PhotoVerificationStateImplCopyWithImpl<$Res>
       $Res Function(_$PhotoVerificationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PhotoVerificationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -622,7 +646,9 @@ class _$PhotoVerificationStateImpl implements _PhotoVerificationState {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_steps), report, status, exception);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PhotoVerificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PhotoVerificationStateImplCopyWith<_$PhotoVerificationStateImpl>
@@ -645,8 +671,11 @@ abstract class _PhotoVerificationState implements PhotoVerificationState {
   FormzSubmissionStatus get status;
   @override
   BaseException? get exception;
+
+  /// Create a copy of PhotoVerificationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PhotoVerificationStateImplCopyWith<_$PhotoVerificationStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

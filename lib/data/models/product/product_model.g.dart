@@ -12,7 +12,7 @@ _$ProductModelImpl _$$ProductModelImplFromJson(Map<String, dynamic> json) =>
       priceId: json['priceId'] as String,
       name: json['name'] as String,
       quantity: (json['quantity'] as num).toInt(),
-      priceInUnits: (json['price'] as num).toInt(),
+      price: (json['price'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
@@ -21,5 +21,5 @@ Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
       'priceId': instance.priceId,
       'name': instance.name,
       'quantity': instance.quantity,
-      'price': instance.priceInUnits,
+      'price': instance.price,
     };

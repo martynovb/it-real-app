@@ -5,11 +5,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
+import 'package:it_real_app/data/repo/products/paypal_products_repo.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
-import 'package:it_real_app/domain/data_source/products_data_source.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+
+import '../../../../domain/data_source/products_data_source.dart';
 
 part 'products_bloc.freezed.dart';
 
@@ -23,7 +25,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   final AuthDataSource authDataSource;
 
   ProductsBloc({
-    required this.productsDataSource,
+    @Named("paypal") required this.productsDataSource,
     required this.authDataSource,
   }) : super(
           const ProductsState(
