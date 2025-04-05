@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
-import 'package:it_real_app/data/repo/products/paypal_products_repo.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -70,9 +69,14 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     Emitter<ProductsState> emit,
   ) async {
     try {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
       final paymentMetada = await productsDataSource.buyProduct(
         productModel: event.productModel,
       );
+
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
+
       await launchUrl(
         Uri.parse(paymentMetada.paymentLink),
         webOnlyWindowName: '_self',

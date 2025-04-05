@@ -1,11 +1,26 @@
 part of 'home_page.dart';
 
 class HomePageDesk extends StatelessWidget {
-  const HomePageDesk({super.key});
+  const HomePageDesk({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocConsumer<HomeBloc, HomeState>(
+      listener: (context, homeState) {
+        if (homeState.showTokensPurchaseDialog) {
+          DialogsManager.showInfoDialog(
+            context: context,
+            title: LocaleKeys.successTokenPurchaseTitle.tr(),
+            description: LocaleKeys.successTokenPurchase.tr(
+              args: [
+                AppConstants.emailSupport,
+              ],
+            ),
+          );
+        }
+      },
       builder: (context, homeState) {
         return BlocListener<PhotoVerificationBloc, PhotoVerificationState>(
           listener: (context, state) {
@@ -25,6 +40,9 @@ class HomePageDesk extends StatelessWidget {
                 child: headerDesktop(
                   context: context,
                   user: homeState.userModel,
+                  onBalanceTap: () => context.read<HomeBloc>().add(
+                        const HomeEvent.started(),
+                      ),
                 ),
               ),
               SliverToBoxAdapter(

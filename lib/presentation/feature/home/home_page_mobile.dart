@@ -1,11 +1,26 @@
 part of 'home_page.dart';
 
 class HomePageMobile extends StatelessWidget {
-  const HomePageMobile({super.key});
+  const HomePageMobile({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocConsumer<HomeBloc, HomeState>(
+      listener: (context, homeState) {
+        if (homeState.showTokensPurchaseDialog) {
+          DialogsManager.showInfoDialog(
+            context: context,
+            title: LocaleKeys.successTokenPurchaseTitle.tr(),
+            description: LocaleKeys.successTokenPurchase.tr(
+              args: [
+                AppConstants.emailSupport,
+              ],
+            ),
+          );
+        }
+      },
       builder: (context, homeState) {
         return BlocConsumer<PhotoVerificationBloc, PhotoVerificationState>(
           listener: (context, photoVerificationState) =>
@@ -21,6 +36,9 @@ class HomePageMobile extends StatelessWidget {
                   child: headerMobile(
                     context: context,
                     user: homeState.userModel,
+                    onBalanceTap: () => context.read<HomeBloc>().add(
+                          const HomeEvent.started(),
+                        ),
                   ),
                 ),
                 photoVerificationState.steps.values.any(

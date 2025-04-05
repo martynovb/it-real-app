@@ -8,7 +8,8 @@
   "step1Description": "Analyzing for AI-generated patterns to ensure authenticity",
   "step2Description": "Scanning our database to locate any matching persons",
   "step3Description": "Generating the report",
-  "oboardingTitleDescription": "Verify any photo quickly and easily to ensure authenticity before connecting with others",
+  "oboardingTitleDescription": "Worried about whether someone is truly who they claim to be?",
+  "oboardingTitleSubDescription": "Our service lets you verify any photo quickly and easily to ensure authenticity before you connect. If you have concerns about a person you're talking with, we provide the extra layer of security you need.",
   "privacyPolicy": "Privacy Policy",
   "termsOfService": "Terms & Conditions",
   "allRightsReserved": "© {} | {} | All Rights Reserved",
@@ -81,5 +82,7 @@
   "resetPasswordErrorSamePassword": "New password cannot be the same as the old password",
   "loginErrorInvalidCredentials": "Invalid login credentials",
   "signUpErrorEmailExists": "Email already exists",
-  "contactUs": "Contact us"
+  "contactUs": "Contact us",
+  "successTokenPurchase": "Your payment was successful, and we’re processing your tokens. It may take up to 10 minutes for them to appear in your account.\nIf they’re not delivered within that time, please reach out to us at {}.",
+  "successTokenPurchaseTitle": "Thank you for your purchase!"
 }

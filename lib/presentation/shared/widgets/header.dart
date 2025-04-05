@@ -1,3 +1,4 @@
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,7 @@ enum HeaderOption { buy, account, none }
 Widget headerDesktop({
   required BuildContext context,
   required UserModel user,
+  VoidCallback? onBalanceTap,
   HeaderOption currentOption = HeaderOption.none,
 }) {
   final acountBtnGlobalKey = GlobalKey();
@@ -63,33 +65,35 @@ Widget headerDesktop({
             ),
           ),
           const Spacer(),
-          Container(
-            height: 54,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Theme.of(context).colorScheme.onTertiary,
-                width: 1.5,
+          InkWell(
+            onTap: onBalanceTap,
+            child: Container(
+              height: 54,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.onTertiary,
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(8),
+                color: Theme.of(context).colorScheme.primary,
               ),
-              borderRadius: BorderRadius.circular(8),
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    text: '${LocaleKeys.verificationsBalance.tr()}: ',
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          color: Theme.of(context).colorScheme.onTertiary,
-                        ),
-                    children: [
-                      if (user.id.isNotEmpty)
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text: '${LocaleKeys.verificationsBalance.tr()}: ',
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.onTertiary,
+                          ),
+                      children: [
                         TextSpan(
-                          text: user.balance.toString(),
+                          text: user.id.isNotEmpty ? user.balance.toString() : '--',
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -181,6 +185,7 @@ Widget headerMobile({
   required BuildContext context,
   required UserModel user,
   HeaderOption currentOption = HeaderOption.none,
+  VoidCallback? onBalanceTap,
 }) {
   final acountBtnGlobalKey = GlobalKey();
 
@@ -240,7 +245,10 @@ Widget headerMobile({
             ),
             context: context,
             text: user.balance.toString(),
-            onPressed: () => context.go(RouteConstants.products.path),
+            onPressed: () {
+              onBalanceTap?.call();
+              context.go(RouteConstants.products.path);
+            },
           ),
           AppDimensions.sBoxW16,
           btnOutlinedWithIcon(

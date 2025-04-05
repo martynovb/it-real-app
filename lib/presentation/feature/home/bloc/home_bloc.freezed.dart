@@ -19,18 +19,21 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() showTokensPurchaseDialog,
     required TResult Function(XFile photoFile) verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? showTokensPurchaseDialog,
     TResult? Function(XFile photoFile)? verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? showTokensPurchaseDialog,
     TResult Function(XFile photoFile)? verifyPhoto,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,23 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_ShowTokensPurchaseDialog value)
+        showTokensPurchaseDialog,
     required TResult Function(_VerifyPhoto value) verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_ShowTokensPurchaseDialog value)?
+        showTokensPurchaseDialog,
     TResult? Function(_VerifyPhoto value)? verifyPhoto,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_ShowTokensPurchaseDialog value)? showTokensPurchaseDialog,
     TResult Function(_VerifyPhoto value)? verifyPhoto,
     required TResult orElse(),
   }) =>
@@ -118,6 +126,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() showTokensPurchaseDialog,
     required TResult Function(XFile photoFile) verifyPhoto,
   }) {
     return started();
@@ -127,6 +136,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? showTokensPurchaseDialog,
     TResult? Function(XFile photoFile)? verifyPhoto,
   }) {
     return started?.call();
@@ -136,6 +146,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? showTokensPurchaseDialog,
     TResult Function(XFile photoFile)? verifyPhoto,
     required TResult orElse(),
   }) {
@@ -149,6 +160,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_ShowTokensPurchaseDialog value)
+        showTokensPurchaseDialog,
     required TResult Function(_VerifyPhoto value) verifyPhoto,
   }) {
     return started(this);
@@ -158,6 +171,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_ShowTokensPurchaseDialog value)?
+        showTokensPurchaseDialog,
     TResult? Function(_VerifyPhoto value)? verifyPhoto,
   }) {
     return started?.call(this);
@@ -167,6 +182,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_ShowTokensPurchaseDialog value)? showTokensPurchaseDialog,
     TResult Function(_VerifyPhoto value)? verifyPhoto,
     required TResult orElse(),
   }) {
@@ -179,6 +195,122 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements HomeEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowTokensPurchaseDialogImplCopyWith<$Res> {
+  factory _$$ShowTokensPurchaseDialogImplCopyWith(
+          _$ShowTokensPurchaseDialogImpl value,
+          $Res Function(_$ShowTokensPurchaseDialogImpl) then) =
+      __$$ShowTokensPurchaseDialogImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ShowTokensPurchaseDialogImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$ShowTokensPurchaseDialogImpl>
+    implements _$$ShowTokensPurchaseDialogImplCopyWith<$Res> {
+  __$$ShowTokensPurchaseDialogImplCopyWithImpl(
+      _$ShowTokensPurchaseDialogImpl _value,
+      $Res Function(_$ShowTokensPurchaseDialogImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ShowTokensPurchaseDialogImpl implements _ShowTokensPurchaseDialog {
+  const _$ShowTokensPurchaseDialogImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.showTokensPurchaseDialog()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowTokensPurchaseDialogImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() showTokensPurchaseDialog,
+    required TResult Function(XFile photoFile) verifyPhoto,
+  }) {
+    return showTokensPurchaseDialog();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? showTokensPurchaseDialog,
+    TResult? Function(XFile photoFile)? verifyPhoto,
+  }) {
+    return showTokensPurchaseDialog?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? showTokensPurchaseDialog,
+    TResult Function(XFile photoFile)? verifyPhoto,
+    required TResult orElse(),
+  }) {
+    if (showTokensPurchaseDialog != null) {
+      return showTokensPurchaseDialog();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_ShowTokensPurchaseDialog value)
+        showTokensPurchaseDialog,
+    required TResult Function(_VerifyPhoto value) verifyPhoto,
+  }) {
+    return showTokensPurchaseDialog(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_ShowTokensPurchaseDialog value)?
+        showTokensPurchaseDialog,
+    TResult? Function(_VerifyPhoto value)? verifyPhoto,
+  }) {
+    return showTokensPurchaseDialog?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_ShowTokensPurchaseDialog value)? showTokensPurchaseDialog,
+    TResult Function(_VerifyPhoto value)? verifyPhoto,
+    required TResult orElse(),
+  }) {
+    if (showTokensPurchaseDialog != null) {
+      return showTokensPurchaseDialog(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowTokensPurchaseDialog implements HomeEvent {
+  const factory _ShowTokensPurchaseDialog() = _$ShowTokensPurchaseDialogImpl;
 }
 
 /// @nodoc
@@ -251,6 +383,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() showTokensPurchaseDialog,
     required TResult Function(XFile photoFile) verifyPhoto,
   }) {
     return verifyPhoto(photoFile);
@@ -260,6 +393,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? showTokensPurchaseDialog,
     TResult? Function(XFile photoFile)? verifyPhoto,
   }) {
     return verifyPhoto?.call(photoFile);
@@ -269,6 +403,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? showTokensPurchaseDialog,
     TResult Function(XFile photoFile)? verifyPhoto,
     required TResult orElse(),
   }) {
@@ -282,6 +417,8 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_ShowTokensPurchaseDialog value)
+        showTokensPurchaseDialog,
     required TResult Function(_VerifyPhoto value) verifyPhoto,
   }) {
     return verifyPhoto(this);
@@ -291,6 +428,8 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_ShowTokensPurchaseDialog value)?
+        showTokensPurchaseDialog,
     TResult? Function(_VerifyPhoto value)? verifyPhoto,
   }) {
     return verifyPhoto?.call(this);
@@ -300,6 +439,7 @@ class _$VerifyPhotoImpl implements _VerifyPhoto {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_ShowTokensPurchaseDialog value)? showTokensPurchaseDialog,
     TResult Function(_VerifyPhoto value)? verifyPhoto,
     required TResult orElse(),
   }) {
@@ -327,6 +467,7 @@ mixin _$HomeState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   UserModel get userModel => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  bool get showTokensPurchaseDialog => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -343,7 +484,8 @@ abstract class $HomeStateCopyWith<$Res> {
   $Res call(
       {FormzSubmissionStatus status,
       UserModel userModel,
-      String? errorMessage});
+      String? errorMessage,
+      bool showTokensPurchaseDialog});
 
   $UserModelCopyWith<$Res> get userModel;
 }
@@ -366,6 +508,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? status = null,
     Object? userModel = null,
     Object? errorMessage = freezed,
+    Object? showTokensPurchaseDialog = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -380,6 +523,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      showTokensPurchaseDialog: null == showTokensPurchaseDialog
+          ? _value.showTokensPurchaseDialog
+          : showTokensPurchaseDialog // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -405,7 +552,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   $Res call(
       {FormzSubmissionStatus status,
       UserModel userModel,
-      String? errorMessage});
+      String? errorMessage,
+      bool showTokensPurchaseDialog});
 
   @override
   $UserModelCopyWith<$Res> get userModel;
@@ -427,6 +575,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? userModel = null,
     Object? errorMessage = freezed,
+    Object? showTokensPurchaseDialog = null,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -441,6 +590,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      showTokensPurchaseDialog: null == showTokensPurchaseDialog
+          ? _value.showTokensPurchaseDialog
+          : showTokensPurchaseDialog // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -451,7 +604,8 @@ class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {required this.status,
       required this.userModel,
-      required this.errorMessage});
+      required this.errorMessage,
+      required this.showTokensPurchaseDialog});
 
   @override
   final FormzSubmissionStatus status;
@@ -459,10 +613,12 @@ class _$HomeStateImpl implements _HomeState {
   final UserModel userModel;
   @override
   final String? errorMessage;
+  @override
+  final bool showTokensPurchaseDialog;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, userModel: $userModel, errorMessage: $errorMessage)';
+    return 'HomeState(status: $status, userModel: $userModel, errorMessage: $errorMessage, showTokensPurchaseDialog: $showTokensPurchaseDialog)';
   }
 
   @override
@@ -474,11 +630,15 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.userModel, userModel) ||
                 other.userModel == userModel) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(
+                    other.showTokensPurchaseDialog, showTokensPurchaseDialog) ||
+                other.showTokensPurchaseDialog == showTokensPurchaseDialog));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userModel, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, status, userModel, errorMessage, showTokensPurchaseDialog);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -493,7 +653,8 @@ abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final FormzSubmissionStatus status,
       required final UserModel userModel,
-      required final String? errorMessage}) = _$HomeStateImpl;
+      required final String? errorMessage,
+      required final bool showTokensPurchaseDialog}) = _$HomeStateImpl;
 
   @override
   FormzSubmissionStatus get status;
@@ -501,6 +662,8 @@ abstract class _HomeState implements HomeState {
   UserModel get userModel;
   @override
   String? get errorMessage;
+  @override
+  bool get showTokensPurchaseDialog;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

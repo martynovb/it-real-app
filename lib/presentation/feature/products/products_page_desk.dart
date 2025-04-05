@@ -50,58 +50,85 @@ class ProductssPageDesk extends StatelessWidget {
   Widget _content({
     required BuildContext context,
     required ProductsState state,
-  }) =>
-      Column(
+  }) {
+    Widget content;
+    if (state.status == FormzSubmissionStatus.inProgress &&
+        state.products.isNotEmpty) {
+      content = Stack(
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * AppDimensions.topPaddingRatioDesk,
-          ),
-          SizedBox(
-            width: AppDimensions.maxDescWidth,
-            child: Text(
-              LocaleKeys.productsPageDescription.tr(),
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-              textAlign: TextAlign.center,
+          Center(
+            child: _products(
+              context: context,
+              products: state.products,
+              selectedProduct: state.selectedProduct,
             ),
           ),
-          AppDimensions.sBoxH32,
-          SizedBox(
-            height: AppDimensions.productsHeight,
-            child: state.products.isEmpty
-                ? const SizedBox(
-                  height: 120,
-                  child: Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.purple,
-                      ),
-                    ),
-                )
-                : _products(
-                    context: context,
-                    products: state.products,
-                    selectedProduct: state.selectedProduct,
-                  ),
-          ),
-          AppDimensions.sBoxH48,
-          ProdcutsPage.buyPackageBtn(
-            context,
-            isMobile: false,
-          ),
-          AppDimensions.sBoxH48,
-          SizedBox(
-            width: AppDimensions.maxDescWidth,
-            child: Text(
-              LocaleKeys.productsPageDescription2.tr(),
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onTertiary,
-                  ),
-              textAlign: TextAlign.center,
+          const Center(
+            child: SizedBox(
+              child: CircularProgressIndicator(
+                color: AppColors.purple,
+              ),
             ),
           ),
         ],
       );
+    } else if (state.status == FormzSubmissionStatus.inProgress) {
+      content = const SizedBox(
+        height: 120,
+        child: Center(
+          child: CircularProgressIndicator(
+            color: AppColors.purple,
+          ),
+        ),
+      );
+    } else {
+      content = _products(
+        context: context,
+        products: state.products,
+        selectedProduct: state.selectedProduct,
+      );
+    }
+
+    return Column(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height *
+              AppDimensions.topPaddingRatioDesk,
+        ),
+        SizedBox(
+          width: AppDimensions.maxDescWidth,
+          child: Text(
+            LocaleKeys.productsPageDescription.tr(),
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        AppDimensions.sBoxH32,
+        SizedBox(
+          height: AppDimensions.productsHeight,
+          child: content,
+        ),
+        AppDimensions.sBoxH48,
+        ProdcutsPage.buyPackageBtn(
+          context,
+          isMobile: false,
+        ),
+        AppDimensions.sBoxH48,
+        SizedBox(
+          width: AppDimensions.maxDescWidth,
+          child: Text(
+            LocaleKeys.productsPageDescription2.tr(),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onTertiary,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget _products({
     required BuildContext context,
@@ -109,24 +136,22 @@ class ProductssPageDesk extends StatelessWidget {
     ProductModel? selectedProduct,
   }) {
     return SizedBox(
-      height: 120,
+      height: AppDimensions.productsHeight,
       child: Padding(
         padding: const EdgeInsets.only(
           top: 16,
           left: 16,
           right: 16,
         ),
-        child: IntrinsicHeight(
-          child: ListView.separated(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: products.length,
-            separatorBuilder: (context, index) => const SizedBox(width: 24),
-            itemBuilder: (context, index) => _productItem(
-              context: context,
-              product: products[index],
-              selectedProduct: selectedProduct,
-            ),
+        child: ListView.separated(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: products.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 24),
+          itemBuilder: (context, index) => _productItem(
+            context: context,
+            product: products[index],
+            selectedProduct: selectedProduct,
           ),
         ),
       ),

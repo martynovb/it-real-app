@@ -11,6 +11,7 @@ abstract class  LocaleKeys {
   static const step2Description = 'step2Description';
   static const step3Description = 'step3Description';
   static const oboardingTitleDescription = 'oboardingTitleDescription';
+  static const oboardingTitleSubDescription = 'oboardingTitleSubDescription';
   static const privacyPolicy = 'privacyPolicy';
   static const termsOfService = 'termsOfService';
   static const allRightsReserved = 'allRightsReserved';
@@ -84,5 +85,7 @@ abstract class  LocaleKeys {
   static const loginErrorInvalidCredentials = 'loginErrorInvalidCredentials';
   static const signUpErrorEmailExists = 'signUpErrorEmailExists';
   static const contactUs = 'contactUs';
+  static const successTokenPurchase = 'successTokenPurchase';
+  static const successTokenPurchaseTitle = 'successTokenPurchaseTitle';
 
 }

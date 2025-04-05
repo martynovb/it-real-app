@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,16 +67,28 @@ class OnboardingPage extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            constraints: const BoxConstraints(maxWidth: 1000),
+            constraints: const BoxConstraints(maxWidth: 1200),
             child: Text(
-              '${LocaleKeys.oboardingTitleDescription.tr()}:',
+              '${LocaleKeys.oboardingTitleDescription.tr()}',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
             ),
           ),
-          isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH60,
+          AppDimensions.sBoxH24,
+          Container(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Text(
+              '${LocaleKeys.oboardingTitleSubDescription.tr()}',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.normal,
+                  ),
+            ),
+          ),
+          isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH48,
           _steps(context),
           isMobile ? AppDimensions.sBoxH24 : AppDimensions.sBoxH56,
           btnFilledWithIcon(

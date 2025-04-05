@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/feature/forgot_password/forgot_password_page.dart';
+import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart';
 import 'package:it_real_app/presentation/feature/home/home_page.dart';
 import 'package:it_real_app/presentation/feature/onboarding/oboarding_page.dart';
 import 'package:it_real_app/presentation/feature/reset_password/reset_password_page.dart';
@@ -12,6 +13,7 @@ import 'package:it_real_app/presentation/feature/sign_in/sign_in_page.dart';
 import 'package:it_real_app/presentation/feature/sign_up/sign_up_page.dart';
 import 'package:it_real_app/presentation/feature/splash/splash_page.dart';
 import 'package:it_real_app/presentation/feature/products/products_page.dart';
+import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/widgets/error_page.dart';
 
@@ -31,7 +33,22 @@ GoRouter router({
         if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
             isAuthenticated) {
           return '/';
+        } else if (!RouteConstants.unauthRoutes.contains(state.fullPath) &&
+            !isAuthenticated) {
+          return RouteConstants.onboarding.path;
         }
+
+        final uri = state.uri;
+        final token = uri.queryParameters['token'];
+        final payerId = uri.queryParameters['PayerID'];
+        final successTokenPayment = token != null && payerId != null;
+        if (successTokenPayment) {
+          getIt.get<HomeBloc>().add(
+                const HomeEvent.showTokensPurchaseDialog(),
+              );
+          return '/';
+        }
+
         return null;
       }),
       errorBuilder: (context, state) {
@@ -84,12 +101,13 @@ GoRouter router({
           ),
         ),
         GoRoute(
-          path: RouteConstants.home.path,
-          pageBuilder: (context, state) => NoTransitionPage(
-            key: state.pageKey,
-            child: const HomePage(),
-          ),
-        ),
+            path: RouteConstants.home.path,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                key: state.pageKey,
+                child: const HomePage(),
+              );
+            }),
         GoRoute(
           path: RouteConstants.settings.path,
           pageBuilder: (context, state) => NoTransitionPage(

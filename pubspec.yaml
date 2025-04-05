@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
 
   # system
   cross_file: ^0.3.4+1
@@ -64,7 +66,7 @@ dev_dependencies:
 flutter_launcher_icons:
   web:
     generate: true
-    image_path: "assets/icons/app_icon.png"
+    image_path: "assets/icons/favicon.png"
 
 flutter:
   uses-material-design: true

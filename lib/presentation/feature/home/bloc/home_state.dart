@@ -6,5 +6,6 @@ class HomeState with _$HomeState {
     required FormzSubmissionStatus status,
     required UserModel userModel,
     required String? errorMessage,
+    required bool showTokensPurchaseDialog,
   }) = _HomeState;
 }

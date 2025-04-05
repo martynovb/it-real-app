@@ -91,20 +91,6 @@ SnackBar _getSnackBar({
   );
 }
 
-Animation<double> _snackBarAnimation(BuildContext context) {
-  return Tween<double>(begin: 0, end: 1).animate(
-    CurvedAnimation(
-      parent: CurvedAnimation(
-        parent: AnimationController(
-          vsync: ScaffoldMessenger.of(context),
-          duration: const Duration(milliseconds: 500),
-        ),
-        curve: Curves.easeIn,
-      ),
-      curve: Curves.easeIn,
-    ),
-  );
-}
 
 Color _mapSnackBarTypeToColor(SnackBarType snackBarType) {
   switch (snackBarType) {

@@ -50,48 +50,72 @@ class ProductsPageMobile extends StatelessWidget {
   Widget _content({
     required BuildContext context,
     required ProductsState state,
-  }) =>
-      Padding(
-        padding: const EdgeInsets.only(
-          top: 16,
-          left: 16,
-          right: 16,
-        ),
-        child: Column(
-          children: [
-            AppDimensions.sBoxH24,
-            Text(
-              LocaleKeys.productsPageDescription.tr(),
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-              textAlign: TextAlign.center,
+  }) {
+    Widget content;
+    if (state.status == FormzSubmissionStatus.inProgress &&
+        state.products.isNotEmpty) {
+      content = Stack(
+        children: [
+          _products(
+            context: context,
+            products: state.products,
+            selectedProduct: state.selectedProduct,
+          ),
+          const Positioned.fill(
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppColors.purple,
+              ),
             ),
-            AppDimensions.sBoxH32,
-            state.products.isEmpty
-                ? const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.purple,
-                    ),
-                  )
-                : _products(
-                    context: context,
-                    products: state.products,
-                    selectedProduct: state.selectedProduct,
-                  ),
-            AppDimensions.sBoxH24,
-            ProdcutsPage.buyPackageBtn(context),
-            AppDimensions.sBoxH24,
-            Text(
-              LocaleKeys.productsPageDescription2.tr(),
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onTertiary,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+          ),
+        ],
+      );
+    } else if (state.status == FormzSubmissionStatus.inProgress) {
+      content = const Center(
+        child: CircularProgressIndicator(
+          color: AppColors.purple,
         ),
       );
+    } else {
+      content = _products(
+        context: context,
+        products: state.products,
+        selectedProduct: state.selectedProduct,
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 16,
+        left: 16,
+        right: 16,
+      ),
+      child: Column(
+        children: [
+          AppDimensions.sBoxH24,
+          Text(
+            LocaleKeys.productsPageDescription.tr(),
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+            textAlign: TextAlign.center,
+          ),
+          AppDimensions.sBoxH32,
+          content,
+          AppDimensions.sBoxH24,
+          ProdcutsPage.buyPackageBtn(context),
+          AppDimensions.sBoxH24,
+          Text(
+            LocaleKeys.productsPageDescription2.tr(),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onTertiary,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _products({
     required BuildContext context,
@@ -177,12 +201,16 @@ class ProductsPageMobile extends StatelessWidget {
                       },
                       activeColor: AppColors.purple,
                     ),
-                    const Spacer(flex: 1,),
+                    const Spacer(
+                      flex: 1,
+                    ),
                     _productTitle(
                       context: context,
                       product: product,
                     ),
-                    const Spacer(flex: 2,),
+                    const Spacer(
+                      flex: 2,
+                    ),
                   ],
                 ),
               ),
