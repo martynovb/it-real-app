@@ -49,9 +49,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
 
     try {
-      if (state.userModel.id.isNotEmpty) {
-        await Future.delayed(const Duration(seconds: 10));
-      }
       final userModel = await authRepo.getCurrentUser();
       emit(
         state.copyWith(
