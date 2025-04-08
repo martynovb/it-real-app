@@ -19,22 +19,22 @@ import 'package:it_real_app/presentation/shared/widgets/error_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
-GoRouter router({
-  required String initialLocation,
-}) =>
+GoRouter router() =>
     GoRouter(
       routerNeglect: true,
       navigatorKey: _rootNavigatorKey,
       debugLogDiagnostics: true,
-      initialLocation: initialLocation,
       redirect: ((context, GoRouterState state) {
         final isAuthenticated = context.read<AuthBloc>().state.authStatus ==
             AuthenticationStatus.authenticated;
         if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
             isAuthenticated) {
           return '/';
-        } else if (!isAuthenticated) {
-          return RouteConstants.onboarding.path;
+        } else if (RouteConstants.unauthRoutes.contains(state.fullPath) && !isAuthenticated) {
+          return null;
+        } else if (!RouteConstants.unauthRoutes.contains(state.fullPath) &&
+            !isAuthenticated) {
+              return RouteConstants.onboarding.path;
         }
 
         final uri = state.uri;

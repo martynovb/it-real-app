@@ -65,26 +65,11 @@ class AppWidget extends StatelessWidget {
               theme: AppTheme.lightThemeData,
               darkTheme: AppTheme.darkThemeData,
               themeMode: appState.themeMode,
-              routerConfig: router(
-                initialLocation: _initialRoute(
-                  authState.authStatus,
-                ),
-              ),
+              routerConfig: router(),
             );
           },
         );
       },
     );
-  }
-
-  String _initialRoute(AuthenticationStatus authenticationStatus) {
-    switch (authenticationStatus) {
-      case AuthenticationStatus.authenticated:
-        return RouteConstants.home.path;
-      case AuthenticationStatus.unauthenticated:
-        return RouteConstants.onboarding.path;
-      default:
-        return RouteConstants.splash.path;
-    }
   }
 }
