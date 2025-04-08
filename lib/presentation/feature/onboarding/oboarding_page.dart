@@ -19,6 +19,9 @@ import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/device_layout_builder.dart';
 import 'package:it_real_app/presentation/shared/widgets/footer.dart';
 
+final GlobalKey<ScaffoldState> scaffoldOnboardingKey =
+    GlobalKey<ScaffoldState>();
+
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
@@ -30,6 +33,7 @@ class OnboardingPage extends StatelessWidget {
         builder: (context, state) {
           return DeviceLayoutBuilder(
             layoutBuilder: (isMobile) => Scaffold(
+              key: scaffoldOnboardingKey,
               body: CustomScrollView(
                 shrinkWrap: true,
                 slivers: [

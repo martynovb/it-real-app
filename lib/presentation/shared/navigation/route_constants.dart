@@ -11,6 +11,7 @@ class RouteConstants {
     RouteConstants.signUp.path,
     RouteConstants.onboarding.path,
     RouteConstants.forgotPassword.path,
+    RouteConstants.resetPassword.path,
   };
 
   static const RouteItem splash = RouteItem(

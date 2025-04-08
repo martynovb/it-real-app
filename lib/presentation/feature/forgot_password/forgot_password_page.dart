@@ -14,6 +14,9 @@ import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/input_field.dart';
 
+import '../onboarding/oboarding_page.dart';
+
+
 class ForgotPasswordPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final bool isDialog;
@@ -28,13 +31,15 @@ class ForgotPasswordPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt.get<ForgotPasswordBloc>(),
       child: BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
-        listener: (context, state) {
+        listener: (listenerContext, state) {
           if (state.status == FormzSubmissionStatus.success) {
             DialogsManager.showInfoDialog(
-              context: context,
+              context: scaffoldOnboardingKey.currentContext ?? context,
               title: LocaleKeys.success.tr(),
               description: LocaleKeys.resetPasswordLinkSent.tr(),
-              onTap: () => context.go(RouteConstants.signIn.path),
+              onTap: () => isDialog
+                  ? Navigator.of(scaffoldOnboardingKey.currentContext ?? context).pop()
+                  : context.go(RouteConstants.signIn.path),
             );
           }
         },

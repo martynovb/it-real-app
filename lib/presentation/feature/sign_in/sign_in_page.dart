@@ -20,6 +20,8 @@ import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/input_field.dart';
 import 'package:it_real_app/presentation/shared/widgets/snack_bar.dart';
 
+import '../onboarding/oboarding_page.dart';
+
 class SignInPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -99,7 +101,7 @@ class SignInPage extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: InkWell(
                       onTap: () => DialogsManager.showCustomDialog(
-                        context: context,
+                        context: scaffoldOnboardingKey.currentContext ?? context,
                         child: ForgotPasswordPage(
                           isDialog: isDialog,
                         ),
