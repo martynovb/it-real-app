@@ -33,8 +33,7 @@ GoRouter router({
         if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
             isAuthenticated) {
           return '/';
-        } else if (!RouteConstants.unauthRoutes.contains(state.fullPath) &&
-            !isAuthenticated) {
+        } else if (!isAuthenticated) {
           return RouteConstants.onboarding.path;
         }
 
@@ -46,6 +45,12 @@ GoRouter router({
           getIt.get<HomeBloc>().add(
                 const HomeEvent.showTokensPurchaseDialog(),
               );
+          return '/';
+        }
+
+        final googleCode = uri.queryParameters['code'];
+
+        if (googleCode != null) {
           return '/';
         }
 
