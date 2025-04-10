@@ -1,11 +1,11 @@
 {
-    "name": "it_real_app",
-    "short_name": "it_real_app",
+    "name": "RealFace",
+    "short_name": "RealFace",
     "start_url": ".",
-    "display": "standalone",
+    "display": "RealFace",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Verify any photo quickly and easily",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
