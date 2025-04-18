@@ -8,7 +8,6 @@ class UserModel with _$UserModel {
   const factory UserModel({
     required String id,
     required String email,
-    required String stripeCustomerId,
     required int balance,
   }) = _UserModel;
 
@@ -20,7 +19,6 @@ class UserModel with _$UserModel {
   static const empty = UserModel(
     id: '',
     email: '',
-    stripeCustomerId: '',
     balance: 0,
   );
 

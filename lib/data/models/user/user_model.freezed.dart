@@ -22,7 +22,6 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 mixin _$UserModel {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get stripeCustomerId => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
@@ -40,7 +39,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String id, String email, String stripeCustomerId, int balance});
+  $Res call({String id, String email, int balance});
 }
 
 /// @nodoc
@@ -60,7 +59,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? stripeCustomerId = null,
     Object? balance = null,
   }) {
     return _then(_value.copyWith(
@@ -71,10 +69,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      stripeCustomerId: null == stripeCustomerId
-          ? _value.stripeCustomerId
-          : stripeCustomerId // ignore: cast_nullable_to_non_nullable
               as String,
       balance: null == balance
           ? _value.balance
@@ -92,7 +86,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String stripeCustomerId, int balance});
+  $Res call({String id, String email, int balance});
 }
 
 /// @nodoc
@@ -110,7 +104,6 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? stripeCustomerId = null,
     Object? balance = null,
   }) {
     return _then(_$UserModelImpl(
@@ -121,10 +114,6 @@ class __$$UserModelImplCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      stripeCustomerId: null == stripeCustomerId
-          ? _value.stripeCustomerId
-          : stripeCustomerId // ignore: cast_nullable_to_non_nullable
               as String,
       balance: null == balance
           ? _value.balance
@@ -138,10 +127,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl extends _UserModel {
   const _$UserModelImpl(
-      {required this.id,
-      required this.email,
-      required this.stripeCustomerId,
-      required this.balance})
+      {required this.id, required this.email, required this.balance})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -152,13 +138,11 @@ class _$UserModelImpl extends _UserModel {
   @override
   final String email;
   @override
-  final String stripeCustomerId;
-  @override
   final int balance;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, stripeCustomerId: $stripeCustomerId, balance: $balance)';
+    return 'UserModel(id: $id, email: $email, balance: $balance)';
   }
 
   @override
@@ -168,15 +152,12 @@ class _$UserModelImpl extends _UserModel {
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.stripeCustomerId, stripeCustomerId) ||
-                other.stripeCustomerId == stripeCustomerId) &&
             (identical(other.balance, balance) || other.balance == balance));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, email, stripeCustomerId, balance);
+  int get hashCode => Object.hash(runtimeType, id, email, balance);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -198,7 +179,6 @@ abstract class _UserModel extends UserModel {
   const factory _UserModel(
       {required final String id,
       required final String email,
-      required final String stripeCustomerId,
       required final int balance}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
@@ -209,8 +189,6 @@ abstract class _UserModel extends UserModel {
   String get id;
   @override
   String get email;
-  @override
-  String get stripeCustomerId;
   @override
   int get balance;
 

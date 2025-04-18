@@ -38,7 +38,7 @@ class AuthRepo extends AuthDataSource {
 
     final profile = await supabaseClient
         .from('profiles')
-        .select('stripe_customer_id, balance')
+        .select()
         .eq('id', response.user?.id ?? '')
         .maybeSingle();
 
@@ -46,7 +46,6 @@ class AuthRepo extends AuthDataSource {
       id: response.user?.id ?? '',
       email: response.user?.email ?? '',
       balance: int.tryParse(profile?['balance']) ?? 0,
-      stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
 
@@ -70,7 +69,7 @@ class AuthRepo extends AuthDataSource {
 
     final profile = await supabaseClient
         .from('profiles')
-        .select('stripe_customer_id, balance')
+        .select()
         .eq('id', response.user?.id ?? '')
         .maybeSingle();
 
@@ -78,13 +77,19 @@ class AuthRepo extends AuthDataSource {
       id: response.user?.id ?? '',
       email: response.user?.email ?? '',
       balance: int.tryParse(profile?['balance']) ?? 0,
-      stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
 
   @override
   Future<void> deleteAccount() async {
-    await supabaseClient.functions.invoke(SupabaseConstants.edgeFuncDeleteUser);
+    final User? user = supabaseClient.auth.currentUser;
+
+    await supabaseClient.functions.invoke(
+      SupabaseConstants.edgeFuncDeleteUser,
+      body: {
+        'user_id': user?.id,
+      },
+    );
   }
 
   @override
@@ -93,7 +98,7 @@ class AuthRepo extends AuthDataSource {
 
     final profile = await supabaseClient
         .from('profiles')
-        .select('stripe_customer_id, balance')
+        .select()
         .eq('id', user?.id ?? '')
         .maybeSingle();
 
@@ -101,7 +106,6 @@ class AuthRepo extends AuthDataSource {
       id: user?.id ?? '',
       email: user?.email ?? '',
       balance: profile?['balance'] ?? 0,
-      stripeCustomerId: profile?['stripe_customer_id'] ?? '',
     );
   }
 
