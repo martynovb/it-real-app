@@ -72,8 +72,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _onDeleteAccount(event, emit) async {
     try {
-       await authDataSource.logout();
       await authDataSource.deleteAccount();
+      authDataSource.logout();
     } catch (e) {
       Sentry.captureException(e);
     }
