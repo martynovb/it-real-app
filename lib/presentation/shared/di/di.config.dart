@@ -13,9 +13,12 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:image_picker/image_picker.dart' as _i183;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:it_real_app/data/repo/auth/auth_repo.dart' as _i910;
+import 'package:it_real_app/data/repo/products/paddle_products_repo.dart'
+    as _i542;
 import 'package:it_real_app/data/repo/products/paypal_products_repo.dart'
     as _i179;
-import 'package:it_real_app/data/repo/products/products_repo.dart' as _i288;
+import 'package:it_real_app/data/repo/products/stripe_products_repo.dart'
+    as _i73;
 import 'package:it_real_app/data/repo/verification/verification_repo.dart'
     as _i44;
 import 'package:it_real_app/domain/data_source/auth_data_source.dart' as _i277;
@@ -23,6 +26,12 @@ import 'package:it_real_app/domain/data_source/products_data_source.dart'
     as _i327;
 import 'package:it_real_app/domain/data_source/verification_data_source.dart'
     as _i611;
+import 'package:it_real_app/domain/managers/checkout/checkout_manager.dart'
+    as _i1012;
+import 'package:it_real_app/domain/managers/checkout/paddle_checkout_manager.dart'
+    as _i219;
+import 'package:it_real_app/domain/managers/checkout/stripe_checkout_manager.dart'
+    as _i309;
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart'
     as _i622;
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart'
@@ -73,18 +82,29 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i64.DragAndDropBloc>(
         () => _i64.DragAndDropBloc(imagePicker: gh<_i183.ImagePicker>()));
     gh.singleton<_i327.ProductsDataSource>(
+      () => _i73.StripeProductsRepo(supabaseClient: gh<_i454.SupabaseClient>()),
+      instanceName: 'stripe',
+    );
+    gh.singleton<_i327.ProductsDataSource>(
+      () =>
+          _i542.PaddleProductsRepo(supabaseClient: gh<_i454.SupabaseClient>()),
+      instanceName: 'paddle',
+    );
+    gh.singleton<_i327.ProductsDataSource>(
       () =>
           _i179.PaypalProductsRepo(supabaseClient: gh<_i454.SupabaseClient>()),
       instanceName: 'paypal',
-    );
-    gh.singleton<_i327.ProductsDataSource>(
-      () => _i288.ProductsRepo(supabaseClient: gh<_i454.SupabaseClient>()),
-      instanceName: 'stripe',
     );
     gh.singleton<_i611.VerificationDataSource>(() =>
         _i44.VerificationRepo(supabaseClient: gh<_i454.SupabaseClient>()));
     gh.singleton<_i368.PhotoVerificationBloc>(() => _i368.PhotoVerificationBloc(
         verificationDataSource: gh<_i611.VerificationDataSource>()));
+    gh.factory<_i1012.CheckoutManager>(
+      () => _i309.StripeCheckoutManager(
+          productsDataSource:
+              gh<_i327.ProductsDataSource>(instanceName: 'stripe')),
+      instanceName: 'stripe',
+    );
     gh.singleton<_i277.AuthDataSource>(
         () => _i910.AuthRepo(supabaseClient: gh<_i454.SupabaseClient>()));
     gh.factory<_i131.HomeBloc>(
@@ -103,9 +123,16 @@ extension GetItInjectableX on _i174.GetIt {
           authDataSource: gh<_i277.AuthDataSource>(),
           supabaseClient: gh<_i454.SupabaseClient>(),
         ));
+    gh.factory<_i1012.CheckoutManager>(
+      () => _i219.PaddleCheckoutManager(
+          productsDataSource:
+              gh<_i327.ProductsDataSource>(instanceName: 'paddle')),
+      instanceName: 'paddle',
+    );
     gh.factory<_i590.ProductsBloc>(() => _i590.ProductsBloc(
           productsDataSource:
-              gh<_i327.ProductsDataSource>(instanceName: 'paypal'),
+              gh<_i327.ProductsDataSource>(instanceName: 'paddle'),
+          checkoutManager: gh<_i1012.CheckoutManager>(instanceName: 'paddle'),
           authDataSource: gh<_i277.AuthDataSource>(),
         ));
     return this;

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart';
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/feature/photo_verification/bloc/photo_verification_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_constants.dart';
 import 'package:it_real_app/presentation/shared/navigation/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/styles/app_styles.dart';
 
 class RealApp extends StatelessWidget {

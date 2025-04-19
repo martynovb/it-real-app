@@ -7,10 +7,11 @@ import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/data/models/user/user_model.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../../domain/data_source/products_data_source.dart';
+import '../../../../domain/managers/checkout/checkout_manager.dart';
+import '../../../shared/di/names/checkout_name.dart';
 
 part 'products_bloc.freezed.dart';
 
@@ -21,10 +22,12 @@ part 'products_state.dart';
 @Injectable()
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   final ProductsDataSource productsDataSource;
+  final CheckoutManager checkoutManager;
   final AuthDataSource authDataSource;
 
   ProductsBloc({
-    @Named("paypal") required this.productsDataSource,
+    @Named(CheckoutName.paddle) required this.productsDataSource,
+    @Named(CheckoutName.paddle) required this.checkoutManager,
     required this.authDataSource,
   }) : super(
           const ProductsState(
@@ -71,18 +74,14 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     try {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-      final paymentMetada = await productsDataSource.buyProduct(
+      await checkoutManager.openPaymentCheckout(
+        currentUser: state.user,
         productModel: event.productModel,
       );
 
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-
-      await launchUrl(
-        Uri.parse(paymentMetada.paymentLink),
-        webOnlyWindowName: '_self',
-      );
-    } catch (e) {
-      await Sentry.captureException(e);
+    } catch (exception) {
+      Sentry.captureException(exception);
       emit(
         ProductsState(
           status: FormzSubmissionStatus.failure,

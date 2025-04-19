@@ -12,6 +12,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() async {
+  
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
