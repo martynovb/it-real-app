@@ -12,6 +12,13 @@ class ProductsPageMobile extends StatelessWidget {
             context: context,
             title: state.errorMessage ?? LocaleKeys.somethingWentWrong.tr(),
           );
+        } else if (state.status == FormzSubmissionStatus.success) {
+          DialogsManager.showInfoDialog(
+            context: context,
+            title: LocaleKeys.successTokenPurchaseTitle.tr(),
+            description: LocaleKeys.successTokenPurchase.tr(),
+            onTap: () => context.go(RouteConstants.home.path),
+          );
         }
       },
       builder: (context, state) {
@@ -140,7 +147,7 @@ class ProductsPageMobile extends StatelessWidget {
     required ProductModel product,
     required ProductModel? selectedProduct,
   }) {
-    bool isSelected = selectedProduct?.productId == product.productId;
+    bool isSelected = selectedProduct?.priceId == product.priceId;
 
     return GestureDetector(
       onTap: () {

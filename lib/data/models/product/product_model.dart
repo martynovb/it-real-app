@@ -21,9 +21,9 @@ class ProductModel with _$ProductModel {
   factory ProductModel.fromSupabase(Map<String, dynamic> json) => 
       ProductModel(
         productId: json['id'] ?? '',
-        priceId:json['priceId'] ?? '',
+        priceId:json['price_id'] ?? '',
         name: json['name'] as String,
-        quantity: int.tryParse((json['quantity'] ?? '0')) ?? 0,
+        quantity: json['quantity'] ?? 0,
         price: (json['price'] as num).toDouble(),
       );
 

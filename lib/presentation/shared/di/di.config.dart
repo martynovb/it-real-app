@@ -123,7 +123,7 @@ extension GetItInjectableX on _i174.GetIt {
           authDataSource: gh<_i277.AuthDataSource>(),
           supabaseClient: gh<_i454.SupabaseClient>(),
         ));
-    gh.factory<_i1012.CheckoutManager>(
+    gh.singleton<_i1012.CheckoutManager>(
       () => _i219.PaddleCheckoutManager(
           productsDataSource:
               gh<_i327.ProductsDataSource>(instanceName: 'paddle')),

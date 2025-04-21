@@ -50,7 +50,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     try {
       emit(
         state.copyWith(
-          status: FormzSubmissionStatus.success,
+          status: FormzSubmissionStatus.initial,
           user: await authDataSource.getCurrentUser(),
           products: await productsDataSource.getAllProducts(),
           errorMessage: null,
@@ -74,12 +74,26 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     try {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-      await checkoutManager.openPaymentCheckout(
+      final isPurchaseSuccessful = await checkoutManager.openPaymentCheckout(
         currentUser: state.user,
         productModel: event.productModel,
       );
 
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
+      if (isPurchaseSuccessful) {
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.success,
+            user: await authDataSource.getCurrentUser(),
+            errorMessage: null,
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.initial,
+          ),
+        );
+      }
     } catch (exception) {
       Sentry.captureException(exception);
       emit(
@@ -100,7 +114,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     emit(
       state.copyWith(
         selectedProduct: event.productModel,
-        status: FormzSubmissionStatus.success,
         errorMessage: null,
       ),
     );

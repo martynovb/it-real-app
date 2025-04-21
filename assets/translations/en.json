@@ -83,6 +83,6 @@
   "loginErrorInvalidCredentials": "Invalid login credentials",
   "signUpErrorEmailExists": "Email already exists",
   "contactUs": "Contact us",
-  "successTokenPurchase": "Your payment was successful, and we’re processing your tokens. It may take up to 10 minutes for them to appear in your account.\nIf they’re not delivered within that time, please reach out to us at {}.",
+  "successTokenPurchase": "Your payment was successful, and we’re processing your tokens.",
   "successTokenPurchaseTitle": "Thank you for your purchase!"
 }

@@ -18,7 +18,7 @@ class StripeCheckoutManager implements CheckoutManager {
   });
 
   @override
-  Future<void> openPaymentCheckout({
+  Future<bool> openPaymentCheckout({
     required UserModel currentUser,
     required ProductModel productModel,
   }) async {
@@ -31,5 +31,6 @@ class StripeCheckoutManager implements CheckoutManager {
       Uri.parse(paymentMetada.paymentLink),
       webOnlyWindowName: '_self',
     );
+    return true;
   }
 }
