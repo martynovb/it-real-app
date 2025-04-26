@@ -6,7 +6,6 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/presentation/shared/app_constants.dart';
-import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'app_bloc.freezed.dart';
@@ -27,8 +26,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         ) {
     on<_AppStarted>(_onAppStarted);
     on<_ContactSupport>(_onContactSupport);
-    on<_OpenTermsOfService>(_onOpenTermsOfService);
-    on<_OpenPrivacyPolicy>(_onOpenPrivacyPolicy);
   }
 
   Future<void> _onAppStarted(event, emit) async {}
@@ -42,18 +39,5 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     if (await canLaunchUrl(emailLaunchUri)) {
       await launchUrl(emailLaunchUri);
     }
-  }
-
-  Future<void> _onOpenTermsOfService(event, emit) async {
-    final Uri termsOfServiceUri =
-        Uri.parse(RunConfigurations.termsOfServiceUrl);
-
-    await launchUrl(termsOfServiceUri);
-  }
-
-  Future<void> _onOpenPrivacyPolicy(event, emit) async {
-    final Uri privacyPolicyUri = Uri.parse(RunConfigurations.termsOfServiceUrl);
-
-    await launchUrl(privacyPolicyUri);
   }
 }

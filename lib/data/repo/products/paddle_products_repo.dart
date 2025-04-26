@@ -8,21 +8,23 @@ import 'package:it_real_app/domain/exceptions/exceptions.dart';
 import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-@Named("stripe")
+import '../../../presentation/shared/di/names/checkout_name.dart';
+
+@Named(CheckoutName.paddle)
 @Singleton(as: ProductsDataSource)
-class ProductsRepo extends ProductsDataSource {
+class PaddleProductsRepo extends ProductsDataSource {
   final SupabaseClient supabaseClient;
 
-  ProductsRepo({
+  PaddleProductsRepo({
     required this.supabaseClient,
   });
 
   @override
-  Future<PaymentMetadaModel> buyProduct({
+  Future<T> buyProduct<T extends PaymentMetadaModel>({
     required ProductModel productModel,
   }) async {
     final response = await supabaseClient.functions.invoke(
-      SupabaseConstants.edgeFuncStripeCreatePayment,
+      SupabaseConstants.edgeFuncPaddleCreatePayment,
       method: HttpMethod.post,
       body: {
         'priceId': productModel.priceId,
@@ -32,7 +34,9 @@ class ProductsRepo extends ProductsDataSource {
     );
 
     if (response.data is Map) {
-      return PaymentMetadaModel.fromJson(response.data);
+      return PaymentMetadaModel.paddle(
+        transactionId: response.data['transactionId'],
+      ) as T;
     }
 
     throw ServerException(message: 'Failed to generate payment metadata');
@@ -41,13 +45,13 @@ class ProductsRepo extends ProductsDataSource {
   @override
   Future<List<ProductModel>> getAllProducts() async {
     final response = await supabaseClient.functions.invoke(
-      SupabaseConstants.edgeFuncStripeGetAllProducts,
+      SupabaseConstants.edgeFuncPaddleGetAllProducts,
       method: HttpMethod.get,
     );
 
     if (response.data is Map && response.data['products'] != null) {
       return (response.data['products'] as List)
-          .map((entityMap) => ProductModel.fromJson(entityMap))
+          .map((entityMap) => ProductModel.fromSupabase(entityMap))
           .toList()
           .sorted(
             (a, b) => a.quantity.compareTo(b.quantity),

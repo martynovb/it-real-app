@@ -5,9 +5,17 @@ part 'payment_metadata_model.g.dart';
 
 @freezed
 class PaymentMetadaModel with _$PaymentMetadaModel {
-  const factory PaymentMetadaModel({
+  const factory PaymentMetadaModel.stripe({
     required String paymentLink,
-  }) = _PaymentMetadaModel;
+  }) = StripePaymentMetadaModel;
+
+  const factory PaymentMetadaModel.paddle({
+    required String transactionId,
+  }) = PaddlePaymentMetadaModel;
+
+  const factory PaymentMetadaModel.paypal({
+    required String paymentLink,
+  }) = PaypalPaymentMetadaModel;
 
   const PaymentMetadaModel._();
 

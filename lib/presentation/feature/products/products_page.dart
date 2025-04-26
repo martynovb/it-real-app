@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 import 'package:it_real_app/data/models/product/product_model.dart';
 import 'package:it_real_app/presentation/feature/products/bloc/products_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
@@ -15,6 +16,8 @@ import 'package:it_real_app/presentation/shared/widgets/buttons.dart';
 import 'package:it_real_app/presentation/shared/widgets/device_layout_builder.dart';
 import 'package:it_real_app/presentation/shared/widgets/footer.dart';
 import 'package:it_real_app/presentation/shared/widgets/header.dart';
+
+import '../../shared/navigation/route_constants.dart';
 
 part 'products_page_mobile.dart';
 part 'products_page_desk.dart';

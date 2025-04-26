@@ -30,6 +30,7 @@ echo "supabaseUrl=$supabaseUrl" >> .env/${FLAVOR}.env
 echo "sentryDsn=$sentryDsn" >> .env/${FLAVOR}.env
 echo "privacyPolicyUrl=$privacyPolicyUrl" >> .env/${FLAVOR}.env
 echo "termsOfServiceUrl=$termsOfServiceUrl" >> .env/${FLAVOR}.env
+echo "paddleToken=$paddleToken" >> .env/${FLAVOR}.env
 
 echo "${FLAVOR}.env file created with all the keys..............."
 

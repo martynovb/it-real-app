@@ -4,7 +4,7 @@ import 'package:it_real_app/data/models/product/product_model.dart';
 abstract class ProductsDataSource {
   Future<List<ProductModel>> getAllProducts();
 
-  Future<PaymentMetadaModel> buyProduct({
+  Future<T> buyProduct<T extends PaymentMetadaModel>({
     required ProductModel productModel,
   });
 }

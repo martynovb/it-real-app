@@ -1,5 +1,4 @@
 class RunConfigurations {
-
   static String redirectUrl = const String.fromEnvironment(
     'redirectUrl',
   );
@@ -22,5 +21,9 @@ class RunConfigurations {
 
   static String termsOfServiceUrl = const String.fromEnvironment(
     'termsOfServiceUrl',
+  );
+
+  static String paddleToken = const String.fromEnvironment(
+    'paddleToken',
   );
 }

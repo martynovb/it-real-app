@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
-import 'package:it_real_app/presentation/feature/app/bloc/app_bloc.dart';
 import 'package:it_real_app/presentation/feature/sign_in/sign_in_page.dart';
 import 'package:it_real_app/presentation/feature/sign_up/bloc/sign_up_bloc.dart';
 import 'package:it_real_app/presentation/shared/app_icons.dart';
@@ -205,8 +204,8 @@ class SignUpPage extends StatelessWidget {
                                           .onPrimary,
                                     ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => context.read<AppBloc>().add(
-                                        const AppEvent.openTermsOfService(),
+                                  ..onTap = () => context.go(
+                                        RouteConstants.termsOfService.path,
                                       ),
                               ),
                               TextSpan(
@@ -223,8 +222,8 @@ class SignUpPage extends StatelessWidget {
                                           .onPrimary,
                                     ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => context.read<AppBloc>().add(
-                                        const AppEvent.openPrivacyPolicy(),
+                                  ..onTap = () => context.go(
+                                        RouteConstants.privacyPolicy.path,
                                       ),
                               ),
                             ],
@@ -393,8 +392,8 @@ class SignUpPage extends StatelessWidget {
                                             .onPrimary,
                                       ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => context.read<AppBloc>().add(
-                                          const AppEvent.openTermsOfService(),
+                                    ..onTap = () => context.go(
+                                          RouteConstants.termsOfService.path,
                                         ),
                                 ),
                                 TextSpan(
@@ -411,8 +410,8 @@ class SignUpPage extends StatelessWidget {
                                             .onPrimary,
                                       ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => context.read<AppBloc>().add(
-                                          const AppEvent.openPrivacyPolicy(),
+                                    ..onTap = () => context.go(
+                                          RouteConstants.privacyPolicy.path,
                                         ),
                                 ),
                               ],
