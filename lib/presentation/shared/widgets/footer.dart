@@ -5,8 +5,6 @@ import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart'
 import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
-import 'package:it_real_app/targets/run_configurations.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Widget footer(BuildContext context) {
   return Container(

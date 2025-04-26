@@ -50,7 +50,6 @@ class PaddleCheckoutManager implements CheckoutManager {
       return;
     }
 
-    setEnvironment('sandbox');
     _isInitialized = true;
     paddleInitialize(jsify({
       'token': token,

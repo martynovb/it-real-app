@@ -6,7 +6,6 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:it_real_app/presentation/shared/app_constants.dart';
-import 'package:it_real_app/targets/run_configurations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'app_bloc.freezed.dart';

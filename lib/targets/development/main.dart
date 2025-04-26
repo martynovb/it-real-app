@@ -11,8 +11,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
+import '../../domain/managers/checkout/paddle_checkout_manager.dart';
+
 void main() async {
-  
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,9 @@ void main() async {
       if (kIsWeb) {
         usePathUrlStrategy();
       }
+
+      setEnvironment('sandbox');
+
       runApp(const RealApp());
     },
     (error, stackTrace) async {
