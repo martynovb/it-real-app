@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:it_real_app/presentation/shared/localization/locale_keys.g.dart';
+import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
 import 'package:it_real_app/targets/run_configurations.dart';
@@ -21,8 +23,7 @@ Widget footer(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: () =>
-                  launchUrl(Uri.parse(RunConfigurations.privacyPolicyUrl)),
+              onPressed: () => context.go(RouteConstants.privacyPolicy.path),
               child: Text(
                 LocaleKeys.privacyPolicy.tr(),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -31,8 +32,7 @@ Widget footer(BuildContext context) {
               ),
             ),
             TextButton(
-              onPressed: () =>
-                  launchUrl(Uri.parse(RunConfigurations.termsOfServiceUrl)),
+              onPressed: () => context.go(RouteConstants.termsOfService.path),
               child: Text(
                 LocaleKeys.termsOfService.tr(),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(

@@ -205,8 +205,8 @@ class SignUpPage extends StatelessWidget {
                                           .onPrimary,
                                     ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => context.read<AppBloc>().add(
-                                        const AppEvent.openTermsOfService(),
+                                  ..onTap = () => context.go(
+                                        RouteConstants.termsOfService.path,
                                       ),
                               ),
                               TextSpan(
@@ -223,8 +223,8 @@ class SignUpPage extends StatelessWidget {
                                           .onPrimary,
                                     ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => context.read<AppBloc>().add(
-                                        const AppEvent.openPrivacyPolicy(),
+                                  ..onTap = () => context.go(
+                                        RouteConstants.privacyPolicy.path,
                                       ),
                               ),
                             ],
@@ -393,8 +393,8 @@ class SignUpPage extends StatelessWidget {
                                             .onPrimary,
                                       ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => context.read<AppBloc>().add(
-                                          const AppEvent.openTermsOfService(),
+                                    ..onTap = () => context.go(
+                                          RouteConstants.termsOfService.path,
                                         ),
                                 ),
                                 TextSpan(
@@ -411,8 +411,8 @@ class SignUpPage extends StatelessWidget {
                                             .onPrimary,
                                       ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => context.read<AppBloc>().add(
-                                          const AppEvent.openPrivacyPolicy(),
+                                    ..onTap = () => context.go(
+                                          RouteConstants.privacyPolicy.path,
                                         ),
                                 ),
                               ],

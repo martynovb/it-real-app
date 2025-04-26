@@ -20,24 +20,18 @@ mixin _$AppEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function() contactSupport,
-    required TResult Function() openTermsOfService,
-    required TResult Function() openPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appStarted,
     TResult? Function()? contactSupport,
-    TResult? Function()? openTermsOfService,
-    TResult? Function()? openPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function()? contactSupport,
-    TResult Function()? openTermsOfService,
-    TResult Function()? openPrivacyPolicy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +39,18 @@ mixin _$AppEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_AppStarted value) appStarted,
     required TResult Function(_ContactSupport value) contactSupport,
-    required TResult Function(_OpenTermsOfService value) openTermsOfService,
-    required TResult Function(_OpenPrivacyPolicy value) openPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AppStarted value)? appStarted,
     TResult? Function(_ContactSupport value)? contactSupport,
-    TResult? Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult? Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AppStarted value)? appStarted,
     TResult Function(_ContactSupport value)? contactSupport,
-    TResult Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,8 +119,6 @@ class _$AppStartedImpl implements _AppStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function() contactSupport,
-    required TResult Function() openTermsOfService,
-    required TResult Function() openPrivacyPolicy,
   }) {
     return appStarted();
   }
@@ -142,8 +128,6 @@ class _$AppStartedImpl implements _AppStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appStarted,
     TResult? Function()? contactSupport,
-    TResult? Function()? openTermsOfService,
-    TResult? Function()? openPrivacyPolicy,
   }) {
     return appStarted?.call();
   }
@@ -153,8 +137,6 @@ class _$AppStartedImpl implements _AppStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function()? contactSupport,
-    TResult Function()? openTermsOfService,
-    TResult Function()? openPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (appStarted != null) {
@@ -168,8 +150,6 @@ class _$AppStartedImpl implements _AppStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_AppStarted value) appStarted,
     required TResult Function(_ContactSupport value) contactSupport,
-    required TResult Function(_OpenTermsOfService value) openTermsOfService,
-    required TResult Function(_OpenPrivacyPolicy value) openPrivacyPolicy,
   }) {
     return appStarted(this);
   }
@@ -179,8 +159,6 @@ class _$AppStartedImpl implements _AppStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AppStarted value)? appStarted,
     TResult? Function(_ContactSupport value)? contactSupport,
-    TResult? Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult? Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
   }) {
     return appStarted?.call(this);
   }
@@ -190,8 +168,6 @@ class _$AppStartedImpl implements _AppStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AppStarted value)? appStarted,
     TResult Function(_ContactSupport value)? contactSupport,
-    TResult Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (appStarted != null) {
@@ -248,8 +224,6 @@ class _$ContactSupportImpl implements _ContactSupport {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function() contactSupport,
-    required TResult Function() openTermsOfService,
-    required TResult Function() openPrivacyPolicy,
   }) {
     return contactSupport();
   }
@@ -259,8 +233,6 @@ class _$ContactSupportImpl implements _ContactSupport {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appStarted,
     TResult? Function()? contactSupport,
-    TResult? Function()? openTermsOfService,
-    TResult? Function()? openPrivacyPolicy,
   }) {
     return contactSupport?.call();
   }
@@ -270,8 +242,6 @@ class _$ContactSupportImpl implements _ContactSupport {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function()? contactSupport,
-    TResult Function()? openTermsOfService,
-    TResult Function()? openPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (contactSupport != null) {
@@ -285,8 +255,6 @@ class _$ContactSupportImpl implements _ContactSupport {
   TResult map<TResult extends Object?>({
     required TResult Function(_AppStarted value) appStarted,
     required TResult Function(_ContactSupport value) contactSupport,
-    required TResult Function(_OpenTermsOfService value) openTermsOfService,
-    required TResult Function(_OpenPrivacyPolicy value) openPrivacyPolicy,
   }) {
     return contactSupport(this);
   }
@@ -296,8 +264,6 @@ class _$ContactSupportImpl implements _ContactSupport {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AppStarted value)? appStarted,
     TResult? Function(_ContactSupport value)? contactSupport,
-    TResult? Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult? Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
   }) {
     return contactSupport?.call(this);
   }
@@ -307,8 +273,6 @@ class _$ContactSupportImpl implements _ContactSupport {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AppStarted value)? appStarted,
     TResult Function(_ContactSupport value)? contactSupport,
-    TResult Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (contactSupport != null) {
@@ -320,240 +284,6 @@ class _$ContactSupportImpl implements _ContactSupport {
 
 abstract class _ContactSupport implements AppEvent {
   const factory _ContactSupport() = _$ContactSupportImpl;
-}
-
-/// @nodoc
-abstract class _$$OpenTermsOfServiceImplCopyWith<$Res> {
-  factory _$$OpenTermsOfServiceImplCopyWith(_$OpenTermsOfServiceImpl value,
-          $Res Function(_$OpenTermsOfServiceImpl) then) =
-      __$$OpenTermsOfServiceImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$OpenTermsOfServiceImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$OpenTermsOfServiceImpl>
-    implements _$$OpenTermsOfServiceImplCopyWith<$Res> {
-  __$$OpenTermsOfServiceImplCopyWithImpl(_$OpenTermsOfServiceImpl _value,
-      $Res Function(_$OpenTermsOfServiceImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$OpenTermsOfServiceImpl implements _OpenTermsOfService {
-  const _$OpenTermsOfServiceImpl();
-
-  @override
-  String toString() {
-    return 'AppEvent.openTermsOfService()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OpenTermsOfServiceImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function() contactSupport,
-    required TResult Function() openTermsOfService,
-    required TResult Function() openPrivacyPolicy,
-  }) {
-    return openTermsOfService();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? appStarted,
-    TResult? Function()? contactSupport,
-    TResult? Function()? openTermsOfService,
-    TResult? Function()? openPrivacyPolicy,
-  }) {
-    return openTermsOfService?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function()? contactSupport,
-    TResult Function()? openTermsOfService,
-    TResult Function()? openPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (openTermsOfService != null) {
-      return openTermsOfService();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AppStarted value) appStarted,
-    required TResult Function(_ContactSupport value) contactSupport,
-    required TResult Function(_OpenTermsOfService value) openTermsOfService,
-    required TResult Function(_OpenPrivacyPolicy value) openPrivacyPolicy,
-  }) {
-    return openTermsOfService(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AppStarted value)? appStarted,
-    TResult? Function(_ContactSupport value)? contactSupport,
-    TResult? Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult? Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
-  }) {
-    return openTermsOfService?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_ContactSupport value)? contactSupport,
-    TResult Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (openTermsOfService != null) {
-      return openTermsOfService(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OpenTermsOfService implements AppEvent {
-  const factory _OpenTermsOfService() = _$OpenTermsOfServiceImpl;
-}
-
-/// @nodoc
-abstract class _$$OpenPrivacyPolicyImplCopyWith<$Res> {
-  factory _$$OpenPrivacyPolicyImplCopyWith(_$OpenPrivacyPolicyImpl value,
-          $Res Function(_$OpenPrivacyPolicyImpl) then) =
-      __$$OpenPrivacyPolicyImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$OpenPrivacyPolicyImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$OpenPrivacyPolicyImpl>
-    implements _$$OpenPrivacyPolicyImplCopyWith<$Res> {
-  __$$OpenPrivacyPolicyImplCopyWithImpl(_$OpenPrivacyPolicyImpl _value,
-      $Res Function(_$OpenPrivacyPolicyImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$OpenPrivacyPolicyImpl implements _OpenPrivacyPolicy {
-  const _$OpenPrivacyPolicyImpl();
-
-  @override
-  String toString() {
-    return 'AppEvent.openPrivacyPolicy()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OpenPrivacyPolicyImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function() contactSupport,
-    required TResult Function() openTermsOfService,
-    required TResult Function() openPrivacyPolicy,
-  }) {
-    return openPrivacyPolicy();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? appStarted,
-    TResult? Function()? contactSupport,
-    TResult? Function()? openTermsOfService,
-    TResult? Function()? openPrivacyPolicy,
-  }) {
-    return openPrivacyPolicy?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function()? contactSupport,
-    TResult Function()? openTermsOfService,
-    TResult Function()? openPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (openPrivacyPolicy != null) {
-      return openPrivacyPolicy();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AppStarted value) appStarted,
-    required TResult Function(_ContactSupport value) contactSupport,
-    required TResult Function(_OpenTermsOfService value) openTermsOfService,
-    required TResult Function(_OpenPrivacyPolicy value) openPrivacyPolicy,
-  }) {
-    return openPrivacyPolicy(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AppStarted value)? appStarted,
-    TResult? Function(_ContactSupport value)? contactSupport,
-    TResult? Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult? Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
-  }) {
-    return openPrivacyPolicy?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_ContactSupport value)? contactSupport,
-    TResult Function(_OpenTermsOfService value)? openTermsOfService,
-    TResult Function(_OpenPrivacyPolicy value)? openPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (openPrivacyPolicy != null) {
-      return openPrivacyPolicy(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OpenPrivacyPolicy implements AppEvent {
-  const factory _OpenPrivacyPolicy() = _$OpenPrivacyPolicyImpl;
 }
 
 /// @nodoc

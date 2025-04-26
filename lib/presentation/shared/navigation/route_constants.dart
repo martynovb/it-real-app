@@ -55,4 +55,14 @@ class RouteConstants {
     path: '/reset-password',
     name: 'Reset Password',
   );
+  
+  static const RouteItem privacyPolicy = RouteItem(
+    path: '/privacy-policy',
+    name: 'Privacy policy',
+  );
+  
+  static const RouteItem termsOfService = RouteItem(
+    path: '/terms-of-service',
+    name: 'Terms of service',
+  );
 }

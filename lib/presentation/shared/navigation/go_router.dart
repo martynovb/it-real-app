@@ -16,11 +16,13 @@ import 'package:it_real_app/presentation/feature/products/products_page.dart';
 import 'package:it_real_app/presentation/shared/di/di.dart';
 import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/widgets/error_page.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../targets/run_configurations.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
-GoRouter router() =>
-    GoRouter(
+GoRouter router() => GoRouter(
       routerNeglect: true,
       navigatorKey: _rootNavigatorKey,
       debugLogDiagnostics: true,
@@ -30,11 +32,12 @@ GoRouter router() =>
         if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
             isAuthenticated) {
           return '/';
-        } else if (RouteConstants.unauthRoutes.contains(state.fullPath) && !isAuthenticated) {
+        } else if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
+            !isAuthenticated) {
           return null;
         } else if (!RouteConstants.unauthRoutes.contains(state.fullPath) &&
             !isAuthenticated) {
-              return RouteConstants.onboarding.path;
+          return RouteConstants.onboarding.path;
         }
 
         final uri = state.uri;
@@ -127,5 +130,26 @@ GoRouter router() =>
             child: const ProdcutsPage(),
           ),
         ),
+        GoRoute(
+          path: RouteConstants.termsOfService.path,
+          redirect: (context, state) async {
+            final Uri url = Uri.parse(RunConfigurations.termsOfServiceUrl);
+            if (await canLaunchUrl(url)) {
+              await launchUrl(url, mode: LaunchMode.externalApplication);
+            }
+            return '/';
+          },
+        ),
+        GoRoute(
+          path: RouteConstants.privacyPolicy.path,
+          redirect: (context, state) async {
+            final Uri url = Uri.parse(RunConfigurations.privacyPolicyUrl);
+            if (await canLaunchUrl(url)) {
+              await launchUrl(url, mode: LaunchMode.externalApplication);
+            }
+            return '/';
+          },
+        )
+
       ],
     );

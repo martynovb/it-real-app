@@ -101,7 +101,8 @@ class SignInPage extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: InkWell(
                       onTap: () => DialogsManager.showCustomDialog(
-                        context: scaffoldOnboardingKey.currentContext ?? context,
+                        context:
+                            scaffoldOnboardingKey.currentContext ?? context,
                         child: ForgotPasswordPage(
                           isDialog: isDialog,
                         ),
@@ -206,8 +207,8 @@ class SignInPage extends StatelessWidget {
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => context.read<AppBloc>().add(
-                                    const AppEvent.openTermsOfService(),
+                              ..onTap = () => context.go(
+                                    RouteConstants.termsOfService.path,
                                   ),
                           ),
                           TextSpan(
@@ -223,8 +224,8 @@ class SignInPage extends StatelessWidget {
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => context.read<AppBloc>().add(
-                                    const AppEvent.openPrivacyPolicy(),
+                              ..onTap = () => context.go(
+                                    RouteConstants.privacyPolicy.path,
                                   ),
                           ),
                         ],
@@ -383,8 +384,8 @@ class SignInPage extends StatelessWidget {
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => context.read<AppBloc>().add(
-                                    const AppEvent.openTermsOfService(),
+                              ..onTap = () => context.go(
+                                    RouteConstants.termsOfService.path,
                                   ),
                           ),
                           TextSpan(
@@ -400,8 +401,8 @@ class SignInPage extends StatelessWidget {
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => context.read<AppBloc>().add(
-                                    const AppEvent.openPrivacyPolicy(),
+                              ..onTap = () => context.go(
+                                    RouteConstants.privacyPolicy.path,
                                   ),
                           ),
                         ],
