@@ -7,5 +7,17 @@
                "source": "/(.*)",
                "destination": "/"
           }
+     ],
+     "redirects": [
+          {
+               "source": "/privacy-policy",
+               "destination": "https://euunumvdmlzptbfyjejz.supabase.co/storage/v1/object/public/docs//realface%20PRIVACY%20POLICY.pdf",
+               "permanent": true
+          },
+          {
+               "source": "/terms-of-service",
+               "destination": "https://euunumvdmlzptbfyjejz.supabase.co/storage/v1/object/public/docs//realface%20TERMS%20AND%20CONDITIONS.pdf",
+               "permanent": true
+          }
      ]
 }
