@@ -23,8 +23,8 @@ class AppTheme {
     return ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
         colorScheme: colorScheme,
-        canvasColor: colorScheme.background,
-        scaffoldBackgroundColor: colorScheme.background,
+        canvasColor: colorScheme.surface,
+        scaffoldBackgroundColor: colorScheme.surface,
         focusColor: focusColor,
         useMaterial3: true,
         textTheme: AppUtils.isMobile
@@ -32,7 +32,7 @@ class AppTheme {
             : AppTextStyleWeb.textTheme,
         textSelectionTheme: TextSelectionThemeData(
           cursorColor: colorScheme.onPrimary,
-          selectionColor: AppColors.purple.withOpacity(0.5),
+          selectionColor: AppColors.purple.withValues(alpha: 0.5),
         ));
   }
 
@@ -45,10 +45,8 @@ class AppTheme {
       onSecondary: AppColors.almostBlack,
       error: AppColors.red,
       onError: AppColors.white,
-      background: AppColors.grey2,
-      onBackground: AppColors.grey4,
-      surface: AppColors.white,
-      onSurface: AppColors.almostBlack,
+      surface: AppColors.grey2,
+      onSurface: AppColors.grey4,
       tertiary: AppColors.grey3,
       onTertiary: AppColors.grey4,
     );
@@ -63,10 +61,8 @@ class AppTheme {
       onSecondary: AppColors.white,
       error: AppColors.red,
       onError: AppColors.white,
-      background: AppColors.almostBlack2,
-      onBackground: AppColors.almostBlack2,
       surface: AppColors.almostBlack2,
-      onSurface: AppColors.white,
+      onSurface: AppColors.almostBlack2,
       tertiary: AppColors.grey3,
       onTertiary: AppColors.grey4,
     );

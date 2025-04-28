@@ -1,44 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:it_real_app/presentation/shared/styles/app_colors.dart';
 
 class AppTextStyleMobile {
   static const TextStyle _titleLarge = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.w600,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _titleMedium = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.w600,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _mobileH1 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _mobileH2 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _mobileH3 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _mobileBody1 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.normal,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _mobileBody2 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
+    color: AppColors.almostBlack,
   );
 
   static const TextStyle _captionMediumMobile = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.normal,
+    color: AppColors.almostBlack,
   );
 
   static TextTheme get textTheme => const TextTheme(

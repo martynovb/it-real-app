@@ -47,8 +47,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               authenticationStatus: AuthenticationStatus.authenticated,
             ),
           );
-        } else if (authState.event == supabase.AuthChangeEvent.signedOut ||
-            authState.event == supabase.AuthChangeEvent.userDeleted) {
+        } else if (authState.event == supabase.AuthChangeEvent.signedOut) {
           add(
             const AuthEvent.authenticationStatusChanged(
               authenticationStatus: AuthenticationStatus.unauthenticated,

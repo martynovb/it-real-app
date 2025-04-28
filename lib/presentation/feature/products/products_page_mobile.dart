@@ -175,7 +175,7 @@ class ProductsPageMobile extends StatelessWidget {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: AppColors.purple.withOpacity(0.5),
+                    color: AppColors.purple.withValues(alpha: 0.5),
                     spreadRadius: 1,
                     blurRadius: 10,
                     offset: const Offset(0, 3),

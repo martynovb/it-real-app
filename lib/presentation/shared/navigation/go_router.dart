@@ -4,21 +4,18 @@ import 'package:go_router/go_router.dart';
 import 'package:it_real_app/domain/data_source/auth_data_source.dart';
 import 'package:it_real_app/presentation/feature/auth/bloc/auth_bloc.dart';
 import 'package:it_real_app/presentation/feature/forgot_password/forgot_password_page.dart';
-import 'package:it_real_app/presentation/feature/home/bloc/home_bloc.dart';
 import 'package:it_real_app/presentation/feature/home/home_page.dart';
 import 'package:it_real_app/presentation/feature/onboarding/oboarding_page.dart';
+import 'package:it_real_app/presentation/feature/privacy_policy/privacy_policy_widget.dart';
 import 'package:it_real_app/presentation/feature/reset_password/reset_password_page.dart';
 import 'package:it_real_app/presentation/feature/settings/settings_page.dart';
 import 'package:it_real_app/presentation/feature/sign_in/sign_in_page.dart';
 import 'package:it_real_app/presentation/feature/sign_up/sign_up_page.dart';
 import 'package:it_real_app/presentation/feature/splash/splash_page.dart';
 import 'package:it_real_app/presentation/feature/products/products_page.dart';
-import 'package:it_real_app/presentation/shared/di/di.dart';
+import 'package:it_real_app/presentation/feature/terms_and_conditions/terms_and_conditions_widget.dart';
 import 'package:it_real_app/presentation/shared/navigation/route_constants.dart';
 import 'package:it_real_app/presentation/shared/widgets/error_page.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../../targets/run_configurations.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -27,34 +24,40 @@ GoRouter router() => GoRouter(
       navigatorKey: _rootNavigatorKey,
       debugLogDiagnostics: true,
       redirect: ((context, GoRouterState state) {
+        final path = state.uri.path;
+
+        // redirect to the docs page if the user tries to access a docs route in all cases
+        if (RouteConstants.docsRoutes.contains(state.fullPath)) {
+          return null;
+        }
+
         final isAuthenticated = context.read<AuthBloc>().state.authStatus ==
             AuthenticationStatus.authenticated;
+
+        // redirect to the home page if the user is authenticated and tries to access an unauthenticated route
         if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
             isAuthenticated) {
-          return '/';
-        } else if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
+          return RouteConstants.home.path;
+        }
+        // redirect to the onboarding page if the user is NOT authenticated and tries to access an unauthenticated route
+        else if (RouteConstants.unauthRoutes.contains(state.fullPath) &&
             !isAuthenticated) {
           return null;
-        } else if (!RouteConstants.unauthRoutes.contains(state.fullPath) &&
+        }
+
+        // redirect to the onboarding page if the user is NOT authenticated and tries to access an unauthenticated route
+        else if (!RouteConstants.unauthRoutes.contains(state.fullPath) &&
             !isAuthenticated) {
           return RouteConstants.onboarding.path;
         }
 
         final uri = state.uri;
-        final token = uri.queryParameters['token'];
-        final payerId = uri.queryParameters['PayerID'];
-        final successTokenPayment = token != null && payerId != null;
-        if (successTokenPayment) {
-          getIt.get<HomeBloc>().add(
-                const HomeEvent.showTokensPurchaseDialog(),
-              );
-          return '/';
-        }
-
         final googleCode = uri.queryParameters['code'];
+        final googleError = uri.queryParameters['error'];
 
-        if (googleCode != null) {
-          return '/';
+        // clear the auth data if exists
+        if (googleCode != null || googleError != null) {
+          return path;
         }
 
         return null;
@@ -131,25 +134,18 @@ GoRouter router() => GoRouter(
           ),
         ),
         GoRoute(
-          path: RouteConstants.termsOfService.path,
-          redirect: (context, state) async {
-            final Uri url = Uri.parse(RunConfigurations.termsOfServiceUrl);
-            if (await canLaunchUrl(url)) {
-              await launchUrl(url, mode: LaunchMode.externalApplication);
-            }
-            return '/';
-          },
+          path: RouteConstants.termsAndConditions.path,
+          pageBuilder: (context, state) => NoTransitionPage(
+            key: state.pageKey,
+            child: const TermsAndConditionsWidget(),
+          ),
         ),
         GoRoute(
           path: RouteConstants.privacyPolicy.path,
-          redirect: (context, state) async {
-            final Uri url = Uri.parse(RunConfigurations.privacyPolicyUrl);
-            if (await canLaunchUrl(url)) {
-              await launchUrl(url, mode: LaunchMode.externalApplication);
-            }
-            return '/';
-          },
+          pageBuilder: (context, state) => NoTransitionPage(
+            key: state.pageKey,
+            child: const PrivacyPolicyWidget(),
+          ),
         )
-
       ],
     );
