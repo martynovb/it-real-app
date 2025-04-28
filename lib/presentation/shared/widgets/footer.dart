@@ -30,7 +30,8 @@ Widget footer(BuildContext context) {
               ),
             ),
             TextButton(
-              onPressed: () => context.go(RouteConstants.termsOfService.path),
+              onPressed: () =>
+                  context.go(RouteConstants.termsAndConditions.path),
               child: Text(
                 LocaleKeys.termsOfService.tr(),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(

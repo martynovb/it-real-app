@@ -207,7 +207,7 @@ class SignInPage extends StatelessWidget {
                                 ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => context.go(
-                                    RouteConstants.termsOfService.path,
+                                    RouteConstants.termsAndConditions.path,
                                   ),
                           ),
                           TextSpan(
@@ -384,7 +384,7 @@ class SignInPage extends StatelessWidget {
                                 ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => context.go(
-                                    RouteConstants.termsOfService.path,
+                                    RouteConstants.termsAndConditions.path,
                                   ),
                           ),
                           TextSpan(

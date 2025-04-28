@@ -6,6 +6,11 @@ class RouteItem {
 }
 
 class RouteConstants {
+  static Set<String> docsRoutes = {
+    RouteConstants.privacyPolicy.path,
+    RouteConstants.termsAndConditions.path,
+  };
+
   static Set<String> unauthRoutes = {
     RouteConstants.signIn.path,
     RouteConstants.signUp.path,
@@ -45,24 +50,24 @@ class RouteConstants {
     path: '/products',
     name: 'Products',
   );
-  
+
   static const RouteItem forgotPassword = RouteItem(
     path: '/forgot-password',
     name: 'Forgot Password',
   );
-  
+
   static const RouteItem resetPassword = RouteItem(
     path: '/reset-password',
     name: 'Reset Password',
   );
-  
+
   static const RouteItem privacyPolicy = RouteItem(
     path: '/privacy-policy',
     name: 'Privacy policy',
   );
-  
-  static const RouteItem termsOfService = RouteItem(
-    path: '/terms-of-service',
-    name: 'Terms of service',
+
+  static const RouteItem termsAndConditions = RouteItem(
+    path: '/terms-and-conditions',
+    name: 'Terms and conditions',
   );
 }

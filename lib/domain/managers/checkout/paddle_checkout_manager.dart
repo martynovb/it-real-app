@@ -91,10 +91,10 @@ class PaddleCheckoutManager implements CheckoutManager {
         .skip(1)
         .debounceTime(const Duration(milliseconds: 300))
         .listen((eventName) {
-      print('Paddle event: $eventName');
+      debugPrint('Paddle event: $eventName');
 
       if (completer.isCompleted) {
-        print('Completer already completed, ignoring event: $eventName');
+        debugPrint('Completer already completed, ignoring event: $eventName');
         return;
       }
 
@@ -102,7 +102,7 @@ class PaddleCheckoutManager implements CheckoutManager {
       } else if (eventName == 'checkout.closed') {
         closeCheckout();
         completer.complete(false);
-        print('Checkout closed');
+        debugPrint('Checkout closed');
         return;
       } else if (eventName == 'checkout.completed') {
         closeCheckout();
