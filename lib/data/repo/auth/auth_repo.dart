@@ -42,11 +42,7 @@ class AuthRepo extends AuthDataSource {
         .eq('id', response.user?.id ?? '')
         .maybeSingle();
 
-    return UserModel(
-      id: response.user?.id ?? '',
-      email: response.user?.email ?? '',
-      balance: int.tryParse(profile?['balance']) ?? 0,
-    );
+    return UserModel.fromSupabaseUser(profile);
   }
 
   @override
@@ -73,11 +69,7 @@ class AuthRepo extends AuthDataSource {
         .eq('id', response.user?.id ?? '')
         .maybeSingle();
 
-    return UserModel(
-      id: response.user?.id ?? '',
-      email: response.user?.email ?? '',
-      balance: int.tryParse(profile?['balance']) ?? 0,
-    );
+    return UserModel.fromSupabaseUser(profile);
   }
 
   @override
@@ -97,11 +89,7 @@ class AuthRepo extends AuthDataSource {
         .eq('id', user?.id ?? '')
         .maybeSingle();
 
-    return UserModel(
-      id: user?.id ?? '',
-      email: user?.email ?? '',
-      balance: profile?['balance'] ?? 0,
-    );
+    return UserModel.fromSupabaseUser(profile);
   }
 
   @override
