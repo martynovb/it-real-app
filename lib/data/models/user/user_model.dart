@@ -16,6 +16,14 @@ class UserModel with _$UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 
+  factory UserModel.fromSupabaseUser(Map<String, dynamic>? json) {
+    return UserModel(
+      id: json?['id'] ?? '',
+      email: json?['email'] ?? '',
+      balance: json?['balance'] ?? 0,
+    );
+  }
+
   static const empty = UserModel(
     id: '',
     email: '',
