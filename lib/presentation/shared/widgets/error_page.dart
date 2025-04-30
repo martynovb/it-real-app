@@ -10,25 +10,27 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            LocaleKeys.somethingWentWrong.tr(),
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.error,
-                ),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () => context.go(RouteConstants.onboarding.path),
-            child: Text(
-              'Try Again',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ).tr(),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              LocaleKeys.somethingWentWrong.tr(),
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => context.go(RouteConstants.onboarding.path),
+              child: Text(
+                'Try Again',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ).tr(),
+            ),
+          ],
+        ),
       ),
     );
   }
