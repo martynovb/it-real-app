@@ -75,6 +75,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authDataSource.logout();
     } catch (e) {
       Sentry.captureException(e);
+      authDataSource.logout();
     }
   }
 
