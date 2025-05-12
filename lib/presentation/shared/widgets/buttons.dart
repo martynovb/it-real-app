@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:it_real_app/presentation/shared/styles/app_button_style.dart';
 import 'package:it_real_app/presentation/shared/styles/app_dimensions.dart';
@@ -65,7 +66,10 @@ Widget btnOutlined({
                     Text(text),
                   ],
                 )
-              : Text(text),
+              : AutoSizeText(
+                  text,
+                  maxLines: 1,
+                ),
         ),
       ),
     );
@@ -140,7 +144,7 @@ Widget btnOutlinedWithIcon({
         mainAxisAlignment: mainAxisAlignment,
         children: [
           if (prefixWidget != null) prefixWidget,
-          textWidget ?? Text(text ?? ''),
+          textWidget ?? AutoSizeText(text ?? '', maxLines: 1),
           if (postfixWidget != null) postfixWidget,
         ],
       ),

@@ -81,9 +81,10 @@ class HomePageMobile extends StatelessWidget {
       child: Column(
         children: <Widget>[
           AppDimensions.sBoxH32,
-          Text(
+          AutoSizeText(
             LocaleKeys.uploadImage.tr(),
             style: Theme.of(context).textTheme.titleLarge,
+            maxLines: 1,
           ),
           AppDimensions.sBoxH32,
           Container(

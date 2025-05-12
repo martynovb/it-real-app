@@ -178,6 +178,7 @@ class OnboardingPage extends StatelessWidget {
             Expanded(
               child: btnOutlined(
                 context: context,
+                minWidth: AppDimensions.btnWidthDesk,
                 text: LocaleKeys.signIn.tr(),
                 onPressed: () => context.go(RouteConstants.signIn.path),
               ),

@@ -250,7 +250,7 @@ Widget headerMobile({
               context.go(RouteConstants.products.path);
             },
           ),
-          AppDimensions.sBoxW16,
+          AppDimensions.sBoxW8,
           btnOutlinedWithIcon(
             minWidth: AppDimensions.settingsWBtnMobile,
             postfixWidget: const Icon(
