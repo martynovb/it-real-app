@@ -190,6 +190,7 @@ abstract class DialogsManager {
   }) =>
       DialogsManager.showErrorDialog(
         context: context,
+        isMobile: isMobile,
         title: LocaleKeys.deleteAccountDialogTitle.tr(),
         actions: [
           btnOutlined(
