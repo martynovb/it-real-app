@@ -15,7 +15,7 @@ class AppDimensions {
     static const double topPaddingRatioDesk = 0.15;
 
 
-  static const double balanceWBtnMobile = 100;
+  static const double balanceWBtnMobile = 80;
   static const double settingsWBtnMobile = 48;
 
   static const double footerHeight = 80.0;

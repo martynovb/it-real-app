@@ -144,7 +144,7 @@ Widget btnOutlinedWithIcon({
         mainAxisAlignment: mainAxisAlignment,
         children: [
           if (prefixWidget != null) prefixWidget,
-          textWidget ?? Text(text ?? ''),
+          textWidget ?? AutoSizeText(text ?? '', maxLines: 1),
           if (postfixWidget != null) postfixWidget,
         ],
       ),
